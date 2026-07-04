@@ -27,166 +27,186 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Onboarding",
+        "tab": "Start here",
+        "icon": "hand",
         "groups": [
           {
-            "group": "Welcome",
+            "group": "Start here",
+            "icon": "hand",
             "pages": [
-              "index"
-            ],
-            "icon": "hand"
-          },
-          {
-            "group": "Your first days",
-            "pages": [
-              "onboarding/first-day",
-              "onboarding/first-week",
-              "onboarding/meet-the-team"
-            ],
-            "icon": "calendar-check"
-          },
-          {
-            "group": "Tools & access",
-            "pages": [
-              "onboarding/tools/laptop-setup",
-              "onboarding/tools/account-access",
-              "onboarding/tools/vpn-setup"
-            ],
-            "icon": "key-round"
+              "index",
+              "start/welcome",
+              "start/choose-your-door",
+              "start/first-24-hours"
+            ]
           }
-        ],
-        "icon": "rocket"
+        ]
       },
       {
-        "tab": "HR & People",
+        "tab": "The instant win",
+        "icon": "banknote",
         "groups": [
           {
-            "group": "Overview",
+            "group": "Know your number",
+            "icon": "calculator",
             "pages": [
-              "hr-people/index"
-            ],
-            "icon": "book-open"
+              "instant-win/know-your-number",
+              "instant-win/why-you-have-leverage"
+            ]
           },
           {
-            "group": "Benefits & time off",
+            "group": "Make the ask",
+            "icon": "send",
             "pages": [
-              "hr-people/benefits",
-              "hr-people/time-off"
-            ],
-            "icon": "heart-handshake"
-          },
-          {
-            "group": "Growth & pay",
-            "pages": [
-              "hr-people/performance-reviews",
-              "hr-people/compensation/index",
-              "hr-people/compensation/salary-bands",
-              "hr-people/compensation/equity-overview"
-            ],
-            "icon": "trending-up"
+              "instant-win/the-scripts",
+              "instant-win/what-theyll-say-back",
+              "instant-win/if-they-say-no",
+              "instant-win/log-your-win"
+            ]
           }
-        ],
-        "icon": "users"
+        ]
       },
       {
-        "tab": "IT & Security",
+        "tab": "The curtain",
+        "icon": "eye",
         "groups": [
           {
-            "group": "Overview",
+            "group": "How it really works",
+            "icon": "cog",
             "pages": [
-              "it-security/index"
-            ],
-            "icon": "book-open"
+              "curtain/the-vault-was-never-theirs",
+              "curtain/what-a-subscription-actually-is",
+              "curtain/a-renewal-frame-by-frame",
+              "curtain/when-cards-fail"
+            ]
           },
           {
-            "group": "Access & devices",
+            "group": "The honest accounting",
+            "icon": "scale",
             "pages": [
-              "it-security/access-requests",
-              "it-security/device-policy"
-            ],
-            "icon": "laptop"
+              "curtain/why-the-percent-existed",
+              "curtain/what-a-platform-is-actually-worth"
+            ]
           },
           {
-            "group": "Security training",
+            "group": "How opensubs is built",
+            "icon": "blocks",
             "pages": [
-              "it-security/security-training/index",
-              "it-security/security-training/phishing",
-              "it-security/security-training/data-handling"
-            ],
-            "icon": "graduation-cap"
+              "curtain/how-opensubs-is-built"
+            ]
           }
-        ],
-        "icon": "shield"
+        ]
       },
       {
-        "tab": "Policies",
+        "tab": "Deploy",
+        "icon": "rocket",
         "groups": [
           {
-            "group": "Overview",
+            "group": "Before",
+            "icon": "clipboard-list",
             "pages": [
-              "policies/index"
-            ],
-            "icon": "book-open"
+              "deploy/what-youre-about-to-own",
+              "deploy/before-you-start"
+            ]
           },
           {
-            "group": "Conduct & spend",
+            "group": "Launch",
+            "icon": "rocket",
             "pages": [
-              "policies/code-of-conduct",
-              "policies/expense-reimbursement",
-              "policies/travel-policy"
-            ],
-            "icon": "receipt"
+              "deploy/launchpad",
+              "deploy/dev-store-fast-path",
+              "deploy/production-approval"
+            ]
           },
           {
-            "group": "Remote work",
+            "group": "Verify & fix",
+            "icon": "circle-check",
             "pages": [
-              "policies/remote-work/index",
-              "policies/remote-work/home-office-setup",
-              "policies/remote-work/time-zones"
-            ],
-            "icon": "house"
+              "deploy/go-live-verification",
+              "deploy/when-something-goes-wrong"
+            ]
           }
-        ],
-        "icon": "scale"
+        ]
       },
       {
-        "tab": "Engineering",
+        "tab": "Migrate",
+        "icon": "arrow-right-left",
         "groups": [
           {
-            "group": "Overview",
+            "group": "Why it's safe",
+            "icon": "shield-check",
             "pages": [
-              "engineering/index"
-            ],
-            "icon": "book-open"
+              "migrate/why-switching-is-safe"
+            ]
           },
           {
-            "group": "Setup & deployment",
+            "group": "The move",
+            "icon": "truck",
             "pages": [
-              "engineering/dev-setup",
-              "engineering/deployment"
-            ],
-            "icon": "terminal"
+              "migrate/export-from-your-incumbent",
+              "migrate/the-dry-run",
+              "migrate/cutover-day",
+              "migrate/the-first-week-after"
+            ]
           },
           {
-            "group": "Incident response",
+            "group": "The memo",
+            "icon": "file-text",
             "pages": [
-              "engineering/incident-response/index",
-              "engineering/incident-response/on-call",
-              "engineering/incident-response/postmortem"
-            ],
-            "icon": "siren"
-          },
-          {
-            "group": "Architecture",
-            "pages": [
-              "engineering/architecture/index",
-              "engineering/architecture/services-overview",
-              "engineering/architecture/data-models"
-            ],
-            "icon": "blocks"
+              "migrate/the-business-case-memo"
+            ]
           }
-        ],
-        "icon": "wrench"
+        ]
+      },
+      {
+        "tab": "Operate",
+        "icon": "gauge",
+        "groups": [
+          {
+            "group": "Run it",
+            "icon": "play",
+            "pages": [
+              "operate/a-day-in-the-life",
+              "operate/the-admin-tour",
+              "operate/the-retention-machinery",
+              "operate/messaging",
+              "operate/when-to-touch-nothing"
+            ]
+          },
+          {
+            "group": "Under the hood",
+            "icon": "wrench",
+            "pages": [
+              "operate/your-database",
+              "operate/webhooks-crons-jobs",
+              "operate/extend-it"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "The school",
+        "icon": "graduation-cap",
+        "groups": [
+          {
+            "group": "Orientation",
+            "icon": "compass",
+            "pages": [
+              "school/orientation"
+            ]
+          },
+          {
+            "group": "The five modules",
+            "icon": "book-open",
+            "pages": [
+              "school/subscription-economics",
+              "school/acquire",
+              "school/retain",
+              "school/lifecycle-messaging",
+              "school/operating-cadence"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -198,7 +218,7 @@
     "links": [
       {
         "label": "The math",
-        "href": "/"
+        "href": "/instant-win/know-your-number"
       }
     ],
     "primary": {
@@ -231,5 +251,27 @@
       "title": "This page stopped paying rent.",
       "description": "It packed up and moved somewhere it owns. The links below are still under contract."
     }
-  }
+  },
+  "redirects": [
+    {
+      "source": "/onboarding/:slug*",
+      "destination": "/start/welcome"
+    },
+    {
+      "source": "/hr-people/:slug*",
+      "destination": "/"
+    },
+    {
+      "source": "/it-security/:slug*",
+      "destination": "/migrate/why-switching-is-safe"
+    },
+    {
+      "source": "/policies/:slug*",
+      "destination": "/instant-win/know-your-number"
+    },
+    {
+      "source": "/engineering/:slug*",
+      "destination": "/operate/a-day-in-the-life"
+    }
+  ]
 }

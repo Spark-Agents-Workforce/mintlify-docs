@@ -1,0 +1,338 @@
+{
+  "start/welcome": {
+    "ia": "0.1",
+    "title": "Welcome",
+    "platform": "any",
+    "links": [
+      "/start/choose-your-door"
+    ]
+  },
+  "start/choose-your-door": {
+    "ia": "0.2",
+    "title": "Choose your door",
+    "platform": "any",
+    "links": [
+      "/instant-win/know-your-number",
+      "/curtain/the-vault-was-never-theirs",
+      "/operate/a-day-in-the-life",
+      "/school/orientation"
+    ]
+  },
+  "start/first-24-hours": {
+    "ia": "0.3",
+    "title": "Your first 24 hours",
+    "platform": "any",
+    "links": [
+      "/instant-win/the-scripts",
+      "/curtain/the-vault-was-never-theirs",
+      "/deploy/dev-store-fast-path"
+    ]
+  },
+  "instant-win/know-your-number": {
+    "ia": "1.1",
+    "title": "Know your number",
+    "platform": "any",
+    "links": [
+      "/instant-win/log-your-win",
+      "/migrate/the-business-case-memo"
+    ]
+  },
+  "instant-win/why-you-have-leverage": {
+    "ia": "1.2",
+    "title": "Why you have leverage",
+    "platform": "any",
+    "links": [
+      "/instant-win/the-scripts"
+    ]
+  },
+  "instant-win/the-scripts": {
+    "ia": "1.3",
+    "title": "The scripts",
+    "platform": "any",
+    "links": [
+      "/instant-win/what-theyll-say-back"
+    ]
+  },
+  "instant-win/what-theyll-say-back": {
+    "ia": "1.4",
+    "title": "What they'll say back",
+    "platform": "any",
+    "links": [
+      "/instant-win/if-they-say-no"
+    ]
+  },
+  "instant-win/if-they-say-no": {
+    "ia": "1.5",
+    "title": "If they say no",
+    "platform": "any",
+    "links": [
+      "/migrate/the-business-case-memo",
+      "/deploy/what-youre-about-to-own"
+    ]
+  },
+  "instant-win/log-your-win": {
+    "ia": "1.6",
+    "title": "Log your win",
+    "platform": "any",
+    "links": [
+      "/instant-win/know-your-number"
+    ]
+  },
+  "curtain/the-vault-was-never-theirs": {
+    "ia": "2.1",
+    "title": "The vault was never theirs",
+    "platform": "any",
+    "links": [
+      "/curtain/what-a-subscription-actually-is"
+    ]
+  },
+  "curtain/what-a-subscription-actually-is": {
+    "ia": "2.2",
+    "title": "What a subscription actually is",
+    "platform": "any",
+    "links": [
+      "/curtain/a-renewal-frame-by-frame"
+    ]
+  },
+  "curtain/a-renewal-frame-by-frame": {
+    "ia": "2.3",
+    "title": "A renewal, frame by frame",
+    "platform": "any",
+    "links": [
+      "/deploy/dev-store-fast-path"
+    ]
+  },
+  "curtain/when-cards-fail": {
+    "ia": "2.4",
+    "title": "When cards fail",
+    "platform": "any",
+    "links": [
+      "/operate/the-retention-machinery"
+    ]
+  },
+  "curtain/why-the-percent-existed": {
+    "ia": "2.5",
+    "title": "Why the percent existed",
+    "platform": "any",
+    "links": [
+      "/curtain/what-a-platform-is-actually-worth"
+    ]
+  },
+  "curtain/what-a-platform-is-actually-worth": {
+    "ia": "2.6",
+    "title": "What a platform is actually worth",
+    "platform": "any",
+    "links": [
+      "/curtain/how-opensubs-is-built"
+    ]
+  },
+  "curtain/how-opensubs-is-built": {
+    "ia": "2.7",
+    "title": "How opensubs is built",
+    "platform": "opensubs",
+    "links": [
+      "/deploy/what-youre-about-to-own"
+    ]
+  },
+  "deploy/what-youre-about-to-own": {
+    "ia": "3.1",
+    "title": "What you're about to own",
+    "platform": "opensubs",
+    "links": [
+      "/deploy/before-you-start"
+    ]
+  },
+  "deploy/before-you-start": {
+    "ia": "3.2",
+    "title": "Before you start",
+    "platform": "opensubs",
+    "links": [
+      "/deploy/launchpad"
+    ]
+  },
+  "deploy/launchpad": {
+    "ia": "3.3",
+    "title": "Launchpad",
+    "platform": "opensubs",
+    "links": [
+      "/deploy/dev-store-fast-path"
+    ]
+  },
+  "deploy/dev-store-fast-path": {
+    "ia": "3.4",
+    "title": "The dev-store fast path",
+    "platform": "opensubs",
+    "links": [
+      "/curtain/a-renewal-frame-by-frame",
+      "/deploy/production-approval"
+    ]
+  },
+  "deploy/production-approval": {
+    "ia": "3.5",
+    "title": "Production approval",
+    "platform": "opensubs",
+    "links": [
+      "/school/orientation"
+    ]
+  },
+  "deploy/go-live-verification": {
+    "ia": "3.6",
+    "title": "Go-live verification",
+    "platform": "opensubs",
+    "links": [
+      "/deploy/when-something-goes-wrong"
+    ]
+  },
+  "deploy/when-something-goes-wrong": {
+    "ia": "3.7",
+    "title": "When something goes wrong",
+    "platform": "opensubs",
+    "links": [
+      "/deploy/go-live-verification"
+    ]
+  },
+  "migrate/why-switching-is-safe": {
+    "ia": "4.1",
+    "title": "Why switching is safe",
+    "platform": "opensubs",
+    "links": [
+      "/curtain/the-vault-was-never-theirs",
+      "/migrate/export-from-your-incumbent"
+    ]
+  },
+  "migrate/export-from-your-incumbent": {
+    "ia": "4.2",
+    "title": "Export from your incumbent",
+    "platform": "opensubs",
+    "links": [
+      "/migrate/the-dry-run"
+    ]
+  },
+  "migrate/the-dry-run": {
+    "ia": "4.3",
+    "title": "The dry run",
+    "platform": "opensubs",
+    "links": [
+      "/migrate/cutover-day"
+    ]
+  },
+  "migrate/cutover-day": {
+    "ia": "4.4",
+    "title": "Cutover day",
+    "platform": "opensubs",
+    "links": [
+      "/migrate/the-first-week-after"
+    ]
+  },
+  "migrate/the-first-week-after": {
+    "ia": "4.5",
+    "title": "The first week after",
+    "platform": "opensubs",
+    "links": [
+      "/operate/a-day-in-the-life"
+    ]
+  },
+  "migrate/the-business-case-memo": {
+    "ia": "4.6",
+    "title": "The business-case memo",
+    "platform": "opensubs",
+    "links": [
+      "/instant-win/know-your-number"
+    ]
+  },
+  "operate/a-day-in-the-life": {
+    "ia": "5.1",
+    "title": "A day in the life",
+    "platform": "opensubs",
+    "links": [
+      "/operate/the-admin-tour"
+    ]
+  },
+  "operate/the-admin-tour": {
+    "ia": "5.2",
+    "title": "The admin tour",
+    "platform": "opensubs",
+    "links": []
+  },
+  "operate/the-retention-machinery": {
+    "ia": "5.3",
+    "title": "The retention machinery",
+    "platform": "opensubs",
+    "links": [
+      "/curtain/when-cards-fail",
+      "/school/retain"
+    ]
+  },
+  "operate/messaging": {
+    "ia": "5.4",
+    "title": "Messaging",
+    "platform": "opensubs",
+    "links": [
+      "/school/lifecycle-messaging"
+    ]
+  },
+  "operate/when-to-touch-nothing": {
+    "ia": "5.5",
+    "title": "When to touch nothing",
+    "platform": "opensubs",
+    "links": []
+  },
+  "operate/your-database": {
+    "ia": "5.6",
+    "title": "Your database",
+    "platform": "opensubs",
+    "links": []
+  },
+  "operate/webhooks-crons-jobs": {
+    "ia": "5.7",
+    "title": "Webhooks, crons & jobs",
+    "platform": "opensubs",
+    "links": []
+  },
+  "operate/extend-it": {
+    "ia": "5.8",
+    "title": "Extend it",
+    "platform": "opensubs",
+    "links": []
+  },
+  "school/orientation": {
+    "ia": "6.0",
+    "title": "Orientation",
+    "platform": "any",
+    "links": [
+      "/start/welcome"
+    ]
+  },
+  "school/subscription-economics": {
+    "ia": "6.1",
+    "title": "Subscription economics",
+    "platform": "any",
+    "links": []
+  },
+  "school/acquire": {
+    "ia": "6.2",
+    "title": "Acquire",
+    "platform": "any",
+    "links": []
+  },
+  "school/retain": {
+    "ia": "6.3",
+    "title": "Retain",
+    "platform": "any",
+    "links": [
+      "/operate/the-retention-machinery"
+    ]
+  },
+  "school/lifecycle-messaging": {
+    "ia": "6.4",
+    "title": "Lifecycle messaging",
+    "platform": "any",
+    "links": []
+  },
+  "school/operating-cadence": {
+    "ia": "6.5",
+    "title": "Operating cadence",
+    "platform": "any",
+    "links": []
+  }
+}
