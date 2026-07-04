@@ -1,0 +1,98 @@
+---
+title: "Brand Lab"
+description: "Internal component specimen page for the OpenSubs brand pass."
+hidden: true
+---
+
+# BRAND LAB SPECIMEN
+
+Body text sample with a [link to the homepage](/) and some **bold text** plus `inline code`.
+
+## Typed callouts
+
+<Note>Note callout — typed preset.</Note>
+<Info>Info callout — typed preset.</Info>
+<Tip>Tip callout — typed preset.</Tip>
+<Warning>Warning callout — typed preset.</Warning>
+<Danger>Danger callout — typed preset.</Danger>
+<Check>Check callout — typed preset.</Check>
+
+## Generic callouts with brand hexes
+
+<Callout icon="banknote" color="#FFF9C4">Note-yellow generic callout #FFF9C4.</Callout>
+<Callout icon="zap" color="#C5F542">Lime generic callout #C5F542.</Callout>
+<Callout icon="flame" color="#FFD3B6">Peach generic callout #FFD3B6.</Callout>
+<Callout icon="skull" color="#FFAAA5">Salmon generic callout #FFAAA5.</Callout>
+
+## Cards
+
+<Columns cols={2}>
+  <Card title="Plain card" icon="rocket" href="/">
+    A plain card with icon and link.
+  </Card>
+  <Card title="Typed card" type="note">
+    A note-typed card.
+  </Card>
+</Columns>
+
+## Badges
+
+<Badge>Default</Badge> <Badge color="yellow">Yellow</Badge> <Badge color="purple" shape="rounded">Purple rounded</Badge> <Badge color="red" size="lg">Red LG</Badge> <Badge stroke color="gray">Stroke</Badge> <Badge className="os-sticker">Sticker test</Badge>
+
+## Icons
+
+<Icon icon="rocket" size={24} /> <Icon icon="zap" size={24} color="#FFDE00" />
+
+## Code
+
+```bash install
+npm i -g mint
+```
+
+<CodeGroup>
+
+```js tab-one.js
+console.log("tab one");
+```
+
+```py tab-two.py
+print("tab two")
+```
+
+</CodeGroup>
+
+## Table
+
+| Feature | OpenSubs | Incumbents |
+| --- | --- | --- |
+| Revenue share | 0% forever | ~1% of subscription revenue |
+| Infrastructure | You own it | They own it |
+| Contract | None | 1+ year lock-in |
+
+## Steps
+
+<Steps>
+  <Step title="First step">
+    Do the first thing.
+  </Step>
+  <Step title="Second step">
+    Do the second thing.
+  </Step>
+</Steps>
+
+## Update / changelog
+
+<Update label="July 2026" description="v1.0.0" tags={["Platform"]}>
+  First entry in the changelog specimen.
+</Update>
+
+## Accordion
+
+<AccordionGroup>
+  <Accordion title="Accordion one">
+    Accordion body one.
+  </Accordion>
+  <Accordion title="Accordion two">
+    Accordion body two.
+  </Accordion>
+</AccordionGroup>
