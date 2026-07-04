@@ -1,14 +1,14 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "sequoia",
-  "name": "Knowledge base",
-  "description": "Onboarding, employee handbook, HR guides, IT help, company policies, and department runbooks.",
+  "name": "OpenSubs",
+  "description": "OpenSubs documentation. Own your subscription infrastructure. 0% of revenue, forever.",
   "colors": {
-    "primary": "#166E3F",
-    "light": "#26BD6C",
-    "dark": "#166E3F"
+    "primary": "#000000",
+    "light": "#FFDE00",
+    "dark": "#000000"
   },
-  "favicon": "/favicon.ico",
+  "favicon": "/favicon.svg",
   "icons": {
     "library": "lucide"
   },
@@ -16,7 +16,13 @@
     "timestamp": true
   },
   "contextual": {
-    "options": ["copy", "view", "assistant", "mcp", "add-mcp"]
+    "options": [
+      "copy",
+      "view",
+      "assistant",
+      "mcp",
+      "add-mcp"
+    ]
   },
   "navigation": {
     "tabs": [
@@ -25,7 +31,10 @@
         "groups": [
           {
             "group": "Welcome",
-            "pages": ["index"]
+            "pages": [
+              "index"
+            ],
+            "icon": "hand"
           },
           {
             "group": "Your first days",
@@ -33,7 +42,8 @@
               "onboarding/first-day",
               "onboarding/first-week",
               "onboarding/meet-the-team"
-            ]
+            ],
+            "icon": "calendar-check"
           },
           {
             "group": "Tools & access",
@@ -41,23 +51,29 @@
               "onboarding/tools/laptop-setup",
               "onboarding/tools/account-access",
               "onboarding/tools/vpn-setup"
-            ]
+            ],
+            "icon": "key-round"
           }
-        ]
+        ],
+        "icon": "rocket"
       },
       {
         "tab": "HR & People",
         "groups": [
           {
             "group": "Overview",
-            "pages": ["hr-people/index"]
+            "pages": [
+              "hr-people/index"
+            ],
+            "icon": "book-open"
           },
           {
             "group": "Benefits & time off",
             "pages": [
               "hr-people/benefits",
               "hr-people/time-off"
-            ]
+            ],
+            "icon": "heart-handshake"
           },
           {
             "group": "Growth & pay",
@@ -66,23 +82,29 @@
               "hr-people/compensation/index",
               "hr-people/compensation/salary-bands",
               "hr-people/compensation/equity-overview"
-            ]
+            ],
+            "icon": "trending-up"
           }
-        ]
+        ],
+        "icon": "users"
       },
       {
         "tab": "IT & Security",
         "groups": [
           {
             "group": "Overview",
-            "pages": ["it-security/index"]
+            "pages": [
+              "it-security/index"
+            ],
+            "icon": "book-open"
           },
           {
             "group": "Access & devices",
             "pages": [
               "it-security/access-requests",
               "it-security/device-policy"
-            ]
+            ],
+            "icon": "laptop"
           },
           {
             "group": "Security training",
@@ -90,16 +112,21 @@
               "it-security/security-training/index",
               "it-security/security-training/phishing",
               "it-security/security-training/data-handling"
-            ]
+            ],
+            "icon": "graduation-cap"
           }
-        ]
+        ],
+        "icon": "shield"
       },
       {
         "tab": "Policies",
         "groups": [
           {
             "group": "Overview",
-            "pages": ["policies/index"]
+            "pages": [
+              "policies/index"
+            ],
+            "icon": "book-open"
           },
           {
             "group": "Conduct & spend",
@@ -107,7 +134,8 @@
               "policies/code-of-conduct",
               "policies/expense-reimbursement",
               "policies/travel-policy"
-            ]
+            ],
+            "icon": "receipt"
           },
           {
             "group": "Remote work",
@@ -115,23 +143,29 @@
               "policies/remote-work/index",
               "policies/remote-work/home-office-setup",
               "policies/remote-work/time-zones"
-            ]
+            ],
+            "icon": "house"
           }
-        ]
+        ],
+        "icon": "scale"
       },
       {
         "tab": "Engineering",
         "groups": [
           {
             "group": "Overview",
-            "pages": ["engineering/index"]
+            "pages": [
+              "engineering/index"
+            ],
+            "icon": "book-open"
           },
           {
             "group": "Setup & deployment",
             "pages": [
               "engineering/dev-setup",
               "engineering/deployment"
-            ]
+            ],
+            "icon": "terminal"
           },
           {
             "group": "Incident response",
@@ -139,7 +173,8 @@
               "engineering/incident-response/index",
               "engineering/incident-response/on-call",
               "engineering/incident-response/postmortem"
-            ]
+            ],
+            "icon": "siren"
           },
           {
             "group": "Architecture",
@@ -147,9 +182,11 @@
               "engineering/architecture/index",
               "engineering/architecture/services-overview",
               "engineering/architecture/data-models"
-            ]
+            ],
+            "icon": "blocks"
           }
-        ]
+        ],
+        "icon": "wrench"
       }
     ]
   },
@@ -160,20 +197,39 @@
   "navbar": {
     "links": [
       {
-        "label": "Submit IT ticket",
-        "href": "/it-security/access-requests"
+        "label": "The math",
+        "href": "/"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Employee portal",
-      "href": "https://dashboard.mintlify.com"
+      "label": "Talk to us",
+      "href": "https://opensubs.io"
     }
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/yourcompany",
-      "linkedin": "https://linkedin.com/company/yourcompany"
+      "x": "https://x.com/opensubs",
+      "linkedin": "https://linkedin.com/company/opensubs"
+    }
+  },
+  "background": {
+    "color": {
+      "light": "#FFFFFF",
+      "dark": "#000000"
+    }
+  },
+  "appearance": {
+    "default": "light"
+  },
+  "styling": {
+    "codeblocks": "dark"
+  },
+  "errors": {
+    "404": {
+      "redirect": false,
+      "title": "This page stopped paying rent.",
+      "description": "It packed up and moved somewhere it owns. The links below are still under contract."
     }
   }
 }

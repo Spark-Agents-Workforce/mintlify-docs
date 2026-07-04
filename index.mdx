@@ -1,80 +1,115 @@
 ---
 title: "Home"
-description: "Onboarding guides, HR policies, IT help, and department runbooks for the whole company."
+description: "OpenSubs documentation. Own your subscription infrastructure. 0% of revenue, forever."
 mode: custom
 ---
 
-<div className="mx-auto flex w-full max-w-[720px] flex-col gap-12 px-4 py-10 lg:gap-14 lg:py-16">
+<div className="mx-auto flex w-full max-w-[1000px] flex-col gap-16 px-6 py-12 lg:py-16">
+
+  {/* HERO */}
   <div className="flex flex-col items-center gap-6">
-    <div className="flex max-w-[480px] flex-col gap-2 text-center">
-      <h1 className="text-2xl font-semibold tracking-tight text-gray-900 dark:text-gray-50">
-        Your journey begins here
+    <div className="os-hero-yellow os-tilt-l px-10 py-12 text-center max-w-[720px]">
+      <p className="text-xs font-extrabold uppercase tracking-widest m-0">OpenSubs documentation</p>
+      <h1 className="mt-3 text-4xl sm:text-5xl font-black uppercase tracking-tight leading-none m-0">
+        Stop paying rent.
       </h1>
-      <p className="text-balance text-base text-gray-600 dark:text-gray-400">
-        This is your go-to reference for how things work here. Use the tabs to navigate to different resources or search with <kbd>⌘</kbd> <kbd>K</kbd>.
+      <p className="mt-5 text-base font-semibold leading-6 m-0">
+        Every incumbent subscription platform takes a cut of every renewal, forever. OpenSubs is the platform you own instead. Setup, migration, operations — it's all here.
       </p>
+      <div className="mt-6 flex items-center justify-center gap-3 flex-wrap">
+        <a href="/onboarding/first-day" className="os-box-ink os-shadow-sm os-press inline-block px-5 py-2.5 text-sm font-extrabold uppercase no-underline text-white">Get set up</a>
+        <a href="/it-security/index" className="os-hero-box os-shadow-sm os-press inline-block px-5 py-2.5 text-sm font-extrabold uppercase no-underline text-gray-900 dark:text-gray-50" style={{ borderWidth: '3px' }}>Migrate in</a>
+      </div>
+    </div>
+    <p className="text-sm font-bold text-gray-700 dark:text-gray-300 m-0">
+      Search everything with <kbd>⌘</kbd> <kbd>K</kbd>. Ask the assistant anything.
+    </p>
+  </div>
+
+  {/* THE FOUR PATHS */}
+  <div>
+    <h2 className="text-2xl font-black uppercase tracking-tight text-gray-900 dark:text-gray-50 m-0">Pick your path</h2>
+    <div className="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2">
+      <a href="/onboarding/first-day" className="os-hero-box os-shadow os-press block p-6 no-underline">
+        <span className="os-box-lime os-shadow-sm inline-block px-2 py-0.5 text-xs font-extrabold uppercase">Day one</span>
+        <p className="mt-3 text-lg font-black uppercase tracking-tight text-gray-900 dark:text-gray-50 m-0">Start here</p>
+        <p className="mt-2 text-sm font-medium leading-5 text-gray-700 dark:text-gray-300 m-0">
+          From zero to a running platform. The setup path, in order, no detours.
+        </p>
+      </a>
+      <a href="/engineering/index" className="os-hero-box os-shadow os-press block p-6 no-underline">
+        <span className="os-box-mint os-shadow-sm inline-block px-2 py-0.5 text-xs font-extrabold uppercase">Operate</span>
+        <p className="mt-3 text-lg font-black uppercase tracking-tight text-gray-900 dark:text-gray-50 m-0">Run it</p>
+        <p className="mt-2 text-sm font-medium leading-5 text-gray-700 dark:text-gray-300 m-0">
+          Architecture, deployment, and what self-healing actually does at 3 a.m.
+        </p>
+      </a>
+      <a href="/it-security/index" className="os-hero-box os-shadow os-press block p-6 no-underline">
+        <span className="os-box-peach os-shadow-sm inline-block px-2 py-0.5 text-xs font-extrabold uppercase">Switch</span>
+        <p className="mt-3 text-lg font-black uppercase tracking-tight text-gray-900 dark:text-gray-50 m-0">Migrate to it</p>
+        <p className="mt-2 text-sm font-medium leading-5 text-gray-700 dark:text-gray-300 m-0">
+          Off Skio, Recharge, or Stay. Cards stay put. Subscribers never notice.
+        </p>
+      </a>
+      <a href="/policies/index" className="os-hero-box os-shadow os-press block p-6 no-underline">
+        <span className="os-box-salmon os-shadow-sm inline-block px-2 py-0.5 text-xs font-extrabold uppercase">CFO corner</span>
+        <p className="mt-3 text-lg font-black uppercase tracking-tight text-gray-900 dark:text-gray-50 m-0">The math</p>
+        <p className="mt-2 text-sm font-medium leading-5 text-gray-700 dark:text-gray-300 m-0">
+          What 0% of revenue does to EBITDA, and what EBITDA does at your exit multiple.
+        </p>
+      </a>
     </div>
   </div>
 
-  <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-    <a
-      href="/onboarding/first-day"
-      className="group flex flex-col outline-none"
-    >
-      <div
-        className="kb-feature-card relative flex h-[170px] items-center justify-center overflow-hidden rounded-2xl ring-1 ring-gray-100 transition group-hover:ring-gray-200 dark:ring-white/[0.08] dark:group-hover:ring-white/15 saturate-50 group-hover:saturate-100"
-      >
-        <div className="relative flex items-center justify-center">
-          <Icon icon="calendar-1" size={36} className="!bg-white" />
-        </div>
+  {/* WHY IT EXISTS — the wedge, told straight */}
+  <div className="os-hero-box p-8">
+    <h2 className="text-2xl font-black uppercase tracking-tight text-gray-900 dark:text-gray-50 m-0">Why this platform exists</h2>
+    <p className="mt-4 text-base font-medium leading-7 text-gray-800 dark:text-gray-200 m-0">
+      Subscription platforms charge a percentage of your subscription revenue. That percentage is rent: it scales with your success, it never ends, and it comes straight out of EBITDA. At exit, every dollar of it is multiplied against your valuation.
+    </p>
+    <p className="mt-4 text-base font-medium leading-7 text-gray-800 dark:text-gray-200 m-0">
+      OpenSubs inverts the deal. You run the platform on infrastructure you control. The software heals itself. And the toll booth is gone — <strong>you keep 100% of your subscription revenue, forever.</strong>
+    </p>
+    <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-6">
+      <div className="os-box-ink os-shadow-sm p-4 text-center">
+        <p className="text-2xl font-black m-0 text-white">0%</p>
+        <p className="mt-1 text-xs font-bold uppercase m-0 text-white">of revenue. Forever.</p>
       </div>
-      <div className="flex flex-col gap-1 pt-4">
-        <span className="text-base font-medium text-gray-900 dark:text-gray-50">Your first day</span>
-        <span className="text-sm leading-5 text-gray-600 dark:text-gray-400">
-          Your first day is all about getting oriented and connecting with key team members.
-        </span>
+      <div className="os-box-lime os-shadow-sm p-4 text-center">
+        <p className="text-2xl font-black m-0">Yours</p>
+        <p className="mt-1 text-xs font-bold uppercase m-0">The infrastructure</p>
       </div>
-    </a>
-
-    <a
-      href="/onboarding/tools/account-access"
-      className="group flex flex-col outline-none"
-    >
-      <div
-        className="kb-feature-card relative flex h-[170px] items-center justify-center overflow-hidden rounded-2xl ring-1 ring-gray-100 transition group-hover:ring-gray-200 dark:ring-white/[0.08] dark:group-hover:ring-white/15 saturate-50 group-hover:saturate-100"
-      >
-        <div className="relative flex items-center justify-center">
-          <Icon icon="key-round" size={36} className="!bg-white" />
-        </div>
+      <div className="os-box-peach os-shadow-sm p-4 text-center">
+        <p className="text-2xl font-black m-0">None</p>
+        <p className="mt-1 text-xs font-bold uppercase m-0">Contract lock-in</p>
       </div>
-      <div className="flex flex-col gap-1 pt-4">
-        <span className="text-base font-medium text-gray-900 dark:text-gray-50">Account access</span>
-        <span className="text-sm leading-5 text-gray-600 dark:text-gray-400">
-          Which accounts you&apos;ll need, how to claim them, and what to do if anything is missing.
-        </span>
-      </div>
-    </a>
+    </div>
   </div>
 
-  <div className="flex flex-col gap-4">
-    <h2 className="text-lg font-medium tracking-tight text-gray-900 dark:text-gray-50">Resources</h2>
-
-    <Columns cols={2}>
-      <Card title="HR & People" icon="users" iconType="light" href="/hr-people">
-        Benefits, time off, performance reviews, and compensation.
-      </Card>
-      <Card title="IT & Security" icon="shield-check" iconType="light" href="/it-security">
-        Access requests, device policy, and security training.
-      </Card>
-    </Columns>
-
-    <Columns cols={2}>
-      <Card title="Policies" icon="scroll" iconType="light" href="/policies">
-        Code of conduct, expense reimbursement, travel, and remote work.
-      </Card>
-      <Card title="Engineering" icon="code-xml" iconType="light" href="/engineering">
-        Dev setup, deployment, incident response, and architecture.
-      </Card>
-    </Columns>
+  {/* WHAT'S IN THE DOCS */}
+  <div>
+    <h2 className="text-2xl font-black uppercase tracking-tight text-gray-900 dark:text-gray-50 m-0">What's in here</h2>
+    <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-3">
+      <a href="/onboarding/tools/laptop-setup" className="os-hero-box os-shadow-sm os-press block p-5 no-underline" style={{ borderWidth: '3px' }}>
+        <p className="text-sm font-black uppercase text-gray-900 dark:text-gray-50 m-0">Setup guides</p>
+        <p className="mt-1.5 text-xs font-medium leading-4 text-gray-700 dark:text-gray-300 m-0">Install, configure, connect. Every step numbered.</p>
+      </a>
+      <a href="/engineering/architecture/index" className="os-hero-box os-shadow-sm os-press block p-5 no-underline" style={{ borderWidth: '3px' }}>
+        <p className="text-sm font-black uppercase text-gray-900 dark:text-gray-50 m-0">Architecture</p>
+        <p className="mt-1.5 text-xs font-medium leading-4 text-gray-700 dark:text-gray-300 m-0">How the pieces fit, and why they recover on their own.</p>
+      </a>
+      <a href="/engineering/incident-response/index" className="os-hero-box os-shadow-sm os-press block p-5 no-underline" style={{ borderWidth: '3px' }}>
+        <p className="text-sm font-black uppercase text-gray-900 dark:text-gray-50 m-0">Runbooks</p>
+        <p className="mt-1.5 text-xs font-medium leading-4 text-gray-700 dark:text-gray-300 m-0">When something breaks, the fix is written down.</p>
+      </a>
+    </div>
   </div>
+
+  {/* FOOTER BAR */}
+  <div className="os-box-ink os-shadow px-8 py-6 text-center">
+    <p className="text-lg font-black uppercase tracking-tight m-0 text-white">
+      0% of revenue. Forever. <span className="os-box-lime os-shadow-sm inline-block px-2 py-0.5 text-sm font-extrabold not-italic align-middle ml-2">That's the whole pricing page.</span>
+    </p>
+  </div>
+
 </div>
