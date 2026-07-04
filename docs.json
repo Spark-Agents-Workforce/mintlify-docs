@@ -196,14 +196,108 @@
             ]
           },
           {
-            "group": "The five modules",
-            "icon": "book-open",
+            "group": "M1 \u00b7 The numbers",
+            "icon": "calculator",
             "pages": [
-              "school/subscription-economics",
-              "school/acquire",
-              "school/retain",
-              "school/lifecycle-messaging",
-              "school/operating-cadence"
+              "school/numbers/subscription-economics",
+              "school/numbers/churn-math",
+              "school/numbers/cohorts",
+              "school/numbers/weekly-metrics"
+            ]
+          },
+          {
+            "group": "M2 \u00b7 The offer",
+            "icon": "tag",
+            "pages": [
+              "school/offer/offer-architecture",
+              "school/offer/the-discount-question",
+              "school/offer/free-gifting",
+              "school/offer/first-order-incentives",
+              "school/offer/prepaid-and-commitment",
+              "school/offer/offer-testing"
+            ]
+          },
+          {
+            "group": "M3 \u00b7 Acquire",
+            "icon": "megaphone",
+            "pages": [
+              "school/traffic/paid-ads",
+              "school/traffic/landing-pages",
+              "school/traffic/organic-and-social",
+              "school/traffic/influencer-and-affiliate",
+              "school/traffic/list-first-acquisition"
+            ]
+          },
+          {
+            "group": "M4 \u00b7 Convert",
+            "icon": "shopping-cart",
+            "pages": [
+              "school/store/pdp",
+              "school/store/collections-and-navigation",
+              "school/store/cart-and-upsell",
+              "school/store/checkout",
+              "school/store/converting-one-time-buyers",
+              "school/store/site-wide-tactics"
+            ]
+          },
+          {
+            "group": "M5 \u00b7 The first 60 days",
+            "icon": "calendar-days",
+            "pages": [
+              "school/first-60-days/welcome-sequence",
+              "school/first-60-days/first-order-experience",
+              "school/first-60-days/second-order-cliff",
+              "school/first-60-days/early-tenure-playbook"
+            ]
+          },
+          {
+            "group": "M6 \u00b7 The messaging engine",
+            "icon": "mail",
+            "pages": [
+              "school/messaging/lifecycle-map",
+              "school/messaging/transactional-and-reminder",
+              "school/messaging/klaviyo-architecture",
+              "school/messaging/sms",
+              "school/messaging/deliverability-and-cadence"
+            ]
+          },
+          {
+            "group": "M7 \u00b7 Keep",
+            "icon": "user-check",
+            "pages": [
+              "school/account-area/portal-as-retention",
+              "school/account-area/perks-and-loyalty",
+              "school/account-area/flexibility-as-retention",
+              "school/account-area/community-and-identity"
+            ]
+          },
+          {
+            "group": "M8 \u00b7 Save",
+            "icon": "shield",
+            "pages": [
+              "school/churn-defense/cancellation-flow-design",
+              "school/churn-defense/save-offers",
+              "school/churn-defense/dunning",
+              "school/churn-defense/exit-interviews",
+              "school/churn-defense/reading-your-churn"
+            ]
+          },
+          {
+            "group": "M9 \u00b7 Revive",
+            "icon": "rotate-ccw",
+            "pages": [
+              "school/winback/recapturing-cancelled",
+              "school/winback/reactivating-paused",
+              "school/winback/winback-economics"
+            ]
+          },
+          {
+            "group": "M10 \u00b7 Run",
+            "icon": "repeat",
+            "pages": [
+              "school/cadence/operating-rhythm",
+              "school/cadence/testing-calendar",
+              "school/cadence/when-to-get-help"
             ]
           }
         ]
@@ -272,6 +366,26 @@
     {
       "source": "/engineering/:slug*",
       "destination": "/operate/a-day-in-the-life"
+    },
+    {
+      "source": "/school/subscription-economics",
+      "destination": "/school/numbers/subscription-economics"
+    },
+    {
+      "source": "/school/acquire",
+      "destination": "/school/traffic/paid-ads"
+    },
+    {
+      "source": "/school/retain",
+      "destination": "/school/churn-defense/cancellation-flow-design"
+    },
+    {
+      "source": "/school/lifecycle-messaging",
+      "destination": "/school/messaging/lifecycle-map"
+    },
+    {
+      "source": "/school/operating-cadence",
+      "destination": "/school/cadence/operating-rhythm"
     }
   ]
 }
