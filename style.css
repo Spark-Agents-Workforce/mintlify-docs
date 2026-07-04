@@ -194,8 +194,13 @@ html.dark .card { background: var(--os-ink); }
 .callout[data-callout-type="danger"]  { background: var(--os-salmon) !important; }
 .callout [data-component-part="callout-content"] { color: var(--os-ink) !important; }
 .callout [data-component-part="callout-content"] * { color: var(--os-ink) !important; }
+/* typed callouts: inline SVG paths fill via currentColor — color only */
 .callout [data-component-part="callout-icon"] svg {
   color: var(--os-ink) !important;
+  background-color: transparent !important;
+}
+/* generic-callout icons render as CSS masks — those fill via background */
+.callout [data-component-part="callout-icon"] svg[style*="mask-image"] {
   background-color: var(--os-ink) !important;
 }
 html.dark .callout { border-color: var(--os-ink) !important; box-shadow: 3px 3px 0 0 var(--os-paper); }
@@ -291,6 +296,8 @@ html.dark .os-hero-yellow { box-shadow: 6px 6px 0 0 #FFFFFF; }
 .os-shadow    { box-shadow: 4px 4px 0 0 var(--os-shadow-color); }
 .os-shadow-lg { box-shadow: 6px 6px 0 0 var(--os-shadow-color); }
 .os-tilt-l { transform: rotate(-2deg); }
+.os-tilt-l-sm { transform: none; }
+@media (min-width: 640px) { .os-tilt-l-sm { transform: rotate(-2deg); } }
 .os-tilt-r { transform: rotate(2deg); }
 
 /* ================= TOC chevron (house weight) ======================= */
