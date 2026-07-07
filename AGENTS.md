@@ -64,6 +64,10 @@ These are the product's part names — they match the marketing site verbatim.
 
 ## Production content (do not re-stub)
 
+- instant-win/* — ALL SIX PAGES are REAL content (JD's Movement 1+2 drafts).
+  Kit pages carry per-platform figures verified against published pricing at
+  staging time; the CFO memo (Movement 2 Part 11) is NOT staged — JD placement
+  call pending. Year-2 delivery promise (Part 10) awaits JD blessing.
 - instant-win/why-you-have-leverage — REAL content (JD's draft, 2026-07-04).
   The Scripts tab's front door: one continuous narrative, H2s = story beats,
   receipts inline-linked to primary sources. Never shorten to a stub; never

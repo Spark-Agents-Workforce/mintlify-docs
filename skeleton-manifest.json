@@ -33,9 +33,10 @@
     "title": "Know your number",
     "platform": "any",
     "links": [
-      "/instant-win/log-your-win",
-      "/migrate/the-business-case-memo"
-    ]
+      "/instant-win/why-you-have-leverage",
+      "/instant-win/the-scripts"
+    ],
+    "status": "PRODUCTION"
   },
   "instant-win/why-you-have-leverage": {
     "ia": "1.2",
@@ -53,33 +54,42 @@
     "title": "The scripts",
     "platform": "any",
     "links": [
+      "/instant-win/know-your-number",
       "/instant-win/what-theyll-say-back"
-    ]
+    ],
+    "status": "PRODUCTION"
   },
   "instant-win/what-theyll-say-back": {
     "ia": "1.4",
     "title": "What they'll say back",
     "platform": "any",
     "links": [
+      "/instant-win/the-scripts",
+      "/instant-win/log-your-win",
       "/instant-win/if-they-say-no"
-    ]
+    ],
+    "status": "PRODUCTION"
   },
   "instant-win/if-they-say-no": {
     "ia": "1.5",
     "title": "If they say no",
     "platform": "any",
     "links": [
-      "/migrate/the-business-case-memo",
-      "/deploy/what-youre-about-to-own"
-    ]
+      "/instant-win/why-you-have-leverage",
+      "/instant-win/log-your-win",
+      "/migrate/why-switching-is-safe"
+    ],
+    "status": "PRODUCTION"
   },
   "instant-win/log-your-win": {
     "ia": "1.6",
     "title": "Log your win",
     "platform": "any",
     "links": [
-      "/instant-win/know-your-number"
-    ]
+      "/school/numbers/weekly-metrics",
+      "/school/orientation"
+    ],
+    "status": "PRODUCTION"
   },
   "curtain/the-vault-was-never-theirs": {
     "ia": "2.1",

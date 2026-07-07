@@ -1,6 +1,6 @@
 ---
 title: "The scripts"
-description: "The actual emails. Copy, paste, send."
+description: "Three emails, 60-95 words each. Everything in them is true and checkable."
 ia: "1.3"
 ---
 
@@ -8,18 +8,120 @@ import { PlatformTag } from "/snippets/PlatformTag.jsx";
 
 <PlatformTag platform="any" />
 
-<Note>**Skeleton page.** The structure and links are final; the content lands in the production pass.</Note>
+Three emails. They are short on purpose — field data on millions of emails says a 50-to-100-word ask outperforms a thorough one, by a lot. Every extra paragraph you add is a place for your ask to drown. Resist.
 
-## What this page gives you
+The send order: Script 1 opens. Script 2 is Script 1 timed to your renewal window (use it instead if your renewal is 60–90 days out — check the line you wrote in [Know your number](/instant-win/know-your-number)). Script 3 escalates if the answer is no or nothing.
 
-- The actual emails — variables filled, tone calibrated, timed to your renewal.
-- Which one to send first, and what the send order does.
-- No template mush. These are the words.
+One rule before you paste: everything in these emails is true and checkable. That's not a compliance note — it's the mechanism. A vendor can smell a bluff; these contain none.
 
-## Where next
+## Script 1 · The rate review
 
-<Columns cols={2}>
-  <Card title="What they'll say back" href="/instant-win/what-theyll-say-back">
-    Every reply, handled.
+<div className="not-prose" style={{ border: "3px solid #000", boxShadow: "4px 4px 0 0 #000", marginBottom: "0" }}>
+  <div style={{ backgroundColor: "#FFDE00", borderBottom: "3px solid #000", padding: "10px 16px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "8px" }}>
+    <span style={{ fontWeight: 900, textTransform: "uppercase", fontSize: "14px", color: "#000" }}>Script 01 · The opener</span>
+    <span style={{ backgroundColor: "#000", color: "#FFDE00", fontWeight: 800, fontSize: "11px", textTransform: "uppercase", padding: "2px 8px" }}>Send today — any contract state</span>
+  </div>
+</div>
+
+```text Subject: Rate review request — [STORE NAME]
+Hi [NAME],
+
+Loop publishes 0.75% with no per-order fee on their Pro plan. We're
+currently paying an effective [YOUR BLENDED RATE]% with [VENDOR] —
+I've done the math off our last invoice.
+
+We're set up to self-host our subscription infrastructure at 0%, so
+we're reviewing our options. Before we go further down that path:
+can you match [TARGET RATE]% with the per-order fee waived?
+
+Happy to share the invoice math. Who's the right person if that's
+above your desk?
+
+[NAME]
+```
+
+**Why it works, in one breath:** the published competitor rate lands first (the anchor), your blended rate makes it personal, the self-host line is a capability you actually hold — not a threat, an inventory item — and the ask is one number with an escalation path built in.
+
+**Do not add:** your budget, your timeline, how much you like the product, or a second ask. Any of those hands them the email back.
+
+**[TARGET RATE]:** aim at or just below the published competitor anchor. A number with a reason beats a round number without one — "0.7%, given Loop publishes 0.75% and charges nothing per order" is a rate with a rationale.
+
+## Script 2 · The renewal window
+
+<div className="not-prose" style={{ border: "3px solid #000", boxShadow: "4px 4px 0 0 #000", marginBottom: "0" }}>
+  <div style={{ backgroundColor: "#FFDE00", borderBottom: "3px solid #000", padding: "10px 16px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "8px" }}>
+    <span style={{ fontWeight: 900, textTransform: "uppercase", fontSize: "14px", color: "#000" }}>Script 02 · The renewal window</span>
+    <span style={{ backgroundColor: "#000", color: "#FFDE00", fontWeight: 800, fontSize: "11px", textTransform: "uppercase", padding: "2px 8px" }}>Send 60–90 days before renewal</span>
+  </div>
+</div>
+
+```text Subject: Before our renewal on [DATE] — [STORE NAME]
+Hi [NAME],
+
+Our term renews on [DATE]. Before it does, we're deciding between
+renewing, moving to a published-lower-rate platform (Loop Pro:
+0.75%, $0 per order), and self-hosting at 0% — we hold the
+infrastructure for that option.
+
+We'd rather stay, at the right rate. Can you get us to
+[TARGET RATE]% with the per-order fee waived before
+[DATE MINUS NOTICE WINDOW]? That's our notice deadline, so we'll
+need an answer before it.
+
+[NAME]
+```
+
+**The date does the work.** You're not threatening; you're scheduling. Their notice window is now YOUR deadline, pointed back at them.
+
+**Send 60–90 days out.** Procurement data is unambiguous: negotiations opened early save multiples of those opened at the deadline. If you're reading this mid-term, calendar it now — that's today's play.
+
+## Script 3 · The escalation
+
+<div className="not-prose" style={{ border: "3px solid #000", boxShadow: "4px 4px 0 0 #000", marginBottom: "0" }}>
+  <div style={{ backgroundColor: "#FFDE00", borderBottom: "3px solid #000", padding: "10px 16px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "8px" }}>
+    <span style={{ fontWeight: 900, textTransform: "uppercase", fontSize: "14px", color: "#000" }}>Script 03 · The escalation</span>
+    <span style={{ backgroundColor: "#000", color: "#FFDE00", fontWeight: 800, fontSize: "11px", textTransform: "uppercase", padding: "2px 8px" }}>Send after a no — or 10 days of silence</span>
+  </div>
+</div>
+
+```text Subject: Commercial review — [STORE NAME] ([$X]/yr account)
+Hi [NAME],
+
+[REP NAME] and I discussed our rate on [DATE]; we haven't found a
+path. Before we finalize a migration decision, I wanted to put this
+in front of someone with pricing authority.
+
+The numbers: we pay [VENDOR] about [$X] a year. Loop publishes
+0.75% with no per-order fee. Our self-hosted option runs at 0%.
+Replacing our account costs you more than the rate match we're
+asking for: [TARGET RATE]%.
+
+If that's workable, we'll stay and this is done this week. If not,
+no hard feelings — we'll plan the transition.
+
+[NAME]
+```
+
+**This is a commercial position, not a complaint.** It never criticizes the rep (you may need that relationship on the way out). It states the replacement-cost logic in one line and gives them a clean, fast yes.
+
+**Route it up:** reply-all with the rep's manager added, or the "who's the right person" answer from Script 1. Reps typically hold small discounts; real rate moves live at the deal desk.
+
+## The timing box
+
+When to move, by platform — from their own published terms:
+
+- **Month-to-month (Recharge Starter, most self-serve tiers):** anytime. You can leave next month and they know it. Send Script 1 today.
+- **Recharge Plus/Custom (12-month terms):** your window is BEFORE renewal — mid-term exit costs every remaining month, by formula, per their ToS. Open at T-minus-90. Downgrades also only land at expiry.
+- **Skio / Loop / Smartrr (auto-renew + 30-day notice):** calendar T-minus-90 for the open, T-minus-35 as your hard deadline — miss the notice window and you're re-upped. Loop members: your lock-in RESETS at renewal, and Loop's terms bar running a competitor app during your term — so any migration test gets scheduled for after non-renewal, which makes the calendar even more load-bearing.
+- **Stay AI:** no published terms — your leverage is whatever your Order Form says, so read it, and put everything you care about in writing at renewal.
+- **Everyone:** mid-contract with no window in sight? Send Script 1 anyway. Rate reviews aren't contract-gated. The worst case is a no you were already living with.
+
+<div className="not-prose" style={{ border: "3px solid #000", backgroundColor: "#FFDE00", boxShadow: "3px 3px 0 0 #000", padding: "12px 18px", margin: "1.5rem 0" }}>
+  <p className="m-0" style={{ fontWeight: 900, fontSize: "13px", textTransform: "uppercase", color: "#000" }}>Value tally: ten minutes of pasting. The reply is money.</p>
+</div>
+
+<Columns cols={1}>
+  <Card title="What they'll say back" icon="message-circle" href="/instant-win/what-theyll-say-back">
+    There are only seven replies. You're about to have all seven.
   </Card>
 </Columns>
