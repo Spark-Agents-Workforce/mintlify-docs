@@ -339,5 +339,10 @@
       "source": "/school/operating-cadence",
       "destination": "/school/cadence/operating-rhythm"
     }
-  ]
+  ],
+  "seo": {
+    "metatags": {
+      "canonical": "https://insiders.opensubs.com"
+    }
+  }
 }
