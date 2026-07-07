@@ -1,0 +1,39 @@
+---
+title: "The history"
+description: "The percentage used to be honest. Then the ground moved — and the pricing didn't."
+ia: "1.2a"
+---
+
+import { PlatformTag } from "/snippets/PlatformTag.jsx";
+
+<PlatformTag platform="any" />
+
+The percentage used to be honest.
+
+Go back to 2014. Shopify had no native way to do subscriptions — no recurring billing, no stored cards for repeat charges, nothing. If you wanted to sell a subscription on Shopify, you needed someone to build all of that next to Shopify. The company that became the giant of that era was Recharge — and here's the part people forget: Recharge wasn't an app inside your checkout. Recharge WAS the checkout.
+
+When your subscriber hit "subscribe," they left Shopify. They checked out on ReCharge Checkout. Their card was processed through Recharge's payment stack — Stripe, Braintree, Authorize.net, PayPal. Recharge stored the payment method. Recharge ran the renewal charge every month. Recharge moved the money. (Recharge was the biggest, not the only one — Bold ran its own checkout too. Running your own checkout was simply how subscriptions worked back then.)
+
+Now look at the fee through that lens: a percentage of revenue, plus a per-transaction fee. For a company that was actually processing your transactions — vaulting cards, eating gateway costs, wearing the payment risk — that pricing made sense. It was priced like a payments company because it partly WAS one. The fee mapped to real work.
+
+Then the ground moved.
+
+In October 2020, Shopify shipped the [Subscriptions API](https://shopify.dev/changelog/subscriptions-api-scopes-are-now-available-by-request). By November 2020, [the first subscription apps built inside Shopify's own checkout went live](https://www.shopify.com/news/merchants-can-now-offer-subscriptions-and-post-purchase-upsells-directly-in-shopify-checkout) — and Shopify de-listed apps that bypassed its checkout for new installs. [Their own changelog](https://shopify.dev/changelog/new-subscription-and-post-purchase-up-sell-app-collections-available-now) says it plainly: apps that bypass the Shopify checkout "will no longer be available for download."
+
+Everything that made the fee honest moved to Shopify that day.
+
+The card? Vaulted by Shopify, in Shopify's payment vault. The renewal charge? Run by Shopify, through Shopify Payments. The order? Created by Shopify, same as any one-time purchase. Checkout, processing, card storage, the money moving — all of it, Shopify. By October 2024, the legacy external checkouts were shut off entirely. The transition is total.
+
+So the work moved. Here's the question this whole page turns on:
+
+Did the pricing move with it?
+
+You already know the answer — you pay the bill. The percentage survived. The per-transaction fee survived — 19 cents for a "transaction" the platform no longer performs. [Recharge's own documentation](https://support.getrecharge.com/hc/en-us/articles/360008682914-Recharge-billing-and-pricing) from the new era lists $99/month plus 1.25% plus 19¢ per transaction. Today [their pricing page](https://getrecharge.com/pricing/) says 1.49% plus 19¢. The number didn't just survive the work disappearing. It went up.
+
+That's not a scandal. It's something more ordinary: markets keep behaving the way they learned to behave. Merchants were trained for years that subscriptions cost a percentage, so a percentage is what the market kept charging. The backend changed hands. The business model never noticed.
+
+<Columns cols={1}>
+  <Card title="What your platform actually does" icon="cog" href="/instant-win/what-your-platform-does">
+    A renewal, frame by frame. It's shorter than you think.
+  </Card>
+</Columns>

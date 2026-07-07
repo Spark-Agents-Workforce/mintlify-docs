@@ -50,7 +50,10 @@
             "group": "The story",
             "icon": "book-open",
             "pages": [
-              "instant-win/why-you-have-leverage"
+              "instant-win/why-you-have-leverage",
+              "instant-win/the-history",
+              "instant-win/what-your-platform-does",
+              "instant-win/the-reveal"
             ]
           },
           {

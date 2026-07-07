@@ -69,7 +69,8 @@ These are the product's part names — they match the marketing site verbatim.
   staging time; the CFO memo (Movement 2 Part 11) is NOT staged — JD placement
   call pending. Year-2 delivery promise (Part 10) awaits JD blessing.
 - instant-win/why-you-have-leverage — REAL content (JD's draft, 2026-07-04).
-  The Scripts tab's front door: one continuous narrative, H2s = story beats,
-  receipts inline-linked to primary sources. Never shorten to a stub; never
-  split into multiple pages. curtain/why-the-percent-existed was absorbed
-  into it (redirect in docs.json).
+  The Scripts tab's front door. JD-RULED 2026-07-07: the story runs as FOUR
+  chapter pages (why-you-have-leverage -> the-history -> what-your-platform-does
+  -> the-reveal), each ending in a next-chapter card. Never shorten to stubs;
+  never merge back to one page; never break the chapter chain.
+  curtain/why-the-percent-existed was absorbed (redirect in docs.json).

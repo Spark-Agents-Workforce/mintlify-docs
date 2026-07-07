@@ -1,6 +1,6 @@
 ---
 title: "Why you have leverage"
-description: "Why does a percentage exist at all? A short story that ends with you holding the leverage."
+description: "Did you ever ask why a percentage exists at all? Start here."
 ia: "1.2"
 ---
 
@@ -24,124 +24,8 @@ Most merchants are. Not because it's hidden — it's in Shopify's own developer 
 
 We do. Let us tell you why this space is the way it is. It's a good story, it's short, and by the end of it you'll understand your own platform bill better than most of the people who sell it.
 
-## The history
-
-The percentage used to be honest.
-
-Go back to 2014. Shopify had no native way to do subscriptions — no recurring billing, no stored cards for repeat charges, nothing. If you wanted to sell a subscription on Shopify, you needed someone to build all of that next to Shopify. The company that became the giant of that era was Recharge — and here's the part people forget: Recharge wasn't an app inside your checkout. Recharge WAS the checkout.
-
-When your subscriber hit "subscribe," they left Shopify. They checked out on ReCharge Checkout. Their card was processed through Recharge's payment stack — Stripe, Braintree, Authorize.net, PayPal. Recharge stored the payment method. Recharge ran the renewal charge every month. Recharge moved the money. (Recharge was the biggest, not the only one — Bold ran its own checkout too. Running your own checkout was simply how subscriptions worked back then.)
-
-Now look at the fee through that lens: a percentage of revenue, plus a per-transaction fee. For a company that was actually processing your transactions — vaulting cards, eating gateway costs, wearing the payment risk — that pricing made sense. It was priced like a payments company because it partly WAS one. The fee mapped to real work.
-
-Then the ground moved.
-
-In October 2020, Shopify shipped the [Subscriptions API](https://shopify.dev/changelog/subscriptions-api-scopes-are-now-available-by-request). By November 2020, [the first subscription apps built inside Shopify's own checkout went live](https://www.shopify.com/news/merchants-can-now-offer-subscriptions-and-post-purchase-upsells-directly-in-shopify-checkout) — and Shopify de-listed apps that bypassed its checkout for new installs. [Their own changelog](https://shopify.dev/changelog/new-subscription-and-post-purchase-up-sell-app-collections-available-now) says it plainly: apps that bypass the Shopify checkout "will no longer be available for download."
-
-Everything that made the fee honest moved to Shopify that day.
-
-The card? Vaulted by Shopify, in Shopify's payment vault. The renewal charge? Run by Shopify, through Shopify Payments. The order? Created by Shopify, same as any one-time purchase. Checkout, processing, card storage, the money moving — all of it, Shopify. By October 2024, the legacy external checkouts were shut off entirely. The transition is total.
-
-So the work moved. Here's the question this whole page turns on:
-
-Did the pricing move with it?
-
-You already know the answer — you pay the bill. The percentage survived. The per-transaction fee survived — 19 cents for a "transaction" the platform no longer performs. [Recharge's own documentation](https://support.getrecharge.com/hc/en-us/articles/360008682914-Recharge-billing-and-pricing) from the new era lists $99/month plus 1.25% plus 19¢ per transaction. Today [their pricing page](https://getrecharge.com/pricing/) says 1.49% plus 19¢. The number didn't just survive the work disappearing. It went up.
-
-That's not a scandal. It's something more ordinary: markets keep behaving the way they learned to behave. Merchants were trained for years that subscriptions cost a percentage, so a percentage is what the market kept charging. The backend changed hands. The business model never noticed.
-
-## What a subscription platform actually does now
-
-So if Shopify does the payments now — what does your subscription platform do?
-
-Here's a renewal, frame by frame. This isn't a metaphor; this is the actual sequence:
-
-<Steps>
-  <Step title="The alarm clock fires">
-    A scheduled job wakes up — a cron, in engineering terms; an alarm clock, in real ones — and asks: which contracts are due today?
-  </Step>
-  <Step title="One API call">
-    For each one, it sends Shopify one API call: "bill this contract."
-  </Step>
-  <Step title="Shopify does everything you would call work">
-    Pulls the card from its vault. Runs the charge through its processing. Creates the order in your admin. Kicks off fulfillment. The money moves entirely inside Shopify — where you're already paying Shopify's plan and processing fees for exactly this.
-  </Step>
-  <Step title="One message back">
-    Shopify sends back a message: done. (Or: card declined.)
-  </Step>
-  <Step title="One row written">
-    Your subscription platform writes that down.
-  </Step>
-</Steps>
-
-That's the renewal. The billing event — the thing the percentage is priced on — is one API call out, one message back, one database row written. Want to watch it happen in your own logs? [A renewal, frame by frame](/curtain/a-renewal-frame-by-frame) walks the same sequence on your own deploy.
-
-Now, the honest list — because the platform does do real things, and this argument doesn't need to pretend otherwise:
-
-- The subscriber portal — where your customer skips a month, swaps a flavor, pauses, updates their card.
-- The admin — where you build plans, set discounts, configure swaps.
-- Dunning — when a card declines, scheduling the retries and sending the recovery emails. This is genuinely valuable.
-- Notifications — "your order ships Thursday."
-- Analytics — churn, LTV, cohorts.
-
-Real software. Worth real money. Look at the list again, though, and notice what every item has in common:
-
-<div className="not-prose" style={{ border: "3px solid #000", backgroundColor: "#FFDE00", boxShadow: "4px 4px 0 0 #000", padding: "20px 24px", margin: "1.5rem 0" }}>
-  <p className="m-0" style={{ fontWeight: 900, fontSize: "20px", lineHeight: 1.3, textTransform: "uppercase", color: "#000" }}>None of it scales with your revenue.</p>
-</div>
-
-The portal for a $50M brand is the same portal as a $2M brand's. The retry logic is the same cron job. The renewal is the same single API call whether the box costs $30 or $300. When your revenue grows 25x, the platform's work for you grows... approximately not at all. And their fee grows 25x.
-
-How do we know all this? We're not guessing from the outside. We built one. It's the platform you now have the code to. Every claim on this page is a thing you can go read.
-
-## What running one actually costs
-
-Let's price the machine. What does it cost to RUN a subscription platform?
-
-- A database. Mostly working on your analytics queries — the billing rows are tiny. Tens of dollars a month at serious scale.
-- The cron jobs. The alarm clocks. Fractions of a cent to fire.
-- The webhooks. Receiving messages Shopify sends. Effectively free.
-- The emails and SMS. Metered sends — pennies each. And here's the part worth slowing down for: on most platforms, the fee doesn't even cover this. The marketing flows — winbacks, upsells — fire through YOUR Klaviyo or Postscript account on all five major platforms. You already pay that bill. Texts? Two of the five don't send them at all — every SMS goes through your own tools. One labels SMS "included," then has you connect your own Twilio account to send them. And the biggest one meters it: three cents per message, on its own pricing page, on top of the percentage, on top of the 19 cents. (Credit where due: exactly one platform bundles genuinely free transactional texts. One.)
-- Support. The one real human cost — and it scales with the NUMBER of merchants, not their size. Supporting a $50M store costs about what supporting a $2M store costs. The fee difference is 25x.
-
-Add it up and you get a number that looks like a utility bill, not a percentage of a business. (When you deploy your own, you'll see it on [your own invoices](/deploy/what-youre-about-to-own): roughly $45 a month.)
-
-So the machine costs utility-bill money to run, and the work that justified the percentage moved to Shopify in 2020. Where does 1.49% + 19¢ actually go?
-
-Sales. Marketing. And above all — migrations.
-
-Look at any subscription platform's pricing page. Not ours — theirs. The lead offer is free migration. White-glove migration. Named case studies about migrating brands with 140,000 subscribers. The first FAQ on the pricing page isn't about the product — it's about switching TO them. That's what the percentage funds: the cost of acquiring the next merchant.
-
-A subscription platform, at this point in history, is really a migration company with a portal attached. And the fees — yours — pay for everyone else's migration.
-
-## The reveal
-
-Here's what changes now that you're inside.
-
-You have the entire platform. The code — the same machinery you just read about: the crons, the billing calls, the portal, the dunning, the analytics. You could deploy it to your own Supabase and Vercel accounts, point our AI migration tool at your incumbent, move your subscribers over a weekend, and run your subscription program at 0% of revenue and $0.00 per transaction. Your infrastructure, your invoices — utility-bill money.
-
-Some members do exactly that. Some do it eventually. Some never do.
-
-Which is fine — because of what the next section is about.
-
-## The turn
-
-Even if you never move a single subscriber, something changed in the last five minutes: you now know what a renewal actually is. You know what your platform does, what it doesn't do, what it costs to run, and what your percentage actually funds. You understand the machinery better than most of the people who will ever be on the other end of an email from you.
-
-And you can do something no other merchant on your platform can do:
-
-<div className="not-prose" style={{ border: "3px solid #000", backgroundColor: "#FFDE00", boxShadow: "4px 4px 0 0 #000", padding: "20px 24px", margin: "1.5rem 0" }}>
-  <p className="m-0" style={{ fontWeight: 900, fontSize: "20px", lineHeight: 1.3, textTransform: "uppercase", color: "#000" }}>You can credibly say: "I can take this to zero."</p>
-</div>
-
-Not as a bluff. You hold the code. The walk-away is real, it's in your possession, and vendors can smell the difference between a merchant asking for a discount and a merchant who has somewhere to go.
-
-That sentence — "I can move and drive my cost to zero" — is worth real money in a negotiation. The next section is that negotiation, written out: the worksheet that finds your number, the emails to send, word for word, and the replies you'll get, each one handled.
-
-You just learned how the machine works. Now let's get paid for knowing it.
-
 <Columns cols={1}>
-  <Card title="Know your number" icon="calculator" href="/instant-win/know-your-number">
-    The worksheet that finds what you're actually paying — and what walks into the negotiation with you.
+  <Card title="The history" icon="book-open" href="/instant-win/the-history">
+    The percentage used to be honest. Then the ground moved.
   </Card>
 </Columns>

@@ -33,7 +33,7 @@
     "title": "Know your number",
     "platform": "any",
     "links": [
-      "/instant-win/why-you-have-leverage",
+      "/instant-win/the-history",
       "/instant-win/the-scripts"
     ],
     "status": "PRODUCTION"
@@ -44,9 +44,7 @@
     "platform": "any",
     "status": "PRODUCTION",
     "links": [
-      "/instant-win/know-your-number",
-      "/curtain/a-renewal-frame-by-frame",
-      "/deploy/what-youre-about-to-own"
+      "/instant-win/the-history"
     ]
   },
   "instant-win/the-scripts": {
@@ -75,7 +73,7 @@
     "title": "If they say no",
     "platform": "any",
     "links": [
-      "/instant-win/why-you-have-leverage",
+      "/instant-win/what-your-platform-does",
       "/instant-win/log-your-win",
       "/migrate/why-switching-is-safe"
     ],
@@ -695,6 +693,35 @@
       "/school/churn-defense/cancellation-flow-design",
       "/school/winback/recapturing-cancelled",
       "/school/cadence/operating-rhythm"
+    ]
+  },
+  "instant-win/the-history": {
+    "ia": "1.2a",
+    "title": "The history",
+    "platform": "any",
+    "status": "PRODUCTION",
+    "links": [
+      "/instant-win/what-your-platform-does"
+    ]
+  },
+  "instant-win/what-your-platform-does": {
+    "ia": "1.2b",
+    "title": "What your platform actually does",
+    "platform": "any",
+    "status": "PRODUCTION",
+    "links": [
+      "/curtain/a-renewal-frame-by-frame",
+      "/deploy/what-youre-about-to-own",
+      "/instant-win/the-reveal"
+    ]
+  },
+  "instant-win/the-reveal": {
+    "ia": "1.2c",
+    "title": "The reveal",
+    "platform": "any",
+    "status": "PRODUCTION",
+    "links": [
+      "/instant-win/know-your-number"
     ]
   }
 }
