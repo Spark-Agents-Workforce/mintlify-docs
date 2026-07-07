@@ -66,8 +66,10 @@ These are the product's part names — they match the marketing site verbatim.
 
 - instant-win/* — ALL SIX PAGES are REAL content (JD's Movement 1+2 drafts).
   Kit pages carry per-platform figures verified against published pricing at
-  staging time; the CFO memo (Movement 2 Part 11) is NOT staged — JD placement
-  call pending. Year-2 delivery promise (Part 10) awaits JD blessing.
+  staging time. CFO memo staged in the kit (JD-approved via closer, 07-07).
+  Scripts tab = 3 groups: THE STORY (4 chapters) / THE KIT (6) / THE CLOSE
+  (go-collect — the ring-composition closer; answers the cold open's three
+  questions). Year-2 delivery promise (Part 10) still awaits JD blessing.
 - instant-win/why-you-have-leverage — REAL content (JD's draft, 2026-07-04).
   The Scripts tab's front door. JD-RULED 2026-07-07: the story runs as FOUR
   chapter pages (why-you-have-leverage -> the-history -> what-your-platform-does

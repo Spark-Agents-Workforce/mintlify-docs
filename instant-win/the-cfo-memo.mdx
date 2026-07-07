@@ -1,0 +1,54 @@
+---
+title: "The CFO memo"
+description: "The email you send UP, after the emails you send OUT. Forward-ready."
+ia: "1.7"
+---
+
+import { PlatformTag } from "/snippets/PlatformTag.jsx";
+
+<PlatformTag platform="any" />
+
+The email you send UP, after the emails you send OUT. Forward-ready:
+
+<div className="not-prose" style={{ border: "3px solid #000", boxShadow: "4px 4px 0 0 #000", marginBottom: "0" }}>
+  <div style={{ backgroundColor: "#FFDE00", borderBottom: "3px solid #000", padding: "10px 16px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "8px" }}>
+    <span style={{ fontWeight: 900, textTransform: "uppercase", fontSize: "14px", color: "#000" }}>The CFO memo</span>
+    <span style={{ backgroundColor: "#000", color: "#FFDE00", fontWeight: 800, fontSize: "11px", textTransform: "uppercase", padding: "2px 8px" }}>Send after the worksheet — 90 seconds to read</span>
+  </div>
+</div>
+
+```text Subject: Subscription platform costs — what I found
+[NAME] —
+
+I ran our subscription platform bill through a worksheet. We pay an
+effective [BLENDED]% of subscription revenue — about [$X] a year,
+[$5X] over five years. That fee scales with our revenue; the work
+behind it doesn't (the platform schedules billing; Shopify processes
+the payments — we pay Shopify separately for that).
+
+Options, in order of effort:
+1. Negotiated rate match: worst case nothing, documented average for
+   disciplined SaaS negotiations is ~16.5% (Vendr, 20k+ deals).
+   In motion.
+2. Move to the lowest published competitor: saves [$Y]/yr, migration
+   risk is card-preserving by Shopify's architecture.
+3. Self-host (we hold a license): fee goes to 0%, runs ~$45/mo in
+   infrastructure. Kills the line item permanently — [$X]/yr straight
+   back to EBITDA, and it stops scaling against us.
+
+Recommending we run 1 now and evaluate 3 this quarter.
+
+[NAME]
+```
+
+**Note what this memo does quietly:** it converts the platform fee from "a cost of doing subscriptions" into "an EBITDA line item with three exits," which is the sentence CFOs act on. No CAPEX framing; the fee kill is presented as what it is — permanent OpEx elimination that stops scaling with growth.
+
+<div className="not-prose" style={{ border: "3px solid #000", backgroundColor: "#FFDE00", boxShadow: "3px 3px 0 0 #000", padding: "12px 18px", margin: "1.5rem 0" }}>
+  <p className="m-0" style={{ fontWeight: 900, fontSize: "13px", textTransform: "uppercase", color: "#000" }}>Value tally: the number you found in the worksheet just briefed your CFO in ninety seconds.</p>
+</div>
+
+<Columns cols={1}>
+  <Card title="Log your win" icon="clipboard-check" href="/instant-win/log-your-win">
+    One row. That's the whole renewal case.
+  </Card>
+</Columns>

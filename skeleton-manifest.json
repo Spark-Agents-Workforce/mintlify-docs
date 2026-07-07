@@ -74,7 +74,7 @@
     "platform": "any",
     "links": [
       "/instant-win/what-your-platform-does",
-      "/instant-win/log-your-win",
+      "/instant-win/the-cfo-memo",
       "/migrate/why-switching-is-safe"
     ],
     "status": "PRODUCTION"
@@ -84,8 +84,7 @@
     "title": "Log your win",
     "platform": "any",
     "links": [
-      "/school/numbers/weekly-metrics",
-      "/school/orientation"
+      "/instant-win/go-collect"
     ],
     "status": "PRODUCTION"
   },
@@ -722,6 +721,32 @@
     "status": "PRODUCTION",
     "links": [
       "/instant-win/know-your-number"
+    ]
+  },
+  "instant-win/the-cfo-memo": {
+    "ia": "1.7",
+    "title": "The CFO memo",
+    "platform": "any",
+    "status": "PRODUCTION",
+    "links": [
+      "/instant-win/log-your-win"
+    ]
+  },
+  "instant-win/go-collect": {
+    "ia": "1.8",
+    "title": "Go collect",
+    "platform": "any",
+    "status": "PRODUCTION",
+    "links": [
+      "/instant-win/the-history",
+      "/instant-win/what-your-platform-does",
+      "/instant-win/know-your-number",
+      "/instant-win/the-scripts",
+      "/instant-win/what-theyll-say-back",
+      "/instant-win/the-cfo-memo",
+      "/instant-win/the-reveal",
+      "/curtain/the-vault-was-never-theirs",
+      "/school/orientation"
     ]
   }
 }

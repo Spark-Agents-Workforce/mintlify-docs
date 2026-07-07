@@ -64,7 +64,15 @@
               "instant-win/the-scripts",
               "instant-win/what-theyll-say-back",
               "instant-win/if-they-say-no",
+              "instant-win/the-cfo-memo",
               "instant-win/log-your-win"
+            ]
+          },
+          {
+            "group": "The close",
+            "icon": "flag-checkered",
+            "pages": [
+              "instant-win/go-collect"
             ]
           }
         ]
