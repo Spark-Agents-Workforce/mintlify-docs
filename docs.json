@@ -43,7 +43,7 @@
         ]
       },
       {
-        "tab": "The instant win",
+        "tab": "Scripts",
         "icon": "banknote",
         "groups": [
           {
@@ -67,8 +67,8 @@
         ]
       },
       {
-        "tab": "The curtain",
-        "icon": "eye",
+        "tab": "Platform",
+        "icon": "server",
         "groups": [
           {
             "group": "How it really works",
@@ -77,13 +77,7 @@
               "curtain/the-vault-was-never-theirs",
               "curtain/what-a-subscription-actually-is",
               "curtain/a-renewal-frame-by-frame",
-              "curtain/when-cards-fail"
-            ]
-          },
-          {
-            "group": "The honest accounting",
-            "icon": "scale",
-            "pages": [
+              "curtain/when-cards-fail",
               "curtain/why-the-percent-existed",
               "curtain/what-a-platform-is-actually-worth"
             ]
@@ -94,74 +88,32 @@
             "pages": [
               "curtain/how-opensubs-is-built"
             ]
-          }
-        ]
-      },
-      {
-        "tab": "Deploy",
-        "icon": "rocket",
-        "groups": [
-          {
-            "group": "Before",
-            "icon": "clipboard-list",
-            "pages": [
-              "deploy/what-youre-about-to-own",
-              "deploy/before-you-start"
-            ]
           },
           {
-            "group": "Launch",
+            "group": "Deploy",
             "icon": "rocket",
             "pages": [
+              "deploy/what-youre-about-to-own",
+              "deploy/before-you-start",
               "deploy/launchpad",
               "deploy/dev-store-fast-path",
-              "deploy/production-approval"
-            ]
-          },
-          {
-            "group": "Verify & fix",
-            "icon": "circle-check",
-            "pages": [
+              "deploy/production-approval",
               "deploy/go-live-verification",
               "deploy/when-something-goes-wrong"
             ]
-          }
-        ]
-      },
-      {
-        "tab": "Migrate",
-        "icon": "arrow-right-left",
-        "groups": [
-          {
-            "group": "Why it's safe",
-            "icon": "shield-check",
-            "pages": [
-              "migrate/why-switching-is-safe"
-            ]
           },
           {
-            "group": "The move",
-            "icon": "truck",
+            "group": "Migrate",
+            "icon": "arrow-right-left",
             "pages": [
+              "migrate/why-switching-is-safe",
               "migrate/export-from-your-incumbent",
               "migrate/the-dry-run",
               "migrate/cutover-day",
-              "migrate/the-first-week-after"
-            ]
-          },
-          {
-            "group": "The memo",
-            "icon": "file-text",
-            "pages": [
+              "migrate/the-first-week-after",
               "migrate/the-business-case-memo"
             ]
-          }
-        ]
-      },
-      {
-        "tab": "Operate",
-        "icon": "gauge",
-        "groups": [
+          },
           {
             "group": "Run it",
             "icon": "play",
@@ -185,8 +137,8 @@
         ]
       },
       {
-        "tab": "The school",
-        "icon": "graduation-cap",
+        "tab": "Growth Program",
+        "icon": "trending-up",
         "groups": [
           {
             "group": "Orientation",
