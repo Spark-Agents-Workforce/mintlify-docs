@@ -1,0 +1,115 @@
+---
+title: "LAB · Script presentation patterns"
+description: "Hidden lab — competing patterns for showing the Scripts. Pick one."
+---
+
+import { PlatformTag } from "/snippets/PlatformTag.jsx";
+
+<Note>**Hidden lab page** (not in nav). Sample script text is ILLUSTRATIVE placeholder — Josh's real copy replaces it. Compare the patterns, pick a winner.</Note>
+
+## Pattern A — The letterhead
+
+Styled frame around a native code block: brand header names the script and its moment, meta row carries send mechanics, the code block brings Mintlify's built-in COPY button. Monospace = typewriter, reads as "an artifact, not prose."
+
+<div className="not-prose" style={{ border: "3px solid #000", boxShadow: "4px 4px 0 0 #000", marginBottom: "0.5rem" }}>
+  <div style={{ backgroundColor: "#FFDE00", borderBottom: "3px solid #000", padding: "10px 16px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "8px" }}>
+    <span style={{ fontWeight: 900, textTransform: "uppercase", fontSize: "14px", color: "#000" }}>Script 01 · The opener</span>
+    <span style={{ backgroundColor: "#000", color: "#FFDE00", fontWeight: 800, fontSize: "11px", textTransform: "uppercase", padding: "2px 8px" }}>Send 60–90 days before renewal</span>
+  </div>
+  <div style={{ padding: "8px 16px", borderBottom: "3px solid #000", fontSize: "12px", fontWeight: 600, color: "#000", backgroundColor: "#FFF9C4" }}>
+    TO: your account manager · CC: their manager if you have them · SUBJECT LINE MATTERS — use ours
+  </div>
+</div>
+
+```text Subject: [BRAND] renewal — pricing structure conversation
+Hi [AM NAME],
+
+Ahead of our renewal, I want to align on pricing structure.
+
+We're at [RATE]% of subscription revenue. At our current volume
+([$X]/mo), that's [$Y]/year — meaningfully above where the market
+has moved for accounts our size.
+
+Before we evaluate alternatives seriously, I'd like to see a
+proposal that reflects our scale. Can you have something to me
+by [DATE, 2 weeks out]?
+
+[NAME]
+[BRAND]
+```
+
+<div className="not-prose" style={{ display: "flex", gap: "8px", flexWrap: "wrap", marginTop: "-0.5rem", marginBottom: "2rem" }}>
+  <span style={{ border: "2px solid #000", backgroundColor: "#C5F542", fontWeight: 800, fontSize: "11px", textTransform: "uppercase", padding: "2px 8px", color: "#000" }}>Fill: BRAND · AM NAME · RATE · $X · $Y · DATE</span>
+  <span style={{ border: "2px solid #000", backgroundColor: "#FFD3B6", fontWeight: 800, fontSize: "11px", textTransform: "uppercase", padding: "2px 8px", color: "#000" }}>Tone: calm, procedural, no threat yet</span>
+</div>
+
+## Pattern B — Per-incumbent tabs
+
+Same letterhead, but the script text forks by platform inside `<Tabs>`. One page serves Recharge, Skio, and Stay merchants without three pages.
+
+<Tabs>
+  <Tab title="Recharge">
+    ```text Subject: [BRAND] renewal — Recharge pricing structure
+    Hi [AM NAME],
+
+    We're at [RATE]% + [¢/txn] on Recharge Pro. At [$X]/mo of
+    subscription revenue that's [$Y]/year...
+    ```
+  </Tab>
+  <Tab title="Skio">
+    ```text Subject: [BRAND] renewal — Skio pricing structure
+    Hi [AM NAME],
+
+    We're at [RATE]% on Skio. At [$X]/mo of subscription
+    revenue that's [$Y]/year...
+    ```
+  </Tab>
+  <Tab title="Stay AI">
+    ```text Subject: [BRAND] renewal — Stay pricing structure
+    Hi [AM NAME],
+
+    We're at [RATE]% on Stay. At [$X]/mo of subscription
+    revenue that's [$Y]/year...
+    ```
+  </Tab>
+</Tabs>
+
+## Pattern C — The play (Steps wrapper)
+
+The script embedded in its run-order: Steps for the ritual around the send. Best where sequence IS the content (5.4 calendar, 1.3 send order).
+
+<Steps>
+  <Step title="Pull your number first">
+    Your leverage is [$Y]/year. If you skipped it, [Know your number](/instant-win/know-your-number) takes four minutes.
+  </Step>
+  <Step title="Send Script 01">
+    The letterhead block from Pattern A sits here, copy button and all.
+  </Step>
+  <Step title="Calendar the silence">
+    No reply in 5 business days → Script 02. Their silence is a move; you have a counter.
+  </Step>
+</Steps>
+
+## Pattern D — Objection table (for "What they'll say back")
+
+Accordion per reply-type: scannable index of their moves, expandable counters. The companion pattern — 1.4 is a decision tree, not a sequence.
+
+<AccordionGroup>
+  <Accordion title='"That rate is standard for accounts your size."'>
+    **What it means:** opening anchor, not a position. **Counter — Script 03A:**
+    ```text
+    Appreciate the context. "Standard" is what we're re-evaluating —
+    [COMPETITOR] quotes flat licensing at our volume...
+    ```
+  </Accordion>
+  <Accordion title='"We can offer 10% off if you sign for two years."'>
+    **What it means:** they're trading price for lock-in — churn insurance for them, not savings for you. **Counter — Script 03B.**
+  </Accordion>
+  <Accordion title="Silence.">
+    **What it means:** deprioritized, betting you won't follow through. **Counter — Script 02, CC their manager.**
+  </Accordion>
+</AccordionGroup>
+
+## The recommendation
+
+A is the spine (every script page), B layers on when copy forks per incumbent, C wraps where order matters, D owns 1.4. One system, four moves.

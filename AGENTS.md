@@ -61,3 +61,11 @@ These are the product's part names — they match the marketing site verbatim.
   lives in /start/choose-your-door and the Growth Program orientation triage.
 - Directory→tab map: start/→Start here · instant-win/→Scripts ·
   curtain/+deploy/+migrate/+operate/→Platform · school/→Growth Program.
+
+## Production content (do not re-stub)
+
+- instant-win/why-you-have-leverage — REAL content (JD's draft, 2026-07-04).
+  The Scripts tab's front door: one continuous narrative, H2s = story beats,
+  receipts inline-linked to primary sources. Never shorten to a stub; never
+  split into multiple pages. curtain/why-the-percent-existed was absorbed
+  into it (redirect in docs.json).

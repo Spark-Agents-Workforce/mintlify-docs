@@ -12,7 +12,7 @@
     "title": "Choose your door",
     "platform": "any",
     "links": [
-      "/instant-win/know-your-number",
+      "/instant-win/why-you-have-leverage",
       "/curtain/the-vault-was-never-theirs",
       "/operate/a-day-in-the-life",
       "/school/orientation"
@@ -41,8 +41,11 @@
     "ia": "1.2",
     "title": "Why you have leverage",
     "platform": "any",
+    "status": "PRODUCTION",
     "links": [
-      "/instant-win/the-scripts"
+      "/instant-win/know-your-number",
+      "/curtain/a-renewal-frame-by-frame",
+      "/deploy/what-youre-about-to-own"
     ]
   },
   "instant-win/the-scripts": {
@@ -108,14 +111,6 @@
     "platform": "any",
     "links": [
       "/operate/the-retention-machinery"
-    ]
-  },
-  "curtain/why-the-percent-existed": {
-    "ia": "2.5",
-    "title": "Why the percent existed",
-    "platform": "any",
-    "links": [
-      "/curtain/what-a-platform-is-actually-worth"
     ]
   },
   "curtain/what-a-platform-is-actually-worth": {

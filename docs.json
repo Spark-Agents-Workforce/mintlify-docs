@@ -47,17 +47,17 @@
         "icon": "banknote",
         "groups": [
           {
-            "group": "Know your number",
-            "icon": "calculator",
+            "group": "The story",
+            "icon": "book-open",
             "pages": [
-              "instant-win/know-your-number",
               "instant-win/why-you-have-leverage"
             ]
           },
           {
-            "group": "Make the ask",
-            "icon": "send",
+            "group": "The kit",
+            "icon": "briefcase",
             "pages": [
+              "instant-win/know-your-number",
               "instant-win/the-scripts",
               "instant-win/what-theyll-say-back",
               "instant-win/if-they-say-no",
@@ -78,7 +78,6 @@
               "curtain/what-a-subscription-actually-is",
               "curtain/a-renewal-frame-by-frame",
               "curtain/when-cards-fail",
-              "curtain/why-the-percent-existed",
               "curtain/what-a-platform-is-actually-worth"
             ]
           },
@@ -338,6 +337,10 @@
     {
       "source": "/school/operating-cadence",
       "destination": "/school/cadence/operating-rhythm"
+    },
+    {
+      "source": "/curtain/why-the-percent-existed",
+      "destination": "/instant-win/why-you-have-leverage"
     }
   ],
   "seo": {
