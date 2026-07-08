@@ -1,31 +1,78 @@
 ---
 title: "Paid ads for subscriptions"
-description: "Bidding to LTV when payback is multi-order."
+description: "Bidding to LTV when the real payback arrives on order three — and what nobody's data (including ours) can tell you about paid."
 ia: "M3.1"
 ---
 
-import { PlatformTag } from "/snippets/PlatformTag.jsx";
 import { InOpenSubs } from "/snippets/InOpenSubs.jsx";
 
-<PlatformTag platform="any" />
+**The anti-lesson this kills: "scale spend, the algorithm figures it out."**
 
-<Note>**Skeleton page.** The structure and links are final; the lesson lands in the production pass.</Note>
+Let's start with an admission you will not hear from anyone else selling a course: **our data cannot tell you whether paid ads were profitable at the brands we measured.** We can see 1.45M paid-social sessions in one scale window. We can see what converted. We cannot see what any of it cost — no spend, no CAC, no ROAS exists in the dataset *(GA4 directional traffic, not ad economics)*. And here's why that admission matters: neither can most of the people selling you paid-ads certainty.
 
-## What this lesson gives you
+<div className="not-prose" style={{ border: "3px solid #000", backgroundColor: "#FFDE00", boxShadow: "4px 4px 0 0 #000", padding: "20px 24px", margin: "1.5rem 0" }}>
+  <p className="m-0" style={{ fontWeight: 900, fontSize: "20px", lineHeight: 1.3, textTransform: "uppercase", color: "#000" }}>Anyone quoting you a "typical subscription CAC" without your data is guessing with confidence.</p>
+</div>
 
-- Meta/Google/TikTok when the first order doesn't pay back: bidding to LTV.
-- Creative angles that pre-sell the ritual, not the product.
-- The signals to feed the algorithms when your real conversion is order three.
+What this lesson gives you instead is the framework that makes YOUR numbers decidable — because for a subscription business, the algorithm can't figure it out on its own. It optimizes for the conversion you feed it, and the conversion that matters to you hasn't happened yet when the ad gets judged.
 
-<InOpenSubs>Placeholder — the boxed product contrast for this lesson lands with the content.</InOpenSubs>
+## The decision — bid to the LTV you can defend
+
+(The framework is an operator call; the data supplies the boundary conditions, not the bids.)
+
+**The structural problem.** A subscription brand's first order often doesn't pay back the click. The economics arrive on orders two through six — which means if you bid to first-order revenue, you will systematically underbid against your own future, and if you bid to a hoped-for LTV you can't defend, you will torch cash proving nothing. The way out is neither faith nor fear; it's the instrument you built in [Cohorts](/growth-program/numbers/cohorts).
+
+**The sequence:**
+
+1. **Own your cohort table first.** Before scaling a dollar, you need the 30/60/90/180-day repeat curve for customers acquired by your current offers. At Brand A, mature acquisition cohorts held ~50% repeat at 180 days *(single store)* — a number like that, YOURS, is what turns "we think they're worth more" into a bid ceiling.
+2. **Bid to a defensible multiple of first-order value** — the multiple your OWN curve supports at the maturity you've actually observed, not the curve a vendor deck showed you. Start conservative: credit only the repeat behavior you've measured, at the horizon you've measured it.
+3. **Feed the algorithm the right conversion.** If your platform optimizes to purchases, it optimizes to ALL purchases — and subscription instrumentation pollutes that signal. The trap, measured: at Brand A, GA4 shows **58,000–80,000 `recurring_order` transactions per analysis window** — renewal events firing as if they were conversions. Any channel analysis (or algorithmic signal) that doesn't strip recurring events is grading paid traffic with the retention engine's homework. Strip it, then look again. Feed new-customer or first-subscription events as the optimization goal where the platform allows; the renewal is your compounding, not the ad's.
+4. **Read channels for their actual jobs.** The GA4 shape at Brand A *(all directional)*: paid social delivered enormous reach at **0.7% session CVR** on 1.45M sessions; brand search/shopping converted at **5.5–7.1%**; owned SMS/email at **8–13.8%**. That's not a ranking of profitability — it's a division of labor. Paid social introduces; brand capture converts the introduced; owned channels harvest what you've built. Even at the biggest tentpole in the data, direct/brand + the recurring base carried the window (~14.4k direct transactions vs ~800 from sale email) — **brand demand compounds, campaigns amplify.** Spend expecting that shape, and judge each channel by its job.
+
+**Creative that pre-sells the ritual.** The ad's deepest job for a subscription brand isn't selling the first unit — it's pre-selling the RITUAL the subscription automates: the morning routine, the never-running-out, the every-30-days rhythm. A buyer sold on the product churns when the novelty fades; a buyer sold on the routine arrived pre-subscribed in their head. Creative angles that carry this: the routine-in-motion (day-in-the-life, product in its slot), the run-out pain (the empty jar moment), the identity claim (people-like-me subscribe to this). Test creative against attach and cohort quality, not click-through — a cheap click that buys a one-time tourist is expensive.
+
+## The proof (and its honest edge)
+
+The data's contribution to this lesson is mostly boundaries, and the boundaries teach: the recurring_order trap is measured (58–80k events/window polluting channel reads), the channel division of labor is measured (0.7% vs 5.5–7.1% vs 8–13.8%, all directional), the compounding-base dominance is measured (the tentpole carried by direct + recurring). What is NOT in the data: spend, CAC, ROAS, creative performance, bid strategies. Anyone who fills this gap for you without your ad account is decorating.
+
+## The artifact — the paid-readiness checklist
+
+Do not scale spend until every box is checked. This is the numbers-module homework paid traffic grades you on.
+
+```text The checklist
+THE INSTRUMENT
+  [ ] Cohort table built: 30/60/90/180d repeat by acquisition offer
+  [ ] At least one cohort mature to 180d (or bid only to the horizon you have)
+  [ ] Contribution margin per order computed — you know what a customer's
+      worth net of COGS/fulfillment, not just revenue
+
+THE BID
+  [ ] Bid ceiling = defensible multiple of first-order value, from YOUR curve
+  [ ] The multiple credits only measured repeat, at measured maturity
+  [ ] Someone owns re-deriving the ceiling when the cohort table updates
+
+THE SIGNAL
+  [ ] recurring/renewal events stripped from conversion tracking fed to ad platforms
+  [ ] Optimization event = new customer or first subscription, not all purchases
+  [ ] Channel reports exclude recurring_order before any read
+
+THE CREATIVE
+  [ ] At least one ritual-selling angle live against product-selling controls
+  [ ] Creative judged on attach + early cohort quality, not CTR
+
+THE HONESTY CHECK
+  [ ] Nobody on the team is quoting a CAC/ROAS "benchmark" they can't source
+```
+
+<InOpenSubs>First-subscription events are first-class objects the platform emits cleanly, so the strip-the-renewals step is a filter you toggle, not a tagging project.</InOpenSubs>
 
 ## Where next
 
 <Columns cols={2}>
-  <Card title="Subscription economics" href="/growth-program/numbers/subscription-economics">
-    Know your payback before you bid.
+  <Card title="Cohorts" href="/growth-program/numbers/cohorts">
+    The instrument this whole lesson bids from.
   </Card>
   <Card title="Landing pages" href="/growth-program/traffic/landing-pages">
-    The subscription LP anatomy. Quiz funnels, priced honestly.
+    Where the click you just paid for lands.
   </Card>
 </Columns>

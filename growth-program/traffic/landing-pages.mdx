@@ -1,31 +1,80 @@
 ---
 title: "Landing pages"
-description: "The subscription LP anatomy. Quiz funnels, priced honestly."
+description: "The subscription LP anatomy, when a dedicated page earns its keep over PDP-direct, and the honest read on quiz funnels."
 ia: "M3.2"
 ---
 
-import { PlatformTag } from "/snippets/PlatformTag.jsx";
 import { InOpenSubs } from "/snippets/InOpenSubs.jsx";
 
-<PlatformTag platform="any" />
+**The anti-lesson this kills: "every campaign needs a custom LP."**
 
-<Note>**Skeleton page.** The structure and links are final; the lesson lands in the production pass.</Note>
+The landing-page industrial complex has convinced operators that sending traffic to a product page is amateur hour — that serious media buying means a dedicated LP for every angle, audience, and campaign. Then you look at where a nine-figure-run-rate brand's converting sessions actually landed: **the home page (~6.0% session CVR at the store's largest volume), the main collection page (~6.8% — the highest-converting major surface), and the hero product pages (4.6–6.4%)** *(GA4 directional traffic, not ad economics; single store)*. Dedicated sale pages appear in tentpole windows — and home, collections, and PDPs still dominate.
 
-## What this lesson gives you
+<div className="not-prose" style={{ border: "3px solid #000", backgroundColor: "#FFDE00", boxShadow: "4px 4px 0 0 #000", padding: "20px 24px", margin: "1.5rem 0" }}>
+  <p className="m-0" style={{ fontWeight: 900, fontSize: "20px", lineHeight: 1.3, textTransform: "uppercase", color: "#000" }}>The store IS the landing page, most of the time, for most of the traffic.</p>
+</div>
 
-- The subscription LP anatomy, section by section.
-- LP vs PDP-direct: when the extra page earns its keep.
-- Quiz funnels: when they earn their friction and when they're theater.
+A custom LP is a tool for a specific job, not a tax every campaign owes.
 
-<InOpenSubs>Placeholder — the boxed product contrast for this lesson lands with the content.</InOpenSubs>
+## The decision — route by the visitor's question
+
+(The routing rule and the anatomy are operator calls; the data supplies the PDP-direct evidence.)
+
+**The routing rule:** send traffic to the surface that answers the visitor's current question with the least friction.
+
+- **Product-aware traffic** (branded search, retargeting, a creator naming the product) → **PDP-direct.** They're asking "should I buy this?" — [the PDP with a well-built widget](/growth-program/store/pdp) answers exactly that, and the data shows hero PDPs converting at scale.
+- **Problem-aware traffic** (cold social, a claim-led ad) → **a dedicated LP** that finishes the ad's argument before asking for the purchase. They're asking "is this claim real?" — a PDP answers a question they haven't reached yet.
+- **Browsing intent** (brand campaigns, broad prospecting) → **home or the hero collection**, which the data shows converting above most PDPs anyway.
+
+The test for building a new LP: does the campaign's promise need MORE argument than the PDP already carries? If the PDP can absorb the angle (a review block, a claim section), strengthen the PDP — every visitor benefits, forever. Build the LP only when the angle genuinely can't live on the product page.
+
+**The subscription LP anatomy.** When you do build one, the sections in order:
+
+1. **The claim, restated** — the ad's promise, continued verbatim (message match is the whole point of the page).
+2. **The mechanism** — why it works; for subscription intent, why it works REPEATEDLY (the ritual, not the dose).
+3. **The proof** — reviews, results, specifics. Real ones.
+4. **The offer block** — the subscription choice presented like the widget: both prices anchored, the saving arithmetic visible, the control promise ("skip, swap, cancel anytime") adjacent to the commitment ask.
+5. **The objections** — borrowed from [the why-subscribe page](/growth-program/store/site-wide-tactics); answer the cancel-fear on the page.
+6. **One ask.** A single CTA to the hero product or plan. An LP with a nav is a colander.
+
+**Quiz funnels: when they earn their friction.** (No quiz-funnel data exists in either store; this is a framework, not a finding.) A quiz is a friction machine that must buy something with the friction: a genuinely personalized recommendation (multi-SKU catalogs, real matching logic), plus capture (every quiz-taker joins [the list](/growth-program/traffic/list-first-acquisition)). The test: **if every path through your quiz lands on the same two SKUs, the quiz is theater** — cut it and route to the hero PDP. If personalization is real and the catalog is deep, the quiz earns its steps by making the choice feel chosen. Instrument it end-to-end (start → complete → purchase → cohort quality) before believing in it; the drop-off at each step is real and yours to measure.
+
+## The proof (and its honest edge)
+
+What the data proves: product and collection surfaces convert at scale (the PDP-direct case); dedicated pages appear seasonally without displacing the core surfaces; hero-bundle concentration means a few pages do most of the work *(GA4 directional; single store)*. What it can't prove: any LP-vs-PDP A/B (none exists), any quiz economics (none exist). The routing rule and the anatomy are operator frameworks bounded by that evidence.
+
+## The artifact — the LP anatomy blueprint
+
+```text The blueprint
+BEFORE YOU BUILD (the routing check)
+  [ ] What question is this traffic asking? (product-aware → PDP; problem-aware → LP;
+      browsing → home/collection)
+  [ ] Can the PDP absorb this angle instead? If yes, strengthen the PDP.
+
+THE PAGE (in order, if you build it)
+  [ ] 1. Claim restated — message-matched to the ad, verbatim continuity
+  [ ] 2. Mechanism — why it works, and why repeatedly (the ritual)
+  [ ] 3. Proof — reviews/results, specific and real
+  [ ] 4. Offer block — both prices anchored, saving visible, control promise adjacent
+  [ ] 5. Objections — the cancel-fear answered on-page
+  [ ] 6. ONE ask — single CTA, no nav, no exits except forward
+
+QUIZ GATE (only if considering a quiz)
+  [ ] The recommendation is genuinely personalized (different inputs → different outputs)
+  [ ] Every step's drop-off is instrumented
+  [ ] Quiz-takers are captured to the list regardless of purchase
+  [ ] If all paths land on 2 SKUs → kill the quiz, route to the hero PDP
+```
+
+<InOpenSubs>LP offer blocks render the same selling-plan object as the PDP widget, so the anchored prices and control promise can't drift from what checkout charges.</InOpenSubs>
 
 ## Where next
 
 <Columns cols={2}>
-  <Card title="PDP" href="/growth-program/store/pdp">
-    Where LP traffic lands next.
+  <Card title="PDP: the subscription widget" href="/growth-program/store/pdp">
+    The surface most traffic should land on, built right.
   </Card>
-  <Card title="Organic & social" href="/growth-program/traffic/organic-and-social">
-    Content that builds the habit narrative.
+  <Card title="Site-wide tactics" href="/growth-program/store/site-wide-tactics">
+    The why-subscribe objections this page borrows.
   </Card>
 </Columns>

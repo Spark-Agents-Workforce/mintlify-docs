@@ -402,9 +402,11 @@
     "title": "Paid ads for subscriptions",
     "platform": "any",
     "links": [
-      "/growth-program/numbers/subscription-economics",
-      "/growth-program/traffic/landing-pages"
-    ]
+      "/growth-program/numbers/cohorts",
+      "/growth-program/traffic/landing-pages",
+      "/growth-program/traffic/list-first-acquisition"
+    ],
+    "status": "PRODUCTION"
   },
   "growth-program/traffic/landing-pages": {
     "ia": "M3.2",
@@ -412,24 +414,34 @@
     "platform": "any",
     "links": [
       "/growth-program/store/pdp",
-      "/growth-program/traffic/organic-and-social"
-    ]
+      "/growth-program/store/site-wide-tactics",
+      "/growth-program/traffic/paid-ads",
+      "/growth-program/traffic/list-first-acquisition"
+    ],
+    "status": "PRODUCTION"
   },
   "growth-program/traffic/organic-and-social": {
     "ia": "M3.3",
     "title": "Organic & social",
     "platform": "any",
     "links": [
-      "/growth-program/traffic/influencer-and-affiliate"
-    ]
+      "/growth-program/traffic/list-first-acquisition",
+      "/growth-program/account-area/community-and-identity",
+      "/growth-program/account-area/perks-and-loyalty",
+      "/growth-program/traffic/paid-ads"
+    ],
+    "status": "PRODUCTION"
   },
   "growth-program/traffic/influencer-and-affiliate": {
     "ia": "M3.4",
     "title": "Influencer & affiliate",
     "platform": "any",
     "links": [
-      "/growth-program/traffic/list-first-acquisition"
-    ]
+      "/growth-program/account-area/perks-and-loyalty",
+      "/growth-program/numbers/cohorts",
+      "/growth-program/traffic/paid-ads"
+    ],
+    "status": "PRODUCTION"
   },
   "growth-program/traffic/list-first-acquisition": {
     "ia": "M3.5",
