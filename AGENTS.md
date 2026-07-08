@@ -64,6 +64,14 @@ These are the product's part names — they match the marketing site verbatim.
 
 ## Production content (do not re-stub)
 
+- growth-program: 14 lessons are REAL content (JD's module drafts, staged
+  07-08): offer/the-discount-question + memberships; all 4 first-60-days;
+  all 3 winback; all 5 messaging. Phase-D staging — JD reads on-site;
+  E-gates + practitioner (ops) correction on first-order-experience's
+  physical layer come AFTER. Hedges (attribution≠incrementality, one-case)
+  are curriculum — never strip them. Brand A/B anonymization is canon.
+  Remaining GP pages are skeletons awaiting their module drafts.
+
 - start/welcome ("You're in") — REAL content (JD's Start-Here draft, 07-07).
   GATED (public:true removed by JD ruling 07-07 — homepage alone carries the
   logged-out pitch; "You're in" lands after login). One-page walk-through;

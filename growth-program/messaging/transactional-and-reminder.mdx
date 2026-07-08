@@ -1,31 +1,62 @@
 ---
 title: "Transactional & reminder"
-description: "Copy that retains inside boring emails."
+description: "Transactional isn't plumbing. It's your most-opened channel with a retention job inside."
 ia: "M6.2"
 ---
 
-import { PlatformTag } from "/snippets/PlatformTag.jsx";
 import { InOpenSubs } from "/snippets/InOpenSubs.jsx";
 
-<PlatformTag platform="any" />
+**The folklore this kills: "transactional emails are plumbing."**
 
-<Note>**Skeleton page.** The structure and links are final; the lesson lands in the production pass.</Note>
+Order confirmations, shipping notifications, the upcoming-charge reminder — the messages you set up once and never look at again. The industry calls them "transactional," which is a polite way of saying "beneath our attention." That framing costs subscription brands more revenue than almost any creative decision they will make this year, because transactional messages are the ones your subscribers actually open. A promotional email fights for attention; a "your order shipped" email *is* the thing the customer is waiting for. (We do not have a measured open-rate for this store's transactional stream — treat "most-opened" as a well-established platform-general fact, not a number from our case.)
 
-## What this lesson gives you
+So the decision this lesson forces is: **what retention job is riding inside each boring, high-open message you already send?** Not "should we add a sales pitch" — that breaks the channel. The transactional message keeps its promise first (the tracking link, the confirmation, the charge date) and carries *one* retention move second, quietly.
 
-- Upcoming charge, order confirm, shipping, failed payment: the retention layer inside each.
-- The open rates nobody exploits: transactional is your most-read channel.
-- Copy patterns: informative first, retentive second, never salesy.
+## The reminder is churn prevention, not courtesy
 
-<InOpenSubs>Placeholder — the boxed product contrast for this lesson lands with the content.</InOpenSubs>
+The strongest single piece of evidence in this whole module for the "transactional isn't plumbing" case is the **pre-charge reminder**. In the measured store, one upcoming-order reminder automation (delivered over SMS — see [SMS](/growth-program/messaging/sms)) attributed roughly **$170k** at a **0.09% unsubscribe rate** — near-zero friction — and about **350x dashboard ROI**. (Dashboard attribution, single row, one store — and one measured case is not a law.)
+
+Read what that number is telling you. A reminder before you charge a subscriber's card looks like a *courtesy* — "heads up, your order ships soon." Operators resist it because it feels like handing the customer an invitation to cancel. The data says the opposite: the reminder is the cheapest churn-prevention instrument you own. It does three retention jobs at once:
+
+- **It pre-empts the involuntary churn** of a customer surprised by a charge who disputes it or cancels in a panic.
+- **It pre-empts the "I have too much" voluntary churn** by giving a friendly path to *skip or delay* instead of *cancel* — a subscriber who skips one month is retained; a subscriber who cancels is gone.
+- **It re-earns trust every cycle** by being transparent about money before you take it, which is the single most trust-sensitive moment in the relationship.
+
+The near-zero unsub rate is the proof it doesn't feel like a pitch. People do not opt out of being treated like adults about their own money. (The failed-payment / dunning layer — the other side of the reminder coin — we can only teach from mechanism, because there is no dunning export in the evidence yet. It docks with [the churn-defense module](/growth-program/churn-defense/dunning).)
+
+## The retention layer inside each transactional message
+
+Here is the "one quiet retention move" per message. None of these turn the message salesy; each rides on top of a promise the message is already keeping.
+
+- **Order confirmation** — set the expectation. Tell them when it ships *and* what to do with the product when it lands ("here's how to start"). The job: reduce the anxiety that produces early cancels.
+- **Shipping / out-for-delivery** — the highest-anticipation moment. This is where a shipping-adjacent SMS earned revenue at **0.12% unsub** in the case (56.5x ROI, attribution only). The retention move: build anticipation, restate the usage plan.
+- **Delivered** — the "product in hand" moment, which the data shows is a distinct, unusually efficient window (the 2-message delivery flow, 0.26% unsub, from [the lifecycle map](/growth-program/messaging/lifecycle-map)). The retention move: prompt the *first correct use*, because a subscriber who uses the product well renews.
+- **Upcoming charge / renewal** — the churn-prevention workhorse above. The retention move: transparency + an easy skip/swap/delay path.
+- **Failed payment (dunning)** — keep the tone helpful, not accusatory; a card failure is usually a bank, not a decision. (Mechanism only — no dunning export exists in the evidence.)
+
+## The artifact: the transactional audit checklist
+
+Run this against every transactional message you send. Score each line yes/no; every "no" is a leak.
+
+1. **Does it keep its literal promise first?** (Tracking link works, charge date is accurate, confirmation is unambiguous.) If the retention move ever obscures the promise, cut it.
+2. **Does it carry exactly one retention move — no more?** Two asks turns a transactional email into a campaign and forfeits the open rate.
+3. **Is the pre-charge reminder live, and does it offer skip/swap/delay — not just "you're about to be charged"?** (This is the ~$170k, 0.09%-unsub row. If you don't have it, build it first.)
+4. **Is the tone of the failed-payment message helpful, not accusatory?**
+5. **Does the delivered message prompt correct first use** (not a cross-sell that competes with the product they just got)?
+6. **Have you checked the unsub rate on each?** Transactional messages should sit *well* below your promotional unsub rate. If one is climbing, you've made it too salesy.
+7. **Is anything time-sensitive being suppressed by smart-sending / quiet-hours?** A reminder that fires late is a reminder that failed.
+
+Do the audit once a quarter. It takes an hour and it protects your highest-open, lowest-friction channel.
+
+<InOpenSubs>Placeholder — the boxed platform contrast lands with the content pass: the pre-charge reminder and skip/swap/delay actions are native subscriber controls, so the churn-prevention move in row 3 is a setting, not a build.</InOpenSubs>
 
 ## Where next
 
 <Columns cols={2}>
-  <Card title="Dunning" href="/growth-program/churn-defense/dunning">
-    The failed-payment sequence in full.
-  </Card>
   <Card title="Klaviyo architecture" href="/growth-program/messaging/klaviyo-architecture">
-    Flows vs campaigns. Segmentation for subs.
+    The flow set these messages live inside.
+  </Card>
+  <Card title="The second-order cliff" href="/growth-program/first-60-days/second-order-cliff">
+    The reminder's biggest single job: guarding the second charge.
   </Card>
 </Columns>

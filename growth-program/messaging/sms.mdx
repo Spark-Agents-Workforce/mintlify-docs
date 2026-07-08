@@ -1,28 +1,69 @@
 ---
 title: "SMS"
-description: "Where SMS beats email. 2-way commands. Compliance."
+description: "SMS is not email but shorter. It's a different contract — here's which messages earn it."
 ia: "M6.4"
 ---
 
-import { PlatformTag } from "/snippets/PlatformTag.jsx";
 import { InOpenSubs } from "/snippets/InOpenSubs.jsx";
 
-<PlatformTag platform="any" />
+**The folklore this kills: "SMS is email but shorter."**
 
-<Note>**Skeleton page.** The structure and links are final; the lesson lands in the production pass.</Note>
+If SMS were just short email, you'd write your emails, trim them, and send. Brands that do this burn their list — because SMS is a fundamentally different contract. Email is a channel a subscriber lets pile up; SMS is a tap on the shoulder in their pocket. That intimacy is exactly why SMS *out-earns* email per message on the right jobs, and exactly why it *destroys* your list on the wrong ones. This lesson is about which messages earn the tap on the shoulder.
 
-## What this lesson gives you
+The headline from the measured case: over a 60-day window (a snapshot, not a trend), SMS attributed roughly $2.6M at **43.9x dashboard ROI**, 0.50% unsub. Real money. But the *average* ROI hides the whole lesson, because SMS performance is almost entirely a function of *who you send to* and *why*.
 
-- Where SMS wins: reminders and recovery, not newsletters.
-- 2-way command UX: SKIP, PAUSE, SWAP by text.
-- Compliance without killing the channel.
+## The audience-quality ROI ladder
 
-<InOpenSubs>Placeholder — the boxed product contrast for this lesson lands with the content.</InOpenSubs>
+Rank the same channel by audience and the spread is enormous (all dashboard attribution — not incrementality, not deduped; one store, 60-day window):
+
+| SMS audience | Dashboard ROI | What it is |
+| --- | --- | --- |
+| Prospecting / broad sends | ~**8x** | Sending to people who barely know you. Real but the floor. |
+| Active-subscriber sends | ~**118x** | Sending to people already paying you. ~15x better than prospecting on the same channel. |
+| Behavioral automations (checkout/cart/browse) | ~**338x** | Firing on what someone just did. Returning-customer checkout recovery hit up to ~$19.49 per message. |
+
+That ladder is the whole strategy. **SMS beats email precisely where intent and relationship are highest** — behavioral triggers and active subscribers — and loses its shirt as you push it toward cold prospecting. The single strongest lifecycle row of all was the **pre-charge reminder: ~$5.85 per message, 0.09% unsub, ~350x ROI.** The near-zero unsub is the tell — the right SMS at the right moment doesn't feel like marketing at all.
+
+**The attribution hedge, kept inline because it changes how you read the ladder:** these are *dashboard* multiples. They almost certainly overlap email and other channels — a subscriber may get the reminder by SMS *and* email and convert once, credited twice. So do not read "338x" as "$338 of new money per dollar." Read the *ladder* — the *relative* ordering of prospecting vs subscriber vs behavioral is the durable, decision-grade signal; the absolute multiples are inflated by non-dedupe. (Separately, popup-capture SMS shows huge attributed revenue per message, but it's *capture* attribution, not directly comparable to normal sends — so it's deliberately kept off this ladder.)
+
+## Timing, MMS, and the honest caveats
+
+**Timing.** The case shows midweek and evening/early-morning sends over-indexing on revenue per message — Wednesday and ~6PM lead. Treat this as **observational, not causal**: the tables have no embedded date range and simply sum volume by slot; evening slots also carry higher unsub pressure. Use it as a hypothesis to test on your own list, not a rule to obey.
+
+**MMS.** In the evidence, every observed MMS part sat inside *automation flows* (a welcome series was the MMS-heaviest), with none in the broadcast-campaign detail. The read: **MMS is a lifecycle enrichment tool** — rich creative for a welcome or delivery moment — not a broadcast toy. Image-heavy blasts are where SMS costs spike without the intimacy premium.
+
+## The artifact: the SMS decision tree — which messages earn SMS
+
+Walk every candidate message through this. If it doesn't clear the gates, it stays on email.
+
+<Steps>
+  <Step title="Is it time-critical or behavior-triggered?">
+    (Pre-charge reminder, shipping, checkout recovery, failed payment.) **Yes: strong SMS candidate** — these are where SMS's per-message ROI concentrates. No: next gate.
+  </Step>
+  <Step title="Is the recipient an active subscriber or high-intent — not a cold prospect?">
+    No, cold/broad: **keep it on email.** (~8x floor vs ~118x for subscribers — SMS's premium evaporates on cold audiences.) Yes: next gate.
+  </Step>
+  <Step title="Can it be said in ~1–2 short lines with one clear action?">
+    No (needs images/long copy): if it's a *welcome or delivery* moment, consider **MMS inside a flow**; otherwise email. Yes: next gate.
+  </Step>
+  <Step title="Does it respect consent and cadence?">
+    (Consented opt-in, quiet hours, not stacking on top of three other texts this week.) No: **fix consent/cadence first** — see [Deliverability & cadence](/growth-program/messaging/deliverability-and-cadence). Yes: **send SMS.**
+  </Step>
+</Steps>
+
+The decision that clears all four every time is the **pre-charge reminder** — behavioral, subscriber, one line, low-frequency. That is why it's the strongest SMS row in the data. The decision that fails gate 2 every time is the promotional blast to your whole list — which is exactly the send most brands reach for first.
+
+**One measured case, one channel window.** This is a single store's 60-day SMS snapshot on a dashboard. The *shape* of the ladder is the teaching; your list's consent quality sets where the threshold actually falls.
+
+<InOpenSubs>Placeholder — the boxed platform contrast lands with the content pass: subscriber commands like skip/pause/swap can run over two-way SMS as native platform actions, so the highest-ROI SMS jobs are built in rather than bolted on.</InOpenSubs>
 
 ## Where next
 
 <Columns cols={2}>
   <Card title="Deliverability & cadence" href="/growth-program/messaging/deliverability-and-cadence">
-    How much is too much.
+    How much is too much — and the hygiene that protects the reminder.
+  </Card>
+  <Card title="The second-order cliff" href="/growth-program/first-60-days/second-order-cliff">
+    The pre-charge reminder's full story — the strongest SMS row in the data.
   </Card>
 </Columns>

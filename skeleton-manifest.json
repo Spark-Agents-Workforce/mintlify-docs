@@ -511,41 +511,57 @@
     "title": "The complete lifecycle map",
     "platform": "any",
     "links": [
-      "/growth-program/first-60-days/early-tenure-playbook",
-      "/growth-program/messaging/transactional-and-reminder"
-    ]
+      "/growth-program/messaging/transactional-and-reminder",
+      "/growth-program/messaging/klaviyo-architecture",
+      "/growth-program/messaging/sms",
+      "/growth-program/messaging/deliverability-and-cadence"
+    ],
+    "status": "PRODUCTION"
   },
   "growth-program/messaging/transactional-and-reminder": {
     "ia": "M6.2",
     "title": "Transactional & reminder",
     "platform": "any",
     "links": [
+      "/growth-program/messaging/klaviyo-architecture",
+      "/growth-program/first-60-days/second-order-cliff",
       "/growth-program/churn-defense/dunning",
-      "/growth-program/messaging/klaviyo-architecture"
-    ]
+      "/growth-program/messaging/sms",
+      "/growth-program/messaging/lifecycle-map"
+    ],
+    "status": "PRODUCTION"
   },
   "growth-program/messaging/klaviyo-architecture": {
     "ia": "M6.3",
     "title": "Klaviyo architecture",
     "platform": "any",
     "links": [
-      "/operate/messaging",
-      "/growth-program/messaging/sms"
-    ]
+      "/growth-program/messaging/sms",
+      "/growth-program/messaging/deliverability-and-cadence",
+      "/growth-program/messaging/lifecycle-map",
+      "/growth-program/messaging/transactional-and-reminder"
+    ],
+    "status": "PRODUCTION"
   },
   "growth-program/messaging/sms": {
     "ia": "M6.4",
     "title": "SMS",
     "platform": "any",
     "links": [
-      "/growth-program/messaging/deliverability-and-cadence"
-    ]
+      "/growth-program/messaging/deliverability-and-cadence",
+      "/growth-program/first-60-days/second-order-cliff"
+    ],
+    "status": "PRODUCTION"
   },
   "growth-program/messaging/deliverability-and-cadence": {
     "ia": "M6.5",
     "title": "Deliverability & cadence",
     "platform": "any",
-    "links": []
+    "links": [
+      "/growth-program/messaging/lifecycle-map",
+      "/growth-program/numbers/weekly-metrics"
+    ],
+    "status": "PRODUCTION"
   },
   "growth-program/account-area/portal-as-retention": {
     "ia": "M7.1",

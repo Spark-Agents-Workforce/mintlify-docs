@@ -1,20 +1,69 @@
 ---
 title: "Deliverability & cadence"
-description: "How much is too much."
+description: "Unsubscribes are not the cost of doing business. They're your most efficient channel firing itself."
 ia: "M6.5"
 ---
 
-import { PlatformTag } from "/snippets/PlatformTag.jsx";
 import { InOpenSubs } from "/snippets/InOpenSubs.jsx";
 
-<PlatformTag platform="any" />
+**The folklore this kills: "unsubscribes are the cost of doing business."**
 
-<Note>**Skeleton page.** The structure and links are final; the lesson lands in the production pass.</Note>
+Every over-sending brand tells itself the same story: sure, we lose a few unsubscribes each send, but that's just the cost of staying top-of-mind. The measured case gives that story a price tag, and the price is higher than the folklore admits. Across the year we studied, as the brand pushed more volume through its flows, **flow unsubscribe rate rose from 0.48% to 0.72%** (a medium-strength signal; correlation with rising volume, not a controlled test). That is roughly a **50% increase in the rate at which your owned audience fires itself** — and every unsubscribe is not a one-time cost. It is the permanent loss of the one channel where your per-message ROI is highest.
 
-## What this lesson gives you
+<div className="not-prose" style={{ border: "3px solid #000", backgroundColor: "#FFDE00", boxShadow: "4px 4px 0 0 #000", padding: "20px 24px", margin: "1.5rem 0" }}>
+  <p className="m-0" style={{ fontWeight: 900, fontSize: "20px", lineHeight: 1.3, textTransform: "uppercase", color: "#000" }}>You are not paying rent. You are burning down the building to stay warm.</p>
+</div>
 
-- Cadence math: total touches per month across every flow, added up honestly.
-- Keeping the reminder out of spam — the deliverability hygiene that protects revenue.
-- The pruning discipline: which sends to kill first.
+This lesson is about finding your ceiling *before* you hit it — how much is too much — and the deliverability hygiene that keeps the reminder (your most valuable message) out of the spam folder.
 
-<InOpenSubs>Placeholder — the boxed product contrast for this lesson lands with the content.</InOpenSubs>
+## Cadence: the pressure builds where you can't see it
+
+The trap is that cadence pressure accumulates across flows that were each designed in isolation. You build a welcome flow (6 messages). Then a post-purchase engine (~20). Then cart, checkout, browse, post-delivery, churn, pre-charge. Each is reasonable alone. But a new subscriber who buys in week one can land in the overlap of *several at once* — and nobody ever added up the total. The unsub rise is what that uncounted total looks like from the outside.
+
+So the discipline is to count honestly. Not "how many campaigns did we send this month" — **how many total touches can a single subscriber receive across every flow and campaign in their worst week?** That number, per subscriber, is your real cadence. Most brands have never calculated it.
+
+The other half is deliverability, and here the evidence is thin by design — no inbox-placement, spam-complaint, or bounce data exists in the source; the *only* pressure proxy we have is the unsub rate. So treat the deliverability guidance as mechanism-based hygiene, not case-measured:
+
+- **Rising unsub rate is your early-warning gauge.** It's the one number the case gives us moving in the wrong direction as volume grew. Watch it per-flow, monthly. The pre-charge reminder's 0.09% and the delivery flow's 0.26% are your *floor* references — a well-targeted message barely loses anyone. A flow drifting toward and past your promotional baseline is a flow under too much pressure.
+- **Protect the transactional stream above all.** Reminders, shipping, delivery, failed-payment messages must reach the inbox — they're the highest-open, lowest-unsub, most revenue-dense sends you have. If broadcast over-sending drags your sender reputation down, it takes the reminder with it. That is the real cost of the "unsubscribes are just the cost of business" mindset: you don't just lose the unsubscribers, you degrade deliverability for *everyone*, including the churn-preventing reminder.
+- **Smart-sending can hide the problem and cause a new one:** throttles that "protect" the subscriber can silently delay a time-critical reminder past its moment. Exempt time-sensitive flows.
+
+## The artifact: the cadence pressure test
+
+Run this quarterly. It is a diagnostic, not a rule — the ceiling it reveals is yours to set.
+
+<Steps>
+  <Step title="Count the worst week">
+    For a new subscriber who buys in week one, list every flow they're eligible for and every campaign they'd receive. Sum the *maximum* touches in a single week, per channel (email and SMS separately — SMS tolerance is far lower).
+  </Step>
+  <Step title="Compare to your unsub trend">
+    Pull unsub rate per flow, this year vs last. Is any flow's rate rising as you've added volume? (The case's 0.48% → 0.72% is what "too much" looked like from the outside.)
+  </Step>
+  <Step title="Find the marginal message">
+    For each flow, ask: what did the *last* message added contribute in rev/recipient, and what did it cost in unsub? The measured store's efficiency lived in *tight* flows (checkout at ~$6.15/recipient across ~13 messages; delivery at 2 messages, 0.26% unsub). Length is not free.
+  </Step>
+  <Step title="Set your ceiling">
+    Pick a maximum touches-per-week per subscriber you will not cross, and a per-flow unsub rate that triggers a prune. Write the numbers down. Only you can set these against your margin and unsub tolerance.
+  </Step>
+  <Step title="Prune in order">
+    When you're over the ceiling, cut in this order: (a) redundant broadcast blasts first — they're already at the ~$0.40/recipient floor; (b) the lowest-RPR *marginal* messages inside long flows; (c) never the transactional/reminder stream. Cut toward the channel's efficiency, which lives in fewer, better-targeted messages — not more.
+  </Step>
+  <Step title="Re-measure next quarter">
+    Deliverability and cadence are not "set once." The unsub gauge tells you if the last quarter's cadence was sustainable.
+  </Step>
+</Steps>
+
+The reframe to carry out of this module: an unsubscribe is not a rounding error on a send. It is the permanent loss of your most efficient channel, and — through sender reputation — a small tax on the deliverability of every message you'll ever send after it, including the reminder that prevents churn. Sending less, better, is not timidity. On this store's numbers, it is where the efficiency was the whole time.
+
+<InOpenSubs>Placeholder — the boxed platform contrast lands with the content pass: a unified view of every automated touch a subscriber can receive makes the worst-week count a dashboard read rather than a spreadsheet archaeology project.</InOpenSubs>
+
+## Where next
+
+<Columns cols={2}>
+  <Card title="The lifecycle map" href="/growth-program/messaging/lifecycle-map">
+    Back to the anchor: the complete map this discipline protects.
+  </Card>
+  <Card title="Weekly metrics" href="/growth-program/numbers/weekly-metrics">
+    The unsub gauge joins the operator dashboard.
+  </Card>
+</Columns>

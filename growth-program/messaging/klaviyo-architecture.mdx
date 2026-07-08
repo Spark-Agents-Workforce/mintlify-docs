@@ -1,31 +1,73 @@
 ---
 title: "Klaviyo architecture"
-description: "Flows vs campaigns. Segmentation for subs."
+description: "The calendar is not the strategy. The flow architecture is the strategy."
 ia: "M6.3"
 ---
 
-import { PlatformTag } from "/snippets/PlatformTag.jsx";
 import { InOpenSubs } from "/snippets/InOpenSubs.jsx";
 
-<PlatformTag platform="any" />
+**The folklore this kills: "the calendar is the strategy."**
 
-<Note>**Skeleton page.** The structure and links are final; the lesson lands in the production pass.</Note>
+Ask most brands to see their marketing strategy and they'll show you a calendar — a grid of the sends going out this month. That is a *broadcast* strategy, and the measured case shows exactly what a broadcast strategy does at scale: it plateaus. Recall [the anchor's](/growth-program/messaging/lifecycle-map) headline contrast — broadcast value flat year over year while recipients grew ~70% (rev/recipient $0.66 → $0.40), against flows growing about two-thirds ($4.6M → $7.6M attributed). The calendar is not the strategy. **The flow architecture is the strategy;** the calendar is just what you layer on top of it for the promo windows.
 
-## What this lesson gives you
+This lesson is the architecture: how to build flows that compound, why they beat broadcasts on a per-message basis, and how to segment a *subscription* list so the right subscriber gets the right trigger.
 
-- The metric-triggered flow set for subscriptions, mapped.
-- Segmentation that matters: tenure, product, status — not demographics.
-- Smart-sending pitfalls that quietly suppress your reminders.
+## Flows vs campaigns: what "compounds" actually means
 
-<InOpenSubs>Placeholder — the boxed product contrast for this lesson lands with the content.</InOpenSubs>
+A campaign is a one-time send to a list. Its value is realized once and then it's over; to get more value you send again, to more people, and — as the case shows — you hit diminishing returns. A flow is a message attached to a *behavior*. You build it once and it fires every time any subscriber does the triggering thing, forever. Its value *accrues*. That is the entire difference and it is the entire reason the flow line on the chart bends up while the campaign line goes flat.
+
+The per-message evidence makes it concrete. On SMS in the measured store, **automation flows earned ~$3.10 per message (117x dashboard ROI)** against **broadcast campaign sends at ~$0.46 per message (23x)** — the same channel, a ~6.7x efficiency gap, purely from *triggered* vs *blasted*. (Dashboard attribution, one store; bodies and holdouts absent.) A flow reaches a subscriber at the moment the message is relevant to them; a broadcast reaches everyone at the moment convenient to you. Relevance is the whole premium.
+
+This does **not** mean stop sending campaigns. It means campaigns are the *amplifier layer* for real promo windows, not the engine. And even inside campaigns, the case kills a second piece of folklore: **editorial out-earned sale.** Educational/editorial campaigns attributed roughly $6.8M against roughly $4.7M for major-sale campaigns — about 1.5x more, from *fewer* sends (35 vs 87). (Selection-biased toward top-attributed rows — directional, not a full taxonomy.) The calendar mind assumes "campaign = sale." The data says your best-performing broadcasts may be the ones that teach, not the ones that discount.
+
+## The metric-triggered flow set
+
+Build these in this order — they map directly onto [the lifecycle map](/growth-program/messaging/lifecycle-map), now expressed as the *triggers* your ESP listens for:
+
+- **Added-to-list → welcome** (front-loaded; ~$1.65/recipient in the case).
+- **Checkout started, no order → abandoned checkout** (the highest-RPR recovery, ~$6.15/recipient — build this before abandoned cart).
+- **Added to cart, no checkout → abandoned cart** (~$4.86/recipient).
+- **Viewed product, no cart → browse abandonment** (education-led, ~$1.17/recipient).
+- **Order placed → post-purchase** (the ~20-message education engine; the scale play).
+- **Order fulfilled/delivered → post-delivery** (2 messages, lowest unsub — the highest-efficiency retention moment).
+- **Upcoming charge → pre-charge reminder** (the churn-prevention workhorse from [Transactional & reminder](/growth-program/messaging/transactional-and-reminder)).
+- **Risk metric crosses threshold → churn flow** (branch it — the case spread ~$1.2M across ~57 messages, not one).
+- **Subscription cancelled → reactivation** (small but keep it).
+
+One honest caveat before you trust any flow taxonomy: in the measured store a flow worth ~$1.3M attributed carried *no trigger label*. Audit for orphan flows — the "complete" set is only as complete as your tags.
+
+## Segmentation for subscriptions
+
+Consumer-brand segmentation folklore is demographic — age, gender, geography. For a subscription brand that is almost noise. **The segments that move retention are behavioral and lifecycle:** tenure (first-order vs month-3 vs month-12), product (what they're subscribed to, which sets replenishment timing), and status (active vs paused vs cancelled vs at-risk). The one place the evidence speaks *directly* to segmentation value is SMS audience quality: **active-subscriber sends returned ~118x dashboard ROI against ~7.6x for broad prospect sends** — the same channel, ~15x apart, purely on who was targeted. (We lack email segment-level performance, so this is the cleanest measured segmentation signal we have; dashboard attribution.)
+
+Segment on what predicts the next order — tenure, product cycle, status — and let demographics go.
+
+## The artifact: the flow-set blueprint
+
+A one-page build order. For each flow: the trigger, the job, and the "don't" that kills it.
+
+| Build order | Trigger | Job | The "don't" |
+| --- | --- | --- | --- |
+| 1 | Added to list | First purchase | Don't stop at a signup confirmation — front-load the conversion path |
+| 2 | Checkout started, no order | Recover highest intent | Don't bury the hero message late — it fires first |
+| 3 | Order placed | Educate + 2nd purchase | Don't cram it into one email — it's a sustained engine |
+| 4 | Delivered | Product-in-hand retention | Don't treat it as a transactional afterthought |
+| 5 | Upcoming charge | Prevent churn | Don't make it a pitch — transparency + skip/swap |
+| 6 | Cart / browse | Softer recovery | Don't lead with discount on browse (lowest intent) |
+| 7 | Risk metric | Branched saves | Don't send one generic save-blast |
+| 8 | Cancelled | Reactivation | Don't expect it to do the churn flow's job |
+
+**Smart-sending caution:** ESP "smart sending" and quiet-hours windows can silently suppress a time-critical reminder. Exempt genuinely time-sensitive flows (pre-charge, failed payment, delivery) from smart-send throttles.
+
+<InOpenSubs>Placeholder — the boxed platform contrast lands with the content pass: the platform emits each trigger above as a first-class event, so the blueprint is a mapping exercise, not custom instrumentation.</InOpenSubs>
 
 ## Where next
 
 <Columns cols={2}>
-  <Card title="Messaging (the manual)" href="/operate/messaging">
-    How opensubs emits the events Klaviyo listens for.
-  </Card>
   <Card title="SMS" href="/growth-program/messaging/sms">
-    Where SMS beats email. 2-way commands. Compliance.
+    Which of these moments earn the tap on the shoulder.
+  </Card>
+  <Card title="Deliverability & cadence" href="/growth-program/messaging/deliverability-and-cadence">
+    The discipline that keeps the whole engine out of spam.
   </Card>
 </Columns>
