@@ -1,28 +1,103 @@
 ---
 title: "Cohorts"
-description: "Retention curves. What good looks like by category."
+description: "Retention curves, what good looks like, and reading your own — the table that settles the argument the average started."
 ia: "M1.3"
 ---
 
-import { PlatformTag } from "/snippets/PlatformTag.jsx";
 import { InOpenSubs } from "/snippets/InOpenSubs.jsx";
 
-<PlatformTag platform="any" />
+**The folklore this lesson kills: "our average customer sticks around about six months."**
 
-<Note>**Skeleton page.** The structure and links are final; the lesson lands in the production pass.</Note>
+That sentence has ended more strategy debates than it should, because an average is where arguments *start*, not where they end. Two stores with the identical average retention can have completely opposite businesses — one with a gentle slope, one with a cliff and a loyal floor — and the average hides which one you are.
 
-## What this lesson gives you
+<div className="not-prose" style={{ border: "3px solid #000", backgroundColor: "#FFDE00", boxShadow: "4px 4px 0 0 #000", padding: "20px 24px", margin: "1.5rem 0" }}>
+  <p className="m-0" style={{ fontWeight: 900, fontSize: "20px", lineHeight: 1.3, textTransform: "uppercase", color: "#000" }}>Averages blur. Cohort tables settle.</p>
+</div>
 
-- Reading a retention curve: the cliff, the shoulder, the floor.
-- What good looks like by category — consumables vs durables vs discovery.
-- Reading your own: where your curve breaks and which module fixes it.
+This is the anchor lesson of the whole program because the cohort table is the single instrument that turns retention opinions into arithmetic. Once you have yours, half the debates in your building are already over.
 
-<InOpenSubs>Placeholder — the boxed product contrast for this lesson lands with the content.</InOpenSubs>
+## Reading a retention curve
+
+A cohort is a group of customers who started in the same window, tracked forward together. Plot the share still active at 30 / 60 / 90 / 180 days and you get a curve with three features worth naming:
+
+- **The cliff** — the early drop. Most cohorts lose their steepest share in the first 30–60 days. A too-steep cliff is an *onboarding and first-experience* problem ([the first 60 days](/growth-program/first-60-days/welcome-sequence)' territory).
+- **The shoulder** — where the curve bends from falling to flattening, usually somewhere past 60–90 days. A weak shoulder is a *value and cadence* problem (offer, product fit, delivery rhythm).
+- **The floor** — where it stabilizes: your durable, loyal core. A low floor is a *product-market* problem no email flow will paper over.
+
+Where your curve breaks tells you which module fixes it. That's the diagnostic payoff.
+
+## The methodology you must state out loud
+
+Before any number: **these cohorts are measured from the acquisition-window END, not from each customer's day-exact first order.** If a cohort is "everyone acquired in March–April," the 180-day clock starts at the *end* of that window and runs forward for all of them together. This slightly *understates* early retention (a customer who joined day one of the window has really had a few extra weeks by the "30-day" mark), and it makes cohorts trivial to build from raw orders without perfect per-customer date math. It's a deliberate trade: a little precision for a lot of buildability. State your choice the same way — a cohort table is only comparable to itself if the measurement rule holds constant.
+
+## The proof — real 180-day tables
+
+This is the star data of the numbers module, and it *is* the proof. From **Brand A** (the $50M+ consumables brand), mature cohorts grouped by the offer that acquired them (repeat = share of the cohort that placed another order by each mark):
+
+| Acquisition offer (anonymized) | 30d | 60d | 90d | 180d | Cohort size |
+| --- | --- | --- | --- | --- | --- |
+| Evergreen ~10% first-order code (A) | 24% | 37% | 44% | **50.0%** | ~3,500 |
+| Evergreen ~10% first-order code (B) | 29% | 41% | 46% | **51.4%** | ~7,700 |
+| Holiday sale code | ~13% | ~23% | ~32% | **38.7%** | ~1,000 |
+| Small targeted sale code | 21% | 30% | 41% | **49.0%** | ~200 (directional) |
+| Recent paid-social cohort | 20% | 31% | 34% | *not mature* | ~850 |
+
+Read the curves, not just the endpoints:
+
+- **The two evergreen cohorts are the "what good looks like" spine here** — roughly half the customers acquired by a plain ~10% first-order code were still buying at 180 days, and it held at scale, twice (~3,500 and ~7,700 customers). The curves climb in the same rhythm (mid-20s to low-50s), which is what a *stable, repeatable* acquisition engine looks like. (Hedge: repeat is not the same as "still subscribed"; measured from window end; not every repeat is offer-caused.)
+- **The holiday code's curve is visibly shallower** — a weaker cliff-recovery and a ~39% floor, ~12 points below the evergreen cohorts. Same store, same products, same calendar months: **the offer that acquires a customer measurably changes how long they stay.** The cohort table proves what an average would have buried.
+- **The small targeted code reached ~49%** — nearly evergreen quality — but on only ~200 customers, so it's directional, not settled. (Small-n hedge travels with the number, always.)
+- **The youngest cohort is a teaching moment in itself.** At 60 days it's tracking at 31% — right on-pace with the evergreen cohorts' 37–41% band — but its 180-day mark is not yet mature. Until it lands, its 60-day read is a hypothesis, not a verdict. The discipline: a 60-day read tells you if a cohort is *on-pace*; only 180 days delivers the *verdict*. Don't grade a cohort before it graduates.
+
+## What good looks like
+
+The data gives you one brand's real curves; it does not license a universal benchmark. Defensible ranges by category, marked as operator judgment:
+
+- **Replenishable consumables** (supplements, food, staples): a healthy first-order-discount cohort lands somewhere around **~45–55% repeat by 180 days** — the evergreen cohorts above sit right in that band.
+- **Discovery / variety / durable** categories churn faster by nature; a lower 180-day floor there isn't automatically a failure.
+
+The point of a range isn't to hand you a target — it's to stop you from either panicking at a normal number or celebrating a bad one. Your cohort table, category-honest, is the real benchmark.
+
+## The artifact — the cohort table template + how to build it from raw orders
+
+You can build this from a Shopify orders export and nothing else.
+
+<Steps>
+  <Step title="Pick an acquisition window">
+    E.g., "all first orders in March–April."
+  </Step>
+  <Step title="List every customer whose FIRST order falls in that window">
+    That's your cohort.
+  </Step>
+  <Step title="Set the clock at the window's END date">
+    State this — it's the methodology choice above.
+  </Step>
+  <Step title="Count repeaters at each mark">
+    For each mark (30/60/90/180d after window end), count how many of the cohort placed at least one more order by then.
+  </Step>
+  <Step title="Compute repeat % at each mark">
+    (Repeaters by that mark) ÷ (cohort size).
+  </Step>
+  <Step title="Tag the cohort by the offer that acquired it">
+    Compare tables, never averages.
+  </Step>
+</Steps>
+
+```text The template
+Cohort: __________ (acquisition window + offer)   n = ______
+30d ___%   60d ___%   90d ___%   180d ___%
+Maturity: [ ] mature through 180d   [ ] on-pace read only (mark the gap)
+```
+
+<InOpenSubs>Cohort tables build from subscription lifecycle data directly — grouped by the offer that acquired them — so "which code retains better" is a report you open, not a SQL project you schedule.</InOpenSubs>
 
 ## Where next
 
 <Columns cols={2}>
   <Card title="Weekly metrics" href="/growth-program/numbers/weekly-metrics">
-    The dashboard that watches the curve.
+    The dashboard that watches these curves without rebuilding them every week.
+  </Card>
+  <Card title="The discount question" href="/growth-program/offer/the-discount-question">
+    Where these exact cohorts decide your discount.
   </Card>
 </Columns>

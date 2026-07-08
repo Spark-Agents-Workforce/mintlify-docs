@@ -1,31 +1,86 @@
 ---
 title: "The metrics that matter weekly"
-description: "The operator dashboard."
+description: "The operator dashboard: a few numbers watched every week beats forty watched never."
 ia: "M1.4"
 ---
 
-import { PlatformTag } from "/snippets/PlatformTag.jsx";
 import { InOpenSubs } from "/snippets/InOpenSubs.jsx";
 
-<PlatformTag platform="any" />
+**The folklore this lesson kills: "more dashboards means more control."**
 
-<Note>**Skeleton page.** The structure and links are final; the lesson lands in the production pass.</Note>
+So you build forty metrics, wire up three tools, and admire the wall of numbers — which you then check monthly, at best, because forty numbers is a report you *read*, not an instrument you *operate*. Control doesn't come from coverage. It comes from a *short* list watched on a *tight* cadence, so you notice the wobble while it's still a wobble. A pilot scans six instruments every few seconds, not sixty once an hour. This lesson builds you the six.
 
-## What this lesson gives you
+## The decision — what earns a weekly slot
 
-- The weekly dashboard: few numbers, watched consistently, beats many watched never.
-- An agnostic data-source map — pull these from any platform.
-- Thresholds: when a number is a wobble and when it's a fire.
+A metric earns a weekly slot only if it clears three bars: it *moves* week to week (annual metrics don't belong on a weekly dashboard), you can *act* on it inside a week, and it has a *threshold* that separates a wobble from a fire. (The composition and thresholds below are operating judgment, not measured rows.) The starting six for a subscription operator:
 
-<InOpenSubs>Placeholder — the boxed product contrast for this lesson lands with the content.</InOpenSubs>
+1. **Net new subscribers** (creates − cancels) — is the base growing this week?
+2. **Recurring share of paid orders** — how much of volume is the base carrying?
+3. **Save/resume activity** — is the retention motion firing?
+4. **Involuntary-churn / failed-payment rate** — the silent leak ([Churn math](/growth-program/numbers/churn-math)).
+5. **New-subscriber cohort pace** (the 30/60-day on-pace read from [Cohorts](/growth-program/numbers/cohorts)).
+6. **Attributed lifecycle revenue** — directional, read as a compass, never as the ledger.
+
+<div className="not-prose" style={{ border: "3px solid #000", backgroundColor: "#FFDE00", boxShadow: "4px 4px 0 0 #000", padding: "20px 24px", margin: "1.5rem 0" }}>
+  <p className="m-0" style={{ fontWeight: 900, fontSize: "20px", lineHeight: 1.3, textTransform: "uppercase", color: "#000" }}>Six you watch weekly beats forty you file monthly. The discipline is subtraction.</p>
+</div>
+
+## The data-source map (platform-agnostic)
+
+Every metric needs an owner ledger. Pull each from the source that actually knows the answer — and never launder an attributed number into a settled one.
+
+| Metric | Source of truth | Cadence | Red-flag threshold (set your own) |
+| --- | --- | --- | --- |
+| Net new subscribers | Subscription platform | Weekly | Two straight weeks net-negative |
+| Recurring share of paid | Shopify ledger + order tags | Weekly (read seasonally) | Sustained drop *outside* a known acquisition surge |
+| Save/resume ratio | Subscription lifecycle events | Weekly | Ratio falling while cancels rise |
+| Involuntary / failed-payment | Billing / dunning system | Weekly | Any sustained climb (it's recoverable) |
+| Cohort pace (30/60d) | Orders export / cohort report | Monthly | New cohort trailing the on-pace band |
+| Attributed lifecycle revenue | ESP / SMS (directional) | Weekly | Read as compass only |
+
+## The proof — a real dashboard object, read honestly
+
+Two things from the data show what a weekly read looks like in practice.
+
+**Recurring share, read seasonally.** At **Brand A** (the $50M+ consumables brand), recurring orders ran **41–60% of paid volume month to month** — the *revenue spine*, most months above half. But the number breathes with the calendar, and this is the part operators get wrong: during the big acquisition tentpoles (BFCM), recurring share **dips toward the low 40s** — not because retention broke, but because a flood of *new* customers temporarily dilutes it. The metric moved because acquisition worked. And the inverse is the deeper read: a high-volume month can lean *more* on your returning base, with first-time tags falling as a share, which pushes recurring share *up*. The lesson isn't the level, it's the movement — and you can't interpret the movement without knowing your season. Read a dip in isolation and you'll "fix" a problem you don't have. (Hedge: recurring-order *tag* proxy, not active-subscriber count; monthly aggregate.)
+
+**The monthly lifecycle table — a dashboard object you can actually build.** The same store maintains a table of subscription events by month: *created / paused / resumed / reactivated / cancelled*, with a *save-resume ratio* column. This is a real, readable operator dashboard, and the honest way to read it includes reading its gaps:
+
+- Pause/resume events appear only from mid-2025; reactivations only from later still. Earlier months show **zero — and that zero is an instrumentation gap, not a true absence of the behavior.** Taught as a skill: when a metric reads zero before a certain date, ask whether the *thing* started or the *tracking* started. Reading an instrumentation gap honestly is an operator skill, not a footnote.
+- Once tracking was live, the ratio told a real story — the save/resume ratio roughly **quintupled (~1.3% → ~5.7%)** as the motion matured. (Hedge: event volumes, not causal save rates.)
+
+The takeaway for your own wall: a good weekly dashboard shows you the *movement* and is honest about where the *instrument* starts. A number you can't source or date is a number that will mislead you on the week it matters most.
+
+## The artifact — the weekly dashboard spec
+
+One row per metric. Fill the last two columns yourself — that's the whole exercise.
+
+```text The spec
+METRIC                     | SOURCE OF TRUTH        | CADENCE | RED-FLAG THRESHOLD
+---------------------------|------------------------|---------|-------------------
+Net new subscribers        | subscription platform  | weekly  | __________
+Recurring share of paid    | Shopify + order tags   | weekly* | __________ (*read seasonally)
+Save/resume ratio          | lifecycle events       | weekly  | __________
+Involuntary/failed-payment | billing / dunning      | weekly  | __________
+Cohort pace (30/60d)       | orders / cohort report | monthly | __________
+Attributed lifecycle rev.  | ESP / SMS (directional)| weekly  | compass only
+
+RULES OF THE WALL
+  - If it doesn't move weekly, it's not on the weekly wall.
+  - Every number names its source ledger. No orphan numbers.
+  - Every zero gets asked: did the behavior start, or did the tracking?
+  - Read movement against season before you read it as signal.
+```
+
+<InOpenSubs>The lifecycle table — created/paused/resumed/reactivated/cancelled with the save/resume ratio — is a native view, dated from real instrumentation, so your weekly wall reads from one source of truth instead of six stitched exports.</InOpenSubs>
 
 ## Where next
 
 <Columns cols={2}>
-  <Card title="Log your win" href="/instant-win/log-your-win">
-    Your savings receipt feeds this dashboard.
-  </Card>
   <Card title="Operating rhythm" href="/growth-program/cadence/operating-rhythm">
-    The cadence these numbers live in.
+    The weekly ritual these numbers live inside.
+  </Card>
+  <Card title="Deliverability & cadence" href="/growth-program/messaging/deliverability-and-cadence">
+    The unsub gauge joins the wall.
   </Card>
 </Columns>

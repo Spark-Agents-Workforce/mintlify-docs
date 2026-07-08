@@ -287,34 +287,44 @@
     "title": "Subscription economics",
     "platform": "any",
     "links": [
-      "/growth-program/numbers/churn-math"
-    ]
+      "/growth-program/numbers/churn-math",
+      "/growth-program/numbers/cohorts",
+      "/growth-program/offer/the-discount-question"
+    ],
+    "status": "PRODUCTION"
   },
   "growth-program/numbers/churn-math": {
     "ia": "M1.2",
     "title": "Churn math",
     "platform": "any",
     "links": [
-      "/growth-program/churn-defense/reading-your-churn",
-      "/growth-program/numbers/cohorts"
-    ]
+      "/growth-program/numbers/cohorts",
+      "/growth-program/churn-defense/dunning"
+    ],
+    "status": "PRODUCTION"
   },
   "growth-program/numbers/cohorts": {
     "ia": "M1.3",
     "title": "Cohorts",
     "platform": "any",
     "links": [
-      "/growth-program/numbers/weekly-metrics"
-    ]
+      "/growth-program/numbers/weekly-metrics",
+      "/growth-program/offer/the-discount-question",
+      "/growth-program/first-60-days/welcome-sequence"
+    ],
+    "status": "PRODUCTION"
   },
   "growth-program/numbers/weekly-metrics": {
     "ia": "M1.4",
     "title": "The metrics that matter weekly",
     "platform": "any",
     "links": [
-      "/instant-win/log-your-win",
-      "/growth-program/cadence/operating-rhythm"
-    ]
+      "/growth-program/cadence/operating-rhythm",
+      "/growth-program/messaging/deliverability-and-cadence",
+      "/growth-program/numbers/churn-math",
+      "/growth-program/numbers/cohorts"
+    ],
+    "status": "PRODUCTION"
   },
   "growth-program/offer/offer-architecture": {
     "ia": "M2.1",

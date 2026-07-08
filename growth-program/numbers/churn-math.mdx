@@ -1,31 +1,91 @@
 ---
 title: "Churn math"
-description: "Logo vs revenue, voluntary vs involuntary. Blended churn lies."
+description: "Logo vs revenue, voluntary vs involuntary, and why the blended number lies."
 ia: "M1.2"
 ---
 
-import { PlatformTag } from "/snippets/PlatformTag.jsx";
 import { InOpenSubs } from "/snippets/InOpenSubs.jsx";
 
-<PlatformTag platform="any" />
+**The folklore this lesson kills: "our churn is 5%."**
 
-<Note>**Skeleton page.** The structure and links are final; the lesson lands in the production pass.</Note>
+One number, stated with confidence, and it tells you almost nothing you can act on. Churn is not one number — it's at least four, stacked into a single figure that averages away exactly the information you'd use to fix it. A blended churn rate is a thermometer that reads the whole house at once: it can tell you something's warm, never which room is on fire.
 
-## What this lesson gives you
+This lesson splits the blend into its parts, because **each part routes to a different fix.** Get the split and you know what to do Monday. Keep the blend and you'll spend a quarter treating a billing problem like a loyalty problem.
 
-- Logo churn vs revenue churn — and why they diverge as you grow.
-- Voluntary vs involuntary: two diseases, two treatments.
-- Why the blended number flatters you, and the split that doesn't.
+## Split one: logo churn vs revenue churn
 
-<InOpenSubs>Placeholder — the boxed product contrast for this lesson lands with the content.</InOpenSubs>
+**Logo churn** counts *subscribers* lost — heads out the door, as a percentage of the base.
+
+**Revenue churn** counts *recurring revenue* lost — dollars out the door, as a percentage of MRR.
+
+They diverge the moment your subscribers aren't identical, which is always. (The definitions and the divergence logic here are framework, not a measured row.) Lose your smallest subscribers and logo churn runs *higher* than revenue churn — you're shedding heads but keeping dollars. Lose your biggest and revenue churn runs *higher* than logo churn — a few cancellations, disproportionate damage. Watching only logo churn, you can congratulate yourself on a stable base while your best accounts quietly walk.
+
+There's a third figure worth naming: **net revenue churn**, which subtracts expansion (upgrades, add-ons, quantity increases) from the revenue you lost. When expansion outruns losses, net revenue churn goes *negative* — the holy grail: the surviving base grows even with no new customers. You can't chase what you don't measure separately.
+
+## Split two: voluntary vs involuntary
+
+This is the split most brands never make, and it's the one that pays the fastest.
+
+**Voluntary churn:** the subscriber *chose* to leave. Cancelled, didn't reactivate. This is a value or experience problem — the product, the price, the cadence, the onboarding.
+
+**Involuntary churn:** the subscriber *didn't choose* to leave. Their card expired, the payment failed, the retry logic gave up. They may not even know they're gone. This is a billing and operations problem — dunning sequences, card-account updater, smart retry timing.
+
+Two diseases, two treatments. And here's the number that makes the split urgent: involuntary churn is commonly a large minority of gross churn, often on the order of 20–40% — marked as operating experience, not a figure from our data. If a third of your churn is failed payments, the highest-ROI retention work in your building isn't a win-back email, it's a dunning flow. You will never see that from a blended rate.
+
+(Neither case store's data separates voluntary from involuntary churn — there is no cancel-reason export and no dunning/failed-payment export in the evidence. We can teach the split and why it matters; we cannot quote a real involuntary share from the data. We won't invent one.)
+
+## Why the blended number lies — with real event volumes
+
+The data lets us watch the raw churn machinery at one store, and it makes the case perfectly.
+
+At **Brand A** (the $50M+ consumables brand), a single half-year window logged roughly **37,000 cancellation events** against about **1,200 reactivations** and **700 resumes.** Read as one blended number, that looks like a five-alarm fire — churn swamping saves by more than 30-to-1.
+
+Now read it un-blended, and the story inverts:
+
+- **Net creation stays positive every month.** Monthly subscription *creates* consistently exceed *cancels* — the base grows on net despite enormous gross churn. Churn here is a volume to dampen, not an existential threat. (Hedge: these are lifecycle *event counts*, not distinct-subscriber churn; creates and cancels aren't deduped to customers; there's no tenure data.)
+- **The save motion is real and accelerating.** The save/resume ratio climbed from **~1.3% to ~5.7%** across roughly nine months — a small number quintupling. (Hedge: event volume only — the data shows *that* saves happen and are growing, never *which* offers or UX drove them; earlier near-zero months are an instrumentation limit, not a true absence.)
+- **And even this can't tell you the two things that matter most.** Was that 37,000 mostly voluntary or mostly failed payments? Were the lost subscribers whales or minnows? The blended event count answers neither.
+
+<div className="not-prose" style={{ border: "3px solid #000", backgroundColor: "#FFDE00", boxShadow: "4px 4px 0 0 #000", padding: "20px 24px", margin: "1.5rem 0" }}>
+  <p className="m-0" style={{ fontWeight: 900, fontSize: "20px", lineHeight: 1.3, textTransform: "uppercase", color: "#000" }}>The scary blended number and the reassuring decomposed one describe the same store in the same months. One of them is actionable. It isn't the blend.</p>
+</div>
+
+## The artifact — the churn decomposition worksheet
+
+Run your last full month through this. The point is to never write a single churn number again without its four parts beside it.
+
+```text The worksheet
+PERIOD: __________
+
+LOGO CHURN
+  Subscribers at start ............ ______
+  Cancels (chose to leave) ........ ______   → VOLUNTARY
+  Failed-payment losses ........... ______   → INVOLUNTARY
+  Logo churn %  = (cancels + failed) ÷ start = ______%
+    of which voluntary: ____%   involuntary: ____%
+
+REVENUE CHURN
+  MRR at start .................... $______
+  MRR lost to churn .............. $______
+  Expansion MRR (upgrades/add-ons) $______
+  Gross revenue churn % ........... ______%
+  NET revenue churn % (after expansion) ..... ______%   (negative is the goal)
+
+THE ROUTING (what each row sends you to)
+  Voluntary high  → value/experience (onboarding, offer, saves)
+  Involuntary high → billing ops (dunning, card updater, retry timing)
+  Revenue >> logo  → you're losing your biggest — segment and defend the top
+```
+
+<InOpenSubs>Involuntary churn gets its own line because failed payments are handled by smart retries and dunning built into the platform — so the number you read is real churn, not billing you could have recovered with a retry.</InOpenSubs>
 
 ## Where next
 
 <Columns cols={2}>
-  <Card title="Reading your churn" href="/growth-program/churn-defense/reading-your-churn">
-    Route each kind to its defense.
-  </Card>
   <Card title="Cohorts" href="/growth-program/numbers/cohorts">
-    See churn as a curve, not a rate.
+    Churn seen as a curve over time, not a rate at a moment.
+  </Card>
+  <Card title="Dunning" href="/growth-program/churn-defense/dunning">
+    Routing the involuntary half to its defense.
   </Card>
 </Columns>
