@@ -629,24 +629,32 @@
     "title": "Recapturing cancelled",
     "platform": "any",
     "links": [
-      "/growth-program/winback/reactivating-paused"
-    ]
+      "/growth-program/winback/reactivating-paused",
+      "/growth-program/winback/winback-economics"
+    ],
+    "status": "PRODUCTION"
   },
   "growth-program/winback/reactivating-paused": {
     "ia": "M9.2",
     "title": "Reactivating paused",
     "platform": "any",
     "links": [
-      "/growth-program/winback/winback-economics"
-    ]
+      "/growth-program/winback/winback-economics",
+      "/growth-program/churn-defense/cancellation-flow-design",
+      "/growth-program/winback/recapturing-cancelled"
+    ],
+    "status": "PRODUCTION"
   },
   "growth-program/winback/winback-economics": {
     "ia": "M9.3",
     "title": "Winback economics",
     "platform": "any",
     "links": [
-      "/growth-program/numbers/subscription-economics"
-    ]
+      "/growth-program/numbers/subscription-economics",
+      "/growth-program/first-60-days/welcome-sequence",
+      "/growth-program/winback/recapturing-cancelled"
+    ],
+    "status": "PRODUCTION"
   },
   "growth-program/cadence/operating-rhythm": {
     "ia": "M10.1",

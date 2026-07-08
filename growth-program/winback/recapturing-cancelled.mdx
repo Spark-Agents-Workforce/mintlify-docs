@@ -1,28 +1,94 @@
 ---
 title: "Recapturing cancelled"
-description: "Timing windows. What NOT to send."
+description: "The winback sequence: when to reach out, what to offer, and what will get you unsubscribed."
 ia: "M9.1"
 ---
 
-import { PlatformTag } from "/snippets/PlatformTag.jsx";
 import { InOpenSubs } from "/snippets/InOpenSubs.jsx";
 
-<PlatformTag platform="any" />
+**The module's honest spine, before anything else:** this store's data shows winback is real but modest. Lapsed-audience sends run at roughly **16x** dashboard ROI while the prevention automations you build in the first-60-days and churn-defense modules run at roughly **338x** — a ~20x gap. The post-cancel reactivation flow attributes ~$32k; the upstream churn-prevention flow attributes ~$1.17M — a ~37x gap. So this module teaches you to run a competent winback motion AND teaches you, with the store's own numbers, that prevention out-earns resurrection — winback is the cheap insurance layer you run *after* the prevention modules, not instead of them.
 
-<Note>**Skeleton page.** The structure and links are final; the lesson lands in the production pass.</Note>
+## The folklore this lesson kills
 
-## What this lesson gives you
+The moment a subscriber cancels, an instinct fires: *save the revenue.* And the fastest way to look like you're saving it is to fire your deepest discount at everyone who left. One list, one big number, send. It feels decisive. It is the single most expensive reflex in winback, and it fails in two directions at once.
 
-- The winback sequence: 30/60/90-day windows and what each can say.
-- Offers that re-open the door vs offers that smell like desperation.
-- What NOT to send: the messages that convert a lapsed subscriber into an unsubscribe.
+It leaves money on the table with the people who were coming back anyway — you just handed them a discount they didn't need. And it torches the people who left for a reason a coupon can't fix, teaching them that your brand's real price is the discounted one, and converting a quiet lapse into an unsubscribe. **A cancellation is not a price objection. Treating every cancellation as one is how you turn a winnable list into a burned one.**
 
-<InOpenSubs>Placeholder — the boxed product contrast for this lesson lands with the content.</InOpenSubs>
+Here's what the ledger at one large subscription brand actually shows about winback done as a *system* rather than a blast — and, just as important, what it honestly can't show yet.
+
+## The decision: a sequence, not a send
+
+Winback is a **sequence keyed to time-since-cancel**, where the *message* escalates but the *discount* is the last lever you reach for, not the first. The store's own results support treating winback as many messages doing different jobs rather than one hero coupon: its post-cancel work spreads value across a handful of messages, and — the pattern that recurs across this brand's entire lifecycle program — **layered sequences out-earn single blasts.**
+
+The frame has three windows. Understand up front: the *shape* is an operating framework; the store's data does not contain response-by-timing-window data, so the day counts below are a starting grid to test, not a measured optimum.
+
+<Steps>
+  <Step title="Window 1 — the 0–30 day 'did something break?' reach">
+    Earliest and *cheapest.* No discount. This message assumes the lapse was friction, not rejection: a payment that failed, a delivery that ran late, too much product piling up. It offers to fix the friction — skip, delay, swap flavor, change cadence — not to cut price. Most of your genuine saves live here, and they cost you nothing but a well-timed question.
+  </Step>
+  <Step title="Window 2 — the 30–60 day 'here's what's new' re-open">
+    Value, not markdown. A new product, a restock, a use-case they never tried, the education email that would have kept them if they'd read it the first time. This is where you re-establish that the brand is worth returning to *before* you make returning cheaper.
+  </Step>
+  <Step title="Window 3 — the 60–90 day 'we'd love you back' offer">
+    *Now* the incentive comes out — once, bounded, and framed as a welcome-back, not a fire sale. Past ~90 days you are no longer running winback; you are running acquisition against a warm list, and it should be measured against acquisition, not against your active base.
+  </Step>
+</Steps>
+
+<div className="not-prose" style={{ border: "3px solid #000", backgroundColor: "#FFDE00", boxShadow: "4px 4px 0 0 #000", padding: "20px 24px", margin: "1.5rem 0" }}>
+  <p className="m-0" style={{ fontWeight: 900, fontSize: "20px", lineHeight: 1.3, textTransform: "uppercase", color: "#000" }}>The discount is the last thing you spend, on the people who didn't respond to anything cheaper.</p>
+</div>
+
+That ordering is the entire lesson.
+
+## What NOT to send
+
+This list is operating experience, corroborated by the store's rev-per-recipient and unsubscribe rows below.
+
+- **Your deepest discount to the whole list, on day one.** (The anti-lesson. You pay the people who'd have returned free, and you re-anchor everyone else to the low price.)
+- **The same offer on a loop.** Repetition doesn't persuade a lapsed subscriber; it trains them to wait and it drives the unsubscribe you were trying to avoid.
+- **"We miss you" with nothing behind it.** Sentiment without a reason-to-return or a fixed friction converts nobody and consumes send reputation.
+- **A winback that ignores *why* they might have left.** Cancel reasons are absent from this store's data — there is no field for "too much product," "too expensive," "quality," "moved on." Until you capture a cancel reason, you are guessing at the job each message does. Capturing it is the highest-leverage upgrade to this whole sequence, which is why it's the first thing your save-flow should ask.
+
+## The proof (one measured case, hedges attached)
+
+A structured winback program is genuinely in market at this brand, and it works — modestly. Across **21 named winback email campaigns** the program attributed roughly **2,100 conversions** and **~$300,000** in value. Put in per-campaign terms so it maps onto your own calendar: that's about **$14k and ~100 conversions per campaign** on average, at roughly **$0.50 of attributed revenue per recipient.** The best single winback campaign carried the average — about **$66k and ~470 conversions** off one large send, at a ~0.6% conversion rate.
+
+Two derived comparisons make the number honest. That **$0.50 per recipient** sits far below this same store's high-intent recovery flows (checkout recovery earns roughly *twelve times* as much per recipient) — winback reaches a colder audience and it shows. And the program skews to its own first year: about **$250k across 16 campaigns** in year one versus **~$52k across 5** in year two, i.e. the reachable, recently-lapsed pool gets worked down over time. Winback is a layer you maintain, not a well you can pump.
+
+**The central hedge — said out loud.** Every figure above is *platform-attributed,* not incrementality-tested. Critically, **there is no holdout anywhere in this data.** That means some unknown share of those ~2,100 "recovered" conversions are people who would have come back on their own — the winback email merely got the credit because it landed near their return. Without a control group you cannot know if the true number is 2,100 or 900. This is not a footnote; it is the difference between what winback *earns* and what it *is credited with.* You will build the fix for it in [Winback economics](/growth-program/winback/winback-economics). Gurus print the $300k. Operators print the $300k *and the fact that they haven't proven half of it yet* — and then go run the holdout.
+
+## The artifact — the winback sequence blueprint
+
+Take this, drop in your own cadence, and test it against a holdout:
+
+```text The blueprint
+TRIGGER: subscription cancelled → enter sequence, tag with cancel-date + reason (if captured)
+
+WINDOW 1  ·  ~0–30 days  ·  JOB: remove friction   ·  OFFER: none
+   "Did something not work?" → skip / delay / swap / change cadence.
+   Escalation lever: none. This is a question, not a pitch.
+
+WINDOW 2  ·  ~30–60 days  ·  JOB: re-open the door  ·  OFFER: value, not markdown
+   What's new / restocked / the use-case they missed / the education that retains.
+
+WINDOW 3  ·  ~60–90 days  ·  JOB: incentive         ·  OFFER: ONE bounded welcome-back
+   Deepest lever you'll use — used last, once, on non-responders only.
+
+>90 days → EXIT winback. Move to warm-acquisition, measured as acquisition.
+
+RULES:  discount is spent last · never loop the same offer · every send has a
+        reason-to-return OR a fixed friction · always run a holdout arm.
+```
+
+<InOpenSubs>The cancel event, the cancel reason, and the days-since-cancel timer are all first-class platform fields — the sequence branches on them without an export or a spreadsheet, and a holdout arm is a toggle on the flow, not a workaround.</InOpenSubs>
 
 ## Where next
 
 <Columns cols={2}>
   <Card title="Reactivating paused" href="/growth-program/winback/reactivating-paused">
-    Your warmest list.
+    The warmer list that never technically left.
+  </Card>
+  <Card title="Winback economics" href="/growth-program/winback/winback-economics">
+    When a lapsed subscriber is worth paid retargeting — and the holdout that tells you whether any of this is real.
   </Card>
 </Columns>

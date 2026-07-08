@@ -1,28 +1,89 @@
 ---
 title: "Winback economics"
-description: "When lapsed is worth paid retargeting."
+description: "When a lapsed subscriber is worth paid retargeting, when it's email-only, and the holdout that tells you the truth."
 ia: "M9.3"
 ---
 
-import { PlatformTag } from "/snippets/PlatformTag.jsx";
 import { InOpenSubs } from "/snippets/InOpenSubs.jsx";
 
-<PlatformTag platform="any" />
+## The folklore this lesson kills
 
-<Note>**Skeleton page.** The structure and links are final; the lesson lands in the production pass.</Note>
+"Winback revenue is free money." It's the most seductive line in retention, and it's the one that empties marketing budgets. It rests on a single unexamined move: reading *attributed* winback revenue as *incremental* winback revenue. They are not the same number, and the gap between them is exactly the size of the mistake.
 
-## What this lesson gives you
+**Attribution without a holdout inflates winback more than any other channel,** because winback deliberately targets people with the highest baseline probability of returning on their own — former customers who liked you enough to buy before. The email lands near their natural return and takes the credit. Call that "free money" and you'll happily pour paid retargeting dollars on top of a number that's partly a mirage. This lesson gives you the two tools that pop it: an owned-channel-first spend rule, and a DIY holdout you can run this quarter.
 
-- The lapsed-subscriber value model: expected LTV of a reactivation.
-- Email-only vs paid retargeting: the cost lines that decide.
-- Cohorting winbacks: reactivated subscribers churn differently. Track them apart.
+## The decision: owned channel first, paid only where the math clears
 
-<InOpenSubs>Placeholder — the boxed product contrast for this lesson lands with the content.</InOpenSubs>
+The rule is a ladder, cheapest rung first:
+
+1. **Email/owned first, always.** A lapsed subscriber's marginal cost to reach by email is effectively zero. Exhaust the owned-channel sequence before you spend a cent of media on them.
+2. **SMS second, selectively.** Higher cost and higher unsub risk than email, but still owned and still cheap. Reserve it for lapsed segments where you have a strong reason-to-return.
+3. **Paid retargeting last, and only where the unit math clears.** A lapsed subscriber is worth paid media only when the expected *incremental* value of a reactivation exceeds the cost to reactivate via paid — where "incremental" means HOLDOUT-CORRECTED, not attributed. Skip the holdout correction and you'll green-light paid spend against inflated value. That's the trap the anti-lesson walks brands into.
+
+## The proof (one measured case, hedges attached)
+
+This store's SMS data settles the owned-channel-first argument on its own, because it lets you rank audiences by efficiency. Measured in dashboard ROI:
+
+| SMS audience | Dashboard ROI | What it tells you |
+| --- | --- | --- |
+| Behavioral automations (cart / checkout / browse) | ~**338x** | Prevention & intent-recovery territory |
+| Active-subscriber sends | ~**118x** | Your warm, current base |
+| **Lapsed / former / winback audience** | ~**16x** | **The weakest SMS audience in the store** |
+
+Winback is the **weakest SMS audience here — roughly 16x versus ~118x for subscriber sends and ~338x for the behavioral automations.** In hard terms the lapsed-SMS layer moved about **$94k on ~735 orders.** Real revenue — but the *lowest efficiency of any audience the store sends to.* That ranking is the whole owned-channel-first logic in one table: if your warmest sends return ~118x and your prevention automations ~338x, spending scarce budget (or worse, paid media) against the ~16x lapsed audience is the last place your next dollar should go, not the first. (Hedge: dashboard-attributed ROI, not incrementality; audience definitions are inferred from send names; ~16x is *still* undoubtedly overstated versus its true incremental value, for the no-holdout reason below.)
+
+**The central hedge, and the fix.** Everything above — the email $300k in [Recapturing cancelled](/growth-program/winback/recapturing-cancelled), the SMS $94k here — is platform-attributed with **no holdout anywhere in this data.** Some share of every "recovered" customer would have returned unprompted. You cannot know your share by staring at the dashboard harder.
+
+<div className="not-prose" style={{ border: "3px solid #000", backgroundColor: "#FFDE00", boxShadow: "4px 4px 0 0 #000", padding: "20px 24px", margin: "1.5rem 0" }}>
+  <p className="m-0" style={{ fontWeight: 900, fontSize: "20px", lineHeight: 1.3, textTransform: "uppercase", color: "#000" }}>You have to withhold.</p>
+</div>
+
+## The artifact — the winback ROI worksheet (with a DIY holdout design)
+
+**Part A — the value model (fill with your numbers):**
+
+```text Part A
+Expected value of a reactivation:
+  reactivated AOV ............................. $______
+  × expected # orders before re-lapse ......... ______   (cohort these SEPARATELY —
+  × contribution margin % ..................... ______%    reactivated subs churn on
+  = gross expected value per reactivation ..... $______    a different curve than natives)
+
+Then DISCOUNT it to incremental:
+  × (1 − would-have-returned-anyway rate) ..... ______%   ← from Part B holdout
+  = INCREMENTAL expected value ................ $______
+
+Spend rule:
+  Email/owned  → run always (marginal cost ≈ 0).
+  SMS          → run if incremental value clears SMS cost + unsub cost.
+  Paid retarget→ run ONLY if incremental value > paid CAC-to-reactivate.
+```
+
+**Part B — the holdout your platform should run (the number gurus never show):**
+
+```text Part B
+1. At winback-sequence entry, RANDOMLY hold back 10% of the eligible lapsed list.
+   Random, not "the ones we forgot" — bias in selection = a worthless control.
+2. Send the full sequence to the other 90%. Send the holdout NOTHING.
+3. After the window (e.g. 90 days), compare RETURN RATE:
+       treated return rate  −  holdout return rate  =  INCREMENTAL lift
+4. Incremental reactivations = lift × treated population.
+   Would-have-returned-anyway rate = holdout return rate ÷ treated return rate.
+5. Feed that rate back into Part A. NOW your ROI is real, and your paid-spend
+   decision is honest.
+```
+
+The store in our data has run NO holdout — so its own ~$300k / ~$94k figures are attributed, not incremental. This worksheet is exactly the instrument it (and you) are missing. Running it is the single highest-value upgrade to any winback program.
+
+<InOpenSubs>A randomized holdout arm is a native setting on the winback flow — the platform withholds a clean 10% and reports treated-vs-holdout return rates back to you, so "incremental" stops being a word you take on faith and becomes a number on your dashboard.</InOpenSubs>
 
 ## Where next
 
 <Columns cols={2}>
   <Card title="Subscription economics" href="/growth-program/numbers/subscription-economics">
-    The LTV inputs this reuses.
+    The LTV and contribution-margin inputs Part A reuses.
+  </Card>
+  <Card title="The first 60 days" href="/growth-program/first-60-days/welcome-sequence">
+    Where, at ~338x versus winback's ~16x, the store's data says the money actually is. Winback is the insurance layer. Prevention is the business.
   </Card>
 </Columns>

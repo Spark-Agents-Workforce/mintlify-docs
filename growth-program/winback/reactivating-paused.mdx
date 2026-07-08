@@ -1,28 +1,73 @@
 ---
 title: "Reactivating paused"
-description: "Your warmest list."
+description: "Your warmest list is the one that never said goodbye — and why prevention still beats it."
 ia: "M9.2"
 ---
 
-import { PlatformTag } from "/snippets/PlatformTag.jsx";
 import { InOpenSubs } from "/snippets/InOpenSubs.jsx";
 
-<PlatformTag platform="any" />
+## The folklore this lesson kills
 
-<Note>**Skeleton page.** The structure and links are final; the lesson lands in the production pass.</Note>
+Most dashboards bucket "paused" next to "cancelled" and call the sum churn. That single grouping decision quietly costs brands their easiest revenue. **A paused subscriber didn't reject you — they asked for room.** They have product left. They're traveling. Their cadence was slightly wrong. Filed under "churned," they get either ignored or hit with the same apologetic winback discount you'd send a hard cancel — insulting to someone who never left, and a discount you didn't need to give.
 
-## What this lesson gives you
+Paused is not churned. Paused is **the warmest list you own** — warmer than any lookalike audience you will ever buy, because these people are one nudge from a resume, not one pitch from a first purchase. This lesson is about working that list gently, and about a harder truth the store's numbers force into view: even a warm resurrection list is dwarfed by prevention.
 
-- The paused segment: warmer than any lookalike audience you'll ever buy.
-- Auto-resume nudges: timing and tone.
-- Pause-extension vs reactivation offers — when to give more room instead.
+## The decision: nudge the resume, don't sell the return
 
-<InOpenSubs>Placeholder — the boxed product contrast for this lesson lands with the content.</InOpenSubs>
+The paused segment runs on a different instrument than cancels. Three moves, in order of how much you're allowed to ask:
+
+- **The auto-resume nudge.** Before a pause auto-expires, a low-pressure heads-up: *your next order is scheduled for [date] — need to change anything?* No offer. The job is to convert a scheduled resume into a *welcomed* resume so it doesn't become a cancel the day the charge lands. (The store's data shows resume *events* but no resume-nudge cadence or response data — the timing here is a starting point to test, not a measured cadence.)
+- **Pause-extension over reactivation offer — the counterintuitive move.** When someone still has product, the right offer is often *more room, not a discount.* Extending the pause (or letting them skip again) keeps the subscription alive at zero margin cost and avoids the cancellation that a badly-timed charge would have triggered. You reach for a reactivation *incentive* only when the relationship has actually gone cold — not when it's merely paused. Giving a discount to someone who only needed another three weeks is pure margin donation.
+- **The reactivation offer, reserved.** Same discipline as [Recapturing cancelled](/growth-program/winback/recapturing-cancelled): the incentive is the last lever, for genuinely lapsed pauses that ignored the nudges.
+
+## The proof (one measured case, hedges attached)
+
+Two things are true in this store's data at once, and the tension between them *is* the lesson.
+
+**First: the reactivation motion is real and accelerating.** Over roughly six months the store logged about **1,200 reactivations** and **700 resumes** — meaningful volume, not noise. The save/resume signal has been climbing since instrumentation began: the save/resume ratio roughly **quintupled** (about 1.3% to 5.7%) across three quarters. A resume/reactivation habit is forming, and it's worth building flows around.
+
+**Second — and this is the number that reframes the whole module: cancellations dwarf both.** Over that same half-year the store logged roughly **37,000 cancellations** against those ~1,200 reactivations and ~700 resumes combined. Resurrection recovers on the order of **one subscriber for every twenty that leave.** (Hedge: these are lifecycle *event* counts, not distinct-subscriber churn — creates and cancels aren't deduped to people. But the order of magnitude is not in doubt.)
+
+The email flows say the same thing in dollars. The post-cancel **reactivation flow** attributes about **$32k**; the upstream **churn-prevention flow** attributes about **$1.17M** across dozens of distinct messages. That's prevention out-earning post-cancel reactivation by roughly **37 to 1.**
+
+**So the honest teaching is a hierarchy, not a hype.** Work the paused list — it's warm, it's cheap, the resume nudge is nearly free and the volume is climbing. But do not let a winback module fool you into thinking resurrection is where the growth is. The prevention flows keep twenty subscribers for every one this module wins back.
+
+<div className="not-prose" style={{ border: "3px solid #000", backgroundColor: "#FFDE00", boxShadow: "4px 4px 0 0 #000", padding: "20px 24px", margin: "1.5rem 0" }}>
+  <p className="m-0" style={{ fontWeight: 900, fontSize: "20px", lineHeight: 1.3, textTransform: "uppercase", color: "#000" }}>Reactivation is the net under the trapeze. Prevention is the trapeze.</p>
+</div>
+
+(One measured case; attribution, not incrementality — but the prevention-beats-resurrection ratio is so wide that even a generous holdout correction wouldn't flip it.)
+
+## The artifact — the paused-segment playbook
+
+```text The playbook
+SEGMENT PAUSED SEPARATELY FROM CANCELLED. Never merge the two into "churn."
+
+STATE: pause scheduled to auto-resume
+   → AUTO-RESUME NUDGE (no offer): "Next order [date] — change anything?"
+     Goal: turn a silent resume into a welcomed one, pre-empt the charge-day cancel.
+
+STATE: still has product / asked for room
+   → PAUSE-EXTENSION or extra skip (no offer). Keep it alive at zero cost.
+     Reactivation DISCOUNT here = margin donation. Don't.
+
+STATE: pause gone cold, ignored the nudges
+   → RESERVED reactivation offer (last lever, once).
+
+MEASURE AGAINST THE RIGHT DENOMINATOR:
+   reactivations + resumes recovered  ÷  cancellations in the same window.
+   If that ratio is ~1:20 (this store), your leverage is UPSTREAM (prevention), not here.
+```
+
+<InOpenSubs>Paused, resumed, and cancelled are distinct lifecycle states in the platform, not one "churn" bucket — so the paused segment gets its own flow, the auto-resume nudge fires off the scheduled-charge date automatically, and a pause-extension is a one-click offer that never touches your discount codes.</InOpenSubs>
 
 ## Where next
 
 <Columns cols={2}>
   <Card title="Winback economics" href="/growth-program/winback/winback-economics">
-    When lapsed is worth paid retargeting.
+    How much a lapsed subscriber is actually worth — and whether to spend paid dollars chasing them.
+  </Card>
+  <Card title="Churn defense" href="/growth-program/churn-defense/cancellation-flow-design">
+    Where, per the ratio above, the real money is kept.
   </Card>
 </Columns>
