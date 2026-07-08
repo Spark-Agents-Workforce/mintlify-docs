@@ -8,6 +8,10 @@ import { PlatformTag } from "/snippets/PlatformTag.jsx";
 
 <PlatformTag platform="any" />
 
+<div className="not-prose" style={{ border: "3px solid #000", boxShadow: "5px 5px 0 0 #000", margin: "2rem 0", lineHeight: 0 }}>
+  <img src="/images/scenes/history-2014-today-mint.jpg" alt="2014: the platform hand sweats cranking the register, vault on its back, 1% + 19¢ tag. Today: the checkout has walked away sparkling and the same hand stands idle — tag now 1.49% + 19¢" style={{ width: "100%", margin: 0 }} noZoom />
+</div>
+
 The percentage used to be honest.
 
 Go back to 2014. Shopify had no native way to do subscriptions — no recurring billing, no stored cards for repeat charges, nothing. If you wanted to sell a subscription on Shopify, you needed someone to build all of that next to Shopify. The company that became the giant of that era was Recharge — and here's the part people forget: Recharge wasn't an app inside your checkout. Recharge WAS the checkout.
@@ -18,9 +22,6 @@ Now look at the fee through that lens: a percentage of revenue, plus a per-trans
 
 Then the ground moved.
 
-<div className="not-prose" style={{ border: "3px solid #000", boxShadow: "5px 5px 0 0 #000", margin: "2rem 0", lineHeight: 0 }}>
-  <img src="/images/scenes/history-2014-today-mint.jpg" alt="2014: the platform hand sweats cranking the register, vault on its back, 1% + 19¢ tag. Today: the checkout has walked away sparkling and the same hand stands idle — tag now 1.49% + 19¢" style={{ width: "100%", margin: 0 }} noZoom />
-</div>
 
 In October 2020, Shopify shipped the [Subscriptions API](https://shopify.dev/changelog/subscriptions-api-scopes-are-now-available-by-request). By November 2020, [the first subscription apps built inside Shopify's own checkout went live](https://www.shopify.com/news/merchants-can-now-offer-subscriptions-and-post-purchase-upsells-directly-in-shopify-checkout) — and Shopify de-listed apps that bypassed its checkout for new installs. [Their own changelog](https://shopify.dev/changelog/new-subscription-and-post-purchase-up-sell-app-collections-available-now) says it plainly: apps that bypass the Shopify checkout "will no longer be available for download."
 
