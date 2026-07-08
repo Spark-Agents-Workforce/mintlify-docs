@@ -1,20 +1,80 @@
 ---
 title: "Site-wide tactics"
-description: "Announcement bars, exit intent, the why-subscribe page."
+description: "Announcement bars that attach, exit intent worth interrupting for, and the why-subscribe page."
 ia: "M4.6"
 ---
 
-import { PlatformTag } from "/snippets/PlatformTag.jsx";
 import { InOpenSubs } from "/snippets/InOpenSubs.jsx";
 
-<PlatformTag platform="any" />
+**The anti-lesson this kills: "site-wide banners are noise."**
 
-<Note>**Skeleton page.** The structure and links are final; the lesson lands in the production pass.</Note>
+The reflexive verdict on announcement bars, exit-intent pop-ups, and the like is that they're clutter — banner blindness, interruption, the stuff a serious brand outgrows. That verdict is right about *most* of what gets built and wrong as a rule. A banner that repeats "10% off!" forever is noise. A site-wide layer that carries the *one* thing you want every visitor to know — that subscribing is the smart way to buy here — and a why-subscribe page that answers the attach objection once and gets linked everywhere, is not noise. It's the connective tissue that makes the PDP, the collection, and the cart all point the same direction. The failure isn't the format; it's using the format to shout instead of to route.
 
-## What this lesson gives you
+## The decision
 
-- Announcement bars that attach subscribers, not just clicks.
-- Exit intent for subscriptions: the offer that's worth interrupting for.
-- The 'why subscribe' page: your attach-rate FAQ, built once, linked everywhere.
+Three site-wide moves, each judged by whether it *attaches*, not whether it gets clicks. (The announcement-bar doctrine, the exit-intent threshold, and the why-subscribe skeleton are frameworks from building these stores; the popup data measures capture, not attach.)
 
-<InOpenSubs>Placeholder — the boxed product contrast for this lesson lands with the content.</InOpenSubs>
+**Move 1 — announcement bars that attach, not just click.** An announcement bar has one scarce slot. Spend it on the message that moves your *attach* goal — "Subscribe & save on every order · skip anytime" — not on a generic discount that trains discount-waiting. The test isn't clicks; it's whether the bar sends a measurable share of visitors down the subscription path. If it just harvests coupon-hunters, it's earning clicks and costing you margin.
+
+**Move 2 — exit intent worth interrupting for.** Interrupting a leaving visitor is a real cost — it's an interruption, and it carries unsubscribe/annoyance pressure. So the bar is high: **only interrupt for an offer genuinely worth the interruption.** For a subscription store, the strongest exit-intent isn't "wait, 10% off" — it's capturing the email/SMS so [the flip flow](/growth-program/store/converting-one-time-buyers) can do its patient work later, OR a genuine first-subscription incentive for a visitor about to leave without buying.
+
+<div className="not-prose" style={{ border: "3px solid #000", backgroundColor: "#FFDE00", boxShadow: "4px 4px 0 0 #000", padding: "20px 24px", margin: "1.5rem 0" }}>
+  <p className="m-0" style={{ fontWeight: 900, fontSize: "20px", lineHeight: 1.3, textTransform: "uppercase", color: "#000" }}>Interrupt to start a relationship, not to shave a point off one order.</p>
+</div>
+
+**Move 3 — the why-subscribe page.** Build one page that answers every subscription objection — how it works, what it costs, how to skip/swap/cancel, why it's the better way to buy — and link it from [the widget](/growth-program/store/pdp), [the badges and collection](/growth-program/store/collections-and-navigation), [the cart](/growth-program/store/cart-and-upsell), the announcement bar, and the flip flow. It's your attach-rate FAQ, built once and reused everywhere. The point isn't traffic to the page; it's that every other surface can outsource "but what if I want to cancel?" to one authoritative answer instead of re-litigating it in six places.
+
+## The proof (and its honest edge)
+
+The site-wide evidence in the data is the popup capture layer, and it teaches two precise things — while proving nothing about attach.
+
+At Brand A, onsite popups captured **~36,445 contacts in a single month** (~16,000 phone + ~20,400 email) — a major owned-list growth surface *(capture events, not orders or incremental revenue)*. That's the raw material the flip flow and the whole lifecycle engine feed on: the site-wide layer's real job is often *capture*, not immediate conversion — it starts the relationship that a later flow closes. Don't judge the exit-intent by same-session orders; judge it by the list it builds for the motions that compound.
+
+Second, creative changes capture rate materially: Brand A's **evergreen gamified popup captured ~10.59% vs the holiday-themed popup at ~7.31%**, with a non-US variant highest at ~11.95% *(capture rate; creative rules not in the export)*. The lesson: the *evergreen, always-on* mechanic out-captured the *seasonal* one — which mirrors the whole module's thesis that the durable, structural move beats the promotional spike. Test your capture creative; the always-on framing tends to win.
+
+Honest edge, stated loudly: **these are capture events, not attach or revenue.** The data proves popups build a big list and that creative moves capture rate. It does *not* prove any banner attached a subscriber, and there is no announcement-bar or why-subscribe-page data at all — those moves are operator frameworks, marked.
+
+## The artifact — the why-subscribe page skeleton
+
+Build this once. Link it from everywhere. It's the attach-rate FAQ the whole store outsources its objections to.
+
+```text The skeleton
+HERO
+  One line: why subscribing here is the smart way to buy (benefit, not discount).
+  One line: the control promise — "skip, swap, or cancel anytime."
+
+HOW IT WORKS (kill the mystery)
+  [ ] What arrives and how often (you choose the cadence)
+  [ ] What it costs vs one-time (the anchor, in plain terms)
+  [ ] How billing works and when you're charged (no surprises)
+
+THE OBJECTIONS (answer each once, here, for the whole store)
+  [ ] "What if I have too much?" → skip / reschedule, in two taps
+  [ ] "What if I want to change it?" → swap products / adjust quantity anytime
+  [ ] "What if I want out?" → cancel anytime, no call, no penalty
+  [ ] "Is it a better deal?" → the saving, stated honestly (plan price, not a code)
+
+THE PROOF
+  [ ] Real reviews from subscribers (the ritual, not just the product)
+  [ ] Support access, visible
+
+THE ASK
+  [ ] One clear path to start a subscription (to the hero collection / hero PDP)
+
+THEN WIRE IT UP (the page is only worth building if it's linked)
+  [ ] Linked from the widget, badges + collection, cart, announcement bar,
+      and the flip flow
+```
+
+<InOpenSubs>The announcement bar, exit-intent capture, and why-subscribe page all point at the same selling-plan start path, so "subscribe" means one consistent thing across every site-wide surface.</InOpenSubs>
+
+## Where next
+
+<Columns cols={2}>
+  <Card title="PDP: the subscription widget" href="/growth-program/store/pdp">
+    The widget every site-wide surface routes toward.
+  </Card>
+  <Card title="Converting one-time buyers" href="/growth-program/store/converting-one-time-buyers">
+    The flow the exit-intent capture feeds.
+  </Card>
+</Columns>

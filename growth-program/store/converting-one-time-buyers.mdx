@@ -1,34 +1,81 @@
 ---
 title: "Converting one-time buyers"
-description: "The highest-ROI motion in subscriptions."
+description: "The highest-ROI motion in subscriptions: they already know you, trust you, and bought."
 ia: "M4.5"
 ---
 
-import { PlatformTag } from "/snippets/PlatformTag.jsx";
 import { InOpenSubs } from "/snippets/InOpenSubs.jsx";
 
-<PlatformTag platform="any" />
+**The anti-lesson this kills: "one-time buyers chose one-time." They chose *not-yet*.**
 
-<Note>**Skeleton page.** The structure and links are final; the lesson lands in the production pass.</Note>
+The story operators tell themselves about one-time buyers is that they *decided* — they saw the subscription, weighed it, and picked one-time, so pursuing them is disrespecting a choice they already made. That story is almost always wrong. Most one-time buyers didn't reject the subscription; they hadn't yet lived with the product, didn't yet trust the cadence, didn't yet know they'd want it again. They chose *not-yet*, not *no*. And that makes them the single highest-ROI audience in your entire store: people who have already paid you, already received the product, already crossed the trust barrier. You don't have to acquire them. You have to ask again, at the right moment, with the right offer.
 
-## What this lesson gives you
+## The decision — timing, offer, flow
 
-- Why this is the highest-ROI motion: they already know, trust, and bought.
-- Timing: after the 2nd purchase? The data on when the flip works.
-- The offer that flips them, and the flow that delivers it.
+**The timing framework.** (This is a framework from operating experience, NOT a measured curve.) The flip works when the buyer has *lived the value* — used the product, felt the run-out, and has a fresh, concrete reason to want it again. That points the primary flip window at **the moment they'd naturally reorder**: as the first order runs low, or right after a strong second purchase (the second purchase proves the *not-yet* was really *yes-soon*).
 
-<InOpenSubs>Placeholder — the boxed product contrast for this lesson lands with the content.</InOpenSubs>
+<div className="not-prose" style={{ border: "3px solid #000", backgroundColor: "#FFDE00", boxShadow: "4px 4px 0 0 #000", padding: "20px 24px", margin: "1.5rem 0" }}>
+  <p className="m-0" style={{ fontWeight: 900, fontSize: "20px", lineHeight: 1.3, textTransform: "uppercase", color: "#000" }}>Flip when the customer has felt the need twice — once buying, once running out.</p>
+</div>
+
+And here is the honest gap, stated plainly: **there is NO order-2-vs-order-3 flip-timing data in either store.** The right window — after order one? after order two? — is an operator framework you must validate on your OWN reorder and flip rates. Do not trust anyone who prints a "flip after order N" benchmark; our register has none, and we've never seen an honest one.
+
+**The offer that flips.** The flip offer has one job: make subscribing feel like the obvious upgrade from the reorder they were already going to make. A first-subscription incentive, framed as "you already love it — lock it in and save," is the instrument. On sizing, the data gives you a real anchor from the acquisition moment (adjacent, not identical): when Brand A moved its first-order subscription offer to **25%**, **subscription first-orders rose from ~13.7% to ~20.1% of all paid orders and daily sub starts rose ~53%** *(acquisition-window signal; lift in starts, not proven downstream quality)*. That proves offer depth *reshapes the choice between one-time and subscribe at the decision moment* — which is exactly the choice you're re-opening with a past buyer. Size your flip offer as a bounded bet the same way [The discount question](/growth-program/offer/the-discount-question) sizes any first-order offer.
+
+**The flow that delivers.** The flip isn't a banner; it's a triggered sequence that catches the buyer at the reorder moment with the offer and a one-tap path to subscribe.
+
+## The proof (and its honest edge)
+
+Two facts from the data frame why this motion is the highest-ROI one you have.
+
+First, the **post-purchase flow is Brand A's largest single lifecycle engine — ~$2.21M attributed across a broad, multi-message sequence** whose stated jobs include *usage reinforcement, complementary paths, and second-purchase prompts* *(platform-attributed, not incrementality-tested; shape inferred from structure)*. The infrastructure to flip one-time buyers already lives in the post-purchase engine — you're extending a proven flow, not building a cold one. And the machine's job description already points at the second purchase, which is the flip.
+
+Second, on why past buyers are the durable base worth converting: at Brand A the **recurring base carried the business even through BFCM** — direct/brand demand plus recurring orders dwarfed the transactions attributable to sale email in the tentpole window *(attribution not incrementality)*. Brand demand compounds; campaigns amplify. The subscriber base you build by flipping one-time buyers is the compounding layer that carries you when the promo calendar goes quiet — which is precisely why converting an existing buyer beats acquiring a stranger.
+
+Honest edge: the 25%-offer rows measure the *acquisition-moment* choice, not the flip of an existing one-time buyer, and no flip-timing curve exists. What the data licenses is "offer depth reshapes the sub-vs-one-time choice, and the post-purchase engine is the place to re-open it." What it does *not* license is any "flip after order N" or "flip offer of X% converts Y%" claim — those are gaps, marked.
+
+## The artifact — the flip flow blueprint
+
+A triggered sequence, not a broadcast. Timing is an operator call — no flip-timing data exists; map the trigger to your product's real run-out point.
+
+```text The blueprint
+TRIGGER
+  A one-time buyer hits the natural reorder moment (est. run-out of order 1,
+  OR immediately after a strong second one-time purchase). Validate the window
+  on YOUR reorder data — no flip-timing curve exists anywhere.
+
+MESSAGE 1 — THE REORDER + THE FLIP (the money message)
+  Job: "Running low? Reorder in one tap — or subscribe and save, since you're
+  reordering anyway." Lead with the flip; make one-time reorder the fallback.
+  One-tap path straight to a subscription of the item they already bought.
+
+MESSAGE 2 — THE VALUE, NOT THE DISCOUNT (~a few days later, if no action)
+  Job: reframe subscription as control and convenience (never run out, skip
+  anytime), not just the saving. Answer the "am I locking into a trap?" doubt
+  with the skip/swap/cancel promise.
+
+MESSAGE 3 — THE BOUNDED OFFER (final touch, if still no action)
+  Job: the sized first-subscription incentive, framed as "lock in what you
+  already love." Bounded bet, not a standing discount.
+
+AFTER THE FLIP
+  Hand off to the welcome/onboarding engine — a flipped buyer is a NEW
+  subscriber emotionally; run the second-order-cliff protection.
+
+MEASURE (build the instrument the data lacks)
+  Track flip rate by trigger window (post-order-1 vs post-order-2) so YOU own
+  the flip-timing data nobody else has.
+```
+
+<InOpenSubs>The flip flow reads a past buyer's exact purchased item and offers the matching selling plan in one tap — the reorder and the subscription are the same object, so "flip" is a toggle, not a re-purchase.</InOpenSubs>
 
 ## Where next
 
 <Columns cols={2}>
-  <Card title="List-first acquisition" href="/growth-program/traffic/list-first-acquisition">
-    Feeding this motion from the list.
-  </Card>
-  <Card title="Welcome sequence" href="/growth-program/first-60-days/welcome-sequence">
-    What happens after the flip.
+  <Card title="The welcome sequence" href="/growth-program/first-60-days/welcome-sequence">
+    What runs after the flip lands — a flipped buyer is a new subscriber emotionally.
   </Card>
   <Card title="Site-wide tactics" href="/growth-program/store/site-wide-tactics">
-    Announcement bars, exit intent, the why-subscribe page.
+    The banners and why-subscribe page that soften the ask before the flow.
   </Card>
 </Columns>

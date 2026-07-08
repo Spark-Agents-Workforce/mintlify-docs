@@ -1,28 +1,80 @@
 ---
 title: "Cart & upsell"
-description: "In-cart sub-upgrade, threshold offers, order bumps."
+description: "The in-cart subscription upgrade, threshold offers, and order bumps — where a second attach chance lives, and where friction quietly kills conversion."
 ia: "M4.3"
 ---
 
-import { PlatformTag } from "/snippets/PlatformTag.jsx";
 import { InOpenSubs } from "/snippets/InOpenSubs.jsx";
 
-<PlatformTag platform="any" />
+**The anti-lesson this kills: "upsells are free money."**
 
-<Note>**Skeleton page.** The structure and links are final; the lesson lands in the production pass.</Note>
+The pitch every upsell app sells you is that upsells are pure upside — bolt one on, revenue goes up, no cost. That is the most expensive belief in this module, because every upsell you add to the cart is a decision you force on a buyer who had *already decided to buy*. Get it right and the cart is a second, softer chance to attach the one-time buyer who slipped past the PDP. Get it wrong and you've inserted friction at the exact moment of highest purchase intent — and friction there doesn't cost you the upsell, it costs you the *order*. Upsells are not free money. They are a trade, and you have to know what you're trading.
 
-## What this lesson gives you
+## The decision
 
-- The in-cart upgrade: 'make it a subscription, save 15%' done right.
-- Threshold offers and order bumps that don't derail checkout.
-- Where upsells help attach and where they add friction.
+Three cart moves, each with a friction budget. (The in-cart upgrade design, the threshold sizing, and the bump-vs-friction rule are frameworks from building these carts; the data has no in-cart attach row. The lifecycle rows below illustrate the *cost of friction*, not the *lift of a bump*.)
 
-<InOpenSubs>Placeholder — the boxed product contrast for this lesson lands with the content.</InOpenSubs>
+**Move 1 — the in-cart subscription upgrade, done right.** This is the highest-value cart move: a one-time buyer sits in the cart, and you offer "Make it a subscription and save 15%" as a single toggle that upgrades the line item in place. Done right it is *one tap, no re-add, no navigation* — the item they already chose, upgraded, with the saving shown inline. Done wrong it's a pop-up modal that interrupts the checkout march, or a swap that empties and rebuilds the cart.
+
+<div className="not-prose" style={{ border: "3px solid #000", backgroundColor: "#FFDE00", boxShadow: "4px 4px 0 0 #000", padding: "20px 24px", margin: "1.5rem 0" }}>
+  <p className="m-0" style={{ fontWeight: 900, fontSize: "20px", lineHeight: 1.3, textTransform: "uppercase", color: "#000" }}>The upgrade must be lighter than the effort of ignoring it. If saying no is easier than saying yes, you've built it right.</p>
+</div>
+
+**Move 2 — threshold offers.** "Add $X for free shipping" / "Spend $Y, get a gift." These nudge AOV *up* — the opposite of what a discount does to the same order (see [Free gifting](/growth-program/offer/free-gifting)) — and they're most powerful when the threshold is set just above your current AOV, close enough to feel reachable. The failure is a threshold set so high it reads as a tax, or a threshold that distracts from the subscription upgrade you actually want. One offer at a time in the cart; two competing offers cancel each other.
+
+**Move 3 — order bumps vs friction.** An order bump is a pre-checkout add-on ("add the travel size?"). A bump is worth it *only* when it's genuinely relevant to what's in the cart and adds zero steps. Every irrelevant bump, every extra tap, every modal is a withdrawal from a friction budget you cannot see until conversion drops. The discipline: **one relevant bump maximum, and only if it clears the friction budget.** When in doubt, cut it — the order you protect is worth more than the bump you might win.
+
+## The proof (and its honest edge)
+
+The data has no in-cart upgrade attach numbers. What it has is a loud, measured lesson about how much the cart-to-checkout moment is worth — which is exactly why you protect it.
+
+At Brand A, the **abandoned-checkout recovery flow earns the highest revenue-per-recipient of any lifecycle flow in the store — ~$6.15 per recipient, with its hero message at ~$9.45** *(platform-attributed, not incrementality-tested)*. Read that backwards: the reason abandoned-checkout recovery is the single most valuable-per-person flow is that the people who reach the cart and *don't* finish are enormously valuable and enormously close. Anything you add to the cart that increases abandonment is destroying the most valuable recovery pool you have. Friction in the cart isn't a lost upsell; it's a lost near-buyer.
+
+Second proof, on the flip side — cart-stage interventions *do* work when they're behavior-triggered and relevant: Brand A's **behavioral cart/checkout SMS automations returned ~337.9x ROI, with returning-customer checkout recovery as high as ~$19.49 per message** — but at a **higher unsubscribe rate** than any other flow *(attribution only; higher unsub pressure noted in-source)*. That is the whole lesson of this lesson in one row: interventions at the cart moment are high-value *and* high-cost. They work, and they carry friction. You run them anyway — carefully, one at a time, watching the unsub and the abandonment as the price of admission.
+
+Honest edge: these are recovery-flow and SMS rows, not in-cart-bump rows. They prove the cart moment is precious and that friction there is expensive. They do not put a number on any bump's lift — that number doesn't exist.
+
+## The artifact — the cart decision tree
+
+Run every proposed cart element through this before it ships.
+
+```text The decision tree
+START: A one-time item is in the cart. What do you want most?
+  → Almost always: ATTACH IT (upgrade to subscription). Everything else is secondary.
+
+THE IN-CART UPGRADE (do this first)
+  Is the "make it a subscription" upgrade ONE tap, in place, no re-add?
+    NO  → fix that before adding anything else. This is the highest-value move.
+    YES → is the saving shown inline, in the customer's terms?
+            NO → add it.  YES → ship it. Move on.
+
+ADDING A THRESHOLD OFFER?
+  Is there already an active offer competing for attention in the cart?
+    YES → stop. One offer at a time. Kill the weaker one.
+    NO  → is the threshold set just above current AOV (reachable, not a tax)?
+            NO → resize it.  YES → ship it.
+
+ADDING AN ORDER BUMP?
+  Is it genuinely relevant to what's in THIS cart?
+    NO  → cut it. Irrelevant bumps spend the friction budget for nothing.
+    YES → does it add any steps, modals, or taps to reach checkout?
+            YES → cut it or make it zero-step.
+            NO  → one bump maximum. Ship it.
+
+THE FRICTION CHECK (run after any change)
+  Did cart→checkout conversion or abandonment move the wrong way?
+    YES → the last thing you added is the suspect. Remove it. The order > the upsell.
+```
+
+<InOpenSubs>The in-cart "make it a subscription" upgrade reads the item's selling plan and swaps the line in place — one tap, no cart rebuild, no second app deciding what "upgrade" means.</InOpenSubs>
 
 ## Where next
 
 <Columns cols={2}>
   <Card title="Checkout" href="/growth-program/store/checkout">
-    What Shopify allows. Trust elements. The post-purchase slot.
+    What you can and can't control once they pass the cart.
+  </Card>
+  <Card title="Free gifting" href="/growth-program/offer/free-gifting">
+    The threshold-gift math the cart offer runs on.
   </Card>
 </Columns>

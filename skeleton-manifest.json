@@ -446,50 +446,66 @@
     "title": "PDP",
     "platform": "any",
     "links": [
-      "/growth-program/offer/offer-architecture",
-      "/growth-program/offer/the-discount-question",
-      "/growth-program/store/collections-and-navigation"
-    ]
+      "/growth-program/store/collections-and-navigation",
+      "/growth-program/store/cart-and-upsell",
+      "/growth-program/first-60-days/second-order-cliff"
+    ],
+    "status": "PRODUCTION"
   },
   "growth-program/store/collections-and-navigation": {
     "ia": "M4.2",
     "title": "Collections & navigation",
     "platform": "any",
     "links": [
-      "/growth-program/store/cart-and-upsell"
-    ]
+      "/growth-program/store/pdp",
+      "/growth-program/store/site-wide-tactics"
+    ],
+    "status": "PRODUCTION"
   },
   "growth-program/store/cart-and-upsell": {
     "ia": "M4.3",
     "title": "Cart & upsell",
     "platform": "any",
     "links": [
-      "/growth-program/store/checkout"
-    ]
+      "/growth-program/store/checkout",
+      "/growth-program/offer/free-gifting"
+    ],
+    "status": "PRODUCTION"
   },
   "growth-program/store/checkout": {
     "ia": "M4.4",
     "title": "Checkout",
     "platform": "any",
     "links": [
-      "/growth-program/store/converting-one-time-buyers"
-    ]
+      "/growth-program/store/converting-one-time-buyers",
+      "/growth-program/first-60-days/welcome-sequence",
+      "/growth-program/store/pdp",
+      "/growth-program/store/cart-and-upsell"
+    ],
+    "status": "PRODUCTION"
   },
   "growth-program/store/converting-one-time-buyers": {
     "ia": "M4.5",
     "title": "Converting one-time buyers",
     "platform": "any",
     "links": [
-      "/growth-program/traffic/list-first-acquisition",
       "/growth-program/first-60-days/welcome-sequence",
-      "/growth-program/store/site-wide-tactics"
-    ]
+      "/growth-program/store/site-wide-tactics",
+      "/growth-program/offer/the-discount-question"
+    ],
+    "status": "PRODUCTION"
   },
   "growth-program/store/site-wide-tactics": {
     "ia": "M4.6",
     "title": "Site-wide tactics",
     "platform": "any",
-    "links": []
+    "links": [
+      "/growth-program/store/pdp",
+      "/growth-program/store/converting-one-time-buyers",
+      "/growth-program/store/collections-and-navigation",
+      "/growth-program/store/cart-and-upsell"
+    ],
+    "status": "PRODUCTION"
   },
   "growth-program/first-60-days/welcome-sequence": {
     "ia": "M5.1",

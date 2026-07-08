@@ -1,28 +1,83 @@
 ---
 title: "Checkout"
-description: "What Shopify allows. Trust elements. The post-purchase slot."
+description: "What Shopify checkout allows and what it never will, the trust elements a recurring commitment needs, and the post-purchase upsell slot."
 ia: "M4.4"
 ---
 
-import { PlatformTag } from "/snippets/PlatformTag.jsx";
 import { InOpenSubs } from "/snippets/InOpenSubs.jsx";
 
-<PlatformTag platform="any" />
+**The anti-lesson this kills: "checkout is Shopify's problem."**
 
-<Note>**Skeleton page.** The structure and links are final; the lesson lands in the production pass.</Note>
+Because Shopify owns the checkout, operators assume checkout is out of their hands — a black box they can't touch and therefore don't have to think about. That's half right and completely dangerous. It's true you can't rebuild Shopify's checkout the way you rebuild a PDP. It's false that this makes checkout someone else's problem. The constraint is the lesson: *because* you can't add trust and reassurance inside the checkout, you must build it everywhere *around* checkout — and you must understand exactly what the platform does and does not let you do, so you stop trying to fix what you can't and start fixing what you can.
 
-## What this lesson gives you
+## The decision — work with the platform's real edges
 
-- What Shopify checkout allows (and what it never will).
-- Trust elements that matter for a recurring commitment.
-- The post-purchase upsell slot: the one-click sub add after payment.
+First, the platform facts — written carefully, because an out-of-date platform claim is worse than no claim. All four verified against shopify.dev (2026-07-08):
 
-<InOpenSubs>Placeholder — the boxed product contrast for this lesson lands with the content.</InOpenSubs>
+- **You do not freely customize Shopify's checkout.** Checkout UI extensions for the information, shipping, and payment steps are **available only to Shopify Plus stores** — and even on Plus, customization runs through the sanctioned extension system, not arbitrary code. Extensions that appear *after* purchase (Thank you and Order status pages) are available to all plans except Starter. Non-Plus merchants get limited checkout branding and no custom content injection at the checkout steps.
+- **The legacy `checkout.liquid` path is retired.** It stopped working for in-checkout pages in August 2024, and its last remnants (Thank you / Order status pages) were sunset in August 2025. Anything a tutorial says about editing checkout templates directly is stale — Checkout Extensibility is the only path.
+- **Subscriptions require the Selling Plans API and a vaulting-capable payment method.** The card vault belongs to Shopify Payments — which is why a platform switch preserves cards — but it also means the recurring commitment is created through the selling plan plus explicit buyer consent, not through anything you script into the checkout page.
+- **There is a post-purchase slot, and it CAN add a subscription.** Shopify supports a post-purchase page that runs *after* payment, and a subscription (selling-plan) item can be added there one-click — the buyer's vaulted payment carries over, with an explicit subscription-consent checkbox required. The verified conditions that bound the tactic: (a) post-purchase checkout extensions are in **beta** — live stores must request access; (b) you **cannot** add a subscription to an order that already contains one; (c) you **cannot** convert an existing one-time line into a subscription — the slot ADDS a subscription item, it doesn't flip the original; (d) the order needs a shipping address (digital-only/local-pickup orders are out), Online Store channel only. Some third-party upsell apps claim one-time→subscription replacement flows; shopify.dev itself forbids the conversion — trust the primary source, and verify any app's claim against it.
+
+Given those edges, two operator moves. (The trust framework and the post-purchase judgment are experience calls; the platform facts above are verified.)
+
+**Move 1 — trust for a recurring commitment lives upstream.** Because you can't inject reassurance into the checkout itself, the trust that carries a *recurring* commitment has to be fully loaded *before* the buyer arrives: the "skip/swap/cancel anytime" promise on [the widget](/growth-program/store/pdp), the control language in [the cart](/growth-program/store/cart-and-upsell), visible support access, real reviews, and a clear statement of what recurs and when.
+
+<div className="not-prose" style={{ border: "3px solid #000", backgroundColor: "#FFDE00", boxShadow: "4px 4px 0 0 #000", padding: "20px 24px", margin: "1.5rem 0" }}>
+  <p className="m-0" style={{ fontWeight: 900, fontSize: "20px", lineHeight: 1.3, textTransform: "uppercase", color: "#000" }}>By the time they hit Shopify's checkout, the doubt should already be answered — because that's the last place you can answer it.</p>
+</div>
+
+**Move 2 — use the post-purchase slot as a low-friction attach.** The post-purchase page is the one place you *can* add content after checkout, and it's the softest possible attach: the payment is done, the risk is gone, and "add a subscription to your order — one click" costs the buyer nothing they've not already committed to. Verified above: the platform supports exactly this — with the beta-access step, the no-existing-subscription rule, and the adds-don't-flip nuance as the boundaries you design within. It's a genuine second (or third) attach chance, best offered on the companion or refill of the product they just bought, since the original line can't be converted in place.
+
+## The proof (and its honest edge)
+
+Two data rows show why the upstream-trust framing is right, not just tidy.
+
+First, the checkout moment is where the most valuable recovery in the store happens: Brand A's **abandoned-checkout flow earns the highest revenue-per-recipient of any flow — ~$6.15/recipient, hero message ~$9.45** *(platform-attributed, not incrementality-tested)*. People abandon at checkout for reasons you largely can't fix *inside* checkout — so the value gets recovered by a flow that fires afterward, and the trust that prevents the abandonment has to be built before. The data literally shows the money being recovered *around* a checkout you can't edit.
+
+Second, on how tightly the checkout moment converts when the trust is already there: Brand A's **behavioral checkout SMS returned up to ~$19.49 per message on returning-customer recovery at ~337.9x ROI** *(attribution only; higher unsub noted)* — returning customers, who already trust the brand, recover at the checkout edge far more efficiently than cold prospects. Trust built earlier is what makes the checkout-edge intervention pay.
+
+Honest edge: these are recovery-flow rows, not checkout-content experiments. They prove the checkout moment is high-value and that recovery happens around it. And platform facts move — the capability claims above were verified 2026-07-08; re-verify against shopify.dev before you build on them.
+
+## The artifact — the checkout trust checklist
+
+Because you can't build trust *in* checkout, this checklist verifies it's built *before* — plus the platform checks you run before relying on any checkout tactic.
+
+```text The checklist
+UPSTREAM TRUST (loaded before the buyer reaches Shopify's checkout)
+  [ ] "Skip / swap / cancel anytime" stated on the widget AND in the cart
+  [ ] What recurs, how often, and the exact price are unambiguous pre-checkout
+  [ ] Support access (chat / email / phone) is visible on cart and PDP
+  [ ] Real reviews / results present on the hero PDPs
+  [ ] No surprise at checkout: the recurring terms match what the widget promised
+
+PLATFORM REALITY (verified 2026-07-08 — re-verify before you build)
+  [x] Checkout-step UI extensions are Plus-only; post-purchase/Thank-you
+      extensions available to all plans except Starter
+  [x] checkout.liquid is fully retired — Checkout Extensibility is the only path
+  [x] Subscription = selling plan + vaulted payment + explicit buyer consent
+
+THE POST-PURCHASE SLOT (the one place you can add content after payment)
+  [x] A subscription item CAN be added one-click post-purchase — beta access
+      required; not on orders already containing a subscription; ADDS a sub
+      item, cannot flip the original line; shipping address + Online Store only
+  [ ] The offer is a genuine, relevant upgrade — not a bait add-on
+  [ ] It's one click, no re-entered payment, easy to decline
+
+RECOVERY (because some abandonment you cannot prevent in checkout)
+  [ ] An abandoned-checkout recovery flow exists (your highest rev/recipient flow)
+  [ ] It leads with reassurance for returning customers, not just a discount
+```
+
+<InOpenSubs>The recurring terms shown at the widget are the same selling-plan object Shopify's checkout charges against, so what the subscriber agreed to and what recurs can't drift apart.</InOpenSubs>
 
 ## Where next
 
 <Columns cols={2}>
   <Card title="Converting one-time buyers" href="/growth-program/store/converting-one-time-buyers">
-    The highest-ROI motion in subscriptions.
+    Recovering the buyers who checked out one-time.
+  </Card>
+  <Card title="The welcome sequence" href="/growth-program/first-60-days/welcome-sequence">
+    The first message after checkout completes.
   </Card>
 </Columns>
