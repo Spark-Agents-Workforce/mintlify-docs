@@ -1,31 +1,16 @@
 {
   "start/welcome": {
     "ia": "0.1",
-    "title": "Welcome",
+    "title": "You're in",
     "platform": "any",
-    "links": [
-      "/start/choose-your-door"
-    ]
-  },
-  "start/choose-your-door": {
-    "ia": "0.2",
-    "title": "Choose your door",
-    "platform": "any",
+    "status": "PRODUCTION",
     "links": [
       "/instant-win/why-you-have-leverage",
       "/curtain/the-vault-was-never-theirs",
-      "/operate/a-day-in-the-life",
-      "/growth-program/orientation"
-    ]
-  },
-  "start/first-24-hours": {
-    "ia": "0.3",
-    "title": "Your first 24 hours",
-    "platform": "any",
-    "links": [
-      "/instant-win/the-scripts",
-      "/curtain/the-vault-was-never-theirs",
-      "/deploy/dev-store-fast-path"
+      "/migrate/why-switching-is-safe",
+      "/growth-program/orientation",
+      "/instant-win/log-your-win",
+      "/instant-win/know-your-number"
     ]
   },
   "instant-win/know-your-number": {

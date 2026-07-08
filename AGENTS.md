@@ -64,6 +64,13 @@ These are the product's part names — they match the marketing site verbatim.
 
 ## Production content (do not re-stub)
 
+- start/welcome ("You're in") — REAL content (JD's Start-Here draft, 07-07).
+  GATED (public:true removed by JD ruling 07-07 — homepage alone carries the
+  logged-out pitch; "You're in" lands after login). One-page walk-through;
+  absorbed choose-your-door + first-24-hours (redirects in docs.json).
+  Mascot slot held at page bottom for JD's thumbs-up pick. Placeholders
+  render as honest one-liners — never fake readiness.
+
 - instant-win/* — ALL SIX PAGES are REAL content (JD's Movement 1+2 drafts).
   Kit pages carry per-platform figures verified against published pricing at
   staging time. CFO memo staged in the kit (JD-approved via closer, 07-07).

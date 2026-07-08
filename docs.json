@@ -35,9 +35,7 @@
             "icon": "hand",
             "pages": [
               "index",
-              "start/welcome",
-              "start/choose-your-door",
-              "start/first-24-hours"
+              "start/welcome"
             ]
           }
         ]
@@ -333,23 +331,23 @@
     },
     {
       "source": "/school/subscription-economics",
-      "destination": "/school/numbers/subscription-economics"
+      "destination": "/growth-program/numbers/subscription-economics"
     },
     {
       "source": "/school/acquire",
-      "destination": "/school/traffic/paid-ads"
+      "destination": "/growth-program/traffic/paid-ads"
     },
     {
       "source": "/school/retain",
-      "destination": "/school/churn-defense/cancellation-flow-design"
+      "destination": "/growth-program/churn-defense/cancellation-flow-design"
     },
     {
       "source": "/school/lifecycle-messaging",
-      "destination": "/school/messaging/lifecycle-map"
+      "destination": "/growth-program/messaging/lifecycle-map"
     },
     {
       "source": "/school/operating-cadence",
-      "destination": "/school/cadence/operating-rhythm"
+      "destination": "/growth-program/cadence/operating-rhythm"
     },
     {
       "source": "/curtain/why-the-percent-existed",
@@ -358,6 +356,14 @@
     {
       "source": "/school/:slug*",
       "destination": "/growth-program/:slug*"
+    },
+    {
+      "source": "/start/choose-your-door",
+      "destination": "/start/welcome"
+    },
+    {
+      "source": "/start/first-24-hours",
+      "destination": "/start/welcome"
     }
   ],
   "seo": {
