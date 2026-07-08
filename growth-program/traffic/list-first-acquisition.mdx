@@ -1,28 +1,75 @@
 ---
 title: "Email/SMS list-first acquisition"
-description: "Capture → nurture → convert-to-sub."
+description: "Capture cheaply on your own site, nurture on channels you own, convert to a subscription."
 ia: "M3.5"
 ---
 
-import { PlatformTag } from "/snippets/PlatformTag.jsx";
 import { InOpenSubs } from "/snippets/InOpenSubs.jsx";
 
-<PlatformTag platform="any" />
+**The anti-lesson this kills: "popups hurt the brand."**
 
-<Note>**Skeleton page.** The structure and links are final; the lesson lands in the production pass.</Note>
+You've heard it, probably from someone with good taste: *"Popups are tacky. They interrupt the experience, they cheapen the brand, real brands don't beg for emails."*
 
-## What this lesson gives you
+Here's the reframe that kills it: **a 10%+ capture rate on engaged sessions is the cheapest acquisition asset you will ever own.** A popup doesn't cost you a customer — a *bad* popup does. A good one turns anonymous traffic you already paid to get into a contact you can reach for free, forever. Refusing to capture isn't taste; it's leaving your most efficient channel switched off and paying to re-acquire the same people on paid social next month.
 
-- List-first: capture cheaply, convert on your own channel.
-- The nurture arc that ends in a subscription, not a one-time coupon redemption.
-- Where this beats paid-direct, and the math to compare.
+<div className="not-prose" style={{ border: "3px solid #000", backgroundColor: "#FFDE00", boxShadow: "4px 4px 0 0 #000", padding: "20px 24px", margin: "1.5rem 0" }}>
+  <p className="m-0" style={{ fontWeight: 900, fontSize: "20px", lineHeight: 1.3, textTransform: "uppercase", color: "#000" }}>Paid traffic rents attention. The list you own.</p>
+</div>
 
-<InOpenSubs>Placeholder — the boxed product contrast for this lesson lands with the content.</InOpenSubs>
+## The decision: capture → nurture → convert-to-sub
+
+List-first acquisition is three moves, and the discipline is not skipping the middle one. (The funnel shape is framework reasoning stitched from separate measured rows.)
+
+<Steps>
+  <Step title="Capture">
+    Convert engaged, anonymous sessions into contacts (email/SMS) with an on-site offer. Cheap, high-volume, top of the funnel.
+  </Step>
+  <Step title="Nurture">
+    A welcome sequence that earns the relationship and frames the product. This is where most brands fail: they capture, fire one coupon, and hope.
+  </Step>
+  <Step title="Convert-to-sub">
+    The nurture arc lands on a *subscription*, not a one-time coupon redemption. The conversion moment is designed, not left to chance.
+  </Step>
+</Steps>
+
+The reason to run it: **your owned channels convert dramatically better than rented ones.** In one eight-figure brand's GA4, owned email/SMS sessions converted in the **~8–13.8%** range while paid social sat around **0.7%** (directional only — GA4 carries no spend/CAC data, so this is channel context, not an efficiency or CAC claim). You cannot control paid social's 0.7%. You *can* build a list that converts at ten-plus times that — but only if you capture into it and actually nurture.
+
+## The proof: the capture rate is real (the conversion is not — yet)
+
+The measured case is **Brand A**'s on-site popup program (the large supplements brand). Read the capture numbers *and* the hard hedge together.
+
+**Capture works, at volume.** In one month the popups drove roughly **36K new contacts** (about 16K phone + 20K email) off **~421K impressions**, converting close to **half of *engaged* sessions** into a capture. (That ~50% is captures ÷ engaged sessions, not site-wide visitor conversion — and it says nothing about downstream quality.)
+
+**Creative changes the rate — a lot.** A **gamified popup captured about 10.6%** of impressions; a **holiday-themed popup about 7.3%**; a tightly-targeted **best-audience popup about 12%**. (The creative and targeting rules behind them aren't in the data, so "gamified beats holiday" is directional, one store.) The lesson: the popup is a *lever you tune*, not a fixed tax on the experience — a gamified, well-targeted popup can lift capture by half again over a generic seasonal one, on the same traffic.
+
+**Then the nurture has to carry it.** Capture is a contact, not a customer. In a mature welcome flow at another eight-figure brand, a **6-message, front-loaded sequence** produced its value overwhelmingly in the **first message — roughly 70% of the flow's attributed value** and the flow's best revenue-per-recipient. So the welcome moment isn't a "thanks for subscribing" — the first message must carry the clearest path to purchase, then educate and de-risk (this is [the welcome sequence](/growth-program/first-60-days/welcome-sequence); list-first hands off to it here).
+
+**And segmented beats broad on the convert step.** Tighter, higher-intent audiences vastly out-earn blasts — active-subscriber sends ran roughly **118x** return vs prospect sends near **8x** in one SMS export (attribution, not incrementality). Nurture toward a segment, convert on relevance, not volume.
+
+**The hedge you must not compress: capture is not conversion.** Nothing in this data proves a captured contact ever subscribes or retains — there is no popup→subscription or popup→LTV link in the evidence. So teach popups as the *cheapest way to fill the top of a funnel you own*, and hold the claim exactly there. The capture rate is real; the downstream is your job to build and measure.
+
+## The artifact: the list-first funnel blueprint
+
+One page. Fill each column for your own funnel.
+
+| Stage | The question | Starting-line answer (from the case) |
+|---|---|---|
+| **Capture surface** | Where/when does the popup fire, and for whom? | On engaged sessions; gamified + audience-targeted lifted capture from ~7% to ~10–12% |
+| **Offer** | What do they get for the contact? | A genuine reason (game/reward), not a naked "sign up for our newsletter" |
+| **Nurture arc** | What sequence earns the relationship? | 6-message welcome, **front-loaded** — first message carries ~70% of value; educate/de-risk after |
+| **Conversion moment** | Where does the arc land on a *subscription*? | A designed subscribe offer inside the nurture, segmented to intent — not a one-time coupon dump |
+
+**How to use it:** if any column is blank, that's your leak. Most brands have a capture surface and *nothing else* — they collect contacts and never nurture, so the list rots and they go back to renting paid traffic. Build the arc, put the conversion moment *inside* it, and measure capture→subscribe yourself (the data to prove that link doesn't exist here — instrument it).
+
+<InOpenSubs>Because the subscribe offer is a native storefront + flow object, the "conversion moment" in your nurture can point at a real one-click subscribe, not a coupon.</InOpenSubs>
 
 ## Where next
 
 <Columns cols={2}>
-  <Card title="Converting one-time buyers" href="/growth-program/store/converting-one-time-buyers">
-    The same motion, in-store.
+  <Card title="The welcome sequence" href="/growth-program/first-60-days/welcome-sequence">
+    Where the captured contact lands — the nurture arc, measured.
+  </Card>
+  <Card title="The lifecycle map" href="/growth-program/messaging/lifecycle-map">
+    The full owned-channel engine the list feeds.
   </Card>
 </Columns>

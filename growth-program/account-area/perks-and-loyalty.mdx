@@ -1,31 +1,79 @@
 ---
 title: "Perks & loyalty"
-description: "Which perks move retention vs leak margin."
+description: "One test — cost-per-retained-month — sorts every perk into keepers and margin leaks."
 ia: "M7.2"
 ---
 
-import { PlatformTag } from "/snippets/PlatformTag.jsx";
 import { InOpenSubs } from "/snippets/InOpenSubs.jsx";
 
-<PlatformTag platform="any" />
+**The anti-lesson this kills: "more perks = more loyalty."**
 
-<Note>**Skeleton page.** The structure and links are final; the lesson lands in the production pass.</Note>
+Here is the folklore, and it is expensive. *"Loyalty is a stack. Add points, add a birthday gift, add free shipping, add a members' discount, add a surprise-and-delight box — every perk you bolt on makes them a little less likely to leave."*
 
-## What this lesson gives you
+It feels right. It is mostly wrong, and it fails in a specific, quiet way:
 
-- Subscriber-only pricing, milestones, early access, points: the menu.
-- Which perks move retention (measured) vs which just leak margin.
-- Perk economics: cost per retained month, the only metric that decides.
+<div className="not-prose" style={{ border: "3px solid #000", backgroundColor: "#FFDE00", boxShadow: "4px 4px 0 0 #000", padding: "20px 24px", margin: "1.5rem 0" }}>
+  <p className="m-0" style={{ fontWeight: 900, fontSize: "20px", lineHeight: 1.3, textTransform: "uppercase", color: "#000" }}>An unmeasurable perk is a margin leak wearing a loyalty costume.</p>
+</div>
 
-<InOpenSubs>Placeholder — the boxed product contrast for this lesson lands with the content.</InOpenSubs>
+It shows up on the P&L every month as given-up margin, and it shows up in retention as… nothing you can point to. You *assume* it's working because churn didn't spike. You can't prove it, so you never cut it, so it bleeds forever.
+
+The job of this lesson is not to talk you out of perks. It's to make you *audit* them — to separate the two or three perks that actually move renewal from the pile that just costs you money and wears the loyalty word as cover.
+
+> This is the running-perks lesson. Whether to launch a paid membership *at all* is a different decision — that's [Memberships & access passes](/growth-program/offer/memberships). Here we assume you already have subscribers and a perk stack, and we're going to grade it.
+
+## The decision: the cost-per-retained-month test
+
+Every perk is a trade. You give up something — margin, cash, ops effort — to buy something — a retained member-month. So grade each perk on two axes:
+
+1. **What does it cost you, per member, per month?** Cash-back likely to be redeemed, discount margin conceded, shipping subsidy, the amortized cost of a signup or referral credit, the ops load of a surprise box. Put a monthly number on it.
+2. **What is the retention *mechanism*, and can you measure it firing?** Not "it makes them happy" — *what specific behavior does this perk cause that keeps them subscribed?* And can you see that behavior in your data?
+
+That second axis is the whole lesson. **A perk you can't measure is a perk you can't defend.** If you can name the mechanism *and* watch it happen, the perk earns its cost. If the mechanism is vague and invisible, you are paying for a feeling — and "more perks = more loyalty" is how that feeling justifies itself right up until you tally the annual bleed.
+
+## The proof: one perk that measures itself — the credit float
+
+Here's a measured case where the mechanism is not only nameable, it's *countable*. **Brand B** — the eight-figure snacks brand — runs a paid membership (~$60/year) whose main perk is **store credit** — a few percent cash-back on member orders, plus signup and referral credits. Read the hedges; they're the curriculum.
+
+Watch what store credit does that a plain discount can't:
+
+- **It builds a return-trip float.** At the snapshot, the program had issued roughly **$925K in credit and about two-thirds of it — ~$600K — was still outstanding** (lifetime-to-date balance; no per-credit redemption timing exists, so this is a standing balance, not a redemption curve). Outstanding credit is two things at once: a liability on your books, and a standing, *named* reason for each member to come back and spend. It's a leash you can see.
+- **It touches an enormous slice of orders.** Credit-tagged orders across the window touched roughly **$14.5M over ~96.5K orders** (the credit order-tag is broader than the membership's own credit ledger and isn't reconciled to it — so read it as "credit is pervasive in how these people buy," not as a clean membership number).
+- **The mechanism is visible.** You can watch outstanding balance rise as credit is earned and fall as members return to redeem. That is a retention mechanism you can *measure firing* — the exact opposite of "we think the birthday gift helps."
+
+Now the discipline. This is **one measured case**, and two hedges travel with it everywhere. First, members spent about **+48% more per order** than the untagged remainder — a real signal, but there's no holdout: members self-select, so credit didn't manufacture a big spender out of a tire-kicker; it gave your already-deep buyers a reason to route spending back to you. Second, we have no COGS/margin data — we can show credit's *return-loop behavior*, but you must supply the margin cost to complete the test.
+
+And the case tells you *when* perks matter most. Joins were easy — steady at roughly a thousand-plus a month — but **renewals (rebills) lagged badly**, growing several-fold year-over-year off a small base as the first annual cohorts came due (timing, not a churn rate). Read that plainly: **getting the join is not the hard part; earning year two is.** The entire job of your perk stack is to make the *second* year worth paying for. Even members who eventually cancelled had averaged roughly **$690 in lifetime revenue** — the floor is high, which is exactly why leaking margin on unmeasurable perks is such a waste: these are valuable people, so spend the perk budget on the two or three levers you can prove.
+
+## The artifact: the perk audit worksheet
+
+List every perk you offer. Fill a row for each. The thresholds are a starting line calibrated to one case, not a law.
+
+| Perk | Cost / member / month | Retention mechanism (name the behavior) | Measurable? | Verdict |
+|---|---|---|---|---|
+| *(e.g.) Store credit / cash-back* | *conceded margin on redeemed credit* | *outstanding balance = named reason to return; you watch it redeem* | **Yes — balance + redemption visible** | **KEEP** |
+| *(e.g.) Members' standing % off* | *margin on every member order, forever* | *"they feel like they're saving" — no distinct behavior* | **No** | **CUT / redesign** |
+| *(e.g.) Free shipping for members* | *shipping subsidy per order* | *only real if it beats a threshold most orders already clear* | **Test it** | **AUDIT** |
+| *(e.g.) Early access to drops* | *~zero hard cost; ops + scarcity* | *pulls members to buy in a window; visible as a signup/order spike* | **Yes — window spike** | **KEEP** |
+| *(e.g.) Surprise-and-delight box* | *COGS + fulfillment per box* | *goodwill — no isolable retained-month* | **No** | **CUT / instrument first** |
+
+**How to read your filled sheet:**
+
+- **Measurable? = No** → you cannot defend the spend. Either instrument the mechanism so you *can* measure it, or cut it. Every month you keep it, you're paying for a feeling.
+- **Cost well under the retained value, mechanism visible → KEEP.** These are your load-bearing perks. Fund them harder.
+- **Cost roughly equals or exceeds value, or mechanism vague → CUT or redesign.** Prefer perks that create a *return loop* (credit that must be spent with you) over perks that are pure giveaway (a standing discount is a slow, permanent margin bleed that re-creates the discount-subscription trap).
+
+Run it before your next cycle. Most operators find one perk they can prove, and two or three they've been quietly funding on faith.
+
+<InOpenSubs>Credits and perks are entitlements on the membership contract, so the "measurable?" column becomes a report you read, not a spreadsheet you rebuild. The mechanics live at [Run a membership on your platform](/operate/memberships).</InOpenSubs>
 
 ## Where next
 
 <Columns cols={2}>
-  <Card title="Flexibility as retention" href="/growth-program/account-area/flexibility-as-retention">
-    Pause, skip, swap, frequency, split.
+  <Card title="Community & identity" href="/growth-program/account-area/community-and-identity">
+    Perks create preference. Identity is the next rung up.
   </Card>
   <Card title="Memberships & access passes" href="/growth-program/offer/memberships">
-    Perks behind a fee: the paid-membership model.
+    Whether to sell the perk stack behind a fee at all.
   </Card>
 </Columns>

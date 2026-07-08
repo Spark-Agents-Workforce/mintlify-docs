@@ -64,9 +64,13 @@ These are the product's part names — they match the marketing site verbatim.
 
 ## Production content (do not re-stub)
 
-- growth-program: 14 lessons are REAL content (JD's module drafts, staged
-  07-08): offer/the-discount-question + memberships; all 4 first-60-days;
-  all 3 winback; all 5 messaging. Phase-D staging — JD reads on-site;
+- growth-program: 26 lessons are REAL content (JD's module drafts, tier-1+2
+  staged 07-08): all 4 numbers (M1); ALL 7 offer (M2 complete); all 4
+  first-60-days; all 5 messaging; all 3 winback; account-area perks-and-
+  loyalty + community-and-identity (M7.2/7.4); traffic/list-first (M3.5).
+  M7.1 + M7.3 DEFERRED by the draft to an operator-heavy pass (JD/Devbin
+  in-session) — leave as skeletons, do not improvise. Brand A ($50M+
+  consumables) / Brand B ($35M+ snacks, paid membership) naming is canon. Phase-D staging — JD reads on-site;
   E-gates + practitioner (ops) correction on first-order-experience's
   physical layer come AFTER. Hedges (attribution≠incrementality, one-case)
   are curriculum — never strip them. Brand A/B anonymization is canon.

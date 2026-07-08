@@ -436,8 +436,10 @@
     "title": "Email/SMS list-first acquisition",
     "platform": "any",
     "links": [
-      "/growth-program/store/converting-one-time-buyers"
-    ]
+      "/growth-program/first-60-days/welcome-sequence",
+      "/growth-program/messaging/lifecycle-map"
+    ],
+    "status": "PRODUCTION"
   },
   "growth-program/store/pdp": {
     "ia": "M4.1",
@@ -603,9 +605,11 @@
     "title": "Perks & loyalty",
     "platform": "any",
     "links": [
-      "/growth-program/account-area/flexibility-as-retention",
-      "/growth-program/offer/memberships"
-    ]
+      "/growth-program/account-area/community-and-identity",
+      "/growth-program/offer/memberships",
+      "/operate/memberships"
+    ],
+    "status": "PRODUCTION"
   },
   "growth-program/account-area/flexibility-as-retention": {
     "ia": "M7.3",
@@ -620,7 +624,12 @@
     "ia": "M7.4",
     "title": "Community & identity",
     "platform": "any",
-    "links": []
+    "links": [
+      "/growth-program/account-area/perks-and-loyalty",
+      "/growth-program/offer/memberships",
+      "/operate/memberships"
+    ],
+    "status": "PRODUCTION"
   },
   "growth-program/churn-defense/cancellation-flow-design": {
     "ia": "M8.1",
