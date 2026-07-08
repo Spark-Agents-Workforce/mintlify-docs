@@ -40,13 +40,13 @@ Run this quarterly. It is a diagnostic, not a rule — the ceiling it reveals is
     Pull unsub rate per flow, this year vs last. Is any flow's rate rising as you've added volume? (The case's 0.48% → 0.72% is what "too much" looked like from the outside.)
   </Step>
   <Step title="Find the marginal message">
-    For each flow, ask: what did the *last* message added contribute in rev/recipient, and what did it cost in unsub? The measured store's efficiency lived in *tight* flows (checkout at ~$6.15/recipient across ~13 messages; delivery at 2 messages, 0.26% unsub). Length is not free.
+    For each flow, ask: what did the *last* message added contribute in rev/recipient, and what did it cost in unsub? The measured store's efficiency lived in *tight* flows (checkout at ~\$6.15/recipient across ~13 messages; delivery at 2 messages, 0.26% unsub). Length is not free.
   </Step>
   <Step title="Set your ceiling">
     Pick a maximum touches-per-week per subscriber you will not cross, and a per-flow unsub rate that triggers a prune. Write the numbers down. Only you can set these against your margin and unsub tolerance.
   </Step>
   <Step title="Prune in order">
-    When you're over the ceiling, cut in this order: (a) redundant broadcast blasts first — they're already at the ~$0.40/recipient floor; (b) the lowest-RPR *marginal* messages inside long flows; (c) never the transactional/reminder stream. Cut toward the channel's efficiency, which lives in fewer, better-targeted messages — not more.
+    When you're over the ceiling, cut in this order: (a) redundant broadcast blasts first — they're already at the ~\$0.40/recipient floor; (b) the lowest-RPR *marginal* messages inside long flows; (c) never the transactional/reminder stream. Cut toward the channel's efficiency, which lives in fewer, better-targeted messages — not more.
   </Step>
   <Step title="Re-measure next quarter">
     Deliverability and cadence are not "set once." The unsub gauge tells you if the last quarter's cadence was sustainable.

@@ -8,7 +8,7 @@ import { InOpenSubs } from "/snippets/InOpenSubs.jsx";
 
 **The folklore this kills: "the calendar is the strategy."**
 
-Ask most brands to see their marketing strategy and they'll show you a calendar — a grid of the sends going out this month. That is a *broadcast* strategy, and the measured case shows exactly what a broadcast strategy does at scale: it plateaus. Recall [the anchor's](/growth-program/messaging/lifecycle-map) headline contrast — broadcast value flat year over year while recipients grew ~70% (rev/recipient $0.66 → $0.40), against flows growing about two-thirds ($4.6M → $7.6M attributed). The calendar is not the strategy. **The flow architecture is the strategy;** the calendar is just what you layer on top of it for the promo windows.
+Ask most brands to see their marketing strategy and they'll show you a calendar — a grid of the sends going out this month. That is a *broadcast* strategy, and the measured case shows exactly what a broadcast strategy does at scale: it plateaus. Recall [the anchor's](/growth-program/messaging/lifecycle-map) headline contrast — broadcast value flat year over year while recipients grew ~70% (rev/recipient \$0.66 → \$0.40), against flows growing about two-thirds (\$4.6M → \$7.6M attributed). The calendar is not the strategy. **The flow architecture is the strategy;** the calendar is just what you layer on top of it for the promo windows.
 
 This lesson is the architecture: how to build flows that compound, why they beat broadcasts on a per-message basis, and how to segment a *subscription* list so the right subscriber gets the right trigger.
 
@@ -16,25 +16,25 @@ This lesson is the architecture: how to build flows that compound, why they beat
 
 A campaign is a one-time send to a list. Its value is realized once and then it's over; to get more value you send again, to more people, and — as the case shows — you hit diminishing returns. A flow is a message attached to a *behavior*. You build it once and it fires every time any subscriber does the triggering thing, forever. Its value *accrues*. That is the entire difference and it is the entire reason the flow line on the chart bends up while the campaign line goes flat.
 
-The per-message evidence makes it concrete. On SMS in the measured store, **automation flows earned ~$3.10 per message (117x dashboard ROI)** against **broadcast campaign sends at ~$0.46 per message (23x)** — the same channel, a ~6.7x efficiency gap, purely from *triggered* vs *blasted*. (Dashboard attribution, one store; bodies and holdouts absent.) A flow reaches a subscriber at the moment the message is relevant to them; a broadcast reaches everyone at the moment convenient to you. Relevance is the whole premium.
+The per-message evidence makes it concrete. On SMS in the measured store, **automation flows earned ~\$3.10 per message (117x dashboard ROI)** against **broadcast campaign sends at ~\$0.46 per message (23x)** — the same channel, a ~6.7x efficiency gap, purely from *triggered* vs *blasted*. (Dashboard attribution, one store; bodies and holdouts absent.) A flow reaches a subscriber at the moment the message is relevant to them; a broadcast reaches everyone at the moment convenient to you. Relevance is the whole premium.
 
-This does **not** mean stop sending campaigns. It means campaigns are the *amplifier layer* for real promo windows, not the engine. And even inside campaigns, the case kills a second piece of folklore: **editorial out-earned sale.** Educational/editorial campaigns attributed roughly $6.8M against roughly $4.7M for major-sale campaigns — about 1.5x more, from *fewer* sends (35 vs 87). (Selection-biased toward top-attributed rows — directional, not a full taxonomy.) The calendar mind assumes "campaign = sale." The data says your best-performing broadcasts may be the ones that teach, not the ones that discount.
+This does **not** mean stop sending campaigns. It means campaigns are the *amplifier layer* for real promo windows, not the engine. And even inside campaigns, the case kills a second piece of folklore: **editorial out-earned sale.** Educational/editorial campaigns attributed roughly \$6.8M against roughly \$4.7M for major-sale campaigns — about 1.5x more, from *fewer* sends (35 vs 87). (Selection-biased toward top-attributed rows — directional, not a full taxonomy.) The calendar mind assumes "campaign = sale." The data says your best-performing broadcasts may be the ones that teach, not the ones that discount.
 
 ## The metric-triggered flow set
 
 Build these in this order — they map directly onto [the lifecycle map](/growth-program/messaging/lifecycle-map), now expressed as the *triggers* your ESP listens for:
 
-- **Added-to-list → welcome** (front-loaded; ~$1.65/recipient in the case).
-- **Checkout started, no order → abandoned checkout** (the highest-RPR recovery, ~$6.15/recipient — build this before abandoned cart).
-- **Added to cart, no checkout → abandoned cart** (~$4.86/recipient).
-- **Viewed product, no cart → browse abandonment** (education-led, ~$1.17/recipient).
+- **Added-to-list → welcome** (front-loaded; ~\$1.65/recipient in the case).
+- **Checkout started, no order → abandoned checkout** (the highest-RPR recovery, ~\$6.15/recipient — build this before abandoned cart).
+- **Added to cart, no checkout → abandoned cart** (~\$4.86/recipient).
+- **Viewed product, no cart → browse abandonment** (education-led, ~\$1.17/recipient).
 - **Order placed → post-purchase** (the ~20-message education engine; the scale play).
 - **Order fulfilled/delivered → post-delivery** (2 messages, lowest unsub — the highest-efficiency retention moment).
 - **Upcoming charge → pre-charge reminder** (the churn-prevention workhorse from [Transactional & reminder](/growth-program/messaging/transactional-and-reminder)).
-- **Risk metric crosses threshold → churn flow** (branch it — the case spread ~$1.2M across ~57 messages, not one).
+- **Risk metric crosses threshold → churn flow** (branch it — the case spread ~\$1.2M across ~57 messages, not one).
 - **Subscription cancelled → reactivation** (small but keep it).
 
-One honest caveat before you trust any flow taxonomy: in the measured store a flow worth ~$1.3M attributed carried *no trigger label*. Audit for orphan flows — the "complete" set is only as complete as your tags.
+One honest caveat before you trust any flow taxonomy: in the measured store a flow worth ~\$1.3M attributed carried *no trigger label*. Audit for orphan flows — the "complete" set is only as complete as your tags.
 
 ## Segmentation for subscriptions
 
