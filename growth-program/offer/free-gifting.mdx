@@ -1,28 +1,90 @@
 ---
 title: "Free gifting"
-description: "When an $8-COGS gift beats a 20% cut."
+description: "When a $5-cost, $15-perceived gift beats a 20% cut."
 ia: "M2.3"
 ---
 
-import { PlatformTag } from "/snippets/PlatformTag.jsx";
 import { InOpenSubs } from "/snippets/InOpenSubs.jsx";
 
-<PlatformTag platform="any" />
+**The folklore this lesson kills: "gifts are margin giveaways."**
 
-<Note>**Skeleton page.** The structure and links are final; the lesson lands in the production pass.</Note>
+A free product in the box is just a discount you can't measure — you gave away COGS and got nothing a percentage-off wouldn't have gotten you cheaper. Dress it up however you like; it's a markdown wearing a bow.
 
-## What this lesson gives you
+That belief is wrong, and it's wrong on arithmetic. A discount and a gift are *not* the same instrument, because they cost you and pay you on different terms. A discount comes off your price at **full retail value** — every point is real revenue you never collect. A gift costs you **COGS**, but the customer values it at **perceived retail**. The gap between COGS and perceived value is exactly the room a discount doesn't have. This lesson gives you the math to see that gap, and the judgment to know when to reach for the gift instead of the number.
 
-- Gift-with-first-order, gift-at-milestone: the placements that work.
-- Gift-vs-discount economics — perceived value vs real cost, side by side.
-- Choosing gifts that reinforce the ritual instead of cluttering the box.
+<Note>**An honesty note, up front.** There is ZERO gifting data in either store in our register — both stores' product tables show gift cards at $0 / 0 orders, and gift-with-purchase mechanics, if they exist, hide inside bundle or automatic-discount rows we can't isolate. This is the most framework-heavy lesson in the module by necessity. We teach the economics you can run on your own numbers, borrow the nearest *measured* principle from the membership case, and flag the hole loudly.</Note>
 
-<InOpenSubs>Placeholder — the boxed product contrast for this lesson lands with the content.</InOpenSubs>
+## The gift-vs-discount formula
+
+Put the two instruments side by side on the same order. (The value/cost figures below are illustrative placeholders; swap in your own. The *structure* is the lesson, not the numbers.)
+
+Say your AOV is $100, and you're deciding between a **20% first-order cut** and a **gift** that costs you $5 in COGS but a customer would pay ~$15 for.
+
+```text The comparison
+THE DISCOUNT
+  Cost to you = AOV × depth = $100 × 20% = $20, off the top of margin.
+  Value to customer = $20 (a dollar of discount is worth exactly a dollar).
+
+THE GIFT
+  Cost to you = COGS of the gift = $5.
+  Value to customer = perceived retail = ~$15.
+```
+
+Same order, and the gift is **4× cheaper to you** ($5 vs $20) while delivering **~75% of the perceived value** ($15 vs $20). The lever is the COGS-to-perceived gap: the wider your margin on the gift item, the more perceived value you hand over per dollar you spend. A discount has no gap — it's a dollar for a dollar, always. The formula that decides it:
+
+```text
+Gift wins when:  (gift perceived value ÷ gift COGS)  >  (discount value ÷ discount cost = 1)
+```
+
+Every gift with any margin at all clears that bar on paper. Which is exactly why the *real* decision isn't "does the math work" — it's "what does each instrument teach the customer," which is where price integrity comes in.
+
+## Why a gift can protect price integrity better than depth
+
+Here's the nearest thing to measured evidence we have, borrowed honestly from the membership store. That business deliberately pays members back in **store credit rather than a standing percentage off** — because a value-add pulls the customer back to spend, while a permanent discount bleeds margin on every order forever and re-anchors the customer to a lower price *(one measured case; the credit balance — roughly $600K outstanding at snapshot — functions as a standing reason to return)*. A gift is the same idea at the first-order moment: it adds value **without resetting the price the customer expects to pay next time.**
+
+That's the strategic case for gifting. A discount trains the customer that your real price is lower than your list price — and [the deal-training rule](/growth-program/offer/the-discount-question) tells you where that road ends (oscillation trains waiting).
+
+<div className="not-prose" style={{ border: "3px solid #000", backgroundColor: "#FFDE00", boxShadow: "4px 4px 0 0 #000", padding: "20px 24px", margin: "1.5rem 0" }}>
+  <p className="m-0" style={{ fontWeight: 900, fontSize: "20px", lineHeight: 1.3, textTransform: "uppercase", color: "#000" }}>A gift adds value at your list price. It doesn't teach the customer to wait for a markdown.</p>
+</div>
+
+When you need to move on price *perception* without moving your price *anchor*, the gift is the instrument.
+
+## The three placements that work
+
+1. **Gift-with-first-order (GWP).** The acquisition sweetener. Use it when you want to lift conversion without cutting the price that becomes the subscriber's ongoing anchor — critical for subscribe-and-save, where the first-order number and the ongoing rate are already [two different dials](/growth-program/offer/first-order-incentives).
+2. **Milestone gifts.** A gift at the 3rd or 6th order — the point where second-order churn has already been survived and you're rewarding a proven customer. Cheap loyalty that reinforces the ritual instead of discounting the base.
+3. **Threshold / basket-builder gift.** "Free [item] on orders over $X" — nudges AOV up rather than down, the opposite of what a discount does to the same order.
+
+The selection rule (from experience, no data): the gift must **reinforce the product's ritual, not clutter the box.** A gift adjacent to the core use (a tool, a complement, a next-in-the-routine SKU) deepens the habit; a random overstock item reads as clearance and cheapens the brand. High perceived-value-to-COGS ratio *and* on-ritual — both, or don't send it.
+
+## The artifact — the gift-vs-discount calculator
+
+```text The calculator
+INPUTS
+  AOV ............................ $______
+  Discount you're considering .... ______%
+  Candidate gift COGS ............ $______
+  Candidate gift perceived value . $______  (honest retail, not your list dream)
+
+STEP 1  Discount cost = AOV × depth% ........................ $______
+STEP 2  Gift cost = gift COGS ............................... $______
+STEP 3  Perceived value delivered:  gift $______ vs discount (=discount cost)
+STEP 4  Efficiency = perceived value ÷ your cost, for each. Higher wins on paper.
+STEP 5  INTEGRITY CHECK: does the discount reset my price anchor / train waiting?
+          If yes AND the gift clears Step 4 → send the gift.
+STEP 6  RITUAL CHECK: does the gift deepen the core habit? If no → pick another gift.
+```
+
+<InOpenSubs>Attach a gift SKU to a plan or a first-order rule without a separate app, and see its COGS load in the same margin view as your discount.</InOpenSubs>
 
 ## Where next
 
 <Columns cols={2}>
   <Card title="First-order incentives" href="/growth-program/offer/first-order-incentives">
-    The cliff between offer and rate.
+    The cliff between offer and rate — where a gift can cushion the drop.
+  </Card>
+  <Card title="The discount question" href="/growth-program/offer/the-discount-question">
+    The number a gift is an alternative to.
   </Card>
 </Columns>

@@ -1,31 +1,93 @@
 ---
 title: "Offer architecture"
-description: "Which model fits which product, AOV, and cadence."
+description: "The model comes before the number. The shape of the deal decides which way your economics move."
 ia: "M2.1"
 ---
 
-import { PlatformTag } from "/snippets/PlatformTag.jsx";
 import { InOpenSubs } from "/snippets/InOpenSubs.jsx";
 
-<PlatformTag platform="any" />
+**The folklore this lesson kills: "the offer is the discount."**
 
-<Note>**Skeleton page.** The structure and links are final; the lesson lands in the production pass.</Note>
+Ask an operator "what's your offer?" and nine times out of ten you'll get a percentage back. Ten percent off. Twenty. First month free. The offer, in most people's heads, *is* the discount — a single number you turn up when growth is slow and down when margin gets tight.
 
-## What this lesson gives you
+That's the number. The number is a decision you make **later**, inside a model you should have chosen **first**. This lesson is about the model. Architecture is the shape of the deal — subscribe-and-save, paid membership, prepaid or commitment, bundle, build-a-box, trial-to-sub — and the shape decides which direction your economics move before you ever pick a percentage. Choose the wrong architecture and no discount number rescues it. Choose the right one and the number becomes a tuning problem, which is a good problem to have.
 
-- Subscribe-&-save vs prepaid vs bundle vs build-a-box vs trial-to-sub.
-- The fit logic: product type × AOV × consumption cadence → model.
-- The mistakes: models that fight the product's natural rhythm.
+Here's the whole point in one contrast, drawn from two real stores in our data.
 
-<InOpenSubs>Placeholder — the boxed product contrast for this lesson lands with the content.</InOpenSubs>
+## Two spines, opposite economics
+
+**Spine one — the discount subscription.** **Brand A** (the same store you'll meet again in [The discount question](/growth-program/offer/the-discount-question)) runs a subscribe-and-save architecture: a first-order discount to start, a modest standing rate to stay. Recurring orders make up roughly **41–60% of its paid orders** month to month — the recurring base *is* the business. And the fastest lever it has on acquisition mix is offer depth: when it moved the first-order subscription offer to 25%, daily subscription starts rose **~53%** and subscription first-orders went from ~14% to ~20% of all paid orders within days *(acquisition-window signal; lift in starts, not proven downstream quality)*. Notice what a discount subscription does to AOV: it pushes it **down**. That's the instrument working as designed — you concede margin on every order to buy frequency and commitment.
+
+**Spine two — the paid membership.** **Brand B** — the eight-figure snacks brand behind [Memberships](/growth-program/offer/memberships) — runs a paid-membership architecture: a **~$60/year fee** that unlocks access, credits, and gated products. No standing percentage off. Member-tagged orders run roughly **+48% higher AOV** than the untagged remainder *(members self-select; the baseline is an aggregate remainder, not a matched non-member cohort, and there's no holdout — attribution, not proven lift)*. Members are worth about **$875 each** across ~6 orders, and the membership's share of a *growing* store climbed from **~13.5% to ~26%** over two years. The tell: even **cancelled** members averaged roughly **$690 in lifetime revenue** — about **7×** a single baseline order (~$96) *(self-selected, lifetime-to-date)*. A membership pushes AOV **up** — you charge for belonging and monetize access.
+
+<div className="not-prose" style={{ border: "3px solid #000", backgroundColor: "#FFDE00", boxShadow: "4px 4px 0 0 #000", padding: "20px 24px", margin: "1.5rem 0" }}>
+  <p className="m-0" style={{ fontWeight: 900, fontSize: "20px", lineHeight: 1.3, textTransform: "uppercase", color: "#000" }}>These are not two settings of one dial. They are opposite instruments.</p>
+</div>
+
+One lowers price to buy frequency; the other charges for access and sells more at full price. Same DTC scale, mirror-image economics. Your architecture decides which way your AOV moves — and you decide that *before* you pick a number.
+
+## The fit logic
+
+Architecture isn't taste; it's a match between the deal's shape and the product's natural rhythm. (The routing below is a framework from operating experience, not a measured row — run it on your own product, not ours.)
+
+The three inputs that decide it: **product type × AOV × consumption cadence.**
+
+| If your product is… | …the architecture that fits |
+| --- | --- |
+| Consumable, predictable refill cadence, mid AOV | **Subscribe-and-save** (discount subscription) → [The discount question](/growth-program/offer/the-discount-question) for the number |
+| High repeat frequency + a gate-able desirable slice + a deep catalog behind it | **Paid membership** → [Memberships](/growth-program/offer/memberships) for the viability test |
+| Consumable but cash-flow-sensitive, gift-heavy, or strongly seasonal | **Prepaid / commitment** → [Prepaid & commitment](/growth-program/offer/prepaid-and-commitment) |
+| Variety-seeking, low loyalty to any single SKU | **Build-a-box / bundle** |
+| High-consideration, real trial friction | **Trial-to-sub** |
+
+The anti-pattern is any model that fights the product's rhythm: a membership on a brand nobody buys from twice a year, a discount subscription on a product people genuinely want to *vary*, a prepaid plan on an impulse SKU. When the architecture fights the rhythm, no number fixes it — you just discount your way to a churn problem.
+
+## One layer down: codes do jobs, too
+
+Even inside a single architecture, the offer isn't one thing. In the discount-subscription store, the discount **codes** split cleanly by job when you classify them by their first-time-buyer share: acquisition codes ran **~87% first-time** buyers, while recurring and group codes ran **76–86% recurring** (one group code was ~100% subscription) *(same-order tags are proxies; they don't prove future cohort retention)*. The lesson that travels: **classify a code by its first-time% before you judge it.** Comparing an acquisition code to a retention code on one KPI is how good offers get killed for the wrong reason.
+
+## The rest of this module (your map)
+
+- **[The discount question](/growth-program/offer/the-discount-question)** — you picked subscribe-and-save; now choose the number, on your margin.
+- **[Free gifting](/growth-program/offer/free-gifting)** — when a value-add beats a price cut.
+- **[First-order incentives](/growth-program/offer/first-order-incentives)** — the cliff between the acquisition offer and the ongoing rate — where second-order churn is born.
+- **[Prepaid & commitment](/growth-program/offer/prepaid-and-commitment)** — cash-flow gain vs the churn trade.
+- **[Memberships](/growth-program/offer/memberships)** — the access-and-credits architecture, with its viability test.
+- **[Offer testing](/growth-program/offer/offer-testing)** — moving any dial without wrecking your cohort table.
+
+## The artifact — the architecture-fit worksheet
+
+```text The worksheet
+STEP 1  DESCRIBE THE PRODUCT
+  Product type ................ consumable / variety / considered
+  AOV ........................ $______
+  Natural repeat cadence ..... every ____ weeks (or "irregular")
+  Repeat occasions / year .... ______
+
+STEP 2  READ THE RHYTHM → CANDIDATE ARCHITECTURE
+  Predictable refill, mid AOV .............. → subscribe-and-save
+  Buys often + gate-able slice + deep catalog → membership
+  Cash-flow / gift / seasonal .............. → prepaid/commitment
+  Variety-seeking .......................... → build-a-box / bundle
+  Trial friction ........................... → trial-to-sub
+
+STEP 3  CHECK THE DIRECTION OF AOV
+  Discount subscription → AOV goes DOWN (buying frequency). Fund it?
+  Membership → AOV goes UP (selling access). Frequency high enough?
+
+STEP 4  ONLY NOW PICK A NUMBER
+  → route to the model's lesson. The number lives THERE, not here.
+```
+
+<InOpenSubs>Every architecture above is a subscription contract type in the platform, so switching models is a config choice, not a rebuild.</InOpenSubs>
 
 ## Where next
 
 <Columns cols={2}>
   <Card title="The discount question" href="/growth-program/offer/the-discount-question">
-    Choose your number with math.
+    You chose subscribe-and-save; now choose the number.
   </Card>
-  <Card title="PDP" href="/growth-program/store/pdp">
-    Where the offer meets the customer.
+  <Card title="Memberships" href="/growth-program/offer/memberships">
+    You chose access-and-credits; run the viability test.
   </Card>
 </Columns>

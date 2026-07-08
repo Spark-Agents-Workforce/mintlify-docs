@@ -1,31 +1,81 @@
 ---
 title: "Prepaid & commitment offers"
-description: "3/6/12-month prepay economics."
+description: "Prepaid isn't cash-flow. It's a churn trade."
 ia: "M2.5"
 ---
 
-import { PlatformTag } from "/snippets/PlatformTag.jsx";
 import { InOpenSubs } from "/snippets/InOpenSubs.jsx";
 
-<PlatformTag platform="any" />
+**The folklore this lesson kills: "prepaid is a cash-flow play."**
 
-<Note>**Skeleton page.** The structure and links are final; the lesson lands in the production pass.</Note>
+Get the customer to pay for three, six, or twelve months upfront, bank the money, improve your working capital. True as far as it goes — and it stops one step short of the thing that actually matters.
 
-## What this lesson gives you
+Prepaid is a **churn trade.** When a customer commits to a term, you don't reduce their churn — you **relocate** it. A month-to-month subscriber can churn on any renewal; a prepaid subscriber can't churn *during* the term, but their entire churn risk piles up at the **renewal boundary**. You've traded continuous, low-amplitude churn for concentrated, high-amplitude churn at one predictable moment. That's not automatically better. It's a trade — and whether it's a good one depends on what you do at that boundary. This lesson teaches the trade, then shows you a *measured* version of it.
 
-- Prepay economics: the cash-flow gain vs the churn-rate trade, quantified.
-- 3 vs 6 vs 12 months — where commitment length stops helping.
-- Renewal mechanics: the prepaid subscriber's own second-order cliff.
+## The classic prepaid ladder (framework)
 
-<InOpenSubs>Placeholder — the boxed product contrast for this lesson lands with the content.</InOpenSubs>
+There's no prepaid-*plan* data in either store, so treat the ladder itself as a framework — the 3/6/12-month prepaid economics below are reasoned from first principles, not a measured row; the measured case is the membership fee in the next section.
+
+Prepaid buys you three things and costs you one:
+
+- **Buys:** upfront cash (the working-capital gain), guaranteed revenue across the term (no mid-term churn), and usually a lower blended discount than an equivalent monthly deal because the customer is trading commitment for the price.
+- **Costs:** conversion friction at signup (a bigger ask), and a concentrated churn cliff at renewal.
+
+Where commitment length **stops helping:** each step up the ladder (3 → 6 → 12) raises the signup ask and pushes the churn cliff further out — but past the point where the customer can *see* the value they've prepaid, longer terms mostly buy adverse selection (only your most confident customers commit) and a nastier renewal shock. The right rung is the longest term a *typical* customer can confidently value at purchase — usually one full consumption cycle plus a little, not "as long as they'll sign."
+
+## The measured commitment case: an annual membership fee
+
+The nearest thing to prepaid we can actually measure is the **~$60/year annual membership fee** at **Brand B** (the snacks brand) — a paid annual commitment, billed once, renewing on the anniversary. It behaves exactly like the churn-trade theory predicts. (Figures are order-tag and membership-platform export slices; annual program, so renewal behavior lags joins by ~12 months; no cohort-linked survival curve.)
+
+- **Signup is easy and steady:** roughly **1,000–1,300 new members per month**, ~$155–185K in signup sales per month. Getting the commitment is not the hard part.
+- **Renewal (rebill) lags badly:** rebill orders ran only **72 to 534 per month** — a fraction of joins — rising ~7× year-over-year as the first cohorts finally came due *(low rebill partly reflects program age, not necessarily renewal failure — but the gap between join volume and rebill volume is the story)*.
+- **Churn concentrates at the anniversary:** join volume peaked in summer (top months ~1,200); cancellations peaked **~10–11 months later** *(raw monthly counts; annual programs mechanically cancel at renewal, so the lag is expected)*.
+
+Read those three together and the churn trade is right there in the data: the commitment made mid-term churn *invisible*, then delivered all of it at the renewal boundary.
+
+<div className="not-prose" style={{ border: "3px solid #000", backgroundColor: "#FFDE00", boxShadow: "4px 4px 0 0 #000", padding: "20px 24px", margin: "1.5rem 0" }}>
+  <p className="m-0" style={{ fontWeight: 900, fontSize: "20px", lineHeight: 1.3, textTransform: "uppercase", color: "#000" }}>The commitment didn't remove the churn. It scheduled it.</p>
+</div>
+
+Which is actually a gift — because a scheduled churn is a churn you can *see coming and save*. (The full membership architecture — access, credits, gated products — is [Memberships](/growth-program/offer/memberships); here we're using it only as the measured commitment case.)
+
+## The renewal cliff is the prepaid subscriber's own second-order cliff
+
+This is [the first-order cliff](/growth-program/offer/first-order-incentives), moved to the term boundary. The prepaid customer paid once, consumed the value, and now faces the *entire* next commitment as a single decision — a much bigger jump than a monthly renewal. Everything you'd do at a second-order cliff, you do here, concentrated: land the save motion **before** the anniversary, not after the cancel. In the measured case, the pending-cancellation cohort was already the lowest-value, lowest-frequency segment before it churned — the early-warning signal was readable in advance. Plan the save for **month 11, not month 1.**
+
+## The artifact — the commitment-trade worksheet
+
+```text The worksheet
+STEP 1  NAME THE TRADE (don't just count the cash)
+  Cash-flow gain = upfront term revenue you collect early ... $______
+  Churn you're relocating = your monthly churn, now stacked at renewal
+
+STEP 2  PICK THE RUNG
+  Longest term a TYPICAL customer can confidently value at purchase = ____ months
+  (Not the longest they'll sign. Past visible value = adverse selection + shock.)
+
+STEP 3  PRICE THE COMMITMENT
+  Prepaid discount ≤ the margin you'd have spent on continuous acquisition/retention
+  over the term. Commitment should cost you LESS than churn would have.
+
+STEP 4  BUILD THE RENEWAL SAVE (the whole point)
+  Identify the early-warning segment (low frequency / low recent value).
+  Schedule the save motion at ~90% of the way through the term — BEFORE the cliff.
+  Anniversary save > post-cancel winback, every time.
+
+STEP 5  MEASURE
+  Not signups (those are easy). Measure RENEWAL rate at the boundary, by cohort.
+```
+
+<InOpenSubs>Prepaid terms and an annual membership fee are both native contract types, with the renewal date exposed so you can trigger a save flow before it.</InOpenSubs>
 
 ## Where next
 
 <Columns cols={2}>
-  <Card title="Subscription economics" href="/growth-program/numbers/subscription-economics">
-    The LTV math prepay changes.
+  <Card title="Memberships" href="/growth-program/offer/memberships">
+    The full architecture behind the measured commitment case.
   </Card>
   <Card title="Offer testing" href="/growth-program/offer/offer-testing">
-    Test without wrecking cohorts or training deal-waiters.
+    Testing commitment terms without training deal-waiters.
   </Card>
 </Columns>

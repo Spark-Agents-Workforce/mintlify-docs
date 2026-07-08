@@ -1,28 +1,84 @@
 ---
 title: "Offer testing"
-description: "Test without wrecking cohorts or training deal-waiters."
+description: "Test without wrecking your cohort table or training deal-waiters."
 ia: "M2.7"
 ---
 
-import { PlatformTag } from "/snippets/PlatformTag.jsx";
 import { InOpenSubs } from "/snippets/InOpenSubs.jsx";
 
-<PlatformTag platform="any" />
+**The folklore this lesson kills: "test everything, all the time."**
 
-<Note>**Skeleton page.** The structure and links are final; the lesson lands in the production pass.</Note>
+Always be running an A/B. Ship changes fast, read results faster, let the numbers decide. It sounds like rigor. In a subscription business it's a way to destroy the one instrument that answers your most important questions — and to teach your customers to wait for your next test.
 
-## What this lesson gives you
+Two things make subscription offer testing different from testing a landing page. First, **your read-out is a cohort, and cohorts take months to mature** — so a fast test isn't fast, it's just *unfinished*. Second, **offers train behavior.** Every time you move an offer, you're not only measuring customers, you're teaching them what to expect. Test offers the way you'd test button colors and you'll train a base of deal-waiters while blindfolding yourself. This lesson is the discipline that keeps testing from eating its own evidence.
 
-- Test design that keeps cohort data readable.
-- The deal-training hazard: how customers learn to wait, and how to not teach them.
-- What to test first: sequence from highest-information to lowest-risk.
+## The cohort table is your instrument — protect it
 
-<InOpenSubs>Placeholder — the boxed product contrast for this lesson lands with the content.</InOpenSubs>
+You built it in [The discount question](/growth-program/offer/the-discount-question): repeat rate at 30 / 60 / 90 / 180 days, by acquisition offer, measured from the acquisition window. That table is the instrument that turns offer debates into arithmetic. Every rule below exists to keep it **readable.**
+
+**Rule 1 — one dial at a time.** Move the first-order offer *or* the ongoing rate *or* the gift — never two at once. If you move two dials and the cohort shifts, you can't attribute the shift, and the row you just generated is noise. The discount-subscription store's cleanest readable event in the whole dataset was a *single-dial* move (first-order offer to 25%, ongoing rate held) — which is exactly why we can talk about its +53% start lift at all. Two dials would have made it unreadable.
+
+**Rule 2 — respect the maturity window.** A cohort tells you different things at different ages, and reading it early lies to you:
+
+- **60 days = the on-pace read.** Is this cohort tracking like a good one, or clearly below? Directional only. In the data, a recent cohort's 60-day repeat (~31%) looked on-pace, but its 90- and 180-day numbers were explicitly *not yet mature* — a 60-day read is a check-in, not a verdict.
+- **180 days = the verdict.** The mature cohorts in the data (~50–51% at 180 days) only earned that label at 180 days. Move again before then and you've retired the test before it reported.
+
+**Rule 3 — never move again before the last move matured.** Stacking a second change on an unmatured cohort collapses two experiments into one unreadable smear. Patience isn't caution here; it's the price of getting an answer at all.
+
+## The deal-training hazard: oscillation vs structure
+
+Here's the distinction that keeps testing from wrecking the base.
+
+<div className="not-prose" style={{ border: "3px solid #000", backgroundColor: "#FFDE00", boxShadow: "4px 4px 0 0 #000", padding: "20px 24px", margin: "1.5rem 0" }}>
+  <p className="m-0" style={{ fontWeight: 900, fontSize: "20px", lineHeight: 1.3, textTransform: "uppercase", color: "#000" }}>Oscillation trains waiting. Structure doesn't.</p>
+</div>
+
+- **Oscillation** is moving the *same* offer up and down — 10% this month, 20% next, back to 10%. Customers learn the pattern and wait for the trough. You've trained deal-waiters and taught your best price down.
+- **Structure** is an offer that evolves without whipsawing. The discount-subscription store has a quiet, clean example: it **retired an evergreen first-order code gradually — redemptions fell ~93% over about a year** — while seasonal and product codes took its place and the **ongoing rate never moved** *(code-taxonomy slices; the subscription discount itself lives in selling-plan pricing, upstream of codes)*. The offer portfolio changed completely; nothing oscillated. Numbers got **retired, not married** — and no one was trained to wait.
+
+The testing implication: **phase changes in, don't flip them back and forth.** A retirement or a phase-down is a readable, non-training change. A repeated toggle is an unreadable, training one. When you must sunset an offer, ramp it down; don't yo-yo it.
+
+## Holdout thinking
+
+The honest limit: **there are no holdouts anywhere in our store data** — every figure in this module is platform attribution against an aggregate baseline, not a proven incremental lift. The holdout discipline below is imported as framework from [Winback economics](/growth-program/winback/winback-economics), not proven here. The fix, when you can afford it: hold back a **random slice** of eligible customers from the new offer and compare *matched* groups, so the difference you read is caused by the offer, not by who self-selected into it. You won't holdout every test — but for any offer change big enough to bet the ongoing rate on, a holdout is the difference between "the number moved" and "we moved the number."
+
+## What to test first (sequence, not everything)
+
+Highest information, lowest cohort-risk, first:
+
+1. **First-order offer depth** — bounded, one-time cost; fastest, most readable acquisition signal; doesn't touch your existing base.
+2. **[Gift vs discount](/growth-program/offer/free-gifting) at first order** — value-add vs price cut, no anchor reset.
+3. **[The descent shape](/growth-program/offer/first-order-incentives)** — single cliff vs stepped vs gift-cushioned.
+4. **Ongoing rate** — LAST, and rarely. It compounds across every renewal forever and it's the number most able to train your base. Test it only with a holdout and a very good reason.
+
+## The artifact — the offer-test protocol
+
+```text The protocol
+BEFORE THE TEST
+  [ ] One dial named. (What's moving? What's held? If two are moving, stop.)
+  [ ] Cohort table ready to receive the new row (30/60/90/180d, by offer).
+  [ ] Holdout defined if the stakes justify it (random, matched slice).
+  [ ] Change is a phase-in / phase-down, NOT a toggle you'll reverse.
+
+DURING
+  [ ] 60-day on-pace read logged as DIRECTIONAL. No decision yet.
+  [ ] No second dial moved. No reversal.
+
+AFTER
+  [ ] 180-day verdict recorded in the cohort table.
+  [ ] Winner phased in as structure; loser retired (ramped down, not flipped).
+  [ ] Ask: did this train waiting? If the change oscillates the base, redesign it.
+```
+
+<InOpenSubs>Run an offer test as a plan variant with a built-in holdout and cohort tagging, so the read-out lands in one dashboard instead of a spreadsheet reconciliation.</InOpenSubs>
 
 ## Where next
 
 <Columns cols={2}>
-  <Card title="Testing calendar" href="/growth-program/cadence/testing-calendar">
-    Where offer tests sit in the queue.
+  <Card title="Winback economics" href="/growth-program/winback/winback-economics">
+    The holdout discipline this lesson imports.
+  </Card>
+  <Card title="The discount question" href="/growth-program/offer/the-discount-question">
+    The cohort table this lesson protects.
   </Card>
 </Columns>
