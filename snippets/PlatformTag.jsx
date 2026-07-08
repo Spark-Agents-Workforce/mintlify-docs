@@ -1,13 +1,14 @@
-export const PlatformTag = ({ platform = "any" }) => (
-  <span
-    className={`os-sticker inline-block px-2 py-0.5 text-xs not-prose ${
-      platform === "opensubs" ? "" : "os-sticker-alt"
-    }`}
-    style={{
-      backgroundColor: platform === "opensubs" ? "#FFDE00" : "#C5F542",
-      color: "#000",
-    }}
-  >
-    {platform === "opensubs" ? "OpenSubs platform" : "Works on any platform"}
-  </span>
-);
+export const PlatformTag = ({ platform = "any" }) => {
+  // "Works on any platform" was on ~every page — ubiquity made it noise, so it
+  // renders nothing (JD, 2026-07-07). The tag stays in page source as metadata,
+  // and the OpenSubs-specific badge still renders where it genuinely signals.
+  if (platform !== "opensubs") return null;
+  return (
+    <span
+      className="os-sticker inline-block px-2 py-0.5 text-xs not-prose"
+      style={{ backgroundColor: "#FFDE00", color: "#000" }}
+    >
+      OpenSubs platform
+    </span>
+  );
+};
