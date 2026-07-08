@@ -468,36 +468,43 @@
     "title": "The welcome sequence",
     "platform": "any",
     "links": [
-      "/growth-program/messaging/transactional-and-reminder",
-      "/growth-program/first-60-days/first-order-experience"
-    ]
+      "/growth-program/first-60-days/first-order-experience",
+      "/growth-program/first-60-days/second-order-cliff"
+    ],
+    "status": "PRODUCTION"
   },
   "growth-program/first-60-days/first-order-experience": {
     "ia": "M5.2",
     "title": "First-order experience",
     "platform": "any",
     "links": [
-      "/growth-program/account-area/portal-as-retention",
-      "/growth-program/first-60-days/second-order-cliff"
-    ]
+      "/growth-program/first-60-days/second-order-cliff",
+      "/growth-program/first-60-days/early-tenure-playbook"
+    ],
+    "status": "PRODUCTION"
   },
   "growth-program/first-60-days/second-order-cliff": {
     "ia": "M5.3",
     "title": "The second-order cliff",
     "platform": "any",
     "links": [
-      "/growth-program/offer/first-order-incentives",
-      "/growth-program/churn-defense/save-offers",
-      "/growth-program/first-60-days/early-tenure-playbook"
-    ]
+      "/growth-program/first-60-days/early-tenure-playbook",
+      "/growth-program/churn-defense/dunning"
+    ],
+    "status": "PRODUCTION"
   },
   "growth-program/first-60-days/early-tenure-playbook": {
     "ia": "M5.4",
     "title": "Early-tenure playbook",
     "platform": "any",
     "links": [
-      "/growth-program/messaging/lifecycle-map"
-    ]
+      "/growth-program/messaging/lifecycle-map",
+      "/growth-program/churn-defense/cancellation-flow-design",
+      "/growth-program/first-60-days/welcome-sequence",
+      "/growth-program/first-60-days/first-order-experience",
+      "/growth-program/first-60-days/second-order-cliff"
+    ],
+    "status": "PRODUCTION"
   },
   "growth-program/messaging/lifecycle-map": {
     "ia": "M6.1",

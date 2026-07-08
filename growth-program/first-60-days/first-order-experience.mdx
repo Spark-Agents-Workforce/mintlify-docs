@@ -1,31 +1,82 @@
 ---
 title: "First-order experience"
-description: "Packaging, inserts, unboxing → activation."
+description: "The box is a retention channel, not packaging. And the delivery moment converts."
 ia: "M5.2"
 ---
 
-import { PlatformTag } from "/snippets/PlatformTag.jsx";
 import { InOpenSubs } from "/snippets/InOpenSubs.jsx";
 
-<PlatformTag platform="any" />
+<Note>**Practitioner layer under review.** The delivery-moment data below is measured. The physical box/insert layer is operator reasoning, currently in review with our operations practitioner — the reasoning stands; the specifics may sharpen.</Note>
 
-<Note>**Skeleton page.** The structure and links are final; the lesson lands in the production pass.</Note>
+**The anti-lesson this kills: "the box is packaging, not marketing."**
 
-## What this lesson gives you
+The box shows up at the subscriber's door somewhere between day three and day ten — the single most emotionally charged moment in the entire relationship, the one time your brand is physically *in their hands* — and most operators treat it as a logistics event. Tape, dunnage, done. That is the most expensive blind spot in early tenure, because a bad first box is churn you already paid to acquire, and a great one is a retention flow you never have to send.
 
-- The insert that activates the account area (and the ones that get binned).
-- Unboxing as onboarding: the physical moment digital flows can't replace.
-- First-order QA: why a bad first box is churn you paid to acquire.
+Before the framework, an honesty note that is itself part of the lesson. **Our source data contains zero data on physical packaging, inserts, or unboxing — in either store.** This is a *structural* gap: the sources are digital ledgers, and the in-home moment emits no Shopify or messaging event. So this lesson does something deliberate: it teaches the **delivery *moment*** from real data, and then builds the **physical layer** from operator reasoning, marked plainly as such.
 
-<InOpenSubs>Placeholder — the boxed product contrast for this lesson lands with the content.</InOpenSubs>
+## The decision — two layers, only one of them measured
+
+**Layer 1 — the delivery moment (data-backed).** The instant the product lands is a distinct, high-efficiency retention window — separate from the moment of purchase. You get to say something exactly when the subscriber is holding the thing they bought.
+
+**Layer 2 — the physical unboxing (operator-reasoned).** What's *in* the box — the insert, the activation prompt, the first-touch design — is a marketing surface you've already paid to deliver. The decision: treat the box as a retention channel with a job, or waste the one touch that costs you nothing incremental to send.
+
+## The proof — the delivery moment converts (this part is real)
+
+At **Brand A**, the post-delivery flow is startlingly efficient: a **two-message flow** ("product in hand" timing) attributed **~$624k** across ~708k recipients at **$0.88 per recipient — and a 0.26% unsubscribe rate, the lowest of any flow family in the store.** One of the two messages carried **~$558k** of it (~89%). People almost never opt out of a message that arrives *with* their package; the timing itself is the goodwill.
+
+This is the one beat in this lesson that clears the **two-store bar.** At **Brand B** (a second large subscription brand), the **shipping-and-delivery email family was the single largest lifecycle family** (~$1.26M attributed, ~10,700 conversions), sitting alongside a review-request loop (~$64k at ~0.3% unsub) and a small post-delivery flow (~$50k). Two independent stores, same finding: **the delivery moment is a high-leverage, low-friction retention window.** *(Attribution, not incrementality; shapes inferred from structure, not creative.)*
+
+Delivery-adjacent **SMS** carries the same signature — near-zero friction: transactional shipping/delivery texts at **~0.12% unsubscribe** while still attributing revenue. The delivery window is the *safest* touch you own.
+
+What the data proves: **the moment converts, and it converts cheaply.** What the data cannot tell you: what the box should *contain* to make the moment convert harder. That's Layer 2.
+
+## The physical layer — operator reasoning
+
+- **The insert has one job, not five.** The winning first-box insert drives the subscriber to *activate their account area* — the portal where they can skip, swap, and reschedule. Not a catalog, not a coupon wall. Every competing message on the card lowers the odds of the one action that predicts retention.
+- **QR-to-account-activation.** A single QR that deep-links into the logged-in portal (ideally pre-authenticated) collapses the distance between "box in hand" and "subscriber in control." The physical box is the best acquisition channel you have *for portal logins* — the digital touchpoint that most reduces the second-order wobble.
+- **The box is a retention surface, not packaging.** First-order box should teach the ritual (how to use the product), set the cadence expectation ("your next one ships ~day 30"), and make the controls feel like a feature, not an escape hatch — the physical twin of welcome messages 2 and 3.
+- **The anti-lesson, dead center:** "the box is packaging" fails precisely because it's the *only* channel with ~100% open rate and zero send friction. Every subscriber opens it. That is a marketing surface most brands never bill themselves for.
+
+## The instrumentation fix — make the box measurable
+
+The reason the box is a blind spot is that it's *unmeasured* — but it doesn't have to stay that way.
+
+- **Insert-specific discount/activation codes.** A code that exists *only* on the physical insert makes unboxing measurable: insert-specific codes surface in the store's code taxonomy, so redemptions become an attributable signal of "the box drove this action." This is the single cheapest instrumentation win available.
+- **QR scan events** as a proxy for portal activation from the box.
+- **A short post-delivery survey** triggered off the (measured) delivery moment — the one place you already know the product is in hand.
+
+Until those exist, the physical layer stays operator judgment. Say so plainly; don't dress reasoning as data.
+
+## The artifact — the first-order experience checklist
+
+**Delivery moment (data-backed):**
+
+- [ ] A dedicated post-delivery flow fires on "delivered," separate from post-purchase.
+- [ ] It carries a real job (educate / activate / review / replenish), not just a "thanks."
+- [ ] Delivery SMS/email treated as your lowest-friction touch — use the goodwill, don't waste it on a hard sell.
+
+**Physical box (operator-reasoned):**
+
+- [ ] Insert has exactly one primary action: activate the account area.
+- [ ] QR deep-links into the logged-in portal (skip/swap/reschedule visible).
+- [ ] Box sets the next-ship expectation in print (pre-empts the cliff).
+- [ ] Ritual/usage guidance present; controls framed as a feature.
+
+**Instrumentation:**
+
+- [ ] Insert carries an insert-only code so unboxing shows up in the data.
+- [ ] QR scans and a post-delivery survey capture the moment digitally.
+- [ ] First-box QA is a standing check — a broken first box is prepaid churn.
+
+<InOpenSubs>Placeholder — the boxed platform contrast lands with the content pass: the QR resolves to a pre-authenticated portal session so skip/swap/reschedule are one tap from the box, and insert-only codes reconcile against the account so unboxing becomes a measurable activation event.</InOpenSubs>
 
 ## Where next
 
 <Columns cols={2}>
-  <Card title="Portal as retention" href="/growth-program/account-area/portal-as-retention">
-    Where activation points them.
-  </Card>
   <Card title="The second-order cliff" href="/growth-program/first-60-days/second-order-cliff">
-    The reminder BEFORE the charge is churn prevention.
+    The cliff guard: the reminder that converts cancels into skips.
+  </Card>
+  <Card title="Early-tenure playbook" href="/growth-program/first-60-days/early-tenure-playbook">
+    Four engines, one window, zero silent stretches.
   </Card>
 </Columns>

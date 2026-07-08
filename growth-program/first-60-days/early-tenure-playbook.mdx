@@ -1,28 +1,69 @@
 ---
 title: "Early-tenure playbook"
-description: "Day 0 to day 60, complete."
+description: "Four engines, one window, zero silent stretches. The complete 60-day calendar."
 ia: "M5.4"
 ---
 
-import { PlatformTag } from "/snippets/PlatformTag.jsx";
 import { InOpenSubs } from "/snippets/InOpenSubs.jsx";
 
-<PlatformTag platform="any" />
+**The anti-lesson this kills: "onboarding ends at the first order."**
 
-<Note>**Skeleton page.** The structure and links are final; the lesson lands in the production pass.</Note>
+The first order is where most brands stop paying attention — and it's exactly where the churn clock starts. Onboarding is not "get them to buy once." It's "carry them from signup to the far side of the second charge," because a subscriber who clears order two and order three is a fundamentally different, far more durable animal than one who just placed order one. This lesson assembles the three pieces you've already built — [the welcome sequence](/growth-program/first-60-days/welcome-sequence), [the delivery moment](/growth-program/first-60-days/first-order-experience), [the pre-charge reminder](/growth-program/first-60-days/second-order-cliff) — and adds the connective tissue that runs underneath all of them: the **post-purchase education engine.**
 
-## What this lesson gives you
+## The decision — the fourth engine
 
-- The complete day-0 to day-60 message calendar.
-- What fires when, on which channel, with which job.
-- The checkpoints: how you know early tenure is working.
+You've built three moment-based touches. The fourth is a *sustained* one. The decision is to run a broad, multi-message **post-purchase education engine** across the whole early-tenure window — not one hero email, but a system of product education, usage reinforcement, complementary-product paths, and second-purchase prompts that fires steadily between the punctual moments.
 
-<InOpenSubs>Placeholder — the boxed product contrast for this lesson lands with the content.</InOpenSubs>
+**The proof it belongs:** at **Brand A**, the post-purchase engine was the **largest single lifecycle engine in the store** — a **~20-message flow** attributing **~$2.21M** across ~2.5M recipients at **$0.87 per recipient** and a low **0.37% unsubscribe rate.** *(Platform-attributed; shape inferred from ~20 distinct message IDs + sustained performance, not creative.)* The decisive detail: unlike the welcome flow (which won on one front-loaded hero message), the post-purchase engine won on **scale and sustained follow-up** — no single dominant email. The teaching: early tenure is not carried by one great send; it's carried by *showing up consistently* across sixty days. That is the opposite of "onboarding ends at the first order."
+
+## The assembly — how the four engines interlock
+
+- **Welcome (6 msgs):** front-loaded activation → then expectations, ritual, wobble. Runs days 0–21.
+- **Delivery moment (2-msg flow + the box):** fires on "delivered," ~day 3–10. Lowest-friction, highest-goodwill touch.
+- **Post-purchase engine (~20 msgs):** the steady spine — education, reinforcement, complementary paths, second-purchase prompts. Runs the whole window.
+- **Pre-charge reminder:** fires ~3–5 days before the second charge. The cliff guard.
+
+Each was proven (or reasoned) on its own; the playbook's value is that they **stop overlapping blindly.** The welcome flow shouldn't still be preaching activation while the delivery flow is talking usage; the post-purchase engine shouldn't fire a hard second-purchase prompt the same day as the pre-charge reminder. The calendar is a de-confliction tool as much as a schedule.
+
+## The artifact — the complete 60-day calendar
+
+**Assumes a ~30-day billing cadence** (the most common). If your interval is 45 or 60 days, slide the reminder to sit ~3–5 days before *your* charge and stretch the post-purchase engine to match. All day placements are operator-reasoned — no message-level timing data exists in the source; this is a framework to adapt, not a measured cadence.
+
+| Day | Engine | Touch | Job | Channel |
+|-----|--------|-------|-----|---------|
+| 0 | Welcome | Msg 1 — **activation** | Convert to first-time buyer (the ~71%-of-value message) | Email/SMS |
+| 1–2 | Welcome | Msg 2 — expectations | Cadence, price, the skip/swap/reschedule controls | Email |
+| 3–5 | Welcome | Msg 3 — ritual | How to use it; build the habit | Email |
+| 3–10 | **Delivery** | Post-delivery flow + **the box** | "Product in hand" — activate portal, teach usage (lowest-friction touch) | Email/SMS + physical |
+| 7–10 | Welcome | Msg 4 — wobble | Name the doubt; reframe control; resurface skip | Email |
+| 10–14 | Post-purchase | Education | Deepen product understanding; results | Email |
+| 12–16 | Welcome | Msg 5 — risk reduction | Reviews, proof, support access | Email |
+| 15–20 | Post-purchase | Reinforcement | Usage consistency; complementary products | Email |
+| 18–21 | Welcome | Msg 6 — bridge | Hand off to lifecycle; welcome flow ends | Email |
+| 20–26 | Post-purchase | Complementary paths | Cross-sell; expand the relationship | Email |
+| **~25–27** | **Reminder** | **Pre-charge heads-up** | **The cliff guard: skip = kept, not cancel** | **Email + SMS** |
+| **~29** | **Reminder** | **Last call (optional)** | Prevent the silent decline/chargeback | **SMS** |
+| **30** | — | **Second charge / order 2** | The cliff. Cleared subscribers now enter mid-tenure | — |
+| 31–60 | Post-purchase | Second-purchase reinforcement | Cement the habit through order 2→3 | Email/SMS |
+
+**Checkpoints — how you know early tenure is working:**
+
+- **Order-1 → order-2 survival rate** (the cliff clearance) — the number this whole module moves.
+- **Skip-vs-cancel ratio** at the pre-charge touch — skips should climb as cancels fall.
+- **Portal activation rate** from the box/welcome QR — the leading indicator of control-driven retention.
+- **Post-delivery flow unsubscribe** staying low (~0.26% was the benchmark case) — your friction gauge.
+
+The through-line: **four engines, one window, zero silent stretches.** Onboarding ends when the subscriber clears the second charge as a habit — not when the first box ships.
+
+<InOpenSubs>Placeholder — the boxed platform contrast lands with the content pass: the four engines share one subscriber timeline keyed to the real next-charge date, so the calendar de-conflicts automatically and the day-30 reminder can never fire late.</InOpenSubs>
 
 ## Where next
 
 <Columns cols={2}>
-  <Card title="Lifecycle map" href="/growth-program/messaging/lifecycle-map">
-    The full-tenure version of this calendar.
+  <Card title="The messaging engine" href="/growth-program/messaging/lifecycle-map">
+    Early tenure ends; the full lifecycle map takes over.
+  </Card>
+  <Card title="Cancellation flow design" href="/growth-program/churn-defense/cancellation-flow-design">
+    For the subscribers the calendar didn't keep.
   </Card>
 </Columns>
