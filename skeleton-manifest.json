@@ -625,8 +625,9 @@
     "platform": "any",
     "links": [
       "/growth-program/account-area/flexibility-as-retention",
-      "/growth-program/account-area/perks-and-loyalty"
-    ]
+      "/growth-program/winback/reactivating-paused"
+    ],
+    "status": "PRODUCTION"
   },
   "growth-program/account-area/perks-and-loyalty": {
     "ia": "M7.2",
@@ -644,9 +645,11 @@
     "title": "Flexibility as retention",
     "platform": "any",
     "links": [
-      "/growth-program/churn-defense/save-offers",
-      "/growth-program/account-area/community-and-identity"
-    ]
+      "/growth-program/account-area/portal-as-retention",
+      "/growth-program/winback/reactivating-paused",
+      "/growth-program/winback/recapturing-cancelled"
+    ],
+    "status": "PRODUCTION"
   },
   "growth-program/account-area/community-and-identity": {
     "ia": "M7.4",
@@ -741,8 +744,14 @@
     "platform": "any",
     "links": [
       "/growth-program/numbers/weekly-metrics",
-      "/growth-program/cadence/testing-calendar"
-    ]
+      "/growth-program/cadence/testing-calendar",
+      "/growth-program/cadence/when-to-get-help",
+      "/growth-program/messaging/lifecycle-map",
+      "/growth-program/offer/the-discount-question",
+      "/growth-program/account-area/perks-and-loyalty",
+      "/growth-program/offer/memberships"
+    ],
+    "status": "PRODUCTION"
   },
   "growth-program/cadence/testing-calendar": {
     "ia": "M10.2",
@@ -750,14 +759,20 @@
     "platform": "any",
     "links": [
       "/growth-program/offer/offer-testing",
-      "/growth-program/cadence/when-to-get-help"
-    ]
+      "/growth-program/cadence/operating-rhythm",
+      "/growth-program/winback/winback-economics"
+    ],
+    "status": "PRODUCTION"
   },
   "growth-program/cadence/when-to-get-help": {
     "ia": "M10.3",
     "title": "When to get help",
     "platform": "any",
-    "links": []
+    "links": [
+      "/growth-program/cadence/operating-rhythm",
+      "/growth-program/numbers/subscription-economics"
+    ],
+    "status": "PRODUCTION"
   },
   "growth-program/orientation": {
     "ia": "6.0",

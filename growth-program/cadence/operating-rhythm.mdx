@@ -1,31 +1,63 @@
 ---
 title: "The weekly/monthly/quarterly rhythm"
-description: "What the best teams review, and when."
+description: "What you review, when, and the one decision each cadence owes you."
 ia: "M10.1"
 ---
 
-import { PlatformTag } from "/snippets/PlatformTag.jsx";
 import { InOpenSubs } from "/snippets/InOpenSubs.jsx";
 
-<PlatformTag platform="any" />
+**The anti-lesson this kills: "more dashboards = more control."** ([Weekly metrics](/growth-program/numbers/weekly-metrics) already killed it once — this lesson makes the survivor operational.)
 
-<Note>**Skeleton page.** The structure and links are final; the lesson lands in the production pass.</Note>
+By this point in the school you own more instruments than most platforms ship: a unit-economics one-pager, a churn decomposition, a cohort table, a weekly dashboard spec, a testing doctrine, a lifecycle map, a holdout design. The failure mode now isn't ignorance — it's the instrument museum: everything built, nothing scheduled, decisions still made by vibe in the Slack channel where the loudest anomaly wins. A rhythm is what turns instruments into an operating system.
 
-## What this lesson gives you
+<div className="not-prose" style={{ border: "3px solid #000", backgroundColor: "#FFDE00", boxShadow: "4px 4px 0 0 #000", padding: "20px 24px", margin: "1.5rem 0" }}>
+  <p className="m-0" style={{ fontWeight: 900, fontSize: "20px", lineHeight: 1.3, textTransform: "uppercase", color: "#000" }}>Every review owes exactly one decision. A review that ends without a decision was a meeting.</p>
+</div>
 
-- Weekly: the dashboard, the anomalies, the one decision.
-- Monthly: cohort review, flow performance, offer health.
-- Quarterly: the strategy pass — pricing, perks, and what to kill.
+A dashboard nobody's scheduled to read is a screensaver.
 
-<InOpenSubs>Placeholder — the boxed product contrast for this lesson lands with the content.</InOpenSubs>
+## The decision — three cadences, three altitudes
+
+(The split and the one-decision rule are operating doctrine; the data supplies what each altitude actually catches.)
+
+**WEEKLY — the dashboard, the anomalies, ONE decision.** The [weekly dashboard](/growth-program/numbers/weekly-metrics) (starts, cancels, save/resume ratio, recurring share, failed payments), read in fifteen minutes, hunting one thing: what moved that shouldn't have. What a weekly read actually catches, illustrated from the data: recurring share at Brand A swung between ~41% and ~60% of paid orders by season — BFCM diluted it with new-customer surges *(tag-proxy hedge; single store)*. An operator without the rhythm sees November's recurring share drop and panics at phantom churn; the operator with the rhythm knows dilution-by-success from erosion, because they've watched the number weekly through a full season. The weekly decision is small by design: investigate X, or don't. Nothing strategic moves weekly — that's the point; the weekly protects the monthly from noise.
+
+**MONTHLY — cohorts, flows, offer health.** The three reviews that matter, each owing its decision:
+
+- **Cohort review:** which acquisition cohorts hit 60-day on-pace, which matured to 180-day verdict. Decision: does any offer's cohort trend demand a change to [the testing queue](/growth-program/cadence/testing-calendar)?
+- **Flow performance** ([the lifecycle map](/growth-program/messaging/lifecycle-map) as checklist): attributed value and unsub pressure by flow family — is the lifecycle engine compounding or plateauing? Decision: which ONE flow gets rebuilt or extended this month?
+- **Offer health:** starts by offer, depth cost, any drift toward oscillation. Decision: does the current test read clean, or does the calendar hold?
+
+**QUARTERLY — the strategy pass: pricing, perks, and what to kill.** The quarterly is where you're allowed to touch the big dials — [the ongoing rate](/growth-program/offer/the-discount-question), [perk economics](/growth-program/account-area/perks-and-loyalty), [membership structure](/growth-program/offer/memberships) — precisely because you didn't touch them for thirteen weeks. And the discipline nobody schedules: **the kill list.** Every quarter, one thing dies on purpose — the perk nobody redeems, the flow that stopped earning its unsub pressure, the creator code that failed two cohort audits. Growth work accretes; the quarterly is the only cadence with the altitude to prune.
+
+## The proof (and its honest edge)
+
+The data can't show you a team's operating rhythm — no such data exists anywhere. What it shows is why each altitude exists: seasonal swings that only a weekly baseline makes readable (the 41–60% recurring band), maturity windows that force monthly patience (60d on-pace, 180d verdict), and slow drifts only a quarter reveals (the year-over-year flow-value compounding vs the broadcast plateau). The cadences aren't preference; they're matched to the speeds at which subscription truths surface.
+
+## The artifact — the operating calendar
+
+| Cadence | Review | Inputs (built already) | The one decision |
+|---|---|---|---|
+| **Weekly** (15 min) | The dashboard read — starts, cancels, save/resume, recurring share, failed payments | The weekly dashboard | Investigate the anomaly, or don't |
+| **Monthly** (90 min) | Cohort review · Flow performance · Offer health | Cohort table · lifecycle map + flow report · offer worksheet + test status | Change the testing queue, or hold · the ONE flow to rebuild · test reads clean, or calendar holds |
+| **Quarterly** (half day) | The strategy pass — pricing, perks, membership, kill list | Rate math, perk audit, membership viability, cohort trends, holdout results | Move a big dial, or explicitly don't — **plus THE KILL: one thing dies** |
+
+```text The rules
+[ ] Every review ends with its decision written down (one line, dated)
+[ ] No big dial moves outside the quarterly (emergencies excepted, then documented)
+[ ] The weekly protects the monthly from noise; the monthly protects the
+    quarterly from drift; the quarterly protects the year from accretion
+```
+
+<InOpenSubs>The weekly dashboard, cohort tables, and flow reports are saved views on the platform's own ledger — the calendar schedules reads, not exports.</InOpenSubs>
 
 ## Where next
 
 <Columns cols={2}>
-  <Card title="Weekly metrics" href="/growth-program/numbers/weekly-metrics">
-    The dashboard this rhythm reads.
+  <Card title="The testing calendar" href="/growth-program/cadence/testing-calendar">
+    The queue the monthly review feeds.
   </Card>
-  <Card title="Testing calendar" href="/growth-program/cadence/testing-calendar">
-    Offers → flows → creative. In that order.
+  <Card title="When to get help" href="/growth-program/cadence/when-to-get-help">
+    What to do when the rhythm outgrows the team.
   </Card>
 </Columns>

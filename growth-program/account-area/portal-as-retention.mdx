@@ -1,31 +1,82 @@
 ---
 title: "The portal as retention surface"
-description: "Skip > cancel. Swap > cancel."
+description: "Count the doors, then count which ones are reachable. If the only findable door is cancel, you built an exit."
 ia: "M7.1"
 ---
 
-import { PlatformTag } from "/snippets/PlatformTag.jsx";
 import { InOpenSubs } from "/snippets/InOpenSubs.jsx";
 
-<PlatformTag platform="any" />
+**The anti-lesson this kills: "the portal is account settings."**
 
-<Note>**Skeleton page.** The structure and links are final; the lesson lands in the production pass.</Note>
+Here is the folklore, and it is quiet and costly. *"The account area is plumbing. It's where a subscriber updates their card and their shipping address. Build it once, make it work, move on — retention happens in email and in the product, not in a settings page."*
 
-## What this lesson gives you
+That framing is why so many portals are half-built. Treated as settings, the portal gets the effort a settings page gets: functional, unloved, and shipped. But look at what a subscriber actually does when they're wobbling. They don't open your welcome email. They don't read your SMS. **They go to their account.** The portal is the single retention surface a subscriber touches most at the exact moment they're deciding whether to stay — the moment their product piled up, their card expired, their taste changed, or their budget tightened.
 
-- Why self-service reduces churn: every door that isn't 'cancel'.
-- What a portal must let them do, ranked by retention impact.
-- The friction paradox: easy skip = harder cancel.
+The reframe is simple and it changes everything downstream: **the portal is a set of doors.** Every door that isn't "cancel" is a door that keeps the relationship alive.
 
-<InOpenSubs>Placeholder — the boxed product contrast for this lesson lands with the content.</InOpenSubs>
+<div className="not-prose" style={{ border: "3px solid #000", backgroundColor: "#FFDE00", boxShadow: "4px 4px 0 0 #000", padding: "20px 24px", margin: "1.5rem 0" }}>
+  <p className="m-0" style={{ fontWeight: 900, fontSize: "20px", lineHeight: 1.3, textTransform: "uppercase", color: "#000" }}>If the only door a subscriber can find is cancel, you didn't build a retention surface — you built an exit.</p>
+</div>
+
+## The decision: count the doors, then count which ones are reachable
+
+Operator doctrine, carried across this whole module: **skip > cancel. Swap > cancel. Pause > cancel.** A skipped order keeps a subscriber. A swapped flavor keeps a subscriber. A paused plan keeps a subscriber. A cancel keeps nothing. So the portal's job is not to *look* complete — it's to make every non-cancel door as discoverable and as low-friction as the cancel door. In most portals the reverse is true.
+
+A portal that earns the name **retention surface** must let a subscriber, without emailing you and without waiting on a human:
+
+- **Skip the next order** (the friction is "too much product," and skip fixes it in one move).
+- **Swap or edit items** (the friction is "I'm bored of this flavor" — a catalog problem, not a subscription problem).
+- **Change frequency / cadence** (the friction is "it comes too often" — the single most common quiet cause of "too much product").
+- **Pause** (the friction is "not right now" — travel, a full shelf, a tight month; sets up [Flexibility as retention](/growth-program/account-area/flexibility-as-retention) and hands the paused *segment* to [Reactivating paused](/growth-program/winback/reactivating-paused)).
+- **Update payment and address** (the friction is mechanical — an expired card is a churn event disguised as a settings problem).
+- **Reschedule the next charge date** (the friction is timing — "not on the 1st").
+
+Each capability is a door. The decision framework is a two-column audit: for every door, is it (a) present at all, and (b) reachable in a couple of clicks *without* a login wall, a support email, or a buried menu? A door that exists but can't be found is not a door. It's a wall with a rumor of a door behind it.
+
+### Where the portal fails silently
+
+This is the part operators miss, because these failures don't throw errors — they just leak subscribers quietly. Three named failure modes:
+
+- **The login wall.** The subscriber clicks "manage my subscription" from your email, lands on a login screen, doesn't remember the password, requests a reset, never finishes. The door existed; the wall in front of it won. Magic-link or one-click authenticated access from lifecycle emails removes the wall.
+- **The buried skip.** Skip is the highest-value door — it fixes the most common friction ("too much product") at zero margin cost — and in too many portals it's three menus deep while "cancel subscription" sits in plain sitewide reach. When the easy door is cancel and the buried door is skip, you have engineered your own churn.
+- **The cancel-only-by-email dark pattern.** The portal lets a subscriber do everything *except* the thing they came to do, forcing "email us to cancel." Operators think this friction saves subscribers. It doesn't — it makes cancellation feel like a fight, poisons the brand, and (increasingly) runs into click-to-cancel regulation. Worse: when every self-service door is hard, **cancellation becomes the only door the subscriber can find** — often by leaving a one-star review or a chargeback instead of a clean cancel you could have saved with a skip.
+
+Name the pattern plainly: **anything that makes cancellation the only discoverable door is the failure.** Not the presence of a cancel button — the *absence of reachable alternatives beside it.*
+
+## The proof (the machine-scale argument, hedges attached)
+
+We do not have portal-usage data, and this lesson will not pretend to — no clicks, no door-open counts, no login-wall drop-off exists in the evidence. What the data *does* give you is the scale of what's at stake, and it is stark.
+
+At one large subscription brand, the subscription-lifecycle table logged, across roughly six months, about **37,000 cancellation events** against roughly **1,200 reactivations and 700 resumes** combined — on the order of **twenty subscribers leaving for every one the store recovered** after the fact. Read the hedges, because they're the curriculum: these are lifecycle *event* counts, not distinct-subscriber churn (creates and cancels aren't deduped to people), the early months are an instrumentation limit rather than a real absence, and the counts never record which door a subscriber looked for. But the order of magnitude is not in doubt.
+
+Here's what that ratio argues, at machine scale: **recovery after the fact is a trickle; the leak is a flood.** When cancels dwarf recoveries roughly 20:1, the highest-leverage place to work is *before* the cancel — the self-service door a subscriber opens instead of cancelling. This is exactly why the portal is a retention surface and not settings: every door you make reachable is a cancellation that never enters that 37,000. We can't prove a *better portal changes the ratio* — no store in the data ran that test. But the scale of the leak is the argument for building the doors. Resurrection is the net; the portal is the guardrail before the fall.
+
+## The artifact: the portal capability checklist
+
+Score your own portal. For each capability, mark it present/reachable, name the door it opens, and note the red flag if it's missing or buried.
+
+| Capability | Door it opens (the friction it fixes) | Red flag if missing / buried |
+|---|---|---|
+| **Skip next order** | "Too much product" → keep the sub, drop one shipment | Buried while cancel is one click = you engineered churn |
+| **Change frequency / cadence** | "Comes too often" → fix the root cause of pile-up | Absent → subscribers cancel to fix a timing problem |
+| **Pause** | "Not right now" → hold, don't lose | No pause → the only "not now" is cancel |
+| **Swap / edit items** | "Bored of this flavor" → a catalog fix, not a churn | Locked SKUs → variety-seekers leave for the catalog they wanted |
+| **Reschedule charge date** | "Not on the 1st" → align to their cash flow | No reschedule → payday-timing cancels |
+| **Update payment / address** | Expired card, moved house → mechanical saves | Hard to reach → dunning churn that was never a real cancel |
+| **Cancel — self-service, honest** | The clean exit (better a clean cancel than a chargeback) | Cancel-only-by-email = the dark pattern; makes cancel the *only* discoverable door |
+| **No login wall on managed links** | Every door above, actually reachable | Password-reset dead-end = doors that exist but can't be opened |
+
+**How to read your filled sheet:** any door that's *absent* is a friction with no fix but cancel. Any door that's *present but buried* — especially skip and pause — is worse in one specific way: it means the easy path is the exit. Fix reachability before you add features. A subscriber in a wobble will take the first door they find; your job is to make sure the first door they find isn't the last one.
+
+<InOpenSubs>The subscriber portal ships with skip, pause, swap, frequency-change, and reschedule as first-class doors behind a magic-link (no login wall), so the checklist above is a config review, not a rebuild.</InOpenSubs>
 
 ## Where next
 
 <Columns cols={2}>
   <Card title="Flexibility as retention" href="/growth-program/account-area/flexibility-as-retention">
-    Each door, in depth.
+    Each door in depth — and the scoreboard that tells you they're working.
   </Card>
-  <Card title="Perks & loyalty" href="/growth-program/account-area/perks-and-loyalty">
-    Which perks move retention vs leak margin.
+  <Card title="Reactivating paused" href="/growth-program/winback/reactivating-paused">
+    Working the paused segment the pause door creates.
   </Card>
 </Columns>
