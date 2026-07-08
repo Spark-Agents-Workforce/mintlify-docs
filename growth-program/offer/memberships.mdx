@@ -4,22 +4,134 @@ description: "A recurring fee that unlocks perks. When it beats a discount — a
 ia: "M2.6"
 ---
 
-import { PlatformTag } from "/snippets/PlatformTag.jsx";
 import { InOpenSubs } from "/snippets/InOpenSubs.jsx";
 
-<PlatformTag platform="any" />
+## The two things "everybody knows" about memberships (both wrong)
 
-<Note>**Skeleton page.** The structure and links are final; the lesson lands in the production pass.</Note>
+You've heard both of these, probably from the same person.
 
-## What this lesson gives you
+The first: *"A paid membership is just a loyalty program with a cover charge."* Points, tiers, a little badge in the account area — except now the customer pays for the privilege of earning points. Dress up a punch card, staple a fee to it, call it a membership.
 
-- The model: a recurring fee that unlocks perks — member pricing, early access, free shipping, exclusive drops. Costco/Prime logic at DTC scale.
-- The economics: the membership fee is high-margin recurring revenue AND a frequency lever — members buy more often to "use" their fee. Sunk-cost loyalty, priced.
-- Offer design: what to charge, what to gate, annual vs monthly, and the member-shipping play vs the free-shipping-threshold trap.
-- When NOT to: low purchase frequency, thin catalog, perks that leak more margin than they retain — the cost-per-retained-month test decides.
-- The mechanics handoff: your platform already bills memberships as subscription contracts; the run-it page has the setup.
+The second, said with more confidence: *"You can't charge customers to shop with you. Amazon can. Costco can. You're not Amazon."*
 
-<InOpenSubs>Placeholder — the boxed product contrast for this lesson lands with the content.</InOpenSubs>
+Here's a real store that ignored both. An eight-figure snacks brand — total store sales, not a subscription-revenue figure — sells a paid annual membership at roughly $60/year. Not points. Not a standing discount. A fee, for access. And over two years, the membership went from carrying ~13% of the store's sales to ~26% — *while the whole store was growing underneath it* (order-tag share of sales; the slice mixes regular catalog and members-only products). Members who join spend more, buy more often, and pull an anchor product line almost nobody else can touch.
+
+So the folklore is dead on arrival. The interesting question isn't *can* you charge customers to shop with you. It's *when the math works* — and, just as important, when it quietly doesn't. That's the whole lesson. This is one measured case, so we'll teach it as a case and hand you a test you run on your own numbers.
+
+## The model: you're selling access, not a discount
+
+Strip a paid membership down and it is one sentence: **a recurring fee that unlocks perks the non-member can't get.** Member pricing, early access, free shipping, members-only products, store credit. Costco and Prime logic, at DTC scale.
+
+The critical distinction — the one the anti-lesson blurs — is **membership vs. discount subscription.** They feel adjacent. They are opposite instruments.
+
+- A **discount subscription** *lowers* the price to buy frequency. You give up margin on every order in exchange for a recurring commitment. AOV usually goes *down* — that's the deal working as designed.
+- A **paid membership** *charges* for belonging and then monetizes access, credits, and exclusivity. Done right, AOV goes *up*, because the people who opt in are your deepest buyers and the perks pull them toward larger, more frequent baskets.
+
+The measured case runs *both* at once, which is why it's such a clean teacher: it has a discount subscription bundle (buy 4+ items, save ~10%, auto-selected on the product page) sitting right next to the ~$60/year paid membership. Same store, two levers, documented separately. The bundle is the smaller lane. The membership became a quarter of the business.
+
+<div className="not-prose" style={{ border: "3px solid #000", backgroundColor: "#FFDE00", boxShadow: "4px 4px 0 0 #000", padding: "20px 24px", margin: "1.5rem 0" }}>
+  <p className="m-0" style={{ fontWeight: 900, fontSize: "20px", lineHeight: 1.3, textTransform: "uppercase", color: "#000" }}>A membership is a product you sell, not a discount you concede.</p>
+</div>
+
+The fee is high-margin recurring revenue. The perks are the cost of goods on that product. The rest of the lesson is learning to price that product so the perks cost less than the fee — plus the extra spending — brings in.
+
+## The economics: what the measured case actually shows
+
+Here is the proof, anonymized and hedged. Read the hedges — they're not fine print, they're the curriculum. An operator who can read attribution honestly is a better operator than one who prints naked numbers.
+
+**Members spend more per order — with a real asterisk.** Member-tagged orders ran roughly **+48% higher AOV** than the untagged remainder (and ~+39% above the total-store average). Big number. Now the asterisk, and it travels everywhere this figure goes: **members self-select.** The baseline is an *aggregate untagged remainder*, not a matched non-member cohort, and there's no holdout — so this is attribution, not proven incremental lift. Your deepest customers were probably always going to be your deepest customers. The membership didn't manufacture a +48% spender out of a tire-kicker. What it did was *identify, concentrate, and give a home to* the people already inclined to spend — and that is still worth a great deal. Just don't tell yourself the fee caused the basket.
+
+**Members are worth a lot over their life — same asterisk.** Active members generated roughly **$875 in revenue per member** across about **5.94 orders** each (lifetime-to-date; same self-selection caveat). That's ~$147 per member order. The value shows up as AOV *and* lifetime, not merely as more frequent small baskets — the opposite of what a discount subscription does to your numbers.
+
+**The membership grew as a share of a growing store.** Its share of sales climbed from **~13% to ~26% over two years.** This is the figure that kills "memberships are a gimmick," because the denominator was rising the whole time (order-tag share; the slice mixes catalog + gated products). The membership didn't just grow — it grew *faster than the store*.
+
+**Attach is low, steady, and rises with scarcity — not with sales.** Roughly **3.3% of orders carry a membership signup**, and that rate climbed **3.0% → 3.6% year-over-year** as the program matured. It *peaked around 4.5% during limited product-drop / member-access windows* — not during blanket discount events. Read that twice: scarcity recruited members better than markdowns did (this is an order-period activation rate, not a visitor-level onsite conversion rate; and drop-timing is coincidence, not incrementality).
+
+**Most member money is spent on the regular catalog.** The members-only/gated product line was only about **27% of member-tagged product-type sales** — the other ~73% was the normal catalog every customer sees (product-type is a proxy; member-tagged orders include ordinary purchases). But flip it around: those gated products were **~84% bought by members.** So the gated cuts aren't the *volume* — they're the *hook*. One anchor gated product alone was roughly half of gated sales. You gate a small, desirable slice to create pull; members then spend most of their money on your ordinary shelf. That's the design.
+
+**Credits build a return loop.** The membership pays back partly in store credit (a few percent cash-back plus signup and referral credits). At the snapshot, roughly **$600K in credit sat unredeemed** (lifetime-to-date balance). Unredeemed credit is two things at once: a liability on your books, and a standing reason for the member to come back and spend. It's a leash you can pull.
+
+**The annual model creates a renewal calendar you have to manage.** Joins clustered in summer and drop months; cancellations peaked **~12 months later**, right at the renewal anniversary, while the rebill (renewal) stream grew several-fold year-over-year as the first cohorts came due (raw monthly counts — the register holds no cohort-linked survival curve, so we can name the *timing* of churn, not a survival rate). A discount subscription churns continuously; a paid *annual* membership concentrates its churn at the anniversary. That's a gift, actually — it tells you exactly when to run the save.
+
+## Offer-design decisions (what to charge, what to gate, how to bill)
+
+The data above turns into five decisions. None is a commandment; each is a dial.
+
+**1. What to charge.** The measured case sits at ~$60/year — low enough to be an easy yes against a single anchor perk. The test for your number: the annual fee should feel *recoverable in one or two orders' worth of perks*, or the member does the math and declines. Price the fee against the value of the headline perk, not against your costs.
+
+**2. What to gate.** Gate a *small, high-desire slice* — the register's case gated roughly a quarter of member spend and let the rest ride on the open catalog. Gate too little and there's no reason to join; gate too much and you strangle your own top-of-funnel and train non-members to feel locked out. The hook is one or a few products people specifically want and can't get elsewhere on your site.
+
+**3. Credits vs. a standing discount.** Prefer **credit** over a permanent percentage off. Credit is a return loop (unredeemed balance pulls members back); a standing discount is pure margin bleed on every order forever, and it re-creates the discount-subscription problem you were trying to escape. Cash-back that must be *spent with you* is retention; a flat member discount is just a slower giveaway.
+
+**4. Annual vs. monthly billing.** The measured case ran **annual**, and annual gave it a clean once-a-year save window and a rising rebill stream. Annual front-loads commitment and concentrates churn (easier to defend); monthly lowers the join barrier but spreads churn across every month (harder to catch). If your purchase frequency is high and your perk is obvious, annual is the stronger default. If joining feels risky to your customer, monthly buys the trial. (The measured case ran annual only — the monthly trade-off is reasoning, not evidence.)
+
+**5. Shipping perks — mind the threshold trap.** "Free shipping for members" is a popular headline perk, and it can work. But if you *already* run a free-shipping threshold most orders clear, a member shipping perk retains almost nobody and leaks margin on orders that would've shipped free anyway. Make the shipping perk do work the threshold isn't already doing, or don't pay for it. (We have no shipping-specific membership data in the register — this is framework, run it on your own numbers.)
+
+## When NOT to run a membership
+
+A membership is not a universally good idea, and selling it to a store that shouldn't have one is how you get a graveyard of $60 fees and angry cancellations. Three conditions make it a **no-go** or a **not-yet**:
+
+**Low purchase frequency.** The whole model rests on members buying *often enough* to "use" the fee and clear the perks. The measured case's active members bought ~6 times over their membership life. If your customer buys from you twice a year, a membership is a fee with nothing to justify it — the member joins, doesn't come back enough to feel value, and cancels at renewal. Frequency is the load-bearing wall.
+
+**Thin catalog.** If you can't gate a desirable slice *without* starving your main line, you have nothing to sell access *to*. A one-hero-SKU brand can't run the gated-drop play — gating your only product just annoys everyone. You need enough depth that a members-only slice creates pull rather than resentment.
+
+**Perks that leak more margin than they retain.** This is the one that kills memberships quietly, after launch, on a spreadsheet. If your cash-back, gated discounts, and shipping perks cost more in given-up margin per member-month than the fee (plus incremental spend) brings in, you are *paying customers to stay* — a discount subscription wearing a membership costume. We can't compute this for the measured case because the register has no margin data — which is exactly why the artifact below makes *you* compute it for yourself.
+
+## The artifact: the membership viability test
+
+Run this before you build anything. Three legs, a score, one of three verdicts. Fill it with *your* numbers — the thresholds are a starting line calibrated loosely to one measured case, not a law.
+
+### Leg 1 — Purchase frequency
+
+*How many times does a typical repeat customer buy from you per year?*
+
+| Your annual repeat frequency | Score |
+|---|---|
+| 4+ purchase occasions / year | **2 — green** |
+| 2–3 / year | **1 — yellow** |
+| Fewer than 2 / year | **0 — red** |
+
+> Reference: the measured case's active members bought ~5.94 times across their membership life (self-selected cohort; lifetime-to-date). Frequency is the load-bearing wall — if it's red here, stop.
+
+### Leg 2 — Catalog depth
+
+*Can you gate a slice customers genuinely want without starving your main line?*
+
+| Can you gate desirable products AND keep a full open catalog? | Score |
+|---|---|
+| Yes — clear gate-able slice, deep catalog behind it | **2 — green** |
+| Maybe — could gate something, catalog is moderate | **1 — yellow** |
+| No — one/few hero SKUs, gating starves the funnel | **0 — red** |
+
+> Reference: in the measured case, gated products were ~27% of member spend (hook) while ~73% rode the open catalog (volume), and gated items were ~84% bought by members. You need enough depth for that split to exist.
+
+### Leg 3 — Perk cost per retained month vs. fee revenue
+
+*This is the margin leg. You supply the numbers — the register has none.*
+
+1. **Fee revenue / member / month** = (your annual fee) ÷ 12.
+2. **Perk cost / member / month** = margin you *give up* per member each month: cash-back credit likely to be redeemed + gated/member discount margin + shipping subsidy + any signup/referral credit amortized.
+3. Compare:
+
+| Perk cost vs. fee revenue (per member-month) | Score |
+|---|---|
+| Perk cost **well under** fee revenue | **2 — green** |
+| Perk cost **roughly equals** fee revenue | **1 — yellow** |
+| Perk cost **exceeds** fee revenue | **0 — red** |
+
+> If Leg 3 is red, you are paying members to stay — that's a discount subscription in disguise. Note: fee revenue is the *floor*; incremental member spend (if you can measure it with a holdout) is upside on top. Don't count the +48% AOV as incremental here — it's self-selected, not proven lift.
+
+### The verdict
+
+Add your three scores (0–6):
+
+- **Any leg scored 0 (red) → NO-GO** on that leg's terms. A red on frequency or catalog is structural; fix the business first. A red on Leg 3 means redesign the perks before launch.
+- **Total 5–6, no reds → GO.** Build it. Gate a small desirable slice, price the fee against the headline perk, pay back in credit not standing discounts, bill annual, and put your save effort at the renewal anniversary.
+- **Total 3–4, no reds → NOT-YET.** The bones are there but something's soft — usually frequency or catalog depth. Grow the underlying repeat behavior first (that's [the first 60 days](/growth-program/first-60-days/welcome-sequence) and [churn defense](/growth-program/churn-defense/cancellation-flow-design)), then re-run this test in a quarter.
+
+One page. Run it Monday. If it says not-yet, it just saved you a launch you'd have unwound in a year.
+
+<InOpenSubs>Your platform already bills a membership as a subscription contract — product → plan → entitlements → dunning — so "go" here becomes a setup task, not an integration project. The mechanics live at [Run a membership on your platform](/operate/memberships).</InOpenSubs>
 
 ## Where next
 

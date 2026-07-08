@@ -330,8 +330,12 @@
     "title": "The discount question",
     "platform": "any",
     "links": [
-      "/growth-program/offer/free-gifting"
-    ]
+      "/growth-program/offer/free-gifting",
+      "/growth-program/offer/first-order-incentives",
+      "/growth-program/offer/memberships",
+      "/growth-program/offer/offer-testing"
+    ],
+    "status": "PRODUCTION"
   },
   "growth-program/offer/free-gifting": {
     "ia": "M2.3",
@@ -749,12 +753,14 @@
     "ia": "M2.6",
     "title": "Memberships & access passes",
     "platform": "any",
-    "status": "SKELETON",
+    "status": "PRODUCTION",
     "links": [
       "/operate/memberships",
       "/growth-program/account-area/perks-and-loyalty",
       "/growth-program/offer/prepaid-and-commitment",
-      "/growth-program/offer/offer-testing"
+      "/growth-program/offer/offer-testing",
+      "/growth-program/first-60-days/welcome-sequence",
+      "/growth-program/churn-defense/cancellation-flow-design"
     ]
   }
 }

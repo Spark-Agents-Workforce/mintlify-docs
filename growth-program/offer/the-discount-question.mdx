@@ -4,25 +4,126 @@ description: "10 vs 15 vs 25: the math for choosing your number."
 ia: "M2.2"
 ---
 
-import { PlatformTag } from "/snippets/PlatformTag.jsx";
 import { InOpenSubs } from "/snippets/InOpenSubs.jsx";
 
-<PlatformTag platform="any" />
+## The folklore this lesson kills
 
-<Note>**Skeleton page.** The structure and links are final; the lesson lands in the production pass.</Note>
+Somewhere along the way you absorbed one of two beliefs about subscription discounts. Either: discount-acquired subscribers are junk — deal-hunters who churn the moment the math stops flattering them. Or the opposite: deeper always converts better, so set the discount as deep as margin allows and let volume sort it out.
 
-## What this lesson gives you
+Here's what the ledger at one nine-figure-run-rate subscription brand actually shows. An always-on ~10% first-order code — nothing clever, no countdown timer — acquired two mature cohorts (3,500 and 7,700 customers) that came back at roughly **50% by 180 days**, generating six to seven figures of repeat revenue per cohort. Meanwhile a different sale-window code's cohort matured at only ~39%. Same store, same products, same months on the calendar — different codes, measurably different customers.
 
-- The margin/LTV/attach-rate triangle — what each point of discount buys and costs.
-- A decision framework, not a dogma. Your number falls out of your unit economics.
-- When to revisit the number (and when moving it trains bad behavior).
+Both beliefs are wrong for the same reason: they treat the discount as a price. It isn't.
 
-<InOpenSubs>Placeholder — the boxed product contrast for this lesson lands with the content.</InOpenSubs>
+<div className="not-prose" style={{ border: "3px solid #000", backgroundColor: "#FFDE00", boxShadow: "4px 4px 0 0 #000", padding: "20px 24px", margin: "1.5rem 0" }}>
+  <p className="m-0" style={{ fontWeight: 900, fontSize: "20px", lineHeight: 1.3, textTransform: "uppercase", color: "#000" }}>The discount is a filter. The number you choose selects who you acquire, not just how many.</p>
+</div>
+
+This lesson gives you the math for choosing it on purpose.
+
+*(One measured case, and cohort quality wasn't randomized across codes — the audiences each code reached differ too. That's exactly why you'll build your own cohort table before you trust anyone's number, including ours.)*
+
+## The triangle
+
+Every discount number sits inside three forces. Ignore any one of them and the other two will bill you later.
+
+**Leg 1 — what a point of depth costs you.** The data here is revenue-only — no COGS or margin anywhere in it — so this leg is a formula you fill with YOUR numbers. That's not a weakness; it's the point. No one else's margin can choose your discount.
+
+Start from contribution margin per order:
+
+```text The formula
+CM/order = AOV × gross margin % − fulfillment − payment costs
+```
+
+Each discount point costs you AOV × 1%, straight off the top of CM. But — and this is the asymmetry the whole lesson turns on — **a first-order discount is a one-time cost; an ongoing discount compounds across the entire subscription lifetime.** A 25% first-order offer on a $100 AOV costs you $25, once, against everything that cohort ever spends. A 25% ongoing rate costs you $25 on every renewal, forever. These are not the same decision, and brands that treat "the discount" as one number are usually overpaying on the second dial to fund the first.
+
+The live store in our data runs them as two separate dials — a deep first-order offer over a modest ~10% ongoing rate — and toggles the first-order dial by season while the ongoing rate holds still. Copy the structure before you copy any number.
+
+**Leg 2 — what depth buys you on acquisition.** This one is measured. When the brand moved its first-order subscription offer from the standing rate to 25%, daily subscription starts rose by **roughly half** within days, and subscription first-orders went from ~14% to ~20% of all paid orders. First-order depth is the fastest subscription-mix lever visible anywhere in the dataset — faster than creative, faster than landing pages, faster than channel shifts. *(Acquisition-window signal; this is lift in starts, not proof of downstream quality — see leg 3.)*
+
+**Leg 3 — what depth does to who you get.** The 180-day cohort table is the leg most brands never build, and it's the one that settles arguments:
+
+| Acquisition offer (mechanism, anonymized) | 180-day repeat | Cohort size | Maturity |
+| --- | --- | --- | --- |
+| Evergreen ~10% first-order code, cohort A | 50.0% | 3,500 | mature |
+| Evergreen ~10% first-order code, cohort B | 51.4% | 7,700 | mature |
+| Holiday sale code | 38.7% | ~1,000 | mature |
+| Targeted sale code | 49.0% | ~200 | mature (small — directional only) |
+| The 25% first-order cohort | — | ~24,000 orders in-window | matures late 2026 — this is the number that decides whether the 25% test "worked." Until it lands, the lift in leg 2 is a hypothesis about volume, not a verdict on quality. |
+
+What the table does license: a modest evergreen first-order discount acquired customers who repeat at ~50% — at scale, twice. What it does not license: "deeper = worse retention." The sale codes' depths aren't recorded in the data, and their audiences differ. The claim that survives scrutiny is the filter claim: **different offers select different customers, and the difference is measurable in YOUR data within 180 days.**
+
+## Choosing your number
+
+The worksheet (your artifact) walks this in order:
+
+<Steps>
+  <Step title="Compute CM/order">
+    The leg-1 formula. Write down what one discount point costs on first orders vs on renewals. If you can't fund 10 points on renewals forever, your ongoing rate isn't 10+ — whatever your competitor charges.
+  </Step>
+  <Step title="Set the ongoing rate first">
+    It's the compounding dial, so it gets the conservative number — the one your margin sustains at 100% adoption, because at steady state your best customers ARE the discounted base. Most of the healthy subscription programs we've operated hold this at 10% or under.
+  </Step>
+  <Step title="Set the first-order offer as a separate, bounded bet">
+    Depth here buys starts (leg 2, measured). Size it by payback: extra starts × expected 180-day value must exceed depth cost × all starts. You don't know your expected 180-day value yet? Then your current offer runs until your cohort table exists. That's not caution; that's sequencing.
+  </Step>
+  <Step title="Build the cohort table before you move anything">
+    30/60/90/180-day repeat, by acquisition offer, measured from the acquisition window. This is the instrument that turns discount debates into arithmetic. (The store above settles "is 10% junk acquisition?" in one row: 50%.)
+  </Step>
+  <Step title="Move ONE dial, then wait for maturity">
+    60-day reads tell you if a cohort is on-pace; 180 days is the verdict. Moving both dials at once — or moving them again before maturity — burns the instrument you just built. (How to test without wrecking cohorts or training deal-waiters is [Offer testing](/growth-program/offer/offer-testing)'s whole lesson.)
+  </Step>
+</Steps>
+
+## When to revisit the number — and when moving it trains bad behavior
+
+This framework comes from operating experience; the data contributes the phase-down evidence and the two-dial timeline.
+
+Revisit triggers (any one is sufficient):
+
+- **Cohort drift:** two consecutive cohorts mature meaningfully below your baseline — the filter is selecting worse customers than it used to.
+- **Start-rate plateau at healthy cohorts:** quality holds but volume stalled — depth may be underpriced for the acquisition job.
+- **Margin structure change:** COGS, shipping, or payment costs moved; recompute leg 1 before the market recomputes it for you.
+
+The deal-training rule: **oscillation trains waiting; structure doesn't.** An always-on first-order offer can't teach existing subscribers to wait — they're past it, and it never applies to them again. What trains bad behavior is moving the ONGOING rate up and down, or running frequent deep sitewide events that beat the subscription's standing value. The data has a quiet example of clean structure: the brand retired its evergreen code gradually (~93% fewer monthly redemptions over a year) while seasonal codes took its place — the offer portfolio evolved without the ongoing rate ever whipsawing. Numbers get retired, not married.
+
+One more thing the code export won't tell you: at this store, the subscription discount itself doesn't even appear in the discount-code data — it's implemented as selling-plan pricing, upstream of codes entirely. **Your number lives in more places than your codes.** Audit where each dial is actually set before you assume you know what you're charging.
+
+## The artifact — the choose-your-number worksheet
+
+```text The worksheet
+INPUTS
+  AOV ............................ $______
+  Gross margin ................... ______%
+  Fulfillment + payment /order ... $______
+  Current sub start rate ......... ______% of paid orders
+  Cohort repeat @180d (if known).. ______%
+
+STEP 1  CM/order = (AOV × GM%) − fulfillment − payment  = $______
+STEP 2  Cost of one discount point:
+          on first orders only ... AOV × 1% × first orders   = $______ (bounded)
+          on renewals ............ AOV × 1% × ALL renewals   = $______ (compounds)
+STEP 3  Ongoing rate = the number Step 2b sustains forever at full adoption: ____%
+STEP 4  First-order offer = the number where
+          (Δ starts × expected 180d value) > (depth cost × all starts): ____%
+          No cohort table yet? → hold current offer, build the table, return.
+STEP 5  Watch-list: 60d on-pace check → 180d verdict → revisit triggers (above).
+```
+
+<InOpenSubs>Both dials — the first-order offer and the ongoing rate — are selling-plan fields, edited in one place, with the change logged. No code archaeology to find out what you're actually charging.</InOpenSubs>
 
 ## Where next
 
 <Columns cols={2}>
   <Card title="Free gifting" href="/growth-program/offer/free-gifting">
-    When a gift beats a cut.
+    When an $8-COGS gift beats a 20% cut.
+  </Card>
+  <Card title="First-order incentives" href="/growth-program/offer/first-order-incentives">
+    The cliff between the acquisition offer and the ongoing rate — and where second-order churn is born.
+  </Card>
+  <Card title="Memberships & access passes" href="/growth-program/offer/memberships">
+    The other commitment instrument: charge for access instead of conceding a discount.
+  </Card>
+  <Card title="Offer testing" href="/growth-program/offer/offer-testing">
+    Moving dials without wrecking your cohort table.
   </Card>
 </Columns>
