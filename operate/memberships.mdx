@@ -1,0 +1,33 @@
+---
+title: "Memberships"
+description: "A paid membership is a subscription contract your engine already bills. Run it at 0%."
+ia: "R3.5"
+---
+
+import { PlatformTag } from "/snippets/PlatformTag.jsx";
+import { InOpenSubs } from "/snippets/InOpenSubs.jsx";
+
+<PlatformTag platform="opensubs" />
+
+<Note>**Skeleton page.** The structure and links are final; the content lands in the production pass.</Note>
+
+## What this page gives you
+
+- What a membership is mechanically: a digital product + a selling plan + a subscription contract. No box, no fulfillment — and your engine already bills it at 0%.
+- Set it up: create the membership product, configure the plan, price and frequency; what appears in your admin and the subscriber portal.
+- The entitlement layer: billing events drive member status — paid means active, failed means suspended, cancelled means access expires at period end. The honest split between what the platform does and what Shopify-side wiring you own (with the recipe).
+- Dunning for memberships: a failed card is a suspended member, so grace periods matter more here than anywhere.
+- The contrast: the incumbents bill memberships for a percentage — and hand you a DIY workflow guide for the actual membership part. Here the whole loop runs on infrastructure you own.
+
+<InOpenSubs>Placeholder — the boxed product contrast for this page lands with the content.</InOpenSubs>
+
+## Where next
+
+<Columns cols={2}>
+  <Card title="Memberships & access passes" href="/growth-program/offer/memberships">
+    The strategy side: when a fee-for-perks beats a discount.
+  </Card>
+  <Card title="The retention machinery" href="/operate/the-retention-machinery">
+    Dunning, saves, and winbacks — the machinery memberships lean on.
+  </Card>
+</Columns>

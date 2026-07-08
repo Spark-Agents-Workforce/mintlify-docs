@@ -15,7 +15,7 @@
       "/instant-win/why-you-have-leverage",
       "/curtain/the-vault-was-never-theirs",
       "/operate/a-day-in-the-life",
-      "/school/orientation"
+      "/growth-program/orientation"
     ]
   },
   "start/first-24-hours": {
@@ -174,7 +174,7 @@
     "title": "Production approval",
     "platform": "opensubs",
     "links": [
-      "/school/orientation"
+      "/growth-program/orientation"
     ]
   },
   "deploy/go-live-verification": {
@@ -262,7 +262,7 @@
     "platform": "opensubs",
     "links": [
       "/curtain/when-cards-fail",
-      "/school/churn-defense/cancellation-flow-design"
+      "/growth-program/churn-defense/cancellation-flow-design"
     ]
   },
   "operate/messaging": {
@@ -270,7 +270,7 @@
     "title": "Messaging",
     "platform": "opensubs",
     "links": [
-      "/school/messaging/lifecycle-map"
+      "/growth-program/messaging/lifecycle-map"
     ]
   },
   "operate/when-to-touch-nothing": {
@@ -297,401 +297,402 @@
     "platform": "opensubs",
     "links": []
   },
-  "school/numbers/subscription-economics": {
+  "growth-program/numbers/subscription-economics": {
     "ia": "M1.1",
     "title": "Subscription economics",
     "platform": "any",
     "links": [
-      "/school/numbers/churn-math"
+      "/growth-program/numbers/churn-math"
     ]
   },
-  "school/numbers/churn-math": {
+  "growth-program/numbers/churn-math": {
     "ia": "M1.2",
     "title": "Churn math",
     "platform": "any",
     "links": [
-      "/school/churn-defense/reading-your-churn",
-      "/school/numbers/cohorts"
+      "/growth-program/churn-defense/reading-your-churn",
+      "/growth-program/numbers/cohorts"
     ]
   },
-  "school/numbers/cohorts": {
+  "growth-program/numbers/cohorts": {
     "ia": "M1.3",
     "title": "Cohorts",
     "platform": "any",
     "links": [
-      "/school/numbers/weekly-metrics"
+      "/growth-program/numbers/weekly-metrics"
     ]
   },
-  "school/numbers/weekly-metrics": {
+  "growth-program/numbers/weekly-metrics": {
     "ia": "M1.4",
     "title": "The metrics that matter weekly",
     "platform": "any",
     "links": [
       "/instant-win/log-your-win",
-      "/school/cadence/operating-rhythm"
+      "/growth-program/cadence/operating-rhythm"
     ]
   },
-  "school/offer/offer-architecture": {
+  "growth-program/offer/offer-architecture": {
     "ia": "M2.1",
     "title": "Offer architecture",
     "platform": "any",
     "links": [
-      "/school/offer/the-discount-question",
-      "/school/store/pdp"
+      "/growth-program/offer/the-discount-question",
+      "/growth-program/store/pdp"
     ]
   },
-  "school/offer/the-discount-question": {
+  "growth-program/offer/the-discount-question": {
     "ia": "M2.2",
     "title": "The discount question",
     "platform": "any",
     "links": [
-      "/school/offer/free-gifting"
+      "/growth-program/offer/free-gifting"
     ]
   },
-  "school/offer/free-gifting": {
+  "growth-program/offer/free-gifting": {
     "ia": "M2.3",
     "title": "Free gifting",
     "platform": "any",
     "links": [
-      "/school/offer/first-order-incentives"
+      "/growth-program/offer/first-order-incentives"
     ]
   },
-  "school/offer/first-order-incentives": {
+  "growth-program/offer/first-order-incentives": {
     "ia": "M2.4",
     "title": "First-order incentives",
     "platform": "any",
     "links": [
-      "/school/first-60-days/second-order-cliff",
-      "/school/offer/prepaid-and-commitment"
+      "/growth-program/first-60-days/second-order-cliff",
+      "/growth-program/offer/prepaid-and-commitment"
     ]
   },
-  "school/offer/prepaid-and-commitment": {
+  "growth-program/offer/prepaid-and-commitment": {
     "ia": "M2.5",
     "title": "Prepaid & commitment offers",
     "platform": "any",
     "links": [
-      "/school/numbers/subscription-economics",
-      "/school/offer/offer-testing"
+      "/growth-program/numbers/subscription-economics",
+      "/growth-program/offer/offer-testing"
     ]
   },
-  "school/offer/offer-testing": {
+  "growth-program/offer/offer-testing": {
     "ia": "M2.6",
     "title": "Offer testing",
     "platform": "any",
     "links": [
-      "/school/cadence/testing-calendar"
+      "/growth-program/cadence/testing-calendar"
     ]
   },
-  "school/traffic/paid-ads": {
+  "growth-program/traffic/paid-ads": {
     "ia": "M3.1",
     "title": "Paid ads for subscriptions",
     "platform": "any",
     "links": [
-      "/school/numbers/subscription-economics",
-      "/school/traffic/landing-pages"
+      "/growth-program/numbers/subscription-economics",
+      "/growth-program/traffic/landing-pages"
     ]
   },
-  "school/traffic/landing-pages": {
+  "growth-program/traffic/landing-pages": {
     "ia": "M3.2",
     "title": "Landing pages",
     "platform": "any",
     "links": [
-      "/school/store/pdp",
-      "/school/traffic/organic-and-social"
+      "/growth-program/store/pdp",
+      "/growth-program/traffic/organic-and-social"
     ]
   },
-  "school/traffic/organic-and-social": {
+  "growth-program/traffic/organic-and-social": {
     "ia": "M3.3",
     "title": "Organic & social",
     "platform": "any",
     "links": [
-      "/school/traffic/influencer-and-affiliate"
+      "/growth-program/traffic/influencer-and-affiliate"
     ]
   },
-  "school/traffic/influencer-and-affiliate": {
+  "growth-program/traffic/influencer-and-affiliate": {
     "ia": "M3.4",
     "title": "Influencer & affiliate",
     "platform": "any",
     "links": [
-      "/school/traffic/list-first-acquisition"
+      "/growth-program/traffic/list-first-acquisition"
     ]
   },
-  "school/traffic/list-first-acquisition": {
+  "growth-program/traffic/list-first-acquisition": {
     "ia": "M3.5",
     "title": "Email/SMS list-first acquisition",
     "platform": "any",
     "links": [
-      "/school/store/converting-one-time-buyers"
+      "/growth-program/store/converting-one-time-buyers"
     ]
   },
-  "school/store/pdp": {
+  "growth-program/store/pdp": {
     "ia": "M4.1",
     "title": "PDP",
     "platform": "any",
     "links": [
-      "/school/offer/offer-architecture",
-      "/school/offer/the-discount-question",
-      "/school/store/collections-and-navigation"
+      "/growth-program/offer/offer-architecture",
+      "/growth-program/offer/the-discount-question",
+      "/growth-program/store/collections-and-navigation"
     ]
   },
-  "school/store/collections-and-navigation": {
+  "growth-program/store/collections-and-navigation": {
     "ia": "M4.2",
     "title": "Collections & navigation",
     "platform": "any",
     "links": [
-      "/school/store/cart-and-upsell"
+      "/growth-program/store/cart-and-upsell"
     ]
   },
-  "school/store/cart-and-upsell": {
+  "growth-program/store/cart-and-upsell": {
     "ia": "M4.3",
     "title": "Cart & upsell",
     "platform": "any",
     "links": [
-      "/school/store/checkout"
+      "/growth-program/store/checkout"
     ]
   },
-  "school/store/checkout": {
+  "growth-program/store/checkout": {
     "ia": "M4.4",
     "title": "Checkout",
     "platform": "any",
     "links": [
-      "/school/store/converting-one-time-buyers"
+      "/growth-program/store/converting-one-time-buyers"
     ]
   },
-  "school/store/converting-one-time-buyers": {
+  "growth-program/store/converting-one-time-buyers": {
     "ia": "M4.5",
     "title": "Converting one-time buyers",
     "platform": "any",
     "links": [
-      "/school/traffic/list-first-acquisition",
-      "/school/first-60-days/welcome-sequence",
-      "/school/store/site-wide-tactics"
+      "/growth-program/traffic/list-first-acquisition",
+      "/growth-program/first-60-days/welcome-sequence",
+      "/growth-program/store/site-wide-tactics"
     ]
   },
-  "school/store/site-wide-tactics": {
+  "growth-program/store/site-wide-tactics": {
     "ia": "M4.6",
     "title": "Site-wide tactics",
     "platform": "any",
     "links": []
   },
-  "school/first-60-days/welcome-sequence": {
+  "growth-program/first-60-days/welcome-sequence": {
     "ia": "M5.1",
     "title": "The welcome sequence",
     "platform": "any",
     "links": [
-      "/school/messaging/transactional-and-reminder",
-      "/school/first-60-days/first-order-experience"
+      "/growth-program/messaging/transactional-and-reminder",
+      "/growth-program/first-60-days/first-order-experience"
     ]
   },
-  "school/first-60-days/first-order-experience": {
+  "growth-program/first-60-days/first-order-experience": {
     "ia": "M5.2",
     "title": "First-order experience",
     "platform": "any",
     "links": [
-      "/school/account-area/portal-as-retention",
-      "/school/first-60-days/second-order-cliff"
+      "/growth-program/account-area/portal-as-retention",
+      "/growth-program/first-60-days/second-order-cliff"
     ]
   },
-  "school/first-60-days/second-order-cliff": {
+  "growth-program/first-60-days/second-order-cliff": {
     "ia": "M5.3",
     "title": "The second-order cliff",
     "platform": "any",
     "links": [
-      "/school/offer/first-order-incentives",
-      "/school/churn-defense/save-offers",
-      "/school/first-60-days/early-tenure-playbook"
+      "/growth-program/offer/first-order-incentives",
+      "/growth-program/churn-defense/save-offers",
+      "/growth-program/first-60-days/early-tenure-playbook"
     ]
   },
-  "school/first-60-days/early-tenure-playbook": {
+  "growth-program/first-60-days/early-tenure-playbook": {
     "ia": "M5.4",
     "title": "Early-tenure playbook",
     "platform": "any",
     "links": [
-      "/school/messaging/lifecycle-map"
+      "/growth-program/messaging/lifecycle-map"
     ]
   },
-  "school/messaging/lifecycle-map": {
+  "growth-program/messaging/lifecycle-map": {
     "ia": "M6.1",
     "title": "The complete lifecycle map",
     "platform": "any",
     "links": [
-      "/school/first-60-days/early-tenure-playbook",
-      "/school/messaging/transactional-and-reminder"
+      "/growth-program/first-60-days/early-tenure-playbook",
+      "/growth-program/messaging/transactional-and-reminder"
     ]
   },
-  "school/messaging/transactional-and-reminder": {
+  "growth-program/messaging/transactional-and-reminder": {
     "ia": "M6.2",
     "title": "Transactional & reminder",
     "platform": "any",
     "links": [
-      "/school/churn-defense/dunning",
-      "/school/messaging/klaviyo-architecture"
+      "/growth-program/churn-defense/dunning",
+      "/growth-program/messaging/klaviyo-architecture"
     ]
   },
-  "school/messaging/klaviyo-architecture": {
+  "growth-program/messaging/klaviyo-architecture": {
     "ia": "M6.3",
     "title": "Klaviyo architecture",
     "platform": "any",
     "links": [
       "/operate/messaging",
-      "/school/messaging/sms"
+      "/growth-program/messaging/sms"
     ]
   },
-  "school/messaging/sms": {
+  "growth-program/messaging/sms": {
     "ia": "M6.4",
     "title": "SMS",
     "platform": "any",
     "links": [
-      "/school/messaging/deliverability-and-cadence"
+      "/growth-program/messaging/deliverability-and-cadence"
     ]
   },
-  "school/messaging/deliverability-and-cadence": {
+  "growth-program/messaging/deliverability-and-cadence": {
     "ia": "M6.5",
     "title": "Deliverability & cadence",
     "platform": "any",
     "links": []
   },
-  "school/account-area/portal-as-retention": {
+  "growth-program/account-area/portal-as-retention": {
     "ia": "M7.1",
     "title": "The portal as retention surface",
     "platform": "any",
     "links": [
-      "/school/account-area/flexibility-as-retention",
-      "/school/account-area/perks-and-loyalty"
+      "/growth-program/account-area/flexibility-as-retention",
+      "/growth-program/account-area/perks-and-loyalty"
     ]
   },
-  "school/account-area/perks-and-loyalty": {
+  "growth-program/account-area/perks-and-loyalty": {
     "ia": "M7.2",
     "title": "Perks & loyalty",
     "platform": "any",
     "links": [
-      "/school/account-area/flexibility-as-retention"
+      "/growth-program/account-area/flexibility-as-retention",
+      "/growth-program/offer/memberships"
     ]
   },
-  "school/account-area/flexibility-as-retention": {
+  "growth-program/account-area/flexibility-as-retention": {
     "ia": "M7.3",
     "title": "Flexibility as retention",
     "platform": "any",
     "links": [
-      "/school/churn-defense/save-offers",
-      "/school/account-area/community-and-identity"
+      "/growth-program/churn-defense/save-offers",
+      "/growth-program/account-area/community-and-identity"
     ]
   },
-  "school/account-area/community-and-identity": {
+  "growth-program/account-area/community-and-identity": {
     "ia": "M7.4",
     "title": "Community & identity",
     "platform": "any",
     "links": []
   },
-  "school/churn-defense/cancellation-flow-design": {
+  "growth-program/churn-defense/cancellation-flow-design": {
     "ia": "M8.1",
     "title": "Cancellation flow design",
     "platform": "any",
     "links": [
       "/operate/the-retention-machinery",
-      "/school/churn-defense/save-offers"
+      "/growth-program/churn-defense/save-offers"
     ]
   },
-  "school/churn-defense/save-offers": {
+  "growth-program/churn-defense/save-offers": {
     "ia": "M8.2",
     "title": "Save offers that work",
     "platform": "any",
     "links": [
-      "/school/account-area/flexibility-as-retention",
-      "/school/churn-defense/dunning"
+      "/growth-program/account-area/flexibility-as-retention",
+      "/growth-program/churn-defense/dunning"
     ]
   },
-  "school/churn-defense/dunning": {
+  "growth-program/churn-defense/dunning": {
     "ia": "M8.3",
     "title": "Dunning",
     "platform": "any",
     "links": [
       "/curtain/when-cards-fail",
-      "/school/messaging/transactional-and-reminder",
-      "/school/churn-defense/exit-interviews"
+      "/growth-program/messaging/transactional-and-reminder",
+      "/growth-program/churn-defense/exit-interviews"
     ]
   },
-  "school/churn-defense/exit-interviews": {
+  "growth-program/churn-defense/exit-interviews": {
     "ia": "M8.4",
     "title": "Exit interviews",
     "platform": "any",
     "links": [
-      "/school/churn-defense/reading-your-churn"
+      "/growth-program/churn-defense/reading-your-churn"
     ]
   },
-  "school/churn-defense/reading-your-churn": {
+  "growth-program/churn-defense/reading-your-churn": {
     "ia": "M8.5",
     "title": "Reading your churn",
     "platform": "any",
     "links": [
-      "/school/numbers/churn-math"
+      "/growth-program/numbers/churn-math"
     ]
   },
-  "school/winback/recapturing-cancelled": {
+  "growth-program/winback/recapturing-cancelled": {
     "ia": "M9.1",
     "title": "Recapturing cancelled",
     "platform": "any",
     "links": [
-      "/school/winback/reactivating-paused"
+      "/growth-program/winback/reactivating-paused"
     ]
   },
-  "school/winback/reactivating-paused": {
+  "growth-program/winback/reactivating-paused": {
     "ia": "M9.2",
     "title": "Reactivating paused",
     "platform": "any",
     "links": [
-      "/school/winback/winback-economics"
+      "/growth-program/winback/winback-economics"
     ]
   },
-  "school/winback/winback-economics": {
+  "growth-program/winback/winback-economics": {
     "ia": "M9.3",
     "title": "Winback economics",
     "platform": "any",
     "links": [
-      "/school/numbers/subscription-economics"
+      "/growth-program/numbers/subscription-economics"
     ]
   },
-  "school/cadence/operating-rhythm": {
+  "growth-program/cadence/operating-rhythm": {
     "ia": "M10.1",
     "title": "The weekly/monthly/quarterly rhythm",
     "platform": "any",
     "links": [
-      "/school/numbers/weekly-metrics",
-      "/school/cadence/testing-calendar"
+      "/growth-program/numbers/weekly-metrics",
+      "/growth-program/cadence/testing-calendar"
     ]
   },
-  "school/cadence/testing-calendar": {
+  "growth-program/cadence/testing-calendar": {
     "ia": "M10.2",
     "title": "Testing calendar",
     "platform": "any",
     "links": [
-      "/school/offer/offer-testing",
-      "/school/cadence/when-to-get-help"
+      "/growth-program/offer/offer-testing",
+      "/growth-program/cadence/when-to-get-help"
     ]
   },
-  "school/cadence/when-to-get-help": {
+  "growth-program/cadence/when-to-get-help": {
     "ia": "M10.3",
     "title": "When to get help",
     "platform": "any",
     "links": []
   },
-  "school/orientation": {
+  "growth-program/orientation": {
     "ia": "6.0",
     "title": "Orientation",
     "platform": "any",
     "links": [
       "/start/welcome",
-      "/school/numbers/weekly-metrics",
-      "/school/numbers/subscription-economics",
-      "/school/offer/offer-architecture",
-      "/school/traffic/paid-ads",
-      "/school/store/pdp",
-      "/school/first-60-days/welcome-sequence",
-      "/school/messaging/lifecycle-map",
-      "/school/account-area/portal-as-retention",
-      "/school/churn-defense/cancellation-flow-design",
-      "/school/winback/recapturing-cancelled",
-      "/school/cadence/operating-rhythm"
+      "/growth-program/numbers/weekly-metrics",
+      "/growth-program/numbers/subscription-economics",
+      "/growth-program/offer/offer-architecture",
+      "/growth-program/traffic/paid-ads",
+      "/growth-program/store/pdp",
+      "/growth-program/first-60-days/welcome-sequence",
+      "/growth-program/messaging/lifecycle-map",
+      "/growth-program/account-area/portal-as-retention",
+      "/growth-program/churn-defense/cancellation-flow-design",
+      "/growth-program/winback/recapturing-cancelled",
+      "/growth-program/cadence/operating-rhythm"
     ]
   },
   "instant-win/the-history": {
@@ -746,7 +747,29 @@
       "/instant-win/the-cfo-memo",
       "/instant-win/the-reveal",
       "/curtain/the-vault-was-never-theirs",
-      "/school/orientation"
+      "/growth-program/orientation"
+    ]
+  },
+  "operate/memberships": {
+    "ia": "R3.5",
+    "title": "Memberships",
+    "platform": "opensubs",
+    "status": "SKELETON",
+    "links": [
+      "/growth-program/offer/memberships",
+      "/operate/the-retention-machinery"
+    ]
+  },
+  "growth-program/offer/memberships": {
+    "ia": "M2.6",
+    "title": "Memberships & access passes",
+    "platform": "any",
+    "status": "SKELETON",
+    "links": [
+      "/operate/memberships",
+      "/growth-program/account-area/perks-and-loyalty",
+      "/growth-program/offer/prepaid-and-commitment",
+      "/growth-program/offer/offer-testing"
     ]
   }
 }

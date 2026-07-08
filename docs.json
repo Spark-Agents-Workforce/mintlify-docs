@@ -131,6 +131,7 @@
               "operate/a-day-in-the-life",
               "operate/the-admin-tour",
               "operate/the-retention-machinery",
+              "operate/memberships",
               "operate/messaging",
               "operate/when-to-touch-nothing"
             ]
@@ -154,112 +155,113 @@
             "group": "Orientation",
             "icon": "compass",
             "pages": [
-              "school/orientation"
+              "growth-program/orientation"
             ]
           },
           {
             "group": "M1 \u00b7 The numbers",
             "icon": "calculator",
             "pages": [
-              "school/numbers/subscription-economics",
-              "school/numbers/churn-math",
-              "school/numbers/cohorts",
-              "school/numbers/weekly-metrics"
+              "growth-program/numbers/subscription-economics",
+              "growth-program/numbers/churn-math",
+              "growth-program/numbers/cohorts",
+              "growth-program/numbers/weekly-metrics"
             ]
           },
           {
             "group": "M2 \u00b7 The offer",
             "icon": "tag",
             "pages": [
-              "school/offer/offer-architecture",
-              "school/offer/the-discount-question",
-              "school/offer/free-gifting",
-              "school/offer/first-order-incentives",
-              "school/offer/prepaid-and-commitment",
-              "school/offer/offer-testing"
+              "growth-program/offer/offer-architecture",
+              "growth-program/offer/the-discount-question",
+              "growth-program/offer/free-gifting",
+              "growth-program/offer/first-order-incentives",
+              "growth-program/offer/prepaid-and-commitment",
+              "growth-program/offer/memberships",
+              "growth-program/offer/offer-testing"
             ]
           },
           {
             "group": "M3 \u00b7 Acquire",
             "icon": "megaphone",
             "pages": [
-              "school/traffic/paid-ads",
-              "school/traffic/landing-pages",
-              "school/traffic/organic-and-social",
-              "school/traffic/influencer-and-affiliate",
-              "school/traffic/list-first-acquisition"
+              "growth-program/traffic/paid-ads",
+              "growth-program/traffic/landing-pages",
+              "growth-program/traffic/organic-and-social",
+              "growth-program/traffic/influencer-and-affiliate",
+              "growth-program/traffic/list-first-acquisition"
             ]
           },
           {
             "group": "M4 \u00b7 Convert",
             "icon": "shopping-cart",
             "pages": [
-              "school/store/pdp",
-              "school/store/collections-and-navigation",
-              "school/store/cart-and-upsell",
-              "school/store/checkout",
-              "school/store/converting-one-time-buyers",
-              "school/store/site-wide-tactics"
+              "growth-program/store/pdp",
+              "growth-program/store/collections-and-navigation",
+              "growth-program/store/cart-and-upsell",
+              "growth-program/store/checkout",
+              "growth-program/store/converting-one-time-buyers",
+              "growth-program/store/site-wide-tactics"
             ]
           },
           {
             "group": "M5 \u00b7 The first 60 days",
             "icon": "calendar-days",
             "pages": [
-              "school/first-60-days/welcome-sequence",
-              "school/first-60-days/first-order-experience",
-              "school/first-60-days/second-order-cliff",
-              "school/first-60-days/early-tenure-playbook"
+              "growth-program/first-60-days/welcome-sequence",
+              "growth-program/first-60-days/first-order-experience",
+              "growth-program/first-60-days/second-order-cliff",
+              "growth-program/first-60-days/early-tenure-playbook"
             ]
           },
           {
             "group": "M6 \u00b7 The messaging engine",
             "icon": "mail",
             "pages": [
-              "school/messaging/lifecycle-map",
-              "school/messaging/transactional-and-reminder",
-              "school/messaging/klaviyo-architecture",
-              "school/messaging/sms",
-              "school/messaging/deliverability-and-cadence"
+              "growth-program/messaging/lifecycle-map",
+              "growth-program/messaging/transactional-and-reminder",
+              "growth-program/messaging/klaviyo-architecture",
+              "growth-program/messaging/sms",
+              "growth-program/messaging/deliverability-and-cadence"
             ]
           },
           {
             "group": "M7 \u00b7 Keep",
             "icon": "user-check",
             "pages": [
-              "school/account-area/portal-as-retention",
-              "school/account-area/perks-and-loyalty",
-              "school/account-area/flexibility-as-retention",
-              "school/account-area/community-and-identity"
+              "growth-program/account-area/portal-as-retention",
+              "growth-program/account-area/perks-and-loyalty",
+              "growth-program/account-area/flexibility-as-retention",
+              "growth-program/account-area/community-and-identity"
             ]
           },
           {
             "group": "M8 \u00b7 Save",
             "icon": "shield",
             "pages": [
-              "school/churn-defense/cancellation-flow-design",
-              "school/churn-defense/save-offers",
-              "school/churn-defense/dunning",
-              "school/churn-defense/exit-interviews",
-              "school/churn-defense/reading-your-churn"
+              "growth-program/churn-defense/cancellation-flow-design",
+              "growth-program/churn-defense/save-offers",
+              "growth-program/churn-defense/dunning",
+              "growth-program/churn-defense/exit-interviews",
+              "growth-program/churn-defense/reading-your-churn"
             ]
           },
           {
             "group": "M9 \u00b7 Revive",
             "icon": "rotate-ccw",
             "pages": [
-              "school/winback/recapturing-cancelled",
-              "school/winback/reactivating-paused",
-              "school/winback/winback-economics"
+              "growth-program/winback/recapturing-cancelled",
+              "growth-program/winback/reactivating-paused",
+              "growth-program/winback/winback-economics"
             ]
           },
           {
             "group": "M10 \u00b7 Run",
             "icon": "repeat",
             "pages": [
-              "school/cadence/operating-rhythm",
-              "school/cadence/testing-calendar",
-              "school/cadence/when-to-get-help"
+              "growth-program/cadence/operating-rhythm",
+              "growth-program/cadence/testing-calendar",
+              "growth-program/cadence/when-to-get-help"
             ]
           }
         ]
@@ -352,6 +354,10 @@
     {
       "source": "/curtain/why-the-percent-existed",
       "destination": "/instant-win/why-you-have-leverage"
+    },
+    {
+      "source": "/school/:slug*",
+      "destination": "/growth-program/:slug*"
     }
   ],
   "seo": {

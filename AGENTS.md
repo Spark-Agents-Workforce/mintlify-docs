@@ -55,12 +55,12 @@ These are the product's part names — they match the marketing site verbatim.
 - Prose refers to sections by these names: "the Scripts", "the Platform",
   "the Growth Program". NEVER the old task names ("the instant win",
   "the curtain", "the school") — those survive only in URLs (/instant-win/,
-  /curtain/, /school/), which are Phase-2 work and not to be renamed without
+  /curtain/, /growth-program/), which are Phase-2 work and not to be renamed without
   explicit direction.
 - Shelf order tells the money story (save → own → grow); personal routing
   lives in /start/choose-your-door and the Growth Program orientation triage.
 - Directory→tab map: start/→Start here · instant-win/→Scripts ·
-  curtain/+deploy/+migrate/+operate/→Platform · school/→Growth Program.
+  curtain/+deploy/+migrate/+operate/→Platform · growth-program/→Growth Program.
 
 ## Production content (do not re-stub)
 
