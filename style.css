@@ -476,6 +476,49 @@ html.dark .card:hover { border-color: rgba(255, 248, 232, 0.35) !important; }
 }
 .card svg[class*="lucide-arrow"] { stroke-width: 2; }
 
+/* Where next — single-column link list, compact titles + icon */
+#content-area h2:has(+ .os-where-next),
+mdx-content h2:has(+ .os-where-next) {
+  font-size: 1.375rem; /* one step under content h2 */
+  margin-bottom: 0.75rem;
+}
+.os-where-next {
+  margin-top: 0.25rem;
+}
+.os-where-next .columns {
+  --cols: 1 !important;
+  grid-template-columns: 1fr !important;
+  gap: 10px !important;
+}
+.os-where-next .card {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+.os-where-next .card:hover {
+  transform: translateY(-2px);
+}
+.os-where-next .card [data-component-part="card-content-container"] {
+  padding: 14px 18px !important;
+}
+.os-where-next .card [data-component-part="card-title"] {
+  font-family: var(--nh2-f-body) !important;
+  font-size: 1rem !important; /* 16px — smaller than display card titles */
+  font-weight: 600 !important;
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+  -webkit-font-smoothing: antialiased;
+}
+.os-where-next .card [data-component-part="card-content"] {
+  font-size: 0.9375rem !important; /* 15px */
+  line-height: 1.5;
+  color: var(--nh2-body-muted);
+}
+.os-where-next .card svg {
+  color: var(--nh2-ink) !important;
+  width: 18px !important;
+  height: 18px !important;
+}
+
 /* ================= CALLOUTS: pastel wells =========================== */
 
 .callout {
@@ -517,33 +560,125 @@ code-group button[data-state="active"] {
 }
 
 /* ================= TABLES =========================================== */
+/* Quiet os2 data grid: kill Mintlify's equal 150px min-widths, right-align
+   numeric cells, type closer to body. Comparison tables (no data-numeric)
+   stay left-aligned text grids. */
 
 [data-table-wrapper] {
   border: 1px solid var(--os-line);
   border-radius: var(--nh2-r-mega);
   overflow: hidden;
-  overflow-x: auto;
-  background: var(--os-surface);
+  background: #fff;
 }
-[data-table-wrapper] table { border: none; border-collapse: collapse; width: 100%; }
+html.dark [data-table-wrapper] { background: var(--os-surface); }
+
+[data-table-wrapper] table {
+  border: none;
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--nh2-ink);
+}
+
+/* Kill Mintlify [&_td]:min-w-[150px] — it forces horizontal scroll in 720px */
+[data-table-wrapper] th,
+[data-table-wrapper] td {
+  min-width: 0 !important;
+  border: none;
+  padding: 12px 14px !important;
+  vertical-align: top;
+}
+[data-table-wrapper] th:first-child,
+[data-table-wrapper] td:first-child {
+  padding-left: 18px !important;
+  min-width: 9rem;
+  width: 32%;
+  text-align: left !important;
+}
+[data-table-wrapper] th:last-child,
+[data-table-wrapper] td:last-child {
+  padding-right: 18px !important;
+}
+
 [data-table-wrapper] th {
   background: var(--nh2-gray-band);
   color: var(--nh2-ink);
-  border: none;
   border-bottom: 1px solid var(--os-line);
   font-weight: 600;
+  font-size: 12.5px;
   letter-spacing: -0.01em;
+  line-height: 1.3;
+  vertical-align: bottom;
 }
 html.dark [data-table-wrapper] th {
   background: rgba(255, 248, 232, 0.08);
   color: var(--nh2-dark-heading);
 }
-[data-table-wrapper] td { border: none; border-top: 1px solid var(--os-line); }
+
+[data-table-wrapper] td {
+  border-top: 1px solid var(--os-line);
+  font-weight: 435;
+  color: var(--nh2-body-muted);
+}
 [data-table-wrapper] tr:first-child td { border-top: none; }
+/* Label column stays ink — the row's identity */
+[data-table-wrapper] td:first-child {
+  color: var(--nh2-ink);
+  font-weight: 550;
+}
+
+/* Proof / numeric tables: Mintlify marks clean numbers with data-numeric, but
+   hedges (~13%, *not mature*, ~200 directional) drop the attr. If ANY cell in
+   the table is numeric, right-align every non-label column so the grid scans. */
+[data-table-wrapper] table:has(td[data-numeric]) th:not(:first-child),
+[data-table-wrapper] table:has(td[data-numeric]) td:not(:first-child) {
+  text-align: right !important;
+  font-variant-numeric: tabular-nums lining-nums;
+  white-space: nowrap;
+  color: var(--nh2-ink);
+}
+[data-table-wrapper] td[data-numeric] {
+  font-weight: 435;
+}
+[data-table-wrapper] td[data-numeric] strong,
+[data-table-wrapper] td[data-numeric] b,
+[data-table-wrapper] table:has(td[data-numeric]) td:not(:first-child) strong {
+  font-weight: 600;
+}
+
+/* Maturity / hedge italics */
+[data-table-wrapper] td em,
+[data-table-wrapper] td i {
+  color: var(--nh2-body-muted);
+  font-style: italic;
+  font-weight: 435;
+  white-space: normal;
+}
+
+/* Immature / hedge row — quiet manila wash */
+[data-table-wrapper] tr:has(em),
+[data-table-wrapper] tr:has(i) {
+  background: var(--nh2-well-warning);
+}
+[data-table-wrapper] tr:has(em) td,
+[data-table-wrapper] tr:has(i) td {
+  border-top-color: rgba(26, 21, 12, 0.08);
+}
+
 [data-table-wrapper] td.os-compare-us {
   background: var(--nh2-well-pie);
   color: var(--nh2-ink);
   font-weight: 550;
+}
+
+/* Scroll affordance when the table is wider than the reading column */
+[data-table-wrapper][data-has-overflow-x] [data-component-part="scroll-area-viewport"],
+[data-table-wrapper] [data-component-part="scroll-area-viewport"][data-has-overflow-x] {
+  /* Mintlify already fades via mask; keep a soft ink edge cue on the right */
+  background:
+    linear-gradient(to right, #fff 85%, rgba(255, 255, 255, 0)) local,
+    linear-gradient(to left, rgba(26, 21, 12, 0.06), transparent 18px) scroll;
 }
 
 /* ================= MISC COMPONENTS ================================== */
