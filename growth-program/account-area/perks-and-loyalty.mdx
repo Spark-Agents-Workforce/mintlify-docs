@@ -12,8 +12,8 @@ Here is the folklore, and it is expensive. *"Loyalty is a stack. Add points, add
 
 It feels right. It is mostly wrong, and it fails in a specific, quiet way:
 
-<div className="not-prose" style={{ border: "3px solid #000", backgroundColor: "#FFDE00", boxShadow: "4px 4px 0 0 #000", padding: "20px 24px", margin: "1.5rem 0" }}>
-  <p className="m-0" style={{ fontWeight: 900, fontSize: "20px", lineHeight: 1.3, textTransform: "uppercase", color: "#000" }}>An unmeasurable perk is a margin leak wearing a loyalty costume.</p>
+<div className="os-pull not-prose">
+  <p>An unmeasurable perk is a margin leak wearing a loyalty costume.</p>
 </div>
 
 It shows up on the P&L every month as given-up margin, and it shows up in retention as… nothing you can point to. You *assume* it's working because churn didn't spike. You can't prove it, so you never cut it, so it bleeds forever.
@@ -51,17 +51,17 @@ List every perk you offer. Fill a row for each. The thresholds are a starting li
 
 | Perk | Cost / member / month | Retention mechanism (name the behavior) | Measurable? | Verdict |
 |---|---|---|---|---|
-| *(e.g.) Store credit / cash-back* | *conceded margin on redeemed credit* | *outstanding balance = named reason to return; you watch it redeem* | **Yes — balance + redemption visible** | **KEEP** |
-| *(e.g.) Members' standing % off* | *margin on every member order, forever* | *"they feel like they're saving" — no distinct behavior* | **No** | **CUT / redesign** |
-| *(e.g.) Free shipping for members* | *shipping subsidy per order* | *only real if it beats a threshold most orders already clear* | **Test it** | **AUDIT** |
-| *(e.g.) Early access to drops* | *~zero hard cost; ops + scarcity* | *pulls members to buy in a window; visible as a signup/order spike* | **Yes — window spike** | **KEEP** |
-| *(e.g.) Surprise-and-delight box* | *COGS + fulfillment per box* | *goodwill — no isolable retained-month* | **No** | **CUT / instrument first** |
+| *(e.g.) Store credit / cash-back* | *conceded margin on redeemed credit* | *outstanding balance = named reason to return; you watch it redeem* | **Yes — balance + redemption visible** | **Keep** |
+| *(e.g.) Members' standing % off* | *margin on every member order, forever* | *"they feel like they're saving" — no distinct behavior* | **No** | **Cut / redesign** |
+| *(e.g.) Free shipping for members* | *shipping subsidy per order* | *only real if it beats a threshold most orders already clear* | **Test it** | **Audit** |
+| *(e.g.) Early access to drops* | *~zero hard cost; ops + scarcity* | *pulls members to buy in a window; visible as a signup/order spike* | **Yes — window spike** | **Keep** |
+| *(e.g.) Surprise-and-delight box* | *COGS + fulfillment per box* | *goodwill — no isolable retained-month* | **No** | **Cut / instrument first** |
 
 **How to read your filled sheet:**
 
 - **Measurable? = No** → you cannot defend the spend. Either instrument the mechanism so you *can* measure it, or cut it. Every month you keep it, you're paying for a feeling.
-- **Cost well under the retained value, mechanism visible → KEEP.** These are your load-bearing perks. Fund them harder.
-- **Cost roughly equals or exceeds value, or mechanism vague → CUT or redesign.** Prefer perks that create a *return loop* (credit that must be spent with you) over perks that are pure giveaway (a standing discount is a slow, permanent margin bleed that re-creates the discount-subscription trap).
+- **Cost well under the retained value, mechanism visible → Keep.** These are your load-bearing perks. Fund them harder.
+- **Cost roughly equals or exceeds value, or mechanism vague → Cut or redesign.** Prefer perks that create a *return loop* (credit that must be spent with you) over perks that are pure giveaway (a standing discount is a slow, permanent margin bleed that re-creates the discount-subscription trap).
 
 Run it before your next cycle. Most operators find one perk they can prove, and two or three they've been quietly funding on faith.
 

@@ -10,8 +10,8 @@ import { InOpenSubs } from "/snippets/InOpenSubs.jsx";
 
 That sentence has ended more strategy debates than it should, because an average is where arguments *start*, not where they end. Two stores with the identical average retention can have completely opposite businesses — one with a gentle slope, one with a cliff and a loyal floor — and the average hides which one you are.
 
-<div className="not-prose" style={{ border: "3px solid #000", backgroundColor: "#FFDE00", boxShadow: "4px 4px 0 0 #000", padding: "20px 24px", margin: "1.5rem 0" }}>
-  <p className="m-0" style={{ fontWeight: 900, fontSize: "20px", lineHeight: 1.3, textTransform: "uppercase", color: "#000" }}>Averages blur. Cohort tables settle.</p>
+<div className="os-pull not-prose">
+  <p>Averages blur. Cohort tables settle.</p>
 </div>
 
 This is the anchor lesson of the whole program because the cohort table is the single instrument that turns retention opinions into arithmetic. Once you have yours, half the debates in your building are already over.
@@ -28,7 +28,7 @@ Where your curve breaks tells you which module fixes it. That's the diagnostic p
 
 ## The methodology you must state out loud
 
-Before any number: **these cohorts are measured from the acquisition-window END, not from each customer's day-exact first order.** If a cohort is "everyone acquired in March–April," the 180-day clock starts at the *end* of that window and runs forward for all of them together. This slightly *understates* early retention (a customer who joined day one of the window has really had a few extra weeks by the "30-day" mark), and it makes cohorts trivial to build from raw orders without perfect per-customer date math. It's a deliberate trade: a little precision for a lot of buildability. State your choice the same way — a cohort table is only comparable to itself if the measurement rule holds constant.
+Before any number: **these cohorts are measured from the acquisition-window end, not from each customer's day-exact first order.** If a cohort is "everyone acquired in March–April," the 180-day clock starts at the *end* of that window and runs forward for all of them together. This slightly *understates* early retention (a customer who joined day one of the window has really had a few extra weeks by the "30-day" mark), and it makes cohorts trivial to build from raw orders without perfect per-customer date math. It's a deliberate trade: a little precision for a lot of buildability. State your choice the same way — a cohort table is only comparable to itself if the measurement rule holds constant.
 
 ## The proof — real 180-day tables
 
@@ -66,10 +66,10 @@ You can build this from a Shopify orders export and nothing else.
   <Step title="Pick an acquisition window">
     E.g., "all first orders in March–April."
   </Step>
-  <Step title="List every customer whose FIRST order falls in that window">
+  <Step title="List every customer whose first order falls in that window">
     That's your cohort.
   </Step>
-  <Step title="Set the clock at the window's END date">
+  <Step title="Set the clock at the window's end date">
     State this — it's the methodology choice above.
   </Step>
   <Step title="Count repeaters at each mark">

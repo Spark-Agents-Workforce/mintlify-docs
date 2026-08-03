@@ -5,19 +5,19 @@ description: "Hidden lab — competing patterns for showing the Scripts. Pick on
 
 import { PlatformTag } from "/snippets/PlatformTag.jsx";
 
-<Note>**Hidden lab page** (not in nav). Sample script text is ILLUSTRATIVE placeholder — Josh's real copy replaces it. Compare the patterns, pick a winner.</Note>
+<Note>**Hidden lab page** (not in nav). Sample script text is *illustrative* placeholder — Josh's real copy replaces it. Compare the patterns, pick a winner.</Note>
 
 ## Pattern A — The letterhead
 
-Styled frame around a native code block: brand header names the script and its moment, meta row carries send mechanics, the code block brings Mintlify's built-in COPY button. Monospace = typewriter, reads as "an artifact, not prose."
+Styled frame around a native code block: brand header names the script and its moment, meta row carries send mechanics, the code block brings Mintlify's built-in copy button. Monospace = typewriter, reads as "an artifact, not prose."
 
-<div className="not-prose" style={{ border: "3px solid #000", boxShadow: "4px 4px 0 0 #000", marginBottom: "0.5rem" }}>
-  <div style={{ backgroundColor: "#FFDE00", borderBottom: "3px solid #000", padding: "10px 16px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "8px" }}>
-    <span style={{ fontWeight: 900, textTransform: "uppercase", fontSize: "14px", color: "#000" }}>Script 01 · The opener</span>
-    <span style={{ backgroundColor: "#000", color: "#FFDE00", fontWeight: 800, fontSize: "11px", textTransform: "uppercase", padding: "2px 8px" }}>Send 60–90 days before renewal</span>
+<div className="not-prose" style={{ border: "1px solid rgba(26,21,12,0.1)", borderRadius: "20px", overflow: "hidden", marginBottom: "0.5rem" }}>
+  <div style={{ backgroundColor: "#FEE102", borderBottom: "1px solid rgba(26,21,12,0.1)", padding: "10px 16px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "8px" }}>
+    <span style={{ fontWeight: 600, fontSize: "14px", letterSpacing: "-0.01em", color: "#1A150C" }}>Script 01 · The opener</span>
+    <span style={{ backgroundColor: "#1A150C", color: "#FFDE01", fontFamily: '"Google Sans Flex", "Inter", sans-serif', fontWeight: 700, fontSize: "11px", letterSpacing: "-0.01em", borderRadius: "72px", padding: "3px 10px" }}>Send 60–90 days before renewal</span>
   </div>
-  <div style={{ padding: "8px 16px", borderBottom: "3px solid #000", fontSize: "12px", fontWeight: 600, color: "#000", backgroundColor: "#FFF9C4" }}>
-    TO: your account manager · CC: their manager if you have them · SUBJECT LINE MATTERS — use ours
+  <div style={{ padding: "8px 16px", borderBottom: "1px solid rgba(26,21,12,0.1)", fontSize: "12px", fontWeight: 600, color: "#1A150C", backgroundColor: "#FEF8CE" }}>
+    TO: your account manager · CC: their manager if you have them · SUBJECT line matters — use ours
   </div>
 </div>
 
@@ -39,8 +39,8 @@ by [DATE, 2 weeks out]?
 ```
 
 <div className="not-prose" style={{ display: "flex", gap: "8px", flexWrap: "wrap", marginTop: "-0.5rem", marginBottom: "2rem" }}>
-  <span style={{ border: "2px solid #000", backgroundColor: "#C5F542", fontWeight: 800, fontSize: "11px", textTransform: "uppercase", padding: "2px 8px", color: "#000" }}>Fill: BRAND · AM NAME · RATE · \$X · \$Y · DATE</span>
-  <span style={{ border: "2px solid #000", backgroundColor: "#FFD3B6", fontWeight: 800, fontSize: "11px", textTransform: "uppercase", padding: "2px 8px", color: "#000" }}>Tone: calm, procedural, no threat yet</span>
+  <span style={{ backgroundColor: "#CDFFCF", borderRadius: "72px", fontWeight: 600, fontSize: "11px", padding: "3px 10px", color: "#1A150C" }}>Fill: Brand · AM *name* · *rate* · \$X · \$Y · *date*</span>
+  <span style={{ backgroundColor: "#FEF8CE", borderRadius: "72px", fontWeight: 600, fontSize: "11px", padding: "3px 10px", color: "#1A150C" }}>Tone: calm, procedural, no threat yet</span>
 </div>
 
 ## Pattern B — Per-incumbent tabs
@@ -76,7 +76,7 @@ Same letterhead, but the script text forks by platform inside `<Tabs>`. One page
 
 ## Pattern C — The play (Steps wrapper)
 
-The script embedded in its run-order: Steps for the ritual around the send. Best where sequence IS the content (5.4 calendar, 1.3 send order).
+The script embedded in its run-order: Steps for the ritual around the send. Best where sequence *is* the content (5.4 calendar, 1.3 send order).
 
 <Steps>
   <Step title="Pull your number first">

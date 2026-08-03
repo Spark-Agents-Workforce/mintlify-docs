@@ -1,6 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="OpenSubs">
-  <rect width="64" height="64" fill="#FFDE00"/>
-  <text x="32" y="35" text-anchor="middle" dominant-baseline="central"
-    font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
-    font-size="30" font-weight="900" letter-spacing="-0.05em" fill="#000000">OS</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect x="3" y="3" width="58" height="58" fill="#ffde00" stroke="#000" stroke-width="6"></rect><text x="32" y="45" font-family="ui-sans-serif,system-ui,-apple-system,&#39;Segoe UI&#39;,Roboto,sans-serif" font-size="34" font-weight="900" letter-spacing="-2.5" text-anchor="middle" fill="#000">OS</text></svg>

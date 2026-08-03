@@ -8,8 +8,8 @@ import { PlatformTag } from "/snippets/PlatformTag.jsx";
 
 <PlatformTag platform="any" />
 
-<div className="not-prose" style={{ border: "3px solid #000", boxShadow: "5px 5px 0 0 #000", margin: "2rem 0", lineHeight: 0 }}>
-  <img src="/images/scenes/scripts-paper-planes.jpg" alt="Three numbered paper planes sail past a crashed envelope labeled LONG — short asks fly, thorough ones don't" style={{ width: "100%", margin: 0 }} noZoom />
+<div className="os-frame not-prose">
+  <img src="/images/scenes/scripts-paper-planes.jpg" alt="Three numbered paper planes sail past a crashed envelope labeled LONG — short asks fly, thorough ones don't" noZoom />
 </div>
 
 Three emails. They are short on purpose — field data on millions of emails says a 50-to-100-word ask outperforms a thorough one, by a lot. Every extra paragraph you add is a place for your ask to drown. Resist.
@@ -21,10 +21,10 @@ One rule before you paste: everything in these emails is true and checkable. Tha
 
 ## Script 1 · The rate review
 
-<div className="not-prose" style={{ border: "3px solid #000", boxShadow: "4px 4px 0 0 #000", marginBottom: "0" }}>
-  <div style={{ backgroundColor: "#FFDE00", borderBottom: "3px solid #000", padding: "10px 16px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "8px" }}>
-    <span style={{ fontWeight: 900, textTransform: "uppercase", fontSize: "14px", color: "#000" }}>Script 01 · The opener</span>
-    <span style={{ backgroundColor: "#000", color: "#FFDE00", fontWeight: 800, fontSize: "11px", textTransform: "uppercase", padding: "2px 8px" }}>Send today — any contract state</span>
+<div className="os-script not-prose">
+  <div className="os-script__bar">
+    <span className="os-script__title">Script 01 · The opener</span>
+    <span className="os-script__meta">Send today — any contract state</span>
   </div>
 </div>
 
@@ -53,10 +53,10 @@ above your desk?
 
 ## Script 2 · The renewal window
 
-<div className="not-prose" style={{ border: "3px solid #000", boxShadow: "4px 4px 0 0 #000", marginBottom: "0" }}>
-  <div style={{ backgroundColor: "#FFDE00", borderBottom: "3px solid #000", padding: "10px 16px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "8px" }}>
-    <span style={{ fontWeight: 900, textTransform: "uppercase", fontSize: "14px", color: "#000" }}>Script 02 · The renewal window</span>
-    <span style={{ backgroundColor: "#000", color: "#FFDE00", fontWeight: 800, fontSize: "11px", textTransform: "uppercase", padding: "2px 8px" }}>Send 60–90 days before renewal</span>
+<div className="os-script not-prose">
+  <div className="os-script__bar">
+    <span className="os-script__title">Script 02 · The renewal window</span>
+    <span className="os-script__meta">Send 60–90 days before renewal</span>
   </div>
 </div>
 
@@ -76,16 +76,16 @@ need an answer before it.
 [NAME]
 ```
 
-**The date does the work.** You're not threatening; you're scheduling. Their notice window is now YOUR deadline, pointed back at them.
+**The date does the work.** You're not threatening; you're scheduling. Their notice window is now *your* deadline, pointed back at them.
 
 **Send 60–90 days out.** Procurement data is unambiguous: negotiations opened early save multiples of those opened at the deadline. If you're reading this mid-term, calendar it now — that's today's play.
 
 ## Script 3 · The escalation
 
-<div className="not-prose" style={{ border: "3px solid #000", boxShadow: "4px 4px 0 0 #000", marginBottom: "0" }}>
-  <div style={{ backgroundColor: "#FFDE00", borderBottom: "3px solid #000", padding: "10px 16px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "8px" }}>
-    <span style={{ fontWeight: 900, textTransform: "uppercase", fontSize: "14px", color: "#000" }}>Script 03 · The escalation</span>
-    <span style={{ backgroundColor: "#000", color: "#FFDE00", fontWeight: 800, fontSize: "11px", textTransform: "uppercase", padding: "2px 8px" }}>Send after a no — or 10 days of silence</span>
+<div className="os-script not-prose">
+  <div className="os-script__bar">
+    <span className="os-script__title">Script 03 · The escalation</span>
+    <span className="os-script__meta">Send after a no — or 10 days of silence</span>
   </div>
 </div>
 
@@ -116,13 +116,13 @@ no hard feelings — we'll plan the transition.
 When to move, by platform — from their own published terms:
 
 - **Month-to-month (Recharge Starter, most self-serve tiers):** anytime. You can leave next month and they know it. Send Script 1 today.
-- **Recharge Plus/Custom (12-month terms):** your window is BEFORE renewal — mid-term exit costs every remaining month, by formula, per their ToS. Open at T-minus-90. Downgrades also only land at expiry.
-- **Skio / Loop / Smartrr (auto-renew + 30-day notice):** calendar T-minus-90 for the open, T-minus-35 as your hard deadline — miss the notice window and you're re-upped. Loop members: your lock-in RESETS at renewal, and Loop's terms bar running a competitor app during your term — so any migration test gets scheduled for after non-renewal, which makes the calendar even more load-bearing.
+- **Recharge Plus/Custom (12-month terms):** your window is *before* renewal — mid-term exit costs every remaining month, by formula, per their ToS. Open at T-minus-90. Downgrades also only land at expiry.
+- **Skio / Loop / Smartrr (auto-renew + 30-day notice):** calendar T-minus-90 for the open, T-minus-35 as your hard deadline — miss the notice window and you're re-upped. Loop members: your lock-in *resets* at renewal, and Loop's terms bar running a competitor app during your term — so any migration test gets scheduled for after non-renewal, which makes the calendar even more load-bearing.
 - **Stay AI:** no published terms — your leverage is whatever your Order Form says, so read it, and put everything you care about in writing at renewal.
 - **Everyone:** mid-contract with no window in sight? Send Script 1 anyway. Rate reviews aren't contract-gated. The worst case is a no you were already living with.
 
-<div className="not-prose" style={{ border: "3px solid #000", backgroundColor: "#FFDE00", boxShadow: "3px 3px 0 0 #000", padding: "12px 18px", margin: "1.5rem 0" }}>
-  <p className="m-0" style={{ fontWeight: 900, fontSize: "13px", textTransform: "uppercase", color: "#000" }}>Value tally: ten minutes of pasting. The reply is money.</p>
+<div className="os-chip-band not-prose">
+  <p>Value tally: ten minutes of pasting. The reply is money.</p>
 </div>
 
 <Columns cols={1}>

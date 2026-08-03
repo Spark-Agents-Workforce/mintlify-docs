@@ -10,29 +10,99 @@
 - Run `mint dev` to preview locally (requires Node LTS — the CLI refuses Node 25+).
 - Run `mint broken-links` to check links.
 - `_brand-lab.mdx` (hidden) is the component specimen page — check it after any styling change.
-- Brand source of truth: the OpenSubs brand handoff (neobrutalism). Summary below is binding for docs work.
+- Brand system: **os2** (warm editorial). Docs CSS is in `style.css`. The binding source of truth is the marketing site at `opensubs-new-site/opensubs-site` — especially `DESIGN.md` and `src/styles/os2/` (`tokens.css`, `base.css`, `components.css`). The retired neobrutalist system is archived there as `design/DESIGN-legacy.md` — do not follow it.
 
-## Brand rules (binding)
+## Brand rules (binding — os2)
 
-- Palette: yellow `#FFDE00`, black `#000` ink/borders, white surfaces. Candy accents (lime `#C5F542`, peach `#FFD3B6`, mint `#A8E6CF`, salmon `#FFAAA5`, red `#FF6B6B`) — ONE accent per surface. Purple `#9585D9` is reserved for mascots only.
-- Hard offset shadows only. Never blurred, never rgba. No gradients, no glassmorphism, no emoji.
-- Type: headings 800–900 weight, tight tracking. Body stays readable (450–500). Never invent an icon mark — the wordmark IS the logo.
-- Sharp corners on cards, callouts, tables, code. Buttons may keep up to 8px radius.
-- Icons: Lucide only (`icons.library` is set). No filled or duotone sets.
+Register: warm, confident, editorial. New Kansas serif headlines in sentence case, quiet Inter body, yellow as band and accent. Mascots carry the playfulness so the chrome doesn't have to.
+
+### Color
+
+| Token | Value | Use |
+| --- | --- | --- |
+| `--nh2-bg` | `#FBFBFB` | Page / paper |
+| `--nh2-yellow` | `#FFDE01` | Accents, chips, active sidebar, selection |
+| `--nh2-yellow-hero` | `#FEE102` | Hero / yellow bands (one step warmer) |
+| `--nh2-yellow-growth` | `#FEE300` | Growth / door bands |
+| `--nh2-ink` | `#1A150C` | Text, pills, borders on sticker surfaces — **never pure `#000` for ink** |
+| `--nh2-dark` | `#211C11` | Dark bands / code ground (warm charcoal) |
+| `--nh2-dark-heading` | `#FFF8E8` | Headings on dark |
+| `--nh2-dark-body` | `#D9D2C3` | Body on dark |
+| `--nh2-body-muted` | `rgba(26,21,12,0.76)` | Secondary body on light |
+| `--nh2-gray-band` | `#F0EEEC` | Warm gray band / table headers |
+| `--nh2-hairline` | `rgba(26,21,12,0.1)` | 1px rules, quiet borders |
+| `--nh2-menu-hover` | `#F6F3ED` | Hover / press wash |
+| `--nh2-well-pie` | `#FEF8CE` | Cream well |
+| `--nh2-well-engineer` | `#D6FEEC` | Mint well |
+| `--nh2-well-analyst` | `#F9EEFF` | Lavender well |
+| `--nh2-well-bank` | `#CDFFCF` | Green well |
+
+Docs-only extensions (os2 has no warning/danger surfaces; stay in the warm family):
+
+- `--nh2-well-warning` `#FDF0C2` — manila (Warning callouts)
+- `--nh2-well-danger` `#FFE4D9` — warm clay (Danger callouts)
+
+Rules:
+
+- Warm neutrals only — no pure black ink, no cool grays.
+- Pastel wells: **one hue per surface**.
+- Hard black offset shadows are a **quote from the old brand** — only on wordmark/chips, outlined artifact panels (`.os-hero-box` / `nh2-panel`), and pill sticker hover. Everything else: hairline or none. Soft layered `rgba` shadows are allowed for chrome overlays (site mega-menu pattern); do not spray them on content cards.
+- No gradients as brand decoration, no glassmorphism as a content look, no emoji.
+- Never invent an icon mark — the wordmark **is** the logo (`OPEN SUBS` in Google Sans Flex; prose writes "OpenSubs").
+
+### Typography
+
+| Role | Face | Weight | Notes |
+| --- | --- | --- | --- |
+| Display (h1–h3) | `new-kansas` (Adobe kit `hsb4lyn`) | **500 Medium** | Sentence case, never all-caps. No terminal period on single-sentence headings. `-webkit-font-smoothing: auto` on display. |
+| Body / UI | `Inter` (variable) | 435 body · 500 UI/buttons · 550–600 emphasis | `line-height: 1.7`, tracking `-0.005em`, `antialiased` |
+| Wordmark + chips | `Google Sans Flex` | 700 | Only for `OPEN SUBS` and eyebrow chips |
+
+- `font-synthesis: none` — a missing weight must fail to Regular, never fake-bold.
+- Display sizes in docs are stepped (one notch below marketing); never fluid `vw`.
+- **Sentence case everywhere** — including page H1s. CSS must not force uppercase on prose. Exceptions: the wordmark (`OPEN SUBS`) and chips/eyebrows/stickers (CSS `text-transform: uppercase` — site `.nh2-chip` recipe). Typed prose stays sentence case. See `CASING-QA-PLAN.md` for corpus cleanup rules.
+
+### Radii, borders, shadows (docs scale)
+
+| Element | Radius | Border / shadow |
+| --- | --- | --- |
+| Pills / CTA | 72px | Sticker hover only (yellow fill + black stroke + hard offset) |
+| Cards / callouts / code / tables | 20–28px | Hairline; no default hard shadow |
+| Sidebar items | 12px | Wash hover; active = yellow highlighter fill |
+| Artifact / hero panels (`.os-hero-box`) | 28px | 3px `#000` + `4px 4px 0 #000` (sanctioned hard shadow) |
+| Chips / stickers | pill | 2–2.5px `#000` + hard drop-shadow |
+
+Ease: `cubic-bezier(0.16, 1, 0.3, 1)` (~180–350ms).
+
+### Icons
+
+- Lucide only (`icons.library` is set in `docs.json`). No filled or duotone sets.
 
 ## Component conventions
 
-- Callouts: use the TYPED components — `<Note>`, `<Info>`, `<Tip>`, `<Check>`, `<Warning>`, `<Danger>`. The brand CSS maps each type to its candy fill. Do NOT use generic `<Callout color=...>` for standard callouts (native color renders an off-brand alpha tint); generic Callout is for rare one-off accents only.
-- Stickers/labels: `<Badge className="os-sticker">NEW</Badge>` (or `os-sticker os-sticker-alt` to tilt the other way).
-- Us-vs-them tables: OpenSubs column cells get `class="os-compare-us"`.
-- Changelog: `<Update>` components on a dedicated page; add `rss: true` frontmatter.
-- Landing-style pages: `mode: custom` + the `os-hero-box` / `os-hero-yellow` / `os-press` / `os-shadow*` utilities from `style.css`.
+- Callouts: use the TYPED components — `<Note>`, `<Info>`, `<Tip>`, `<Check>`, `<Warning>`, `<Danger>`. Brand CSS maps each type to a pastel well (cream / green / manila / clay). Do NOT use generic `<Callout color=...>` for standard callouts (native color renders an off-brand alpha tint); generic Callout is for rare one-off accents only, and then only with os2 well hexes.
+- Chips / labels: page `eyebrow:`, `.os-chip`, `.os-sticker` share one recipe — yellow, 2.47px black stroke, Google Sans Flex 700, 16px / lh 0.8, pad 6×12, drop-shadow 2.57px, ALL CAPS. Stickers may tilt ±2°. Sidebar tags stay flat and slightly smaller. Never rely on Mintlify's default eyebrow (`h-5 text-xs`) — `style.css` overrides it.
+- Platform / product callouts: `import { InOpenSubs } from "/snippets/InOpenSubs.jsx"` (cream well + chip). `PlatformTag` only renders for `platform="opensubs"`.
+- Us-vs-them tables: OpenSubs column cells get `class="os-compare-us"` (cream well — site `nh2-table__ours-cell`).
+- Changelog: `<Update>` on a dedicated page; add `rss: true` frontmatter.
+- Landing-style pages: `mode: custom` + `os-hero-box` / `os-hero-yellow` / `os-pill` / `os-chip` / `os-press` / pastel `os-box-*` utilities from `style.css`. Hero yellow band uses `#FEE102` when matching site heroes.
+- Prefer Mintlify built-ins (`<Card>`, `<Steps>`, `<Columns>`, typed callouts) over one-off HTML. When custom layout is required, use Tailwind v3 utility classes or os2 utility classes — not arbitrary new visual systems.
+
+## Styling workflow
+
+- Native branding first: `docs.json` (`colors`, `background`, `appearance`, `logo`, `favicon`, `styling.codeblocks`).
+- Theme: `luma` (single-row topbar — centered section tabs, search + navbar links + CTA on the right). Theme toggle hidden via `appearance.strict: true` (light default).
+- Deep chrome / component look: `style.css` (Mintlify auto-loads every `.css` file). DOM hooks verified against luma — re-check after Mintlify theme upgrades.
+- Fonts load via `@import` in `style.css` (Typekit + Google Fonts). Typekit kit `hsb4lyn` must whitelist `insiders.opensubs.com` and `localhost` or New Kansas falls back to Georgia.
+- After visual changes: open `_brand-lab.mdx` in light + dark before calling it done.
+- When the marketing site changes a pattern in `DESIGN.md` / `src/styles/os2/`, port the token or recipe here in the same spirit — don't invent a docs-only look that drifts from the site.
 
 ## Voice
 
 - Confident challenger, second person, punchy fragments, concrete numbers. "Stop paying rent."
 - Jokes live in page intros, section leads, the 404, and empty states — NEVER in procedure steps or API reference. Reference content is bone-dry.
-- No emoji. Full stops as rhythm. Sentence case headings (page H1s may be uppercase — CSS handles that).
+- No emoji. Full stops as rhythm. Sentence case headings (including H1).
+- Emphasis by weight or italics — never by shouting in ALL CAPS.
 - Every number must be real. No fabricated stats, ever.
 
 ## Terminology
@@ -58,7 +128,7 @@ These are the product's part names — they match the marketing site verbatim.
   /curtain/, /growth-program/), which are Phase-2 work and not to be renamed without
   explicit direction.
 - Shelf order tells the money story (save → own → grow); personal routing
-  lives in /start/choose-your-door and the Growth Program orientation triage.
+  lives in /start/welcome and the Growth Program orientation triage.
 - Directory→tab map: start/→Start here · instant-win/→Scripts ·
   curtain/+deploy/+migrate/+operate/→Platform · growth-program/→Growth Program.
 

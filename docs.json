@@ -1,17 +1,18 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "sequoia",
+  "theme": "luma",
   "name": "OpenSubs",
   "description": "OpenSubs documentation. Own your subscription infrastructure. 0% of revenue, forever.",
   "colors": {
-    "primary": "#000000",
-    "light": "#FFDE00",
-    "dark": "#000000"
+    "primary": "#1A150C",
+    "light": "#FFDE01",
+    "dark": "#1A150C"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/favicon.png",
   "icons": {
     "library": "lucide"
   },
+
   "metadata": {
     "timestamp": true
   },
@@ -291,12 +292,13 @@
   },
   "background": {
     "color": {
-      "light": "#FFFFFF",
-      "dark": "#000000"
+      "light": "#FBFBFB",
+      "dark": "#211C11"
     }
   },
   "appearance": {
-    "default": "light"
+    "default": "light",
+    "strict": true
   },
   "styling": {
     "codeblocks": "dark"

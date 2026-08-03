@@ -9,106 +9,106 @@ public: true
 
   {/* HERO */}
   <div className="flex flex-col items-center gap-6">
-    <div className="os-hero-yellow os-tilt-l-sm px-5 py-8 sm:px-10 sm:py-12 text-center max-w-[720px]">
-      <p className="text-xs font-extrabold uppercase tracking-widest m-0">You're in</p>
-      <h1 className="mt-3 text-3xl sm:text-5xl font-black uppercase tracking-tight leading-none m-0">
+    <div className="os-hero-yellow px-5 py-8 sm:px-10 sm:py-12 text-center max-w-[720px]">
+      <p className="os-chip os-chip--paper m-0">You're in</p>
+      <h1 className="os-ink mt-4 text-4xl sm:text-5xl m-0">
         Stop paying rent.
       </h1>
-      <p className="mt-5 text-base font-semibold leading-6 m-0">
+      <p className="os-muted mt-5 text-base leading-7 m-0">
         The scripts, the platform, the program — all of it is yours now. Start with the email that pays for this whole thing, or go straight to owning the machine.
       </p>
       <div className="mt-6 flex items-center justify-center gap-3 flex-wrap">
-        <a href="/start/welcome" className="os-box-ink os-shadow-sm os-press inline-block px-5 py-2.5 text-sm font-extrabold uppercase no-underline text-white">You're in — start here</a>
+        <a href="/start/welcome" className="os-pill os-pill--on-yellow">You're in — start here</a>
       </div>
     </div>
-    <p className="text-sm font-bold text-gray-700 dark:text-gray-300 m-0">
+    <p className="os-muted text-sm m-0">
       Search everything with <kbd>⌘</kbd> <kbd>K</kbd>. Ask the assistant anything.
     </p>
   </div>
 
   {/* THE FOUR PATHS */}
   <div>
-    <h2 className="text-2xl font-black uppercase tracking-tight text-gray-900 dark:text-gray-50 m-0">Pick your path</h2>
-    <div className="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2">
-      <a href="/start/welcome" className="os-hero-box os-shadow os-press block p-6 no-underline">
-        <span className="os-box-lime os-shadow-sm inline-block px-2 py-0.5 text-xs font-extrabold uppercase">Start here</span>
-        <p className="mt-3 text-lg font-black uppercase tracking-tight text-gray-900 dark:text-gray-50 m-0">The walk-through</p>
-        <p className="mt-2 text-sm font-medium leading-5 text-gray-700 dark:text-gray-300 m-0">
+    <h2 className="os-ink m-0">Pick your path</h2>
+    <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
+      <a href="/start/welcome" className="os-path-card block p-6 no-underline">
+        <span className="os-label os-box-lime">Start here</span>
+        <p className="os-card-title mt-3 m-0">The walk-through</p>
+        <p className="os-muted mt-2 text-sm leading-6 m-0">
           Ten minutes. What you own, where it lives, and the first win — today.
         </p>
       </a>
-      <a href="/instant-win/why-you-have-leverage" className="os-hero-box os-shadow os-press block p-6 no-underline">
-        <span className="os-box-salmon os-shadow-sm inline-block px-2 py-0.5 text-xs font-extrabold uppercase">Scripts</span>
-        <p className="mt-3 text-lg font-black uppercase tracking-tight text-gray-900 dark:text-gray-50 m-0">Cut the fee today</p>
-        <p className="mt-2 text-sm font-medium leading-5 text-gray-700 dark:text-gray-300 m-0">
+      <a href="/instant-win/why-you-have-leverage" className="os-path-card block p-6 no-underline">
+        <span className="os-label os-box-salmon">Scripts</span>
+        <p className="os-card-title mt-3 m-0">Cut the fee today</p>
+        <p className="os-muted mt-2 text-sm leading-6 m-0">
           Know your number, send the email, log the win. No deployment required.
         </p>
       </a>
-      <a href="/curtain/the-vault-was-never-theirs" className="os-hero-box os-shadow os-press block p-6 no-underline">
-        <span className="os-box-mint os-shadow-sm inline-block px-2 py-0.5 text-xs font-extrabold uppercase">Platform</span>
-        <p className="mt-3 text-lg font-black uppercase tracking-tight text-gray-900 dark:text-gray-50 m-0">Own the machine</p>
-        <p className="mt-2 text-sm font-medium leading-5 text-gray-700 dark:text-gray-300 m-0">
+      <a href="/curtain/the-vault-was-never-theirs" className="os-path-card block p-6 no-underline">
+        <span className="os-label os-box-mint">Platform</span>
+        <p className="os-card-title mt-3 m-0">Own the machine</p>
+        <p className="os-muted mt-2 text-sm leading-6 m-0">
           How it really works, deploy, migrate, operate. The 0%-forever half.
         </p>
       </a>
-      <a href="/growth-program/orientation" className="os-hero-box os-shadow os-press block p-6 no-underline">
-        <span className="os-box-peach os-shadow-sm inline-block px-2 py-0.5 text-xs font-extrabold uppercase">Growth Program</span>
-        <p className="mt-3 text-lg font-black uppercase tracking-tight text-gray-900 dark:text-gray-50 m-0">Compound it</p>
-        <p className="mt-2 text-sm font-medium leading-5 text-gray-700 dark:text-gray-300 m-0">
+      <a href="/growth-program/orientation" className="os-path-card block p-6 no-underline">
+        <span className="os-label os-box-peach">Growth Program</span>
+        <p className="os-card-title mt-3 m-0">Compound it</p>
+        <p className="os-muted mt-2 text-sm leading-6 m-0">
           Ten modules: the numbers, the offer, acquire, convert, keep, save, revive.
         </p>
       </a>
     </div>
   </div>
 
-  {/* WHY IT EXISTS — the wedge, told straight */}
+  {/* WHY IT EXISTS — artifact panel keeps hard shadow */}
   <div className="os-hero-box p-8">
-    <h2 className="text-2xl font-black uppercase tracking-tight text-gray-900 dark:text-gray-50 m-0">What you now own</h2>
-    <p className="mt-4 text-base font-medium leading-7 text-gray-800 dark:text-gray-200 m-0">
+    <h2 className="os-ink m-0">What you now own</h2>
+    <p className="os-body mt-4 text-base leading-7 m-0">
       The rent is over. Your subscription revenue runs on infrastructure you control, the percentage line item is gone from your P&L, and every dollar it used to take now lands in EBITDA — multiplied at your exit.
     </p>
-    <p className="mt-4 text-base font-medium leading-7 text-gray-800 dark:text-gray-200 m-0">
+    <p className="os-body mt-4 text-base leading-7 m-0">
       What's in the box: the negotiation scripts that pay for this today, the platform and the migration path off your incumbent, and the growth program to compound what you keep. <strong>You keep 100% of your subscription revenue, forever.</strong>
     </p>
     <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-6">
-      <div className="os-box-ink os-shadow-sm p-4 text-center">
-        <p className="text-2xl font-black m-0 text-white">0%</p>
-        <p className="mt-1 text-xs font-bold uppercase m-0 text-white">of revenue. Forever.</p>
+      <div className="os-box-ink p-4 text-center">
+        <p className="text-2xl m-0" style={{ fontFamily: '"new-kansas", Georgia, serif', fontWeight: 500, color: "#FFF8E8" }}>0%</p>
+        <p className="mt-1 text-xs m-0" style={{ color: "#D9D2C3" }}>of revenue. Forever.</p>
       </div>
-      <div className="os-box-lime os-shadow-sm p-4 text-center">
-        <p className="text-2xl font-black m-0">Yours</p>
-        <p className="mt-1 text-xs font-bold uppercase m-0">The infrastructure</p>
+      <div className="os-box-lime p-4 text-center">
+        <p className="text-2xl m-0" style={{ fontFamily: '"new-kansas", Georgia, serif', fontWeight: 500 }}>Yours</p>
+        <p className="os-muted mt-1 text-xs m-0">The infrastructure</p>
       </div>
-      <div className="os-box-peach os-shadow-sm p-4 text-center">
-        <p className="text-2xl font-black m-0">None</p>
-        <p className="mt-1 text-xs font-bold uppercase m-0">Contract lock-in</p>
+      <div className="os-box-peach p-4 text-center">
+        <p className="text-2xl m-0" style={{ fontFamily: '"new-kansas", Georgia, serif', fontWeight: 500 }}>None</p>
+        <p className="os-muted mt-1 text-xs m-0">Contract lock-in</p>
       </div>
     </div>
   </div>
 
   {/* WHAT'S IN THE DOCS */}
   <div>
-    <h2 className="text-2xl font-black uppercase tracking-tight text-gray-900 dark:text-gray-50 m-0">What's in here</h2>
+    <h2 className="os-ink m-0">What's in here</h2>
     <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-3">
-      <a href="/instant-win/the-scripts" className="os-hero-box os-shadow-sm os-press block p-5 no-underline" style={{ borderWidth: '3px' }}>
-        <p className="text-sm font-black uppercase text-gray-900 dark:text-gray-50 m-0">Scripts</p>
-        <p className="mt-1.5 text-xs font-medium leading-4 text-gray-700 dark:text-gray-300 m-0">The emails that cut your fee this week. Copy, paste, send.</p>
+      <a href="/instant-win/the-scripts" className="os-path-card block p-5 no-underline">
+        <p className="os-card-title text-base m-0">Scripts</p>
+        <p className="os-muted mt-1.5 text-xs leading-5 m-0">The emails that cut your fee this week. Copy, paste, send.</p>
       </a>
-      <a href="/curtain/the-vault-was-never-theirs" className="os-hero-box os-shadow-sm os-press block p-5 no-underline" style={{ borderWidth: '3px' }}>
-        <p className="text-sm font-black uppercase text-gray-900 dark:text-gray-50 m-0">Platform</p>
-        <p className="mt-1.5 text-xs font-medium leading-4 text-gray-700 dark:text-gray-300 m-0">Deploy it, migrate to it, run it. It heals itself.</p>
+      <a href="/curtain/the-vault-was-never-theirs" className="os-path-card block p-5 no-underline">
+        <p className="os-card-title text-base m-0">Platform</p>
+        <p className="os-muted mt-1.5 text-xs leading-5 m-0">Deploy it, migrate to it, run it. It heals itself.</p>
       </a>
-      <a href="/growth-program/orientation" className="os-hero-box os-shadow-sm os-press block p-5 no-underline" style={{ borderWidth: '3px' }}>
-        <p className="text-sm font-black uppercase text-gray-900 dark:text-gray-50 m-0">Growth Program</p>
-        <p className="mt-1.5 text-xs font-medium leading-4 text-gray-700 dark:text-gray-300 m-0">Orientation routes you by what's bleeding right now.</p>
+      <a href="/growth-program/orientation" className="os-path-card block p-5 no-underline">
+        <p className="os-card-title text-base m-0">Growth Program</p>
+        <p className="os-muted mt-1.5 text-xs leading-5 m-0">Orientation routes you by what's bleeding right now.</p>
       </a>
     </div>
   </div>
 
   {/* FOOTER BAR */}
-  <div className="os-box-ink os-shadow px-8 py-6 text-center">
-    <p className="text-lg font-black uppercase tracking-tight m-0 text-white">
-      0% of revenue. Forever. <span className="os-box-lime os-shadow-sm inline-block px-2 py-0.5 text-sm font-extrabold not-italic align-middle ml-2">That's the whole pricing page.</span>
+  <div className="os-box-ink px-8 py-6 text-center">
+    <p className="text-lg m-0" style={{ fontFamily: '"new-kansas", Georgia, serif', fontWeight: 500, letterSpacing: "-0.01em", color: "#FFF8E8" }}>
+      0% of revenue. Forever. <span className="os-label os-box-lime align-middle ml-2 not-italic">That's the whole pricing page.</span>
     </p>
   </div>
 

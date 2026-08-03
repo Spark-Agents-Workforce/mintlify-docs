@@ -16,8 +16,8 @@ Three cart moves, each with a friction budget. (The in-cart upgrade design, the 
 
 **Move 1 — the in-cart subscription upgrade, done right.** This is the highest-value cart move: a one-time buyer sits in the cart, and you offer "Make it a subscription and save 15%" as a single toggle that upgrades the line item in place. Done right it is *one tap, no re-add, no navigation* — the item they already chose, upgraded, with the saving shown inline. Done wrong it's a pop-up modal that interrupts the checkout march, or a swap that empties and rebuilds the cart.
 
-<div className="not-prose" style={{ border: "3px solid #000", backgroundColor: "#FFDE00", boxShadow: "4px 4px 0 0 #000", padding: "20px 24px", margin: "1.5rem 0" }}>
-  <p className="m-0" style={{ fontWeight: 900, fontSize: "20px", lineHeight: 1.3, textTransform: "uppercase", color: "#000" }}>The upgrade must be lighter than the effort of ignoring it. If saying no is easier than saying yes, you've built it right.</p>
+<div className="os-pull not-prose">
+  <p>The upgrade must be lighter than the effort of ignoring it. If saying no is easier than saying yes, you've built it right.</p>
 </div>
 
 **Move 2 — threshold offers.** "Add \$X for free shipping" / "Spend \$Y, get a gift." These nudge AOV *up* — the opposite of what a discount does to the same order (see [Free gifting](/growth-program/offer/free-gifting)) — and they're most powerful when the threshold is set just above your current AOV, close enough to feel reachable. The failure is a threshold set so high it reads as a tax, or a threshold that distracts from the subscription upgrade you actually want. One offer at a time in the cart; two competing offers cancel each other.
@@ -39,31 +39,31 @@ Honest edge: these are recovery-flow and SMS rows, not in-cart-bump rows. They p
 Run every proposed cart element through this before it ships.
 
 ```text The decision tree
-START: A one-time item is in the cart. What do you want most?
-  → Almost always: ATTACH IT (upgrade to subscription). Everything else is secondary.
+Start: A one-time item is in the cart. What do you want most?
+  → Almost always: Attach it (upgrade to subscription). Everything else is secondary.
 
-THE IN-CART UPGRADE (do this first)
-  Is the "make it a subscription" upgrade ONE tap, in place, no re-add?
-    NO  → fix that before adding anything else. This is the highest-value move.
-    YES → is the saving shown inline, in the customer's terms?
-            NO → add it.  YES → ship it. Move on.
+The in-cart upgrade (do this first)
+  Is the "make it a subscription" upgrade one tap, in place, no re-add?
+    No  → fix that before adding anything else. This is the highest-value move.
+    Yes → is the saving shown inline, in the customer's terms?
+            No → add it.  Yes → ship it. Move on.
 
-ADDING A THRESHOLD OFFER?
+Adding a threshold offer?
   Is there already an active offer competing for attention in the cart?
-    YES → stop. One offer at a time. Kill the weaker one.
-    NO  → is the threshold set just above current AOV (reachable, not a tax)?
-            NO → resize it.  YES → ship it.
+    Yes → stop. One offer at a time. Kill the weaker one.
+    No  → is the threshold set just above current AOV (reachable, not a tax)?
+            No → resize it.  Yes → ship it.
 
-ADDING AN ORDER BUMP?
-  Is it genuinely relevant to what's in THIS cart?
-    NO  → cut it. Irrelevant bumps spend the friction budget for nothing.
-    YES → does it add any steps, modals, or taps to reach checkout?
-            YES → cut it or make it zero-step.
-            NO  → one bump maximum. Ship it.
+Adding an order bump?
+  Is it genuinely relevant to what's in this cart?
+    No  → cut it. Irrelevant bumps spend the friction budget for nothing.
+    Yes → does it add any steps, modals, or taps to reach checkout?
+            Yes → cut it or make it zero-step.
+            No  → one bump maximum. Ship it.
 
-THE FRICTION CHECK (run after any change)
+The friction check (run after any change)
   Did cart→checkout conversion or abandonment move the wrong way?
-    YES → the last thing you added is the suspect. Remove it. The order > the upsell.
+    Yes → the last thing you added is the suspect. Remove it. The order > the upsell.
 ```
 
 <InOpenSubs>The in-cart "make it a subscription" upgrade reads the item's selling plan and swaps the line in place — one tap, no cart rebuild, no second app deciding what "upgrade" means.</InOpenSubs>

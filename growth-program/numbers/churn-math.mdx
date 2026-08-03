@@ -46,8 +46,8 @@ Now read it un-blended, and the story inverts:
 - **The save motion is real and accelerating.** The save/resume ratio climbed from **~1.3% to ~5.7%** across roughly nine months — a small number quintupling. (Hedge: event volume only — the data shows *that* saves happen and are growing, never *which* offers or UX drove them; earlier near-zero months are an instrumentation limit, not a true absence.)
 - **And even this can't tell you the two things that matter most.** Was that 37,000 mostly voluntary or mostly failed payments? Were the lost subscribers whales or minnows? The blended event count answers neither.
 
-<div className="not-prose" style={{ border: "3px solid #000", backgroundColor: "#FFDE00", boxShadow: "4px 4px 0 0 #000", padding: "20px 24px", margin: "1.5rem 0" }}>
-  <p className="m-0" style={{ fontWeight: 900, fontSize: "20px", lineHeight: 1.3, textTransform: "uppercase", color: "#000" }}>The scary blended number and the reassuring decomposed one describe the same store in the same months. One of them is actionable. It isn't the blend.</p>
+<div className="os-pull not-prose">
+  <p>The scary blended number and the reassuring decomposed one describe the same store in the same months. One of them is actionable. It isn't the blend.</p>
 </div>
 
 ## The artifact — the churn decomposition worksheet
@@ -55,23 +55,23 @@ Now read it un-blended, and the story inverts:
 Run your last full month through this. The point is to never write a single churn number again without its four parts beside it.
 
 ```text The worksheet
-PERIOD: __________
+Period: __________
 
-LOGO CHURN
+Logo churn
   Subscribers at start ............ ______
-  Cancels (chose to leave) ........ ______   → VOLUNTARY
-  Failed-payment losses ........... ______   → INVOLUNTARY
+  Cancels (chose to leave) ........ ______   → Voluntary
+  Failed-payment losses ........... ______   → Involuntary
   Logo churn %  = (cancels + failed) ÷ start = ______%
     of which voluntary: ____%   involuntary: ____%
 
-REVENUE CHURN
+Revenue churn
   MRR at start .................... $______
   MRR lost to churn .............. $______
   Expansion MRR (upgrades/add-ons) $______
   Gross revenue churn % ........... ______%
-  NET revenue churn % (after expansion) ..... ______%   (negative is the goal)
+  Net revenue churn % (after expansion) ..... ______%   (negative is the goal)
 
-THE ROUTING (what each row sends you to)
+The routing (what each row sends you to)
   Voluntary high  → value/experience (onboarding, offer, saves)
   Involuntary high → billing ops (dunning, card updater, retry timing)
   Revenue >> logo  → you're losing your biggest — segment and defend the top
