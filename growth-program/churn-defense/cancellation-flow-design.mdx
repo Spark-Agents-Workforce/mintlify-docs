@@ -1,33 +1,129 @@
 ---
 title: "Cancellation flow design"
-description: "The save-ladder, reason-branched."
+description: "Ask why they're leaving, then offer the smallest fix that solves it. The reason menu, the routing, the state checks, and where to stop."
 ia: "M8.1"
 ---
 
-import { PlatformTag } from "/snippets/PlatformTag.jsx";
 import { InOpenSubs } from "/snippets/InOpenSubs.jsx";
 
-<PlatformTag platform="any" />
+Cancelling should always be easy. Brands that make it hard (hidden buttons, forced phone calls, "email us to cancel") pay for it in frustrated customers, chargebacks, and angry reviews. Keep the exit simple and honest.
 
-<Note>**Skeleton page.** The structure and links are final; the lesson lands in the production pass.</Note>
+But easy does not have to mean silent. Most cancel flows go straight from the cancel button to the goodbye screen without ever asking a single question. The subscription ends, and you never find out that many of those subscribers simply had too much product sitting on the counter, and would have happily stayed if someone had offered to skip a shipment.
 
-## What this lesson gives you
+A good cancel flow keeps the exit easy and still asks one honest question: why are you leaving? Then it offers the smallest fix that solves that specific answer.
 
-- The save-ladder: what to offer whom, in what order.
-- Reason-branched: the price-sensitive and the overstocked get different doors.
-- The decision tree, complete — and where to stop (dark patterns churn harder later).
+<div className="os-pull not-prose">
+  <p>Nobody lands on the cancel screen by accident. Ask why. The answer is the offer.</p>
+</div>
 
-<InOpenSubs>Placeholder — the boxed product contrast for this lesson lands with the content.</InOpenSubs>
+## Why this page deserves real design
+
+[The second-order cliff](/growth-program/first-60-days/second-order-cliff) counted the leak: in the measured store, cancels outran saves by roughly **19 to 1**. Every lesson before this one works on keeping subscribers away from the cancel screen. This one is about the subscribers who reach it anyway.
+
+Here is the odd part. The same team that fine-tunes every step of checkout will ship a cancel flow that never asks a single question. But the subscriber on the cancel screen is right there, paying full attention, ready to tell you exactly what went wrong. This is the last page you own before they leave. Give it the same care you gave the pages that brought them in.
+
+## Ask why first
+
+The reason menu is the heart of the flow, and it does two jobs.
+
+First, it routes. Every save offer that follows depends on the answer.
+
+Second, it slows the moment down. Being asked why is being heard. Some subscribers arrive wanting relief, not an ending, and the question itself is often the first sign that anyone noticed the difference.
+
+Three rules for the menu:
+
+- **Write the reasons in the subscriber's voice.** "I have too much product," not "inventory surplus." Each option should feel like something they were already thinking.
+- **Match the reasons to how your product actually fails.** A daily supplement fails differently than a monthly apparel box.
+- **Keep the step skippable.** You want the answer, but you don't get to demand it.
+
+Here is the starting menu we use for supplement and consumables brands. Adapt it to your catalog:
+
+1. **I'm not taking the full dose yet**
+2. **I have too much product**
+3. **I'm taking a break**
+4. **I'm reducing spend on subscriptions**
+5. **I'm not seeing results / not liking the product**
+6. **It's too expensive**
+7. **I'm traveling, moving, or on vacation**
+8. **Other** (free text)
+
+The first reason shows why the wording of your menu matters: **“I’m not taking the full dose yet.”** Picture a supplement with a six-capsule daily serving. A subscriber taking three a day is not rejecting the product. They are using it at half speed, so deliveries arrive faster than they finish them. What looks like a cancellation problem is really a delivery frequency problem, with a delivery frequency fix.
+
+## The smallest fix that solves it
+
+The rule is the same one [flexibility as retention](/growth-program/account-area/flexibility-as-retention) taught: match the fix to the problem, and reach for the smallest fix first. Now you apply it at the moment the subscriber says they want to leave. The reason tells you the problem; the branch offers the lightest thing that actually solves it.
+
+Three examples, walked through:
+
+- **"I'm not taking the full dose yet."** Offer to skip the next shipment first, which clears the immediate pile-up. If they want to stay at the lower dose, offer to change the delivery frequency so shipments match how they actually use the product. That fixes the behavior mismatch instead of discounting it.
+- **"I'm taking a break."** A skip covers a short break. A pause with a set return date covers a real one. The return date matters: a pause that resumes in March is a scheduled comeback, while an open-ended pause with no follow-up plan is usually just a slow cancel. The paused subscribers this branch creates are worked in [Reactivating paused](/growth-program/winback/reactivating-paused).
+- **"I'm not seeing results."** Offer to swap to a different product, or connect them with a real person. Never a discount. A discount on a product that is not working just gives them a cheaper version of the same disappointment.
+
+The complete map of every reason and its offers is the table at the end of this lesson. What each offer costs you, and why they run in the order they do, is [the next lesson](/growth-program/churn-defense/save-offers).
+
+## Check the subscription before you offer
+
+A flow that ignores the subscriber's situation will eventually offer something they cannot use, and an offer they cannot use tells them nobody is actually listening. Build in these checks:
+
+- **Already on your longest delivery frequency?** Then "change frequency" is off the table for them. If they pick a reason that normally routes there, the flow should notice and offer a skip, a swap, or a pause instead.
+- **Already accepted a save discount before?** Do not stack another one. Send them to the support team instead. A second percentage teaches the wrong habit, and a person can find out what is really going on.
+The rule behind both: every branch adapts to what the subscription already is.
+
+## The human door
+
+A support link, or live chat if you run it, should stay within reach at every point in the cancellation flow. Do not reserve the human door for the end of a branch.
+
+This matters more than most brands realize. Customers rarely stay loyal for years because of the product alone. They stay because when something went wrong, someone showed up and fixed it. The cancel moment is exactly that moment. Handle it the way a great hotel handles a problem at the front desk, and the near-cancellation can become the reason someone stays.
+
+The **Other** option is where this becomes a system. When a subscriber types their own reason, that text should never sit unread in a database. Wire it up: the cancellation event, carrying the typed reason, automatically creates a ticket in your helpdesk (Gorgias or whatever you use), so your support team can reach out while the moment is still warm. If your email flows live in Klaviyo, the same event can trigger a reason-specific email as the automated first touch, with the personal follow-up behind it. A typed cancellation reason is a customer telling you, in their own words, what your menu missed. What to do with that archive over time is covered in [Exit interviews](/growth-program/churn-defense/exit-interviews).
+
+## Put a face in the flow
+
+A cancel flow is usually the most impersonal page in the store: buttons, a dropdown, a confirmation. Video changes that in seconds. When the cancellation window first opens, a short clip from the founder, the face of the brand, or your head of customer support puts a real person in front of the subscriber at the exact moment they are deciding whether to stay. Nobody expects it, which is exactly why it lands.
+
+Then take it one step further and record a short video for each cancellation reason. The subscriber who picks "I'm not seeing results" hears the founder explain, face to camera, that results come from consistency and long-term use, what to expect and when, and which other product might be a better fit. The subscriber who picks "I have too much product" hears exactly how skipping a shipment or slowing deliveries works. Each video speaks directly to the reason the subscriber just gave, resets expectations around the benefits and the results, and gives them one more genuine chance to change their mind before the offer appears.
+
+Keep the videos short, honest, and warm. This is not the place for a sales pitch. It is the place for the same person who welcomed the customer in to ask what went wrong.
+
+## Where to stop
+
+The line between a save flow and a trap, drawn plainly:
+
+- **Cancelling finishes inside the flow.** No "email us to cancel," no required phone call. If they walk through every screen and still want out, they are out.
+- **The reason step can be skipped.** You want the answer; you do not get to demand it.
+- **Two save screens at most.** A first offer, a second if they decline, then the exit. A third screen stops being persuasion and starts being an obstacle.
+- **The exit is graceful.** No guilt copy, no shrinking buttons. Confirm it, thank them, tag them for [the winback sequence](/growth-program/winback/recapturing-cancelled), and let them go.
+
+A flow that keeps people by trapping them is borrowing next quarter's churn to dress up this month's numbers, and the interest gets paid in chargebacks and bad reviews.
+
+## The artifact: the reason-route map
+
+One row per reason. The first offer is structural and costs you little or nothing. The second appears only if the first is declined. The checks in the last column override both.
+
+| Reason | First offer | If declined | Checks and hand-offs |
+|---|---|---|---|
+| **Not taking the full dose yet** | Skip next shipment | Change frequency | At longest frequency already: skip, swap, or pause |
+| **Too much product** | Skip next shipment | Change frequency, or pick next order date | Same longest-frequency check |
+| **Taking a break** | Skip | Pause with a return date | Paused segment goes to [Reactivating paused](/growth-program/winback/reactivating-paused) |
+| **Reducing spend on subscriptions** | Change frequency (the saving is the fix) | Bounded discount on the next order or two | Prior save discount used: human door instead |
+| **Not seeing results / not liking it** | Swap to a different product | Connect with support or live chat | A conversation moment, not a coupon moment |
+| **Too expensive** | Change frequency | Bounded discount, framed as protecting progress | Copy guidance in [Save offers](/growth-program/churn-defense/save-offers) |
+| **Traveling, moving, vacation** | Pick next order date, or skip | Pause with a return date | A logistics problem; never discount a logistics problem |
+| **Other (free text)** | Human follow-up | | Event auto-creates a helpdesk ticket; the archive goes to [Exit interviews](/growth-program/churn-defense/exit-interviews) |
+
+**How to use it:** rewrite the reason column in your product's language first. The routing logic survives translation; the phrasing does not. Then wire the checks before you launch a single offer, because the map loses credibility the first time it offers someone a door they cannot open. And hold the line at two offers per branch. The map is a conversation tree, not a gauntlet.
+
+<InOpenSubs>The reason menu, the branch for each reason, and the state checks (current frequency, prior save offers, subscription age) are flow configuration, not custom code. An "Other" entry can fire a webhook straight into your helpdesk with the subscriber's typed reason attached, so the warmest feedback you will ever get stops evaporating.</InOpenSubs>
 
 ## Where next
 
 <div className="os-where-next">
 <Columns cols={1}>
   <Card icon="arrow-up-right" title="The retention machinery" href="/operate/the-retention-machinery">
-    The opensubs implementation of this ladder.
+    The opensubs implementation of this flow.
   </Card>
   <Card icon="arrow-up-right" title="Save offers that work" href="/growth-program/churn-defense/save-offers">
-    The rungs, priced.
+    What each save offer costs you, and which offer fits which reason.
   </Card>
 </Columns>
 </div>

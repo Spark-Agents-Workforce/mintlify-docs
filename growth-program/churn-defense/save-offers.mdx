@@ -1,33 +1,82 @@
 ---
 title: "Save offers that work"
-description: "Pause-first. Save-discount math ≠ acquisition math."
+description: "Seven save offers, priced by what each one costs you. The discount goes last, stays bounded, and is never negotiated."
 ia: "M8.2"
 ---
 
-import { PlatformTag } from "/snippets/PlatformTag.jsx";
 import { InOpenSubs } from "/snippets/InOpenSubs.jsx";
 
-<PlatformTag platform="any" />
+When a subscriber says they're leaving, the panicked reflex is to offer a discount. It feels like the obvious move. It is usually the worst one.
 
-<Note>**Skeleton page.** The structure and links are final; the lesson lands in the production pass.</Note>
+Think about what the discount actually does. Most people do not cancel over price. They cancel because product is piling up, or they're taking a break, or they haven't seen results yet. A discount solves none of those problems; it just makes the unsolved problem slightly cheaper. Many will take the discount and still cancel a month or two later. Now you have given up the margin and lost the subscriber anyway. And everyone who takes that deal learns the same lesson: the cancel button is where the discounts live.
 
-## What this lesson gives you
+This lesson prices out every save offer you have, from the ones that cost you nothing to the one that costs real money, and shows why the discount goes last.
 
-- Pause-first: the save that costs nothing.
-- Discount depth for saves — different math than acquisition, run it separately.
-- Swap, gift, frequency-down: the full rung set and when each fires.
+<div className="os-pull not-prose">
+  <p>A skip costs you one order. A discount costs every order it touches.</p>
+</div>
 
-<InOpenSubs>Placeholder — the boxed product contrast for this lesson lands with the content.</InOpenSubs>
+## What each save offer costs you
+
+Every save offer has a cost to you, a problem it genuinely solves, and situations where it is the wrong tool. Price them honestly and the right order falls out on its own: the free fixes first, the paid one last.
+
+- **Skip.** Costs you one order and keeps the subscriber. It solves a one-time pile-up, the box they do not need right now. It is the wrong tool when the pile-up happens every cycle; that subscriber needs a frequency change instead.
+- **Change frequency.** Costs you nothing. A subscriber who stretches from every four weeks to every eight is not half a subscriber. They are a whole subscriber whose deliveries finally match how fast they use the product. This is the true fix for the not-taking-the-full-dose problem. For subscribers cancelling over spend it does double duty, because a longer gap between orders genuinely lowers their monthly cost without touching your price. It is off the table when they are already at your longest frequency, which is why [the flow checks first](/growth-program/churn-defense/cancellation-flow-design).
+- **Pick the next order date.** Costs you nothing. A calendar answer for a calendar problem: travel, a move, a holiday. No discount has ever solved an empty shipping address.
+- **Pause with a return date.** You collect nothing during the pause, but you get a scheduled comeback instead of a goodbye. The return date is the whole point. Without one, and without a plan to follow up, a pause is just a cancel in slow motion. [Reactivating paused](/growth-program/winback/reactivating-paused) works this segment.
+- **Swap.** Costs you little or nothing. It is the catalog's answer to "this product isn't working for me." The subscriber is not done with your brand, just with this product, so let them trade it for another instead of trading you for a competitor. It is the wrong tool when the real problem is expectations; that calls for a conversation, not a different product.
+- **A bounded credit or discount.** The only offer that spends real money, which is why it goes last and always comes with a limit: the next order, or a set number of orders. Never a permanent cut to the ongoing rate. [The discount question](/growth-program/offer/the-discount-question) explained why the ongoing rate is the expensive dial, and the cancel screen is the worst place to move it, because the person pressing cancel is the person you have the least evidence will stay long enough to pay it back. A credit also beats a percentage here, for the same reason it did in the offer module: it brings them back to spend without teaching them that your product costs less than the list price.
+- **A conversation.** Support or live chat, offered as a real option rather than a last resort. Some cancellations are simply conversations that never got to happen. It costs you a support touch, and it is the only save that also tells you why it worked.
+
+## One offer, then one more
+
+Structure every branch the same way. The first offer is structural: a skip, a frequency change, a date change, a pause, or a swap. The second spends something, and only appears if the first is declined. Two offers, then the exit. Never lead with the paid one, and never add a third screen. By the third screen you are not offering anymore; you are haggling.
+
+The offer also cannot be a negotiation. Same branch, same offer, for every subscriber, every time. The moment saves become something people can bargain for, the cancel button turns into a slot machine, and the subscribers who pull the lever hardest get paid the most. The offer module called this pattern oscillation: a price that moves teaches people to wait for it to move again. At the cancel screen, the waiting looks like threatening to leave. Keep the save offer a fixed feature of the flow, not a prize for pushing.
+
+## How to position the paid offer
+
+When someone picks "it's too expensive" or "I'm reducing spend" and declines the frequency change, the words around the discount matter as much as the number. Do not argue about the price. The subscriber already had that argument with themselves, and you were not there to win it.
+
+Reframe it instead. For a supplement, or any product where results build over time, the honest frame is investment: the customers who get the results they came for are almost always the ones who stayed consistent, and quitting now walks away from the progress the past months already paid for. Something like: *"Results come from consistency, and you're closer than when you started. Here's [the offer] to make staying easier."* Notice what that copy never does. It never apologizes for the price, and it never hints that the list price was too high all along.
+
+One caveat that belongs to another lesson but has to be said here. If a large share of your cancels mention results, the save screen is the last place you are catching an expectations problem, not the first. Expectations get set in [the first sixty days](/growth-program/first-60-days/welcome-sequence). The discount can rescue individual subscribers; it cannot rescue an onboarding that promised a two-week miracle.
+
+## Measure your own save flow
+
+The metric is **save rate**: saves divided by the number of subscribers who entered the cancel flow. Track it three ways: overall, by reason, and by offer. The overall number hides everything useful. A flow can look healthy in total while one branch quietly saves nobody.
+
+There is no industry benchmark in this lesson, on purpose. The data behind this program never captured cancel reasons, and nobody else's flow sets your target either. Your baseline is your first month of measurement, and the goal is to beat it. Watch the by-reason numbers longest. They tell you which problems your offers actually solve, and which branch is just a polite formality on the way out.
+
+One more discipline, borrowed from [winback economics](/growth-program/winback/winback-economics): an accepted save is attributed, not proven. Some subscribers who clicked "skip" would have stayed anyway. Some who took the discount were leaving regardless and grabbed it on the way out. The fix is the same one winback uses. Hold the discount back from a random slice of subscribers in that branch and compare how many stay. The free offers cost you nothing either way; the discount is the one offer whose true effect you need to know, because it is the only one you are paying for.
+
+## The artifact: the save offer worksheet
+
+One row per offer. Fill the last column from your own flow's logs, nobody else's.
+
+| Offer | Costs you | Solves | Serves reasons | Wrong when | Your save rate |
+|---|---|---|---|---|---|
+| **Skip** | One order | A one-time pile-up | Full dose, too much, break | The pile-up is chronic | |
+| **Change frequency** | Nothing | Deliveries outpacing use; spend | Full dose, too much, spend, expensive | Already at longest frequency | |
+| **Next order date** | Nothing | Calendar problems | Travel, too much | The problem is not the calendar | |
+| **Pause with return date** | Collection during the pause | A real break | Break, travel | No return date, no follow-up plan | |
+| **Swap** | Little to nothing | Wrong product, boredom | Not seeing results | The real issue is expectations | |
+| **Bounded credit or discount** | Real margin, capped | Genuine price friction | Spend, expensive (second offer only) | Shown first, stacked, or open-ended | |
+| **A conversation** | A support touch | Everything the menu missed | Other, not seeing results | Never; keep it always reachable | |
+
+**How to use it:** the "wrong when" column doubles as the list of checks [the flow](/growth-program/churn-defense/cancellation-flow-design) should run before showing that offer. The save-rate column is your monthly read, sitting next to the save/resume ratio on [the weekly wall](/growth-program/numbers/weekly-metrics). And if the discount row ever posts your highest save rate, do not celebrate. Check what order it is shown in, because a paid offer that beats every free one usually means it is being shown first.
+
+<InOpenSubs>Every offer on the worksheet (skip, frequency change, date change, pause, swap, a bounded credit) is a native subscriber action the flow can offer directly, and each accepted save logs with its offer and its reason. The last column is a report you read, not an export you rebuild.</InOpenSubs>
 
 ## Where next
 
 <div className="os-where-next">
 <Columns cols={1}>
   <Card icon="arrow-up-right" title="Flexibility as retention" href="/growth-program/account-area/flexibility-as-retention">
-    The same doors, upstream.
+    The same doors, offered before anyone reaches the cancel screen.
   </Card>
   <Card icon="arrow-up-right" title="Dunning" href="/growth-program/churn-defense/dunning">
-    Decline-code-aware retries. Benchmarks [sourced].
+    The involuntary half: when the card, not the customer, says no.
   </Card>
 </Columns>
 </div>

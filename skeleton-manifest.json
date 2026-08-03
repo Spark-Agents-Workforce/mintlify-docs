@@ -666,6 +666,7 @@
     "ia": "M8.1",
     "title": "Cancellation flow design",
     "platform": "any",
+    "status": "PRODUCTION",
     "links": [
       "/operate/the-retention-machinery",
       "/growth-program/churn-defense/save-offers"
@@ -675,6 +676,7 @@
     "ia": "M8.2",
     "title": "Save offers that work",
     "platform": "any",
+    "status": "PRODUCTION",
     "links": [
       "/growth-program/account-area/flexibility-as-retention",
       "/growth-program/churn-defense/dunning"
