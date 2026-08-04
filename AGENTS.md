@@ -116,7 +116,6 @@ Ease: `cubic-bezier(0.16, 1, 0.3, 1)` (~180–350ms).
 
 - Do not document internal WayFX/Luna history — OpenSubs docs start at OpenSubs.
 - No pricing figures in docs without a corpus source; pricing lives on the marketing site.
-- Externally visible changes (anything that deploys) require Josh's approval before push to main.
 
 ## Navigation taxonomy (LOCKED 2026-07-04)
 
