@@ -114,6 +114,13 @@ h1, #page-title { font-size: 2.5rem; }
 #content-area {
   max-width: calc(720px + 3rem) !important; /* 720 + 48 */
 }
+
+/* The homepage is the only custom-mode page. Let its own 1000px wrapper
+   center inside the full viewport instead of inheriting the reading column. */
+#navbar.is-custom ~ #body-content #content-area {
+  max-width: none !important;
+}
+
 /* Recenter: Mintlify hardcodes half-width 348px + sidebar 14rem in the ml utility */
 @media (min-width: 1024px) {
   #content-area[class*="50vw-348px"] {
