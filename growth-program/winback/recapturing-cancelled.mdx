@@ -40,6 +40,21 @@ The frame has three windows. Understand up front: the *shape* is an operating fr
 
 That ordering is the entire lesson.
 
+## Let the reason shape the return
+
+Time since cancellation tells you when someone left. It does not tell you what would make returning relevant. Carry the cancellation reason, product, cadence, tenure, final state, and save offers already shown into the winback audience.
+
+[Reading your churn](/growth-program/churn-defense/reading-your-churn) turns those fields into a diagnosis. This lesson uses that diagnosis to avoid repeating the original problem:
+
+- **Too much product or deliveries moving too quickly.** Wait until the subscriber may reasonably need the product again, then reopen the subscription with a cadence or next-order date that fits.
+- **Taking a break, traveling, or moving.** Reach out near the expected return point and make the restart date clear.
+- **Product, flavor, or format fit.** Return only when there is a genuinely different product path or a useful support conversation. The same product with a new coupon is not a new answer.
+- **Results or expectations.** Lead with accurate education or personal support when it can resolve the gap. Do not imply progress you cannot see.
+- **Price or reduced spending.** Consider a better-fitting cadence, quantity, or bounded return offer. Do not assume every price reason needs the same discount.
+- **Payment recovery exhausted.** Keep this segment separate from voluntary cancellations. Lead with fixing the payment method and restoring the subscription they were already trying to keep.
+
+Do not show a former subscriber the same save offer they already declined. The reason for leaving and the treatment history travel together.
+
 ## What not to send
 
 This list is operating experience, corroborated by the store's rev-per-recipient and unsubscribe rows below.
@@ -47,7 +62,7 @@ This list is operating experience, corroborated by the store's rev-per-recipient
 - **Your deepest discount to the whole list, on day one.** (The anti-lesson. You pay the people who'd have returned free, and you re-anchor everyone else to the low price.)
 - **The same offer on a loop.** Repetition doesn't persuade a lapsed subscriber; it trains them to wait and it drives the unsubscribe you were trying to avoid.
 - **"We miss you" with nothing behind it.** Sentiment without a reason-to-return or a fixed friction converts nobody and consumes send reputation.
-- **A winback that ignores *why* they might have left.** Cancel reasons are absent from this store's data — there is no field for "too much product," "too expensive," "quality," "moved on." Until you capture a cancel reason, you are guessing at the job each message does. Capturing it is the highest-leverage upgrade to this whole sequence, which is why it's the first thing your save-flow should ask.
+- **A winback that ignores why they left.** Capture the reason in the cancellation flow and carry it into the audience, message, and return path. One generic campaign turns every departure into a price objection and repeats offers that may have already failed.
 
 ## The proof (one measured case, hedges attached)
 
@@ -63,6 +78,10 @@ Take this, drop in your own cadence, and test it against a holdout:
 
 ```text The blueprint
 Trigger: subscription cancelled → enter sequence, tag with cancel-date + reason (if captured)
+
+Before entry
+  Segment by final state, reason, product, cadence, tenure, and prior save offer.
+  Suppress anyone who already reactivated or is no longer eligible.
 
 Window 1  ·  ~0–30 days  ·  Job: remove friction   ·  Offer: none
    "Did something not work?" → skip / delay / swap / change cadence.
@@ -80,7 +99,7 @@ Rules:  discount is spent last · never loop the same offer · every send has a
         reason-to-return or a fixed friction · always run a holdout arm.
 ```
 
-<InOpenSubs>The cancel event, the cancel reason, and the days-since-cancel timer are all first-class platform fields — the sequence branches on them without an export or a spreadsheet, and a holdout arm is a toggle on the flow, not a workaround.</InOpenSubs>
+<InOpenSubs>The cancel event, final state, cancel reason, product, prior treatment, and days-since-cancel timer are all first-class platform fields. The sequence branches on them without an export or spreadsheet, and a holdout arm is a toggle on the flow, not a workaround.</InOpenSubs>
 
 ## Where next
 

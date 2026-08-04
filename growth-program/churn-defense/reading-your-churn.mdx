@@ -1,30 +1,126 @@
 ---
 title: "Reading your churn"
-description: "Which module to deploy against which churn."
-ia: "M8.5"
+description: "Find where churn concentrates, connect the pattern to what subscribers told you, and route the next fix upstream."
+ia: "M8.4"
 ---
 
-import { PlatformTag } from "/snippets/PlatformTag.jsx";
 import { InOpenSubs } from "/snippets/InOpenSubs.jsx";
 
-<PlatformTag platform="any" />
+Your cancel flow tells you why subscribers say they are leaving. Your subscription data tells you where cancellations concentrate. Read either one alone and you will reach for the wrong fix.
 
-<Note>**Skeleton page.** The structure and links are final; the lesson lands in the production pass.</Note>
+A cancellation reason without context can send you chasing the loudest answer. A churn report without subscriber language can show you the leak without telling you what to investigate. Read them together: the number tells you where to look, and the reason tells you what question to ask next.
+
+<div className="os-pull not-prose">
+  <p>The pattern tells you where to look. The reason tells you what to investigate.</p>
+</div>
 
 ## What this lesson gives you
 
-- The voluntary/involuntary split as your triage input.
-- Involuntary → M8.3. Early voluntary → M5/M2.4. Late voluntary → M7.
-- The routing table: churn pattern → module → first page to open.
+- A practical read of churn by type, lifecycle stage, product, cadence, and reason.
+- A way to connect cancellation feedback with subscription behavior without treating either as proof on its own.
+- A churn triage map that routes the next investigation to the right Growth Program lesson.
 
-<InOpenSubs>Placeholder — the boxed product contrast for this lesson lands with the content.</InOpenSubs>
+## Start with the event that actually ended
+
+[Churn math](/growth-program/numbers/churn-math) already separates voluntary and involuntary churn. Keep that split intact before you diagnose anything else.
+
+- **Voluntary cancellation:** the subscriber chose to leave through the cancellation flow.
+- **Failed-payment cancellation:** payment recovery ended without a successful payment. The subscriber may still want the product.
+- **Pause:** the subscription is inactive for a planned period, but it has not ended.
+- **Merchant-initiated cancellation:** your team ended the subscription, which may reflect support, inventory, or another operating decision.
+
+These events belong to different owners and different fixes. A failed-payment cancellation routes back to [Dunning](/growth-program/churn-defense/dunning). A voluntary cancellation routes into the reason and lifecycle analysis in this lesson. A paused subscription belongs in [Reactivating paused](/growth-program/winback/reactivating-paused), not in the cancelled pool.
+
+## Locate the moment
+
+The monthly cancellation total tells you volume. The order count and tenure tell you where the relationship broke.
+
+Read cancellations by the renewal stage at which they happen:
+
+- **Before the first renewal.** Inspect the acquisition promise, subscription terms, welcome sequence, first-order experience, and expectations for using the product.
+- **During the first few recurring orders.** Inspect delivery cadence, product use, quantity, education, and whether the subscriber had enough time to experience the intended value.
+- **During mature tenure.** Inspect changing needs, product fatigue, unresolved support issues, value, and whether the subscription still fits the subscriber's routine.
+- **After a save was accepted.** Inspect whether the offer solved the stated reason or only delayed the cancellation.
+- **After payment recovery ended.** Keep this segment separate. The next opportunity is restoring a valid payment method, not persuading someone who chose to leave.
+
+Compare the cancellation rate within each stage, not raw cancellations alone. More subscriptions may reach one stage than another, so the largest count is not automatically the weakest point.
+
+Do not treat any of those moments as the cause by itself. They narrow the investigation. They do not finish it.
+
+## Find where the pattern concentrates
+
+Cut the report only when the cut can change a decision. Useful views include:
+
+- **Product and variant.** Compare each product, flavor, size, or format against the active subscriptions that include it. Your highest-volume product will usually produce the most cancellations even when its rate is healthy.
+- **Cadence and plan.** Compare cancellation within each cadence or plan. A delivery rhythm may be faster than subscribers use the product.
+- **Cancellation reason.** The selected reason tells you what the subscriber reported in the moment.
+- **Acquisition source and offer.** Some subscriber groups may arrive with expectations that do not survive the recurring experience.
+- **Season or recurring period.** Travel, routines, weather, gifting periods, or category cycles can create a pattern worth preparing for.
+- **Save path.** Compare the reason, offer shown, offer accepted, final outcome, and whether another paid order followed.
+- **Support context.** Repeated questions, complaints, and manual subscription changes can explain what the cancellation menu cannot.
+
+Every view needs the right base: cancellations for a product compared with active subscriptions containing that product, or cancellations at an order stage compared with subscriptions that reached that stage. Stop segmenting when the next cut would not change what you do. The goal is not the most detailed report. It is the smallest useful pattern you can investigate.
+
+## Read what subscribers told you
+
+Your reason menu gives you a stable top-level view. Free text and support conversations give you the language underneath it.
+
+Use three layers:
+
+1. **The selected reason.** This is the comparable category you can trend over time.
+2. **The subscriber's own words.** Keep optional free text attached to the category instead of flattening it into a new label immediately.
+3. **A focused conversation when you need context.** Reach out to a specific affected group when the report leaves an important question unanswered. This is subscriber research, not another attempt to stop the cancellation.
+
+Review the **Other** responses regularly. If the same idea keeps appearing and the existing menu does not represent it, refine the menu. Keep the top-level reasons stable enough to compare over time, but do not protect a taxonomy that no longer describes why subscribers leave.
+
+A cancellation reason is evidence of what the subscriber reported. It is not automatic proof of the root cause. "Too much product" may point to cadence, inconsistent use, quantity, or unclear serving expectations. Put the answer beside behavior before you decide which one it is.
+
+## Turn the pattern into upstream work
+
+The cancel screen is often where an earlier problem finally becomes visible. Use the pattern to find the first surface that could have prevented it.
+
+| Observed pattern | First place to inspect | The question to ask |
+| :--- | :--- | :--- |
+| Cancellations cluster before the first renewal | [The first 60 days](/growth-program/first-60-days/welcome-sequence) | Did the early experience deliver what acquisition and checkout promised? |
+| "Too much product" concentrates at one cadence | [Flexibility as retention](/growth-program/account-area/flexibility-as-retention) | Do delivery timing and quantity match how subscribers actually use the product? |
+| One product or variant has a higher cancellation rate | Product experience, education, and support | Is the issue fit, format, flavor, use, or an expectation set before purchase? |
+| Price and spend reasons rise together | [The offer](/growth-program/offer/offer-architecture) | Is the subscription structured around the right quantity, cadence, and value? |
+| The same support issue appears beside cancellations | Account experience and support process | Could the subscriber have resolved the issue before reaching cancel? |
+| Saves are accepted, then cancellations follow | [Cancellation flow design](/growth-program/churn-defense/cancellation-flow-design) and [Save offers](/growth-program/churn-defense/save-offers) | Did the offer solve the reason or only move the date? |
+| Failed-payment cancellations rise | [Dunning](/growth-program/churn-defense/dunning) | Where is recovery failing: retry, communication, payment update, or support handoff? |
+| Cancellations repeat in a seasonal pattern | Upcoming-order messaging and flexibility | Can subscribers adjust the next order before the recurring friction returns? |
+
+Choose one meaningful pattern. Write the working hypothesis. Change the earliest relevant surface, then watch whether the pattern changes in a later completed period.
+
+## Carry the reason into winback
+
+The reason does not stop being useful when the cancellation completes. Pass the cancellation date, final state, reason, written context, product, cadence, tenure, and save offers already shown into [Recapturing cancelled](/growth-program/winback/recapturing-cancelled).
+
+That context protects the subscriber from a generic return campaign. Someone who had too much product should not receive an immediate offer for more of it. Someone who rejected a discount because the product was not working should not see the same discount again. A subscription ended after payment recovery needs a payment-restoration path, not the same message as a voluntary cancellation.
+
+Reading your churn decides what appears to be happening. Winback decides whether the original problem has changed enough to make returning relevant.
+
+## The artifact: the churn triage map
+
+Use one row per pattern. Each row keeps the observation, evidence, hypothesis, first action, and later outcome separate.
+
+| Observed pattern | Evidence to pair | Working hypothesis | First page to inspect | Outcome to watch |
+| :--- | :--- | :--- | :--- | :--- |
+|  | Churn type, lifecycle stage, product, cadence, reason, support context |  |  |  |
+
+**How to use it:** start with a completed reporting period, not an open one. Write what you observed before you write why you think it happened. Add the subscriber language that supports or challenges the hypothesis. Then choose the earliest surface capable of changing the pattern and define the later outcome you will read.
+
+<InOpenSubs>Cancellation type, renewal stage, product, cadence, selected reason, free text, save path, recovery state, and later order behavior stay attached to the subscription. Reading churn is a set of filters on one lifecycle record, not a spreadsheet assembled after the subscriber leaves.</InOpenSubs>
 
 ## Where next
 
 <div className="os-where-next">
 <Columns cols={1}>
-  <Card icon="arrow-up-right" title="Churn math" href="/growth-program/numbers/churn-math">
-    The foundation this reading stands on.
+  <Card icon="rotate-ccw" title="Recapturing cancelled" href="/growth-program/winback/recapturing-cancelled">
+    Carry the reason and final state into a more relevant path back.
+  </Card>
+  <Card icon="calculator" title="Churn math" href="/growth-program/numbers/churn-math">
+    Revisit the definitions behind voluntary, involuntary, logo, and revenue churn.
   </Card>
 </Columns>
 </div>

@@ -241,7 +241,6 @@
               "growth-program/churn-defense/cancellation-flow-design",
               "growth-program/churn-defense/save-offers",
               "growth-program/churn-defense/dunning",
-              "growth-program/churn-defense/exit-interviews",
               "growth-program/churn-defense/reading-your-churn"
             ]
           },
@@ -366,6 +365,10 @@
     {
       "source": "/start/first-24-hours",
       "destination": "/start/welcome"
+    },
+    {
+      "source": "/growth-program/churn-defense/exit-interviews",
+      "destination": "/growth-program/churn-defense/reading-your-churn"
     }
   ],
   "seo": {

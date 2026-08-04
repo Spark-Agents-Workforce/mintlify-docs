@@ -12,6 +12,12 @@ Dunning is the system that detects that interruption, retries payments that may 
   <p>The subscriber did not choose to leave. The payment failed. Treat those as different events.</p>
 </div>
 
+## What this lesson gives you
+
+- A quiet-first recovery schedule for failed subscription payments.
+- Clear service messages and the shortest possible payment-update path.
+- Recovery reporting that shows where failures occur and what to improve upstream.
+
 ## Start with silent recovery
 
 Not every failed payment needs an immediate message. A temporary decline or insufficient funds may resolve when the payment is tried again. Opening with an urgent warning can make a routine interruption feel like a bigger problem than it is.
@@ -182,8 +188,8 @@ Your first full reporting period is the baseline. Compare completed periods over
   <Card icon="mail" title="Transactional & reminder" href="/growth-program/messaging/transactional-and-reminder">
     The recovery copy.
   </Card>
-  <Card icon="clipboard-list" title="Exit interviews" href="/growth-program/churn-defense/exit-interviews">
-    Reason collection that's actually usable.
+  <Card icon="chart-no-axes-combined" title="Reading your churn" href="/growth-program/churn-defense/reading-your-churn">
+    Separate payment failures from voluntary cancellations, then route the next fix.
   </Card>
 </Columns>
 </div>

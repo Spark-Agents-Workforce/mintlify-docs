@@ -690,24 +690,18 @@
     "links": [
       "/curtain/when-cards-fail",
       "/growth-program/messaging/transactional-and-reminder",
-      "/growth-program/churn-defense/exit-interviews"
-    ]
-  },
-  "growth-program/churn-defense/exit-interviews": {
-    "ia": "M8.4",
-    "title": "Exit interviews",
-    "platform": "any",
-    "links": [
       "/growth-program/churn-defense/reading-your-churn"
     ]
   },
   "growth-program/churn-defense/reading-your-churn": {
-    "ia": "M8.5",
+    "ia": "M8.4",
     "title": "Reading your churn",
     "platform": "any",
     "links": [
+      "/growth-program/winback/recapturing-cancelled",
       "/growth-program/numbers/churn-math"
-    ]
+    ],
+    "status": "PRODUCTION"
   },
   "growth-program/winback/recapturing-cancelled": {
     "ia": "M9.1",
