@@ -404,8 +404,8 @@ html.dark .sidebar-group-icon svg { background-color: var(--nh2-dark-body) !impo
 
 /* ================= TOC ============================================== */
 
-toc-item > a { position: relative; transition: color 180ms var(--nh2-ease); }
-toc-item[data-active] > a { font-weight: 550; color: var(--os-heading) !important; }
+.toc-item > a { position: relative; transition: color 180ms var(--nh2-ease); }
+.toc-item[data-active] > a { font-weight: 550; color: var(--os-heading) !important; }
 
 /* ================= CONTENT LINKS ==================================== */
 
@@ -768,6 +768,46 @@ html.dark [data-table-wrapper] th {
   font-weight: 550;
 }
 
+/* Dunning cadence: compact text schedule, not a numeric proof table. */
+.os-recovery-schedule [data-table-wrapper] table {
+  table-layout: fixed;
+  width: 100%;
+  max-width: 100%;
+}
+.os-recovery-schedule [data-table-wrapper] th,
+.os-recovery-schedule [data-table-wrapper] td,
+.os-recovery-schedule [data-table-wrapper] table:has(td[data-numeric]) th:not(:first-child),
+.os-recovery-schedule [data-table-wrapper] table:has(td[data-numeric]) td:not(:first-child) {
+  min-width: 0 !important;
+  padding: 10px 12px !important;
+  text-align: left !important;
+  white-space: normal !important;
+}
+.os-recovery-schedule [data-table-wrapper] th:first-child,
+.os-recovery-schedule [data-table-wrapper] td:first-child {
+  width: 4.75rem;
+  min-width: 0 !important;
+  padding-left: 14px !important;
+  white-space: nowrap !important;
+}
+.os-recovery-schedule [data-table-wrapper] th:nth-child(2),
+.os-recovery-schedule [data-table-wrapper] td:nth-child(2) {
+  width: 38%;
+}
+.os-recovery-schedule [data-table-wrapper] th:last-child,
+.os-recovery-schedule [data-table-wrapper] td:last-child {
+  padding-right: 14px !important;
+}
+.os-recovery-schedule [data-table-wrapper] [data-component-part="scroll-area-viewport"] {
+  overflow-x: hidden !important;
+}
+
+.os-recovery-reset-note .callout [data-component-part="callout-content"],
+.os-recovery-reset-note .callout [data-component-part="callout-content"] * {
+  font-size: 16px !important;
+  line-height: 1.65 !important;
+}
+
 /* Scroll affordance when the table is wider than the reading column */
 [data-table-wrapper][data-has-overflow-x] [data-component-part="scroll-area-viewport"],
 [data-table-wrapper] [data-component-part="scroll-area-viewport"][data-has-overflow-x] {
@@ -1096,16 +1136,4 @@ kbd {
   .os-pill:hover::after { opacity: 1; transform: none; }
 }
 
-/* ================= TOC chevron ====================================== */
-
-toc-item > a { padding-left: 1rem !important; }
-toc-item[data-active-deepest] > a::before {
-  content: "";
-  position: absolute; left: 0; top: 50%;
-  width: 0.7rem; height: 0.7rem;
-  transform: translateY(-50%);
-  background-color: currentColor;
-  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='9 18 15 12 9 6'/></svg>") no-repeat center / contain;
-          mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='9 18 15 12 9 6'/></svg>") no-repeat center / contain;
-  pointer-events: none;
-}
+/* Mintlify supplies the moving active marker; keep its current spacing. */

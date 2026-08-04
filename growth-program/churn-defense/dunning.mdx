@@ -1,35 +1,188 @@
 ---
 title: "Dunning"
-description: "Decline-code-aware retries. Benchmarks [sourced]."
+description: "Recover failed subscription payments without turning the experience into a collections process."
 ia: "M8.3"
 ---
 
-import { PlatformTag } from "/snippets/PlatformTag.jsx";
-import { InOpenSubs } from "/snippets/InOpenSubs.jsx";
+A cancellation is a decision. A failed renewal is an interruption.
 
-<PlatformTag platform="any" />
+Dunning is the system that detects that interruption, retries payments that may resolve on their own, and asks the subscriber to act only when needed. There is no save offer to negotiate. The subscriber already wanted the order. Your job is to remove the payment problem with as little effort and anxiety as possible.
 
-<Note>**Skeleton page.** The structure and links are final; the lesson lands in the production pass.</Note>
+<div className="os-pull not-prose">
+  <p>The subscriber did not choose to leave. The payment failed. Treat those as different events.</p>
+</div>
 
-## What this lesson gives you
+## Start with silent recovery
 
-- Decline-code-aware retry timing: hard declines vs soft, treated differently.
-- Card-updater, and the failed-payment email/SMS sequence that recovers the rest.
-- Recovery benchmarks — sourced only. No vendor folklore on this page.
+Not every failed payment needs an immediate message. A temporary decline or insufficient funds may resolve when the payment is tried again. Opening with an urgent warning can make a routine interruption feel like a bigger problem than it is.
 
-<InOpenSubs>Placeholder — the boxed product contrast for this lesson lands with the content.</InOpenSubs>
+Start the recovery episode when the first eligible payment fails, but keep the first recovery actions quiet:
+
+- Record the failure reason and the time of the attempt.
+- Keep the subscription active while recovery is underway.
+- Retry automatically before asking the subscriber to intervene.
+- If a backup payment method is available, use it as part of the silent recovery window after the primary method fails.
+- Notify the subscriber once their action is actually useful.
+
+You do not need to turn the merchant or support team into payments engineers. Shopify returns a reason when a subscription billing attempt fails, and those classifications can change over time. Use that reason to make one broad choice: retry quietly when another attempt can reasonably work, or ask the subscriber to update the payment method when the current one cannot.
+
+Temporary issues such as insufficient funds can enter the silent retry schedule. An expired, missing, or no-longer-valid payment method needs subscriber action. Keep the grouping simple. When the reason is reliable and actionable, be specific. When the signal is less certain, use broader language such as “we couldn’t process your payment” instead of guessing at the cause.
+
+## An example 19-day recovery schedule
+
+The schedule below is one operating example, not a required cadence. For a health and wellness product built around a roughly 30-day replenishment cycle, it leaves room for temporary payment issues to resolve without letting the next expected delivery drift too far. Adjust the timing to match how quickly subscribers use the product, how often orders renew, and when an interruption begins to break consistency.
+
+The exact days may change, but the shape should remain: quiet recovery first, progressively clearer notices, a final attempt, and a defined outcome.
+
+<div className="os-recovery-schedule">
+
+| Day | System action | Subscriber experience |
+| :--- | :--- | :--- |
+| Day 0 | Open the recovery episode. Keep the subscription active. Attempt a backup method during the silent recovery window when one is available. | No general notice unless the failure clearly requires a new payment method. |
+| Day 2 | Retry the payment. | Silent. |
+| Day 3 | Retry the payment again. | Silent. |
+| Day 4 | Send the first recovery notice. | Email at minimum. Add a short SMS when it gives the subscriber a faster route to update their payment method. |
+| Day 5 | Retry the payment. | Silent. |
+| Day 7 | Send the second notice. | A clear reminder with the same direct update path. |
+| Day 8 | Retry the payment. | Silent. |
+| Day 10 | Send the third notice. | Keep the tone helpful and make the required action unmistakable. |
+| Day 11 | Retry the payment. | Silent. |
+| Day 13 | Send the fourth notice. | Explain that the recovery window is nearing its end. |
+| Day 14 | Retry the payment. | Silent. |
+| Day 16 | Send the final recovery notice. | Give the date of the final attempt and explain what will happen after it. |
+| Day 17 | Make the final automatic retry. | Silent. |
+| Day 18 | After the final retry fails, trigger the support-handoff event. Optionally use it to create a help desk ticket. | Silent unless a support team member reaches out. |
+| Day 19 | **Default:** End the recovery episode, cancel the subscription if it remains unpaid, then send the cancellation confirmation. | The subscriber receives a clear confirmation and a path to restart when ready. |
+| Day 19 | **Optional support buffer:** Instead of cancelling, keep recovery open through Day 22 and create or continue the help desk ticket. If the subscriber does not respond or take action, automatically cancel and send the confirmation. | If enabled, support reaches out to help with the payment method before automatic cancellation. |
+
+</div>
+
+The support buffer is an optional addition. The default path remains automatic cancellation and confirmation when the 19-day recovery schedule ends.
+
+<div className="os-recovery-reset-note">
+  <Note>**Changing the next order date resets recovery.** If support changes the next order date while a subscription is in payment recovery, close the current recovery episode and remove the subscription from active recovery. Attempt payment on the new order date. Only start a new recovery episode if that payment fails.</Note>
+</div>
+
+This is a calendar, not a message blast. The retry horizon and notice count are adjustable. The silent days matter because they give the system room to recover the payment without making every decline feel urgent.
+
+## Write every notice like service
+
+The business objective is to recover revenue. The subscriber experience should feel like help keeping an order, routine, or habit from being interrupted.
+
+Every notice should do three things:
+
+1. Say what happened in plain language.
+2. Give the subscriber one clear action.
+3. Take them directly to the place where they can complete it.
+
+The message does not need to dramatize the failure or repeat the same demand in increasingly aggressive language. It should become clearer as the recovery window progresses, especially about the final attempt and automatic cancellation.
+
+**First notice**
+
+> We couldn’t process your next subscription order. Update your payment method to keep your next delivery on track.
+
+**When a new payment method is required**
+
+> The payment method on your subscription can no longer be used. Add a new method to keep your next order on schedule.
+
+**After a backup payment succeeds**
+
+> Your primary payment method didn’t go through, so we used your backup method. Your subscription is still active. Review your primary method when you have a moment.
+
+**Final notice**
+
+> We’ll make one final payment attempt on [date]. If it still can’t be processed, your subscription will be cancelled automatically.
+
+**Final notice with a support extension**
+
+> We’ll make one final payment attempt on [date]. If it still doesn’t go through, our support team will reach out to help you update your payment method before your subscription is cancelled.
+
+For a health and wellness product, the supporting sentence can reinforce consistency: keep the next delivery on track, keep the routine uninterrupted, or avoid running out. The positioning should change with the product. Do not invent progress the brand cannot see or turn the message into a sales pitch.
+
+### Use SMS as the shorter route
+
+Email is the minimum recovery channel. SMS can be a useful second route when it makes the fix faster, not when it simply duplicates every email.
+
+Keep it brief and gentle:
+
+> Quick heads-up: we couldn’t process your next subscription order. Update your payment method here: [secure link]
+
+The link should authenticate the subscriber safely and open the exact payment-update surface. Do not make them find the account area, choose the subscription, and hunt for the correct setting after they have already decided to fix the problem.
+
+## Make the payment update the shortest path
+
+The recovery message is only as good as the experience after the click. A subscriber may need to find a replacement card, contact their bank, or confirm account details. Everything controlled by your subscription experience should require as few steps as possible.
+
+The ideal route:
+
+1. The subscriber opens the email or SMS.
+2. The link takes them directly to the affected subscription and payment method.
+3. They update or add the method.
+4. The system confirms the change and makes the next recovery action clear.
+
+If the payment has already been recovered, the same link should show that the subscription is active instead of dropping the subscriber into a stale failure state. Keep a support link or live chat within reach for anyone who cannot complete the update themselves.
+
+## Use backup methods without creating surprise
+
+A backup payment method can keep the subscription moving when the primary method fails. It is especially useful when a card expires or the subscriber cannot update it immediately.
+
+Give subscribers a simple way to add a backup method before they need it. When the backup is used successfully, confirm which subscription was processed and gently ask them to review the primary method. The success notice should create reassurance, not another alarm.
+
+## Prevent the failure before recovery starts
+
+Recovery is useful. Prevention is easier for everyone.
+
+If your system supports it, check upcoming renewals for cards that are nearing expiration. A subscriber with an order later in the month can receive a simple advance notice:
+
+> Your next subscription order is coming up, and the payment method on file is nearing expiration. Update it now to keep your delivery on schedule.
+
+When available through Shopify Payments, automatic card updates can resolve some changes without subscriber action. Advance expiration reminders and backup methods cover more of the remaining gap. Together, they reduce manual updates, interruptions, and avoidable support conversations.
+
+## Give automation a clear ending
+
+A recovery sequence should not retry forever. Use a defined final attempt and tell the subscriber what happens next.
+
+The default ending follows the 19-day schedule: make the final retry silently on Day 17, trigger any optional support handoff on Day 18, then cancel the unpaid subscription and send its confirmation on Day 19.
+
+The support buffer is optional, not part of the minimum recovery setup. If you want one final personal recovery attempt, replace the Day 19 cancellation with a three-day support buffer. Create or continue the help desk ticket and keep the recovery episode open through Day 22. If the subscriber does not respond or take action by the cutoff, cancel automatically and send the confirmation. A reply alone does not count as recovery. Updating the payment method is the recovery action. Once it is updated, make one final billing attempt and close the episode when the payment succeeds.
+
+Choose one ending and make the Day 16 notice match it. The support version should promise assistance and another opportunity to update the payment method, not a guaranteed number of extra days. The outreach is a customer-service moment, not a last-minute sales pitch.
+
+Give the support team enough context to help: the affected subscription, the payment status, the contact history, and the date recovery ends. The team can help update the payment method, answer product questions, review how the subscription is working for the subscriber, and make sure there is not another issue hidden behind the payment failure.
+
+If the subscriber still does not respond, close the recovery episode cleanly. The system should know that the subscription ended because payment recovery was exhausted, not because the subscriber completed the cancellation flow.
+
+## Measure completed recovery
+
+Your subscription platform should already organize each failed renewal and its outcome into a recovery report. You should not have to define the accounting or rebuild the logic yourself. Your job is to use the report to see what is happening, where recovery occurs, and what to improve before the next payment fails.
+
+At minimum, the reporting should make these views available:
+
+- **Subscriptions currently in recovery:** the current volume and potential support workload.
+- **Completed recovery rate:** how often recovery ends with a successful payment.
+- **Initial payment-failure reasons:** the recurring issues creating the interruption.
+- **Recovery point:** whether the payment recovered through a silent retry, backup method, or payment-method update.
+- **Automatic cancellations:** how many subscriptions reached the end of recovery without a successful payment.
+
+Keep automatic cancellations caused by exhausted payment recovery in their own segment. These subscribers did not choose to cancel, so they should not enter the same winback campaign as voluntary cancellations. Carry this segment into [Recapturing cancelled](/growth-program/winback/recapturing-cancelled) and use a separate campaign focused first on fixing the payment issue and restoring the subscription.
+
+Read the views together. A strong completed recovery rate can still sit beside a growing number of payment failures. A low rate by itself does not tell you what to change. The failure reasons and recovery points tell you where to look.
+
+If payments recover during the silent retries, protect that quiet window. If payments recover after subscribers update their payment method, shorten the update path and make the notices clearer. If expiring payment methods appear often, strengthen advance reminders and make backup methods easier to add. If many subscriptions reach automatic cancellation, review the communication sequence and the optional support handoff.
+
+Your first full reporting period is the baseline. Compare completed periods over time, then focus on the change that prevents more failures, removes work for subscribers, or recovers the payment sooner.
 
 ## Where next
 
 <div className="os-where-next">
 <Columns cols={1}>
-  <Card icon="arrow-up-right" title="When cards fail" href="/curtain/when-cards-fail">
+  <Card icon="credit-card" title="When cards fail" href="/curtain/when-cards-fail">
     The mechanics under this strategy.
   </Card>
-  <Card icon="arrow-up-right" title="Transactional & reminder" href="/growth-program/messaging/transactional-and-reminder">
+  <Card icon="mail" title="Transactional & reminder" href="/growth-program/messaging/transactional-and-reminder">
     The recovery copy.
   </Card>
-  <Card icon="arrow-up-right" title="Exit interviews" href="/growth-program/churn-defense/exit-interviews">
+  <Card icon="clipboard-list" title="Exit interviews" href="/growth-program/churn-defense/exit-interviews">
     Reason collection that's actually usable.
   </Card>
 </Columns>

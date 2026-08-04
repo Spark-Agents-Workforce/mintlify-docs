@@ -685,6 +685,7 @@
   "growth-program/churn-defense/dunning": {
     "ia": "M8.3",
     "title": "Dunning",
+    "status": "PRODUCTION",
     "platform": "any",
     "links": [
       "/curtain/when-cards-fail",
