@@ -8,7 +8,7 @@ import { InOpenSubs } from "/snippets/InOpenSubs.jsx";
 
 **The anti-lesson this kills: "the widget is a checkbox."**
 
-You install the subscription app, it drops a radio button on the product page — "one-time / subscribe & save" — and you consider the PDP done. That reflex treats the single most important surface in your store as a plumbing detail. The widget is not a checkbox. It is the fork in the road where every subscriber you will ever have decides, in about four seconds, whether they are a one-time buyer or a recurring one. Everything else in this module exists to send traffic to this decision or to recover the people who got it wrong.
+You install the subscription app, it drops a radio button on the product page ("one-time / subscribe & save"), and you consider the PDP done. That reflex treats the single most important surface in your store as a plumbing detail. The widget is not a checkbox. It is the fork in the road where every subscriber you will ever have decides, in about four seconds, whether they are a one-time buyer or a recurring one. Everything else in this module exists to send traffic to this decision or to recover the people who got it wrong.
 
 <div className="os-pull not-prose">
   <p>Build the widget like a checkbox and you have quietly capped your attach rate before a single visitor arrives.</p>
@@ -16,23 +16,73 @@ You install the subscription app, it drops a radio button on the product page �
 
 ## The decision
 
-Three levers move the choice at the widget, and you set all three on purpose. (The hierarchy and every ruling below is a framework from building these pages across 100+ CPG stores; no attach-rate A/B exists in the data to rank the levers empirically. Run them, watch your own attach rate, keep what moves it.)
+Your **attach rate**, the share of first orders that start as subscriptions instead of one-time purchases, is the number this page exists to move. Three levers move the choice at the widget, and you set all three on purpose. (The hierarchy and every ruling below come from building these pages across 100+ CPG stores. We have never had a clean attach-rate A/B that ranks the levers. Run them, watch your own attach rate, keep what moves it.)
 
-**Lever 1 — placement.** The subscription choice has to sit *above the fold, adjacent to the price and the add-to-cart button* — inside the buying decision, not below it. The default failure is a widget parked under the fold, beneath the description tabs, where it reads as an afterthought. If a visitor has to scroll to find the subscription, you have told them subscription is the afterthought. Placement is the cheapest attach lever there is, and the most commonly wasted.
+**Lever 1 — placement.** The subscription choice has to sit *above the fold, adjacent to the price and the add-to-cart button*: inside the buying decision, not below it. The default failure is a widget parked under the fold, beneath the description tabs, where it reads as an afterthought. If a visitor has to scroll to find the subscription, you have told them subscription is the afterthought. Placement is the cheapest attach lever there is, and the most commonly wasted. It is also a budget: a product with no options can keep the widget high on the page, but a product with pack sizes and flavors has to work harder, because every extra choice sits above the widget and pushes it further down. Decide which choices truly need to come first.
 
-**Lever 2 — default selection.** Which option is pre-selected — subscribe or one-time — is the highest-stakes single decision on the page, because defaults carry enormous weight; most people take the pre-selected path. The honest ruling: **pre-select subscribe only when the subscription is genuinely the better deal for a first-time buyer, and make the one-time option one obvious click away.** A pre-selected subscription that hides the one-time exit is a dark pattern — it wins the order and loses the second one when the subscriber feels tricked (that betrayal is where [the second-order cliff](/growth-program/first-60-days/second-order-cliff) gets steeper). Default *toward* the choice you'd honestly recommend to a friend; never default *into* a trap.
+**Lever 2 — default selection.** Which option is pre-selected, subscribe or one-time, is the highest-stakes single decision on the page. Defaults win because not-choosing is the easiest thing a shopper can do; the pre-selected path is the path of least resistance, and most of your visitors are moving fast on a phone. The honest ruling: **pre-select subscribe only when the subscription is genuinely the better deal for a first-time buyer, and make the one-time option one obvious click away.** A pre-selected subscription that hides the one-time exit is a dark pattern: it wins the order and loses the second one when the subscriber feels tricked (that betrayal is where [the second-order cliff](/growth-program/first-60-days/second-order-cliff) gets steeper). Default *toward* the choice you'd honestly recommend to a friend; never default *into* a trap.
 
-**Lever 3 — price anchoring.** Show the one-time price and the subscription price side by side so the saving is visible without a mental subtraction — the subscription becomes the obvious choice by arithmetic, not by trickery. One quiet lesson from the data on how anchoring is actually implemented: at Brand A the subscription discount **does not appear in the discount-code export at all** — it is built as **selling-plan pricing**, upstream of codes entirely. That is the right architecture: the anchor lives in the plan, so the price the subscriber sees on the widget is the price they pay, with no code to paste and nothing to expire. Anchor with the real plan price, not a coupon that can lapse.
+**Lever 3 — price anchoring.** Show the one-time price and the subscription price side by side, so the saving is visible without a mental subtraction. The subscription becomes the obvious choice by arithmetic, not by trickery. Where those prices live matters as much as showing them: each option carries its own price inside its radio card, and the subscribe & save card also shows the one-time price struck through next to the subscription price. The shopper reads the saving inside one card; they never have to glance between the two options and do the subtraction themselves. The strongest version goes one step further: **show both options as a cost per day.** "\$1.30/day subscribed, \$1.73/day buying once": no math required, and the comparison is in the terms the customer actually lives with. This works best for products used daily, like supplements and greens; it feels forced on snacks and treats. One rule if you use it: per-day pricing goes on *both* options, never just the one that flatters the subscription.
+
+On implementation, one detail we insist on: build the subscription discount into the **selling plan itself**, not as a discount code applied on top. Done right, the subscription discount never appears in your discount-code export at all, because it isn't a code; it is the plan's actual price. That matters for a simple reason: the price the subscriber sees on the widget is the price they pay, with no code to paste and nothing that can expire. Anchor with the real plan price, not a coupon that can lapse.
+
+When your intro rate is deeper than your ongoing rate ([the two-dial structure](/growth-program/offer/the-discount-question)), disclose the step-down *in the widget bullets*: "Save 25% today. Get 10% all recurring orders." The cliff between first-order and ongoing pricing is where second-order churn is born. A cliff disclosed at the fork is an expected event; a cliff discovered on the renewal receipt is a betrayal. If you run a split discount, state it right on the card.
+
+## The anatomy — what live widgets agree on
+
+We build and operate subscription storefronts across the CPG spectrum: supplements, superfoods, snacks. We also tear our own buy boxes down regularly *(what we ship and observe, not A/B results)*. Where buy boxes built for very different products, price points, and teams agree, that agreement is worth more than any one opinion:
+
+| Detail | What the field shows |
+| --- | --- |
+| Control type | **Stacked radio cards, everywhere.** No dropdowns, no toggles. Nothing collapses or expands: the subscribe & save card sits on top with its price, benefits, and frequency always visible, and one-time (or "try once") sits below it. Selecting an option only changes which card is active, so the shopper is always seeing what subscribing gets them, even while one-time is selected. |
+| Default selection | **Subscribe is the near-universal default.** Where a store defaults to one-time instead, it's running the shallowest subscription discount. Depth of offer, not house style, drives the default call. |
+| Subscribe label | "Subscribe & Save [X%]", store after store. Nobody experiments with the headline; the differentiation lives below it. |
+| Price placement | Each card carries its own price. The subscribe card shows the one-time price struck through beside the subscription price, so the discount is read inside the card, not by comparing across cards. |
+| Frequency | Dropdown inside the subscribe card, defaults 15–30 days, options as short as 7. The default delivery gap roughly matches how fast the product gets used up. |
+| Per-day pricing | The daily-dose products carry it; snack and bar formats don't. Where it appears, it's always on both options. |
+| Intro→ongoing split | Wherever intro and recurring rates differ, the step-down is disclosed in the card bullets. Nobody hides the recurring rate. |
+| Benefit bullets | 3–5 per card: savings first, then control ("skip, swap, or cancel anytime"), then perks/guarantee. |
+
+Two moves worth adding when they fit your offer:
+
+- **Put the welcome gift inside the widget.** If the subscription comes with a free gift or future rewards, show them right on the subscribe card (small product photos, not just words) so the shopper sees what they're getting at the moment they're deciding, not on a perks page they'll never visit. The cost is height: the richer the card, the further it pushes add-to-cart down the page. The trade is real; make it on purpose.
+- **Make the CTA follow the selection.** A button that reads "Subscribe now" once subscribe is selected confirms the choice the shopper just made; a generic "Add to cart" misses a free chance to reinforce it. Hypothesis, not finding, and cheap to test.
+
+## The micro-copy levers
+
+Small words at the fork carry more weight than their character count suggests:
+
+- **Naming the one-time option is a positioning act.** The same radio wears very different labels across stores: "Buy once," "One-time purchase," "One time order," and, increasingly, the "Try once" family. "Try once" quietly recasts subscription as the default relationship and one-time as sampling. Choose your one-time label as deliberately as your discount depth.
+- **The value line, and where "why subscribe" lives.** Every subscribe card needs one sentence that states the ongoing benefit in plain words: never run out, always the best price, control over every order. The discount gets attention; this sentence gives a reason to stay. For everything that doesn't fit in one sentence, add a small "why subscribe" link inside the card: the full benefits, how skipping and cancelling work, the free gift if you offer one. How it opens is your call, and either option works: a slide-out or modal that opens in place, or your why-subscribe page in a new tab. The rule both share is that the shopper never loses the product page. What the link should never do is replace the PDP in the same tab, because that sends your most interested visitor off the one page where the decision happens.
+- **The control promise belongs at the widget, not at checkout.** "Skip, swap, or cancel anytime" answers the commitment fear at the exact moment it forms. Some stores go one step further and say *how* the customer stays in control. One example from a live store: "Skip or cancel anytime *(3-day email reminder)*." That parenthesis tells the nervous shopper they will never be charged by surprise. It is also the same [pre-charge reminder](/growth-program/first-60-days/second-order-cliff) that protects you at the second order. One line of copy, doing retention work before the first order even exists.
+
+## The failure states the widget must answer
+
+A widget is not done when the happy path renders. These are the unhappy paths to design for:
+
+- **Out of stock.** The right behavior: the subscribe path stays live as a waitlist ("Join the waitlist") while one-time greys out. Subscription is the door that never closes. Even sold out, you're capturing the highest-intent visitors you have; the lazy default (whole buy box disabled) throws them away.
+- **Variant changes.** Not every variant carries the same selling plans; one flavor or size may offer two frequencies where another offers three. The widget must be driven by the selected variant: when the shopper switches variants, the prices, plans, and frequency options in the widget update to show only what that variant actually supports. Built this way, a mismatched state is never reachable. The failure to guard against is a widget that renders one static list of plans for the whole product, which is how a shopper ends up choosing a plan the selected variant doesn't support, or a subscribe card that silently adds a one-time item.
+- **The late-loading widget.** This failure belongs to stores that rely on the subscription app's injected widget. The app's script loads after the rest of the page, so the shopper sees a one-time price first, then the selector pops in and shoves the layout around. That flash costs trust, conversions, and page-speed scores. The requirement is structural: the widget has to render with the page itself, pulling real selling-plan data, not arrive later by script. If you are stuck with an injected widget for now, reserve the exact space it will occupy so nothing jumps when it arrives.
 
 ## The proof (and its honest edge)
 
-The data cannot tell you what a widget variant did to attach — that data does not exist in either store. What it *can* prove is that the PDP is worth fighting over, because product pages are where sessions actually convert.
+We cannot tell you what any single widget variant did to attach. A clean attach A/B is rarer than anyone selling certainty admits, and we won't invent one. What we can show you is that the PDP is worth fighting over, because product pages are where sessions actually convert.
 
-At Brand A, GA4 shows the hero product/package PDPs converting at roughly **4.6%–6.4% session CVR** — with the catalog collection page a touch higher at ~6.8% and the home page ~6.0% *(GA4 directional traffic, not ad economics)*. These are strong conversion surfaces carrying real transaction volume, not sale-page traffic. The teaching: **the PDP is a primary acquisition surface, not a spec sheet** — people land here and buy here, so the subscription choice has to be resolved here.
+At **Brand A** (a \$50M+ consumables brand), roughly **4.6%–6.4%** of visits to the hero product pages end in a purchase, with the catalog collection page a touch higher at ~6.8% and the home page at ~6.0% *(GA4 analytics, directional)*. These are strong conversion surfaces carrying real transaction volume, not sale-page traffic. The teaching: **the PDP is a primary acquisition surface, not a spec sheet.** People land here and buy here, so the subscription choice has to be resolved here.
 
-Second proof, on where to spend the effort: Brand A's growth windows resolve, over and over, to **a handful of hero packages** — the same few bundles lead every tentpole and every paid-social scale window *(product aggregates don't prove campaign causality)*. That concentration is a gift. You do not need a perfect widget on 200 SKUs. You need a *ruthless* widget on the three or four PDPs that carry your growth — the hero bundles — and a competent one everywhere else.
+Second proof, on where to spend the effort: look at any growth period and **the same few hero bundles lead it**, every promotion, every paid-traffic surge *(the same products lead; that alone doesn't tell you which campaign deserves the credit)*. That concentration is a gift. You do not need a perfect widget on 200 SKUs. You need a *ruthless* widget on the three or four PDPs that carry your growth (the hero bundles) and a competent one everywhere else.
 
-The honest edge stays visible: none of this measures attach. It measures that the page converts and that a few pages do most of the converting. The widget levers above are operator judgment applied to pages the data proves are worth it.
+The honest edge stays visible: none of this measures attach, and the patterns in this lesson record what operators chose to build, not what a controlled test proved. Popular can be herd behavior as easily as wisdom. The widget levers above are operator judgment applied to pages we know are worth it.
+
+## Measuring attach
+
+"Track your attach rate" is empty until the number is defined, because no platform hands it to you natively:
+
+- **Attach rate** = subscription first orders ÷ all first orders containing that product, per hero PDP, per month. Count first orders only: including renewals inflates the total and hides the real rate, the same way [`recurring_order` events distort channel reports](/growth-program/traffic/paid-ads).
+- **Selector share** (your early-warning number) = shoppers who select subscribe ÷ shoppers who interact with the widget. Track clicks on the selector itself; it shifts within days of a widget change, weeks before the order data settles.
+- Read them together: if selector share rises but attach stays flat, people are choosing subscribe and then abandoning before purchase. That's a checkout or price-shock problem, not a widget problem.
+
+There is no benchmark attach rate in this lesson, on purpose. Your baseline is your first month of measurement, and the goal is to beat it, one hero PDP at a time.
 
 ## The artifact — the attach-rate lever checklist
 
@@ -42,30 +92,42 @@ Run this on your top-three hero PDPs first, then the rest. Every item is a lever
 Placement
   [ ] Subscription choice is above the fold, next to price + add-to-cart
   [ ] Visible without scrolling on mobile (check the actual phone, not the preview)
+  [ ] Variant stack audited: every selector above the widget earns its position
   [ ] Not buried under description tabs or below reviews
 
 Default selection
   [ ] Pre-selected option = the one I'd honestly recommend to a first-time buyer
   [ ] The non-default option is one obvious click away (no hunting)
+  [ ] The one-time label is chosen on purpose ("Try once" ≠ "Buy once")
   [ ] No dark pattern: the one-time exit is never hidden to force a subscription
 
 Price anchoring
-  [ ] One-time price and subscription price shown side by side
+  [ ] Each option's price lives inside its own card
+  [ ] Subscribe card shows the struck-through one-time price beside the plan price
   [ ] Saving stated in the customer's terms ("$X/order" or "X% off"), no math required
+  [ ] Daily-dose product? Per-day price shown on BOTH options
+  [ ] Intro vs ongoing rate split disclosed in the card bullets, not discovered at renewal
   [ ] Anchor lives in the selling plan, not a pasteable/expirable code
 
 The value line (why subscribe, in one sentence)
   [ ] States the ongoing benefit, not just the discount (convenience, never-run-out, control)
-  [ ] Links to the why-subscribe page
+  [ ] "Why subscribe" link keeps the PDP open: slide-out/modal in place, or a new
+      tab; never a same-tab navigation (the content itself is built in Site-wide tactics)
 
 Control promise (kills the commitment fear at the fork)
   [ ] "Skip, swap, or cancel anytime" visible at the widget, not only at checkout
 
+Failure states
+  [ ] Out of stock: subscribe path degrades to waitlist/notify, not to a dead page
+  [ ] Widget re-renders from the selected variant: plans, prices, and frequencies always match it
+  [ ] No widget flash: space reserved, no layout shift on load
+
 Measure
-  [ ] Attach rate tracked per hero PDP (you can't improve what you don't watch)
+  [ ] Attach rate defined (sub first-orders / all first-orders) per hero PDP
+  [ ] Selector share instrumented as the leading indicator
 ```
 
-<InOpenSubs>The widget's default, the plan price anchor, and the "skip/swap/cancel anytime" promise are selling-plan fields, edited in one place and rendered natively — no app-injected checkbox to bury.</InOpenSubs>
+<InOpenSubs>The widget's default, the plan price anchor, and the "skip/swap/cancel anytime" promise are selling-plan fields, edited in one place and rendered natively: no app-injected checkbox to bury, no late-render flash, and variant × plan validity is enforced at the plan, not patched in theme code.</InOpenSubs>
 
 ## Where next
 
