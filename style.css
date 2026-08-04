@@ -476,14 +476,26 @@ html.dark .card:hover { border-color: rgba(255, 248, 232, 0.35) !important; }
 }
 .card svg[class*="lucide-arrow"] { stroke-width: 2; }
 
+/* Page footer (socials + Powered by Mintlify) — hidden for now */
+#footer {
+  display: none !important;
+}
+
 /* Where next — single-column link list, compact titles + icon */
+body:has(.os-where-next) #pagination {
+  display: none !important;
+}
+
+/* Where next H2 — same face/size as other content section headings; extra space below */
 #content-area h2:has(+ .os-where-next),
-mdx-content h2:has(+ .os-where-next) {
-  font-size: 1.375rem; /* one step under content h2 */
-  margin-bottom: 0.75rem;
+mdx-content h2:has(+ .os-where-next),
+#content-area h2#where-next,
+mdx-content h2#where-next {
+  /* inherit New Kansas / 1.75rem from content h2 ramp — only adjust spacing */
+  margin-bottom: 1.25rem !important;
 }
 .os-where-next {
-  margin-top: 0.25rem;
+  margin-top: 0;
 }
 .os-where-next .columns {
   --cols: 1 !important;
@@ -491,32 +503,72 @@ mdx-content h2:has(+ .os-where-next) {
   gap: 10px !important;
 }
 .os-where-next .card {
+  border-radius: 22px !important;
   margin-top: 0 !important;
   margin-bottom: 0 !important;
+  transition:
+    transform 150ms var(--nh2-ease),
+    border-color 150ms var(--nh2-ease),
+    box-shadow 150ms var(--nh2-ease);
 }
 .os-where-next .card:hover {
   transform: translateY(-2px);
+  box-shadow:
+    0 10px 24px rgba(26, 21, 12, 0.07),
+    0 2px 6px rgba(26, 21, 12, 0.04);
 }
 .os-where-next .card [data-component-part="card-content-container"] {
-  padding: 14px 18px !important;
+  display: grid !important;
+  grid-template-columns: 36px minmax(0, 1fr);
+  column-gap: 14px;
+  align-items: start;
+  padding: 26px 28px !important;
+}
+.os-where-next .card [data-component-part="card-icon"] {
+  grid-column: 1;
+  grid-row: 1;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 36px !important;
+  height: 36px !important;
+  margin-top: 0;
+  border-radius: 10px;
+  background: var(--nh2-yellow) !important;
+}
+/* Lucide mask icons tint via background-color */
+.os-where-next .card [data-component-part="card-icon"] svg {
+  width: 20px !important;
+  height: 20px !important;
+  background-color: var(--nh2-ink) !important;
+  color: var(--nh2-ink) !important;
+}
+.os-where-next .card [data-component-part="card-content-container"] > a > .w-full {
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
 }
 .os-where-next .card [data-component-part="card-title"] {
-  font-family: var(--nh2-f-body) !important;
-  font-size: 1rem !important; /* 16px — smaller than display card titles */
-  font-weight: 600 !important;
-  letter-spacing: -0.015em;
-  line-height: 1.3;
-  -webkit-font-smoothing: antialiased;
+  font-family: var(--nh2-f-display) !important;
+  font-size: 1.1875rem !important; /* 19px — New Kansas, between body and section h2 */
+  font-weight: 500 !important;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  margin-top: 0 !important;
+  -webkit-font-smoothing: auto;
+  color: var(--os-heading);
 }
 .os-where-next .card [data-component-part="card-content"] {
-  font-size: 0.9375rem !important; /* 15px */
+  font-size: 0.875rem !important; /* 14px */
   line-height: 1.5;
   color: var(--nh2-body-muted);
 }
-.os-where-next .card svg {
-  color: var(--nh2-ink) !important;
-  width: 18px !important;
-  height: 18px !important;
+/* Mintlify may render card body as span[data-as=p] without card-content part */
+.os-where-next .card [data-as="p"],
+.os-where-next .card p {
+  font-size: 0.875rem !important;
+  line-height: 1.5;
+  color: var(--nh2-body-muted);
 }
 
 /* ================= CALLOUTS: pastel wells =========================== */
