@@ -1,91 +1,193 @@
 ---
 title: "Winback economics"
-description: "When a lapsed subscriber is worth paid retargeting, when it's email-only, and the holdout that tells you the truth."
+description: "Measure whether each return path produces paid orders, contribution, and durable subscriber value."
 ia: "M9.3"
 ---
 
-import { InOpenSubs } from "/snippets/InOpenSubs.jsx";
+A reactivation or resume is progress, not the final result. A subscription can return to active status and never complete a paid order. A lifecycle or advertising tool can also credit a return to a message without proving that the message caused it.
 
-## The folklore this lesson kills
-
-"Winback revenue is free money." It's the most seductive line in retention, and it's the one that empties marketing budgets. It rests on a single unexamined move: reading *attributed* winback revenue as *incremental* winback revenue. They are not the same number, and the gap between them is exactly the size of the mistake.
-
-**Attribution without a holdout inflates winback more than any other channel,** because winback deliberately targets people with the highest baseline probability of returning on their own — former customers who liked you enough to buy before. The email lands near their natural return and takes the credit. Call that "free money" and you'll happily pour paid retargeting dollars on top of a number that's partly a mirage. This lesson gives you the two tools that pop it: an owned-channel-first spend rule, and a DIY holdout you can run this quarter.
-
-## The decision: owned channel first, paid only where the math clears
-
-The rule is a ladder, cheapest rung first:
-
-1. **Email/owned first, always.** A lapsed subscriber's marginal cost to reach by email is effectively zero. Exhaust the owned-channel sequence before you spend a cent of media on them.
-2. **SMS second, selectively.** Higher cost and higher unsub risk than email, but still owned and still cheap. Reserve it for lapsed segments where you have a strong reason-to-return.
-3. **Paid retargeting last, and only where the unit math clears.** A lapsed subscriber is worth paid media only when the expected *incremental* value of a reactivation exceeds the cost to reactivate via paid — where "incremental" means *holdout-corrected*, not attributed. Skip the holdout correction and you'll green-light paid spend against inflated value. That's the trap the anti-lesson walks brands into.
-
-## The proof (one measured case, hedges attached)
-
-This store's SMS data settles the owned-channel-first argument on its own, because it lets you rank audiences by efficiency. Measured in dashboard ROI:
-
-| SMS audience | Dashboard ROI | What it tells you |
-| --- | --- | --- |
-| Behavioral automations (cart / checkout / browse) | ~**338x** | Prevention & intent-recovery territory |
-| Active-subscriber sends | ~**118x** | Your warm, current base |
-| **Lapsed / former / winback audience** | ~**16x** | **The weakest SMS audience in the store** |
-
-Winback is the **weakest SMS audience here — roughly 16x versus ~118x for subscriber sends and ~338x for the behavioral automations.** In hard terms the lapsed-SMS layer moved about **\$94k on ~735 orders.** Real revenue — but the *lowest efficiency of any audience the store sends to.* That ranking is the whole owned-channel-first logic in one table: if your warmest sends return ~118x and your prevention automations ~338x, spending scarce budget (or worse, paid media) against the ~16x lapsed audience is the last place your next dollar should go, not the first. (Hedge: dashboard-attributed ROI, not incrementality; audience definitions are inferred from send names; ~16x is *still* undoubtedly overstated versus its true incremental value, for the no-holdout reason below.)
-
-**The central hedge, and the fix.** Everything above — the email \$300k in [Recapturing cancelled](/growth-program/winback/recapturing-cancelled), the SMS \$94k here — is platform-attributed with **no holdout anywhere in this data.** Some share of every "recovered" customer would have returned unprompted. You cannot know your share by staring at the dashboard harder.
+This lesson helps you follow each return path through paid orders, direct costs, and later subscriber behavior. The result is one decision: keep, change, expand, or stop the path.
 
 <div className="os-pull not-prose">
-  <p>You have to withhold.</p>
+  <p>Count the paid return. Then count whether it lasts.</p>
 </div>
 
-## The artifact — the winback ROI worksheet (with a DIY holdout design)
+## What this lesson gives you
 
-**Part A — the value model (fill with your numbers):**
+- A way to compare voluntary-cancellation, payment-recovery-ended, cancelled-from-pause, and paused-subscriber returns without mixing them together.
+- A plain calculation for gross returned revenue, contribution after return costs, and estimated incremental impact.
+- A return economics record with an owner, a review date, and a decision to keep, change, expand, or stop each path.
 
-```text Part A
-Expected value of a reactivation:
-  reactivated AOV ............................. $______
-  × expected # orders before re-lapse ......... ______   (cohort these separately —
-  × contribution margin % ..................... ______%    reactivated subs churn on
-  = gross expected value per reactivation ..... $______    a different curve than natives)
+## Keep each return path separate
 
-Then discount it to incremental:
-  × (1 − would-have-returned-anyway rate) ..... ______%   ← from Part B holdout
-  = incremental expected value ................ $______
+[Reactivating cancelled](/growth-program/winback/recapturing-cancelled) and [Resuming paused](/growth-program/winback/reactivating-paused) define who enters each path, what the subscriber sees, and when messages stop. Bring those plans here. Do not combine their results.
 
-Spend rule:
-  Email/owned  → run always (marginal cost ≈ 0).
-  SMS          → run if incremental value clears SMS cost + unsub cost.
-  Paid retarget→ run only if incremental value > paid CAC-to-reactivate.
+| Return path | Immediate event | First paid outcome | Later health read |
+| :--- | :--- | :--- | :--- |
+| **Voluntary cancellation** | The cancelled subscription reactivates | A paid order completes after reactivation | A later paid order, another cancellation, and whether the same reason returns |
+| **Payment recovery ended** | The cancelled subscription reactivates after recovery has ended | Payment succeeds and a paid order completes | A later paid renewal, another cancellation after payment recovery ends, or another voluntary cancellation |
+| **Cancelled from pause** | The subscription that was paused and then cancelled reactivates | A paid order completes after reactivation | A later paid order, another appropriate pause, or another cancellation |
+| **Paused subscriber** | The subscription resumes or the subscriber chooses a return date | The next planned paid order completes | A later paid order, another appropriate pause or extension, or cancellation |
+
+These paths start from different subscriber decisions. A scheduled resume may have happened without a reminder. A voluntary cancellation may require a changed product, cadence, or offer. A subscription that ended after payment recovery needs a working payment path. A subscription cancelled from pause needs its own reactivation read because the subscriber moved from a temporary stop to a full cancellation. Their raw return rates are not directly comparable.
+
+For a paused path, remaining paused or choosing a later date can be the right outcome. Do not call it a failed return when the message helped the subscriber make an appropriate decision.
+
+## Measure the return in stages
+
+Use the eligible group at path entry as the main denominator. Keep the definition stable through the review window.
+
+<Steps>
+  <Step title="Record the eligible group">
+    Count the subscriptions that met the path's entry rules before outreach. Keep voluntary cancellations, payment-recovery-ended cancellations, cancelled-from-pause subscriptions, and paused subscriptions in separate groups.
+  </Step>
+  <Step title="Record the immediate return">
+    Count reactivations or resumes. This shows that the return action worked, but it does not show collected revenue yet.
+  </Step>
+  <Step title="Confirm the first paid order">
+    Count a return only after the first paid order completes. A click, payment-information update, or active status alone is not a paid return.
+  </Step>
+  <Step title="Read the later outcome">
+    Use the same review window for everyone in the group. Count later paid orders, repeat cancellation, the repeated reason when available, and the final subscription state.
+  </Step>
+  <Step title="Add costs and make the decision">
+    Calculate contribution after return costs, record the evidence type, then decide whether to keep, change, expand, or stop the path.
+  </Step>
+</Steps>
+
+Useful rates are:
+
+```text Return rates
+Immediate return rate = reactivated or resumed subscriptions ÷ eligible subscriptions
+Paid return rate = subscriptions with a first paid order ÷ eligible subscriptions
+Durable paid return rate = subscriptions with the chosen later paid outcome ÷ eligible subscriptions
+Later-order rate = subscriptions with a later paid order ÷ subscriptions with a first paid order
+Repeat-ending rate = returned subscriptions that end again ÷ subscriptions with a first paid order
 ```
 
-**Part B — the holdout your platform should run (the number gurus never show):**
+Choose a review window that gives the returned subscriber a fair chance to reach a later order. A daily consumable, a longer-cadence wellness product, and an occasional-use product should not inherit one universal window. Mark groups that have not reached the full window as incomplete.
 
-```text Part B
-1. At winback-sequence entry, randomly hold back 10% of the eligible lapsed list.
-   Random, not "the ones we forgot" — bias in selection = a worthless control.
-2. Send the full sequence to the other 90%. Send the holdout nothing.
-3. After the window (e.g. 90 days), compare return rate:
-       treated return rate  −  holdout return rate  =  Incremental lift
-4. Incremental reactivations = lift × treated population.
-   Would-have-returned-anyway rate = holdout return rate ÷ treated return rate.
-5. Feed that rate back into Part A. Now your ROI is real, and your paid-spend
-   decision is honest.
+## Count what the return produced and cost
+
+[Subscription economics](/growth-program/numbers/subscription-economics) owns the contribution-margin definition. Use the same definition here so the return path can be compared with other growth work.
+
+- **Gross returned revenue** is sales from completed paid orders in the return group before direct costs. It shows volume, not profit.
+- **Revenue reductions** include discounts, redeemed credits, refunds, and returns when they are not already removed from the revenue figure.
+- **Direct order costs** include product cost, fulfillment, merchant-funded shipping, and payment costs.
+- **Return-path costs** include gifts, SMS, paid media, direct mail, and extra support work when those costs are material to the decision.
+- **Return-path contribution** is what remains after the reductions and direct costs above.
+
+```text Return-path contribution
+Gross returned revenue
+- discounts, credits, refunds, and returns not already reflected
+- product, fulfillment, merchant-funded shipping, and payment costs
+- gift, message, media, and other material return-path costs
+= return-path contribution
 ```
 
-The store in our data has run *no* holdout — so its own ~\$300k / ~\$94k figures are attributed, not incremental. This worksheet is exactly the instrument it (and you) are missing. Running it is the single highest-value upgrade to any winback program.
+Avoid counting a cost twice. If your sales report already shows revenue after discounts, credits, refunds, or returns, do not subtract them again. If you use gross margin percentage to account for product cost, do not subtract product cost again.
 
-<InOpenSubs>A randomized holdout arm is a native setting on the winback flow — the platform withholds a clean 10% and reports treated-vs-holdout return rates back to you, so "incremental" stops being a word you take on faith and becomes a number on your dashboard.</InOpenSubs>
+Divide return-path contribution by the eligible group, not only by the subscribers who returned. This keeps the cost of non-responders visible.
+
+```text Contribution per eligible subscription
+Return-path contribution ÷ eligible subscriptions
+```
+
+Use realized paid orders through a common window before relying on a long-range forecast. If you project later value, build the projection from mature returned groups and label it as a projection.
+
+## Read results at the level that changes the decision
+
+| View | What to review | Decision it can change |
+| :--- | :--- | :--- |
+| **Return path or campaign** | Eligible group, immediate returns, first paid orders, later paid orders, contribution, and subscriber pressure | Keep, change, expand, or stop the path |
+| **Cancellation or pause reason** | Whether the original issue changed and whether the same reason appears again | Change the message, return setup, or upstream experience |
+| **Offer** | Redemptions, actual incentive cost, first paid orders, and later contribution | Keep, narrow, replace, or remove the offer |
+| **Product and cadence** | Returned setup, paid orders, later orders, and repeated cancellation | Change the product path, quantity, timing, or cadence |
+| **Individual return** | Return state, first paid order, later paid behavior, support involvement, and final state | Resolve an exception or improve the self-serve path |
+
+Stop adding report cuts when another cut would not change the decision. Small groups can create dramatic rates that do not hold up when more subscribers reach the review window.
+
+## Separate attributed results from incremental results
+
+Your lifecycle or advertising tool may report reactivations, resumes, and revenue after a message. Those are **platform-attributed results**. They are useful for checking delivery, comparing paths under the same attribution rules, and finding places to investigate.
+
+Attributed results do not prove that the message caused the return. Some subscribers would have returned without the campaign, especially scheduled pauses and former subscribers whose need naturally came back.
+
+<Note>
+  Attributed results show what happened under a platform's attribution rules. A randomized holdout estimates what the return path changed.
+</Note>
+
+Use a holdout when the causal answer would change a material decision, such as adding paid media, increasing an incentive, or expanding a costly path.
+
+1. Start with one clearly eligible group.
+2. Randomly hold back part of that group before the added treatment begins.
+3. Give the holdout the normal subscriber experience and essential service messages, but not the added treatment being tested.
+4. Give both groups the same review window.
+5. Compare paid return rate and contribution per eligible subscription.
+
+```text Estimated incremental paid return rate
+Paid return rate for the treated group - paid return rate for the holdout group
+```
+
+```text Estimated incremental contribution per eligible subscription
+Treated contribution per eligible subscription - holdout contribution per eligible subscription
+```
+
+There is no universal holdout share or review window. The choice depends on eligible volume, product cadence, and the decision at stake. If the groups are too small or incomplete, mark the result as directional and keep collecting. [The testing calendar](/growth-program/cadence/testing-calendar) owns the launch, read date, and closeout of the test.
+
+## Decide where effort and spend belong
+
+Start with the lowest-cost relevant path that gives the subscriber a clear way to return. Email often has a low direct send cost, but it still uses subscriber attention and can create unsubscribe pressure. SMS, paid media, direct mail, incentives, and manual support add costs that must earn their place.
+
+| Decision | Use it when |
+| :--- | :--- |
+| **Keep** | The path produces paid orders and positive contribution, later behavior is acceptable, and the subscriber experience remains clear. |
+| **Change** | Subscribers reactivate or resume but do not complete a paid order, return into the wrong setup, or end again for the same unresolved reason. |
+| **Expand** | A completed comparison suggests positive incremental contribution after the added costs, later outcomes remain healthy, and the wider audience still fits the path. Require whatever margin of safety your business needs. |
+| **Stop** | The path is no longer relevant, costs exceed contribution, repeated endings show the original problem remains, or subscriber pressure is too high. |
+
+Do not use one path's economics to justify another. A voluntary-cancellation offer does not set the budget for payment-recovery-ended subscribers. A cancelled-from-pause reactivation does not belong in the ordinary voluntary-cancellation group. A scheduled pause does not prove that a reminder caused the resume. Review each path on its own job.
+
+No universal contribution target clears every path. Without a credible comparison, label the result observed or attributed. Do not call it incremental.
+
+## The artifact: the return economics record
+
+Complete one record for each path that changes a decision. Split it further by reason, offer, product, or cadence only when the split changes what you will do.
+
+| Field | Your entry |
+| :--- | :--- |
+| **Return path** | Voluntary cancellation, payment recovery ended, cancelled from pause, or paused subscriber |
+| **Eligible group** | State, reason, product, cadence, prior treatment, and current eligibility |
+| **What this path should accomplish** | What should be different or easier for the subscriber? |
+| **Primary action and stop conditions** | Which return action does the path offer, and when does outreach stop? |
+| **Review window** | Which completed, comparable period will you use? |
+| **Eligible subscriptions** | ______ |
+| **Immediate returns** | ______ reactivated or resumed; ______% of eligible |
+| **First paid orders** | ______ subscriptions; ______% of eligible |
+| **Later paid orders** | ______ subscriptions; ______% of paid returns |
+| **Repeat endings** | ______ subscriptions; repeated reason or how the subscription ended again: ______ |
+| **Gross returned revenue** | ______ from completed paid orders in the review window |
+| **Revenue reductions** | Discounts, credits, refunds, and returns not already reflected: ______ |
+| **Direct order costs** | Product, fulfillment, merchant-funded shipping, and payment costs: ______ |
+| **Return-path costs** | Gift, message, media, direct mail, or material support costs: ______ |
+| **Return-path contribution** | ______ total; ______ per eligible subscription |
+| **How the result was credited** | How your tool credited the result and over what period: ______ |
+| **Evidence the path caused the result** | No holdout, directional comparison, or completed randomized holdout: ______ |
+| **Subscriber pressure** | Unsubscribes, complaints, support load, or other signal: ______ |
+| **Decision** | Keep, change, expand, or stop: ______ |
+| **Owner and next review** | Owner: ______; review date or completed period: ______ |
+
+Save the record beside the return plans from the first two M9 lessons. Bring the decision and next review date into M10's operating calendar. Return repeated cancellation reasons or poor product and cadence fit to [Reading your churn](/growth-program/churn-defense/reading-your-churn) instead of trying to solve them with more messages.
 
 ## Where next
 
 <div className="os-where-next">
 <Columns cols={1}>
-  <Card icon="arrow-up-right" title="Subscription economics" href="/growth-program/numbers/subscription-economics">
-    The LTV and contribution-margin inputs Part A reuses.
+  <Card icon="calendar-range" title="The weekly/monthly/quarterly rhythm" href="/growth-program/cadence/operating-rhythm">
+    Put the return economics record on a recurring review and give every review one decision.
   </Card>
-  <Card icon="arrow-up-right" title="The first 60 days" href="/growth-program/first-60-days/welcome-sequence">
-    Where, at ~338x versus winback's ~16x, the store's data says the money actually is. Winback is the insurance layer. Prevention is the business.
+  <Card icon="flask-conical" title="The testing calendar" href="/growth-program/cadence/testing-calendar">
+    Schedule and close a holdout when a material spend or expansion decision needs an incremental read.
   </Card>
 </Columns>
 </div>

@@ -29,7 +29,7 @@ A cancellation reason without context can send you chasing the loudest answer. A
 - **Pause:** the subscription is inactive for a planned period, but it has not ended.
 - **Merchant-initiated cancellation:** your team ended the subscription, which may reflect support, inventory, or another operating decision.
 
-These events belong to different owners and different fixes. A failed-payment cancellation routes back to [Dunning](/growth-program/churn-defense/dunning). A voluntary cancellation routes into the reason and lifecycle analysis in this lesson. A paused subscription belongs in [Reactivating paused](/growth-program/winback/reactivating-paused), not in the cancelled pool.
+These events belong to different owners and different fixes. An active failed payment stays in [Dunning](/growth-program/churn-defense/dunning) while payment recovery is running. If recovery ends and the subscription is automatically cancelled, move it into the separate payment-recovery-ended path in [Reactivating cancelled](/growth-program/winback/recapturing-cancelled). A voluntary cancellation routes into the reason and lifecycle analysis in this lesson. A paused subscription belongs in [Resuming paused](/growth-program/winback/reactivating-paused), not in the cancelled pool.
 
 ## Locate the moment
 
@@ -94,21 +94,52 @@ Choose one meaningful pattern. Write the working hypothesis. Change the earliest
 
 ## Carry the reason into winback
 
-The reason does not stop being useful when the cancellation completes. Pass the cancellation date, final state, reason, written context, product, cadence, tenure, and save offers already shown into [Recapturing cancelled](/growth-program/winback/recapturing-cancelled).
+The reason does not stop being useful when the cancellation completes. Pass the cancellation date, final state, reason, written context, product, cadence, tenure, and save offers already shown into [Reactivating cancelled](/growth-program/winback/recapturing-cancelled).
 
 That context protects the subscriber from a generic return campaign. Someone who had too much product should not receive an immediate offer for more of it. Someone who rejected a discount because the product was not working should not see the same discount again. A subscription ended after payment recovery needs a payment-restoration path, not the same message as a voluntary cancellation.
 
 Reading your churn decides what appears to be happening. Winback decides whether the original problem has changed enough to make returning relevant.
 
-## The artifact: the churn triage map
+## The artifact: the churn action record
 
-Use one row per pattern. Each row keeps the observation, evidence, hypothesis, first action, and later outcome separate.
+Your churn report shows where cancellations concentrate. The churn action record turns one qualified voluntary-cancellation pattern into one owned upstream move and one scheduled recheck. Complete one record at a time.
 
-| Observed pattern | Evidence to pair | Working hypothesis | First page to inspect | Outcome to watch |
-| :--- | :--- | :--- | :--- | :--- |
-|  | Churn type, lifecycle stage, product, cadence, reason, support context |  |  |  |
+Start with a completed reporting period and the right comparison group. Use a voluntary-cancellation pattern. Failed-payment cancellations route to [Dunning](/growth-program/churn-defense/dunning). Write what happened before deciding why. A cancellation reason narrows the investigation. It does not prove the cause.
 
-**How to use it:** start with a completed reporting period, not an open one. Write what you observed before you write why you think it happened. Add the subscriber language that supports or challenges the hypothesis. Then choose the earliest surface capable of changing the pattern and define the later outcome you will read.
+### Your churn action record
+
+| Field | Your entry |
+| :--- | :--- |
+| **Pattern** | In which completed period did which cancellation reason concentrate in which segment, compared with what? |
+| **Deciding signal** | What one accessible behavior or subscriber-language theme points to this move instead of the nearest alternative? |
+| **Owned move** | Who will make what one change on which one surface? |
+| **Recheck** | In which completed comparable period will you read the same pattern again, and will the result make you keep, revise, or stop the move? |
+
+If you do not have a deciding signal, do not guess. Make the owned move a bounded evidence check for that exact segment, such as reviewing the available free text or related support conversations.
+
+### Example: too much product at the fastest cadence
+
+| Field | Example entry |
+| :--- | :--- |
+| **Pattern** | "Too much product" cancellations concentrate among early recurring subscribers on the fastest delivery cadence for a daily powder, compared with slower cadences. |
+| **Deciding signal** | The same segment often skips or moves the next order before cancelling. Available support notes also mention unopened product accumulating. |
+| **Owned move** | The subscription owner tests the next slower default cadence for new subscriptions to that product. |
+| **Recheck** | Review the same reason, product, renewal stage, and cadence comparison in the next completed comparable group. Keep, revise, or reverse the default. |
+
+This action changes the subscription configuration. It does not add another save offer.
+
+### Example: not seeing results before the first renewal
+
+| Field | Example entry |
+| :--- | :--- |
+| **Pattern** | "Not seeing results" cancellations concentrate before the first renewal for one wellness capsule product, compared with the same stage across the rest of the catalog. |
+| **Deciding signal** | Free text and support messages repeatedly show uncertainty about when and how to use the product. The first post-purchase message does not answer those questions. |
+| **Owned move** | The lifecycle owner adds the missing product-use and expectation guidance to the first post-purchase message for that product. |
+| **Recheck** | Review the same product, renewal stage, reason, and support theme in the next completed comparable group. Keep, revise, or stop the message change. |
+
+This action changes lifecycle guidance. It does not change the subscription cadence.
+
+After you complete the record, create the task. Attach the saved report or filter context and the deciding signal. Assign one owner and schedule the recheck before work begins. No record is complete until one person owns one move.
 
 <InOpenSubs>Cancellation type, renewal stage, product, cadence, selected reason, free text, save path, recovery state, and later order behavior stay attached to the subscription. Reading churn is a set of filters on one lifecycle record, not a spreadsheet assembled after the subscriber leaves.</InOpenSubs>
 
@@ -116,7 +147,7 @@ Use one row per pattern. Each row keeps the observation, evidence, hypothesis, f
 
 <div className="os-where-next">
 <Columns cols={1}>
-  <Card icon="rotate-ccw" title="Recapturing cancelled" href="/growth-program/winback/recapturing-cancelled">
+  <Card icon="rotate-ccw" title="Reactivating cancelled" href="/growth-program/winback/recapturing-cancelled">
     Carry the reason and final state into a more relevant path back.
   </Card>
   <Card icon="calculator" title="Churn math" href="/growth-program/numbers/churn-math">

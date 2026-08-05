@@ -1,115 +1,267 @@
 ---
-title: "Recapturing cancelled"
-description: "The winback sequence: when to reach out, what to offer, and what will get you unsubscribed."
+title: "Reactivating cancelled"
+description: "Build a reason-based return plan for eligible cancelled subscribers, with relevant timing, clear messages, stop rules, and a direct path back."
 ia: "M9.1"
 ---
 
-import { InOpenSubs } from "/snippets/InOpenSubs.jsx";
+A broad winback discount treats every cancellation as a price objection. It ignores the subscriber who had too much product, needed a break, chose the wrong variant, or left with an unresolved question.
 
-**The module's honest spine, before anything else:** this store's data shows winback is real but modest. Lapsed-audience sends run at roughly **16x** dashboard ROI while the prevention automations you build in the first-60-days and churn-defense modules run at roughly **338x** — a ~20x gap. The post-cancel reactivation flow attributes ~\$32k; the upstream churn-prevention flow attributes ~\$1.17M — a ~37x gap. So this module teaches you to run a competent winback motion *and* teaches you, with the store's own numbers, that prevention out-earns resurrection — winback is the cheap insurance layer you run *after* the prevention modules, not instead of them.
+This lesson helps you build a reason-based return plan for eligible cancelled subscribers. The reason and prior treatment help you decide what must be different. Timing comes after that decision.
 
-## The folklore this lesson kills
+<div className="os-pull not-prose">
+  <p>Not every cancellation is a price objection. The reason helps shape the return path.</p>
+</div>
 
-The moment a subscriber cancels, an instinct fires: *save the revenue.* And the fastest way to look like you're saving it is to fire your deepest discount at everyone who left. One list, one big number, send. It feels decisive. It is the single most expensive reflex in winback, and it fails in two directions at once.
+## What this lesson gives you
 
-It leaves money on the table with the people who were coming back anyway — you just handed them a discount they didn't need. And it torches the people who left for a reason a coupon can't fix, teaching them that your brand's real price is the discounted one, and converting a quiet lapse into an unsubscribe. **A cancellation is not a price objection. Treating every cancellation as one is how you turn a winnable list into a burned one.**
+- A rule for deciding which cancelled subscribers should enter winback and which need a different path or no message.
+- A short sequence that uses the cancellation reason, prior treatment, and current subscription state to make returning relevant.
+- A cancelled-subscriber return plan with timing triggers, direct actions, stop conditions, and a later health read.
 
-Here's what the ledger at one large subscription brand actually shows about winback done as a *system* rather than a blast — and, just as important, what it honestly can't show yet.
+## Start with eligibility
 
-## The decision: a sequence, not a send
+Do not place every ended subscription into the same flow. Check what actually ended before you decide what to send.
 
-Winback is a **sequence keyed to time-since-cancel**, where the *message* escalates but the *discount* is the last lever you reach for, not the first. The store's own results support treating winback as many messages doing different jobs rather than one hero coupon: its post-cancel work spreads value across a handful of messages, and — the pattern that recurs across this brand's entire lifecycle program — **layered sequences out-earn single blasts.**
+- **Eligible voluntary cancellation:** consider winback when the reason can be addressed and the subscription can still be reactivated.
+- **Cancelled after being paused:** keep this separate from an active paused subscription. Use the previous paused state to identify the segment, then use the cancellation reason when one was selected. Do not assume the pause itself captured a reason.
+- **Paused subscription:** route it to [Resuming paused](/growth-program/winback/reactivating-paused). An active pause needs a resume path, not cancelled-subscription reactivation.
+- **Payment recovery exhausted and subscription cancelled:** keep this segment separate from voluntary cancellations, but include it in winback when the subscriber is eligible to return. The previous subscription ended because the payment did not go through.
+- **No longer eligible or no valid return setup:** exclude the cancelled subscription when the product is discontinued, unavailable, or out of stock; when the SKU or setup has materially changed; or when the old return path or offer no longer works. Include it only when there is a genuinely relevant, supported alternative.
+- **Meaningful "Other" response:** consider a bounded personal review. A support teammate can read the note beside the product, tenure, order history, prior changes, and support context before deciding whether personal outreach is useful.
 
-The frame has three windows. Understand up front: the *shape* is an operating framework; the store's data does not contain response-by-timing-window data, so the day counts below are a starting grid to test, not a measured optimum.
+Run the eligibility check before entry and again before every later message. A flow that was correct at cancellation can become wrong after the subscriber reactivates, changes state, or starts a different support path.
+
+## Build the return path in this order
+
+Klaviyo is the recommended lifecycle tool for building these audiences and sequences. An equivalent lifecycle tool can do the same job.
+
+Use the cancellation information in Klaviyo to build the right audiences and route each group into the appropriate sequence. At minimum, use the cancellation date, cancelled product, previous paused state, cancellation reason or exhausted-payment ending, other active subscriptions, cadence, tenure, and prior save treatments.
 
 <Steps>
-  <Step title="Window 1 — the 0–30 day 'did something break?' reach">
-    Earliest and *cheapest.* No discount. This message assumes the lapse was friction, not rejection: a payment that failed, a delivery that ran late, too much product piling up. It offers to fix the friction — skip, delay, swap flavor, change cadence — not to cut price. Most of your genuine saves live here, and they cost you nothing but a well-timed question.
+  <Step title="Confirm the route">
+    Start after the subscription is cancelled. Exclude active paused subscriptions, then separate eligible voluntary cancellations, cancelled-after-pause subscriptions, exhausted-payment cancellations, personal-review cases, and cancelled subscriptions that should receive no message.
   </Step>
-  <Step title="Window 2 — the 30–60 day 'here's what's new' re-open">
-    Value, not markdown. A new product, a restock, a use-case they never tried, the education email that would have kept them if they'd read it the first time. This is where you re-establish that the brand is worth returning to *before* you make returning cheaper.
+  <Step title="Name what must be different">
+    Use why the subscription ended, whether it was paused before cancellation, written context, product, cadence, tenure, and prior treatment to decide what needs to change before reactivation would make sense.
   </Step>
-  <Step title="Window 3 — the 60–90 day 'we'd love you back' offer">
-    *Now* the incentive comes out — once, bounded, and framed as a welcome-back, not a fire sale. Past ~90 days you are no longer running winback; you are running acquisition against a warm list, and it should be measured against acquisition, not against your active base.
+  <Step title="Wait until the message is relevant">
+    Choose timing from the product cycle, expected return point, resolved issue, or meaningful change. Do not start with a universal calendar.
+  </Step>
+  <Step title="Send one clear message">
+    Give the message one job and one obvious action. Keep the copy short enough that the reason to return and the next step are easy to find.
+  </Step>
+  <Step title="Set stop and repeat-entry rules">
+    Stop future messages after reactivation or when the subscriber no longer fits the path. End the sequence after its final message. At launch, let each subscriber enter once.
   </Step>
 </Steps>
 
-<div className="os-pull not-prose">
-  <p>The discount is the last thing you spend, on the people who didn't respond to anything cheaper.</p>
-</div>
+## Let the reason change the plan
 
-That ordering is the entire lesson.
+[Reading your churn](/growth-program/churn-defense/reading-your-churn) combines the stated reason with subscription behavior. Carry that context into winback, but keep the segmentation small. Create a separate branch only when an input changes eligibility, timing, message, return setup, or when messages stop.
 
-## Let the reason shape the return
+| Reason or need | What must be different | When outreach becomes relevant |
+| :--- | :--- | :--- |
+| **Too much product or deliveries feel too frequent** | A later next-order date, slower cadence, lower quantity, or clearer use expectations | Near the next plausible product need, not immediately after cancellation |
+| **Taking a break, traveling, or moving** | A reactivation date and delivery plan that fit the subscriber's return | Near the expected return point |
+| **Product, flavor, or format fit** | A genuinely different product path, variant, or useful support conversation | When that alternative is available and eligible |
+| **Results or expectations** | Accurate product education or personal support that addresses the stated gap | When you can answer the question without promising progress you cannot see |
+| **Price or reduced spending** | A better-fitting cadence, quantity, or bounded return offer | When the structural options are clear; use an incentive later if price remains the barrier |
+| **Cancelled after being paused** | A path that acknowledges the move from paused to cancelled, addresses the selected cancellation reason when available, and reinforces the relevant product value or routine | When the cancellation reason, expected return point, or current product need makes reactivation relevant |
+| **Payment recovery ended and the subscription was cancelled** | A supported way to address the payment obstacle and review the reactivation setup | After recovery has ended, not while Dunning is active |
+| **Other with useful written context** | A personal decision based on the full subscription and support context | After a teammate reviews the note |
 
-Time since cancellation tells you when someone left. It does not tell you what would make returning relevant. Carry the cancellation reason, product, cadence, tenure, final state, and save offers already shown into the winback audience.
+Do not show a former subscriber the same save offer they already declined. The reason and treatment history belong together. The same product with a new coupon is not a new answer.
 
-[Reading your churn](/growth-program/churn-defense/reading-your-churn) turns those fields into a diagnosis. This lesson uses that diagnosis to avoid repeating the original problem:
+## When a paused subscription is later cancelled
 
-- **Too much product or deliveries moving too quickly.** Wait until the subscriber may reasonably need the product again, then reopen the subscription with a cadence or next-order date that fits.
-- **Taking a break, traveling, or moving.** Reach out near the expected return point and make the restart date clear.
-- **Product, flavor, or format fit.** Return only when there is a genuinely different product path or a useful support conversation. The same product with a new coupon is not a new answer.
-- **Results or expectations.** Lead with accurate education or personal support when it can resolve the gap. Do not imply progress you cannot see.
-- **Price or reduced spending.** Consider a better-fitting cadence, quantity, or bounded return offer. Do not assume every price reason needs the same discount.
-- **Payment recovery exhausted.** Keep this segment separate from voluntary cancellations. Lead with fixing the payment method and restoring the subscription they were already trying to keep.
+This is a cancelled-subscription reactivation path, not an active-pause resume message. Use the previous paused state to identify the segment. Pausing may not have captured a reason, so use the cancellation reason only when one was selected.
 
-Do not show a former subscriber the same save offer they already declined. The reason for leaving and the treatment history travel together.
+Acknowledge that the subscription moved from paused to cancelled. Address the current cancellation reason, remind the subscriber of the relevant product value or routine when accurate, and use one quick-action link to review the cancelled subscription and reactivate.
 
-## What not to send
+## After payment recovery ends
 
-This list is operating experience, corroborated by the store's rev-per-recipient and unsubscribe rows below.
+Use this path when payment recovery ended without a successful payment and the subscription was cancelled.
 
-- **Your deepest discount to the whole list, on day one.** (The anti-lesson. You pay the people who'd have returned free, and you re-anchor everyone else to the low price.)
-- **The same offer on a loop.** Repetition doesn't persuade a lapsed subscriber; it trains them to wait and it drives the unsubscribe you were trying to avoid.
-- **"We miss you" with nothing behind it.** Sentiment without a reason-to-return or a fixed friction converts nobody and consumes send reputation.
-- **A winback that ignores why they left.** Capture the reason in the cancellation flow and carry it into the audience, message, and return path. One generic campaign turns every departure into a price objection and repeats offers that may have already failed.
+Keep the message short. Explain that the previous subscription ended because the payment did not go through, without making the situation sound alarming or judgmental. Remind the subscriber why returning may still be useful. Where routine or consistent use matters, use accurate language about the product's value, expectations, or the original need it supported.
 
-## The proof (one measured case, hedges attached)
+- **Message job:** explain why the subscription ended, address the payment obstacle, and show how to return.
+- **Primary action:** use one quick-action link that takes the subscriber to the cancelled subscription to review or update payment information, review the setup, and reactivate.
 
-A structured winback program is genuinely in market at this brand, and it works — modestly. Across **21 named winback email campaigns** the program attributed roughly **2,100 conversions** and **~\$300,000** in value. Put in per-campaign terms so it maps onto your own calendar: that's about **\$14k and ~100 conversions per campaign** on average, at roughly **\$0.50 of attributed revenue per recipient.** The best single winback campaign carried the average — about **\$66k and ~470 conversions** off one large send, at a ~0.6% conversion rate.
+This is a return message, not another payment-recovery notice. Do not lead with a generic discount.
 
-Two derived comparisons make the number honest. That **\$0.50 per recipient** sits far below this same store's high-intent recovery flows (checkout recovery earns roughly *twelve times* as much per recipient) — winback reaches a colder audience and it shows. And the program skews to its own first year: about **\$250k across 16 campaigns** in year one versus **~\$52k across 5** in year two, i.e. the reachable, recently-lapsed pool gets worked down over time. Winback is a layer you maintain, not a well you can pump.
+## Treat "too much product" as a signal
 
-**The central hedge — said out loud.** Every figure above is *platform-attributed,* not incrementality-tested. Critically, **there is no holdout anywhere in this data.** That means some unknown share of those ~2,100 "recovered" conversions are people who would have come back on their own — the winback email merely got the credit because it landed near their return. Without a control group you cannot know if the true number is 2,100 or 900. This is not a footnote; it is the difference between what winback *earns* and what it *is credited with.* You will build the fix for it in [Winback economics](/growth-program/winback/winback-economics). Gurus print the \$300k. Operators print the \$300k *and the fact that they haven't proven half of it yet* — and then go run the holdout.
+"Too much product" records what the subscriber reported. It does not prove why the buildup happened.
 
-## The artifact — the winback sequence blueprint
+- A one-cycle timing problem may call for reactivating with a later next-order date.
+- A repeated mismatch may call for a slower cadence or lower quantity.
+- Fulfillment or delivery dates that do not match the intended schedule may require an operations review, not different winback copy.
 
-Take this, drop in your own cadence, and test it against a holdout:
+If this reason concentrates, inspect the pattern in [Reading your churn](/growth-program/churn-defense/reading-your-churn), then carry the finding upstream into [upcoming-order messaging](/growth-program/messaging/transactional-and-reminder), [subscriber flexibility](/growth-program/account-area/flexibility-as-retention), cancellation design, and save offers. Fix the earliest surface that can prevent the mismatch from recurring.
 
-```text The blueprint
-Trigger: subscription cancelled → enter sequence, tag with cancel-date + reason (if captured)
+## Choose timing inside each path
 
-Before entry
-  Segment by final state, reason, product, cadence, tenure, and prior save offer.
-  Suppress anyone who already reactivated or is no longer eligible.
+There is no single proven winback window to copy here. Treat your first schedule as a starting point, then adjust it to the product, the reason for leaving, what each message presents, and how subscribers respond.
 
-Window 1  ·  ~0–30 days  ·  Job: remove friction   ·  Offer: none
-   "Did something not work?" → skip / delay / swap / change cadence.
-   Escalation lever: none. This is a question, not a pitch.
+A practical starting structure is:
 
-Window 2  ·  ~30–60 days  ·  Job: re-open the door  ·  Offer: value, not markdown
-   What's new / restocked / the use-case they missed / the education that retains.
+1. **Soon after cancellation:** use only when you can resolve a support issue or immediate question, or when the subscriber may not have known they could delay an order, change the next order date, or adjust delivery cadence. Do not open with a discount.
+2. **Near the next relevant need:** reach out when renewed need is plausible, such as near the end of a break. For a "too much product" cancellation, use the prior cadence as one clue, then adjust for recent deliveries, any known stock on hand, and whether you can offer a later next order or slower cadence. For a subscription cancelled after a pause, use the cancellation reason when available and time the message to the current product need or expected return point, not the original pause date alone.
+3. **After a meaningful change:** introduce a relevant product, variant, education, or resolved service issue. A generic update does not justify a send.
+4. **Later, for eligible non-responders:** consider one bounded incentive when price remains a plausible barrier. Do not turn it into a repeating offer.
 
-Window 3  ·  ~60–90 days  ·  Job: incentive         ·  Offer: one bounded welcome-back
-   Deepest lever you'll use — used last, once, on non-responders only.
+Some paths need one message. Others may need two or three. The reason helps determine the sequence. You do not need to fill every stage.
 
->90 days → Exit winback. Move to warm-acquisition, measured as acquisition.
+## Give every message one job
 
-Rules:  discount is spent last · never loop the same offer · every send has a
-        reason-to-return or a fixed friction · always run a holdout arm.
-```
+Choose one job before you write the subject line or body:
 
-<InOpenSubs>The cancel event, final state, cancel reason, product, prior treatment, and days-since-cancel timer are all first-class platform fields. The sequence branches on them without an export or spreadsheet, and a holdout arm is a toggle on the flow, not a workaround.</InOpenSubs>
+- Address the stated reason or objection.
+- Reset accurate product-use expectations.
+- Provide one useful piece of education or relevant social proof.
+- Introduce a more suitable product, flavor, size, or format.
+- Make a subscription adjustment or product swap easy.
+- Offer personal help for context that automation cannot resolve.
+- Use a bounded incentive as a later lever when it fits the remaining barrier.
+
+For a product whose experience depends on consistent use, explain that expectation only when it is accurate for the product. Do not make health, wellness, or product-result promises the evidence cannot support.
+
+Keep the message short. The subscriber should be able to identify why it is relevant, what has changed, and what to do next without reading a long sales email.
+
+## Make the return action clear
+
+Every winback email or SMS needs one primary action. For most eligible cancelled subscribers, that action should be self-serve. Make returning as frictionless as possible, with as few clicks or taps as possible. The link should automatically sign the subscriber in and take them directly to the cancelled subscription, where they can review the product, quantity, cadence, price, and next-order timing before reactivating.
+
+Use personal support only for a meaningful "Other" response, unusual written context, or a payment-recovery case that cannot be completed through the direct self-serve path.
+
+## Set stop and repeat-entry rules
+
+Before each message, check whether it is still relevant.
+
+### Stop future messages
+
+Stop later messages when:
+
+- The subscriber has reactivated.
+- The current subscription state no longer matches the branch.
+- The subscriber now belongs in the active-pause resume path instead.
+- The product, offer, or return setup is no longer available.
+- Personal support has taken ownership of the issue.
+- The reason to return has expired.
+
+### Control repeat entry
+
+Start with Klaviyo re-entry disabled. This prevents the same subscriber from entering this flow again when another subscription is cancelled. It also means a later legitimate cancellation will not start a new sequence. Consider allowing re-entry later only when the flow can reliably match a new cancellation to the correct message and quick-action link.
+
+## Measure whether the return lasts
+
+Immediate reactivation is the first result, not the final one. Review each reason-based path through:
+
+- Reactivation after entering the path.
+- Reactivation from the cancelled-after-pause path, including the selected cancellation reason when available.
+- The subscription setup chosen at return.
+- A later paid renewal or order.
+- Another cancellation and whether the same reason appears again.
+- Support involvement and the final subscription state.
+
+A payment-information change alone is not a successful return. Confirm that the subscription reactivated and a paid order completed, then review what happened at later renewals.
+
+Keep platform-attributed results separate from proven incremental results. [Winback economics](/growth-program/winback/winback-economics) owns the holdout and value calculation.
+
+## Optimize after the baseline works
+
+Build one clear baseline first. Test the audience, eligibility checks, copy and language, primary action, and stop conditions before adding variants.
+
+If you use Klaviyo, its flow testing can compare subject lines or message versions. An equivalent lifecycle email tool can serve the same job. Change one meaningful variable at a time so the result remains interpretable. Useful tests include:
+
+- Subject line language.
+- One objection-handling or reason-framing change.
+- A fully branded email versus a shorter plain-text message from a founder, head of product, or head of support.
+- One timing change inside the same eligible reason group.
+
+A subject-line, copy, or presentation result tells you how that audience responded to the message. It does not prove why they cancelled.
+
+Use repeated message results as investigation prompts. Education questions may inform acquisition, onboarding, and product-use guidance. Timing and stock questions may inform upcoming-order messages and cadence design. Price or fit questions may inform cancellation routing and save offers. Pair the message result with cancellation reasons, subscription behavior, support context, and later paid orders before changing the upstream program.
+
+## The artifact: the cancelled-subscriber return plan
+
+Use one plan for each reason group that changes a real decision. Keep the entries short enough that the lifecycle, support, and subscription owners can build and review the same path.
+
+### Example: voluntary cancellation
+
+| Field | Decision |
+| :--- | :--- |
+| **Eligibility and route** | Voluntary cancellation; subscription remains eligible to reactivate |
+| **Reason or need** | Too much product |
+| **What must be different** | Reactivate later, or return with a slower cadence or lower quantity |
+| **Message job** | Show the subscriber the better-fitting return setup |
+| **Direct return action** | The Klaviyo message includes one quick-action link that takes the subscriber to the cancelled subscription to review the setup, make any needed adjustments, and reactivate |
+| **Timing trigger** | The next plausible product need based on the product cycle and subscriber context |
+| **Stop condition** | Reactivated, state changed, support took ownership, return setup unavailable, or sequence complete |
+| **Later health read** | Later paid order, returned configuration, and whether the same cancellation reason repeats |
+
+### Example: payment recovery exhausted
+
+| Field | Decision |
+| :--- | :--- |
+| **Eligibility and route** | Payment recovery completed without a successful payment; subscription cancelled; still eligible to return |
+| **Reason or need** | Payment obstacle, not a voluntary cancellation reason |
+| **What must be different** | An easy quick-action path to review payment information and the reactivation setup |
+| **Message job** | Explain why the subscription ended, reconnect the subscriber to the relevant product need, and show what is required to return |
+| **Direct return action** | One quick-action link takes the subscriber to review the cancelled subscription and payment information, then reactivate |
+| **Timing trigger** | Payment recovery ended and the subscription was cancelled |
+| **Stop condition** | Reactivated, state changed, no longer eligible, return action unavailable, support took ownership, or sequence complete |
+| **Later health read** | Successful paid order, later renewal behavior, and another terminal payment episode |
+
+### Example: cancelled after being paused
+
+| Field | Decision |
+| :--- | :--- |
+| **Eligibility and route** | The subscription was paused before it was cancelled and remains eligible to reactivate |
+| **Reason or need** | Use the selected cancellation reason when available; do not assume the pause captured a reason |
+| **What must be different** | Address the current cancellation reason and reinforce the relevant product value or routine |
+| **Message job** | Acknowledge the move from paused to cancelled and explain why reactivation is relevant now |
+| **Direct return action** | One quick-action link takes the subscriber to review the cancelled subscription, make any needed adjustments, and reactivate |
+| **Timing trigger** | The cancellation reason, expected return point, or next plausible product need |
+| **Stop condition** | Reactivated, no longer eligible, moved to another path, support took ownership, or sequence complete |
+| **Later health read** | Later paid order, subscription setup at return, and repeated cancellation |
+
+### Your plan
+
+| Field | Your decision |
+| :--- | :--- |
+| **Eligibility and route** | Is this an eligible voluntary cancellation, a cancelled-after-pause reactivation, an eligible exhausted-payment cancellation, a personal-review case, an active paused subscription, or a no-message state? |
+| **Reason or need** | Which reason group changes the decision? |
+| **What must be different** | What needs to change before returning makes sense? |
+| **Message job** | What is the one job of this message? |
+| **Direct return action** | Where does the primary action take the subscriber? |
+| **Timing trigger** | What event or condition makes the message relevant? |
+| **Stop condition** | What state or outcome ends the path? |
+| **Later health read** | Which later paid behavior and repeated-cancellation signal will you review? |
+
+Duplicate the plan only when another reason changes the route. Do not build a separate long flow for every label in the cancellation menu.
+
+## Check the flow before launch
+
+Before you turn the sequence on:
+
+- Build the audiences from the cancellation date, cancelled product, previous paused state, cancellation reason, other active subscriptions, cadence, tenure, and prior save treatments.
+- Keep voluntary cancellations, cancelled-after-pause subscriptions, and exhausted-payment cancellations in their correct paths.
+- Start with Klaviyo re-entry disabled. When a subscriber has more than one cancelled subscription, make the message and quick-action link relevant to the most recent applicable cancellation.
+- Check that the reason-based copy, product, offer, timing, and quick-action link match the intended audience.
+- Confirm that the quick-action link signs the subscriber in and opens the cancelled subscription so they can review the setup, make changes, and reactivate.
+- Test one real path from cancellation through the email or SMS sequence and reactivation. Confirm that later messages stop after reactivation or when the subscriber no longer fits the path.
+- Confirm that reporting shows sequence entry, reactivation, a later paid order, repeated cancellation, and the path each subscriber followed.
 
 ## Where next
 
 <div className="os-where-next">
 <Columns cols={1}>
-  <Card icon="arrow-up-right" title="Reactivating paused" href="/growth-program/winback/reactivating-paused">
-    The warmer list that never technically left.
+  <Card icon="arrow-up-right" title="Resuming paused" href="/growth-program/winback/reactivating-paused">
+    Build the separate resume path for subscribers whose subscription is still paused.
   </Card>
   <Card icon="arrow-up-right" title="Winback economics" href="/growth-program/winback/winback-economics">
-    When a lapsed subscriber is worth paid retargeting — and the holdout that tells you whether any of this is real.
+    Decide what a returned subscriber is worth and measure whether winback caused the return.
   </Card>
 </Columns>
 </div>
