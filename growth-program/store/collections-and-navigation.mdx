@@ -12,23 +12,29 @@ If [the widget](/growth-program/store/pdp) is perfect, the temptation is to stop
 
 ## The decision
 
-Merchandising the subscription path is three connected calls. (The doctrine, the collection-vs-badge ruling, and the nav-weight calibration are frameworks from building these stores; the data has no merchandising A/B to rank them.)
+Merchandising the subscription path is three connected calls. (The data has no merchandising A/B to rank them; the frameworks here come from building these stores.)
 
-**Call 1 — findability.** Every subscribable product should signal that it's subscribable *before* the click, and there should be at least one obvious route to "the subscription version of this store." The failure mode is a store where subscription is invisible until you're already on a PDP — which means everyone who buys from a collection grid never knew the option existed until the last second.
+**Call 1 — signal before the click.** Every surface a shopper crosses on the way to a PDP should say subscription exists. In the nav, that means a "Subscribe & save" link — top-level, or a level down wherever the store's nav keeps its secondary routes — with the savings percentage written into the label itself ("Subscribe & Save 25%") so the offer travels with the link instead of waiting on a landing page. The more aggressive version: point "Shop All" itself at a collection that loads with subscription state already enabled, so the store's main browse path *starts* in the subscription state instead of linking to it from the side. The same goes for the other entry surfaces: give the subscription offer a rotation in the announcement bar — it earns its pixels in a way a bare shipping threshold never will — and route the home hero's CTA into the subscription path, not just to a generic grid. For brands whose program needs explaining, a short why-subscribe band on the home page teaches the whole program before a PDP is ever opened: the benefits, how deliveries and cancellation work, and whatever sweeteners the program actually carries — if there's a free gift, state its value. The failure mode is a store where subscription is invisible until the PDP: everyone who buys from a collection grid never knew the option existed until the last second.
 
 **Call 2 — dedicated collection vs badges vs both.** The honest ruling depends on how much of your catalog subscribes:
 
-- **Badges** (a small "Subscribe & save" flag on collection tiles) when *most* products are subscribable — a dedicated collection would just re-list the whole catalog and teach nothing.
-- **A dedicated collection** ("Shop subscriptions" / "Build your routine") when subscription is a *subset* or a distinct experience — it gives the path a front door, a landing surface you can link from the nav, the announcement bar, and the why-subscribe page.
+- **Badges** (a small "Subscribe & save" flag on the grid's product cards) when *most* products are subscribable — a dedicated collection would just re-list the whole catalog and teach nothing.
+- **A dedicated collection** ("Shop subscriptions" / "Build your routine") when subscription is a *subset* or a distinct experience — it gives the path a destination, a landing surface you can link from the nav, the announcement bar, and the why-subscribe page.
 - **Both** for most stores at scale: badges to signal on the grid, a dedicated collection to give the path a home. The two do different jobs — one *labels*, one *routes*.
 
-**Call 3 — navigation weight.** How prominent the subscription path sits in the nav should match your attach *goal*, not your enthusiasm. A brand whose whole model is subscription earns a top-level nav slot; a brand testing subscription on a few SKUs earns a badge and a collection link, not a takeover. Over-weighting the nav on a low-attach catalog just clutters the path to the products people actually came for.
+Whichever you choose, the strongest execution of the destination is a grid in **subscription state**: product cards that are already selling the subscription, not just flagging it. In subscription state, a card shows the subscribe & save badge with the percentage, the plan price with the one-time price struck through beside it, a label spelling out the dollars saved (~~\$60~~ \$48 with "Save \$12" next to it — no shopper should ever convert a percentage in their head), the delivery frequency, and a **Subscribe** button where "Add to cart" would sit. The card becomes a miniature of the PDP widget: the shopper chooses the plan from the grid instead of discovering it three clicks later. Build it as a dedicated collection whose cards load that way, or as a toggle on the main grid that filters to the products carrying selling plans and re-renders every card. Make the toggle's label do a job in both states: off, it advertises the offer ("Subscribe & Save 25%"); on, it confirms the mode ("Shopping subscriptions"). And give the toggle or the collection header a small tooltip that repeats the widget's three-to-five benefit bullets — the split discount included — because the buying decision is happening on the grid, and the value story can't wait for the PDP.
+
+**The destination is only half the build. The links that land on it are the other half.** A subscription-state grid nobody routes to is a feature, not a path: the toggle can sit on the collection page all year while every entry link in the store quietly delivers shoppers to the one-time view. On the stores where this layer earns its keep, the hero CTA, the announcement bar, the nav's subscribe link, and "Shop All" itself all land on the flipped state — the shopper arrives with the grid already selling the plan. The grid's default matters less than where the links land. Build both halves or neither works.
+
+**A third destination: the box-builder.** Instead of flipping the grid, route subscription intent into a build-a-box flow — a bundle PDP, or a stepped builder (choose size and frequency → select items → checkout) where a size-tiered discount ladder does the selling ("15% off 3 items / 20% off 5 / 25% off 6+") and the defaults do the merchandising: the middle tier pre-selected and badged "Most popular," the shortest frequency pre-picked. This trades per-product comparison for order size — the shopper never weighs subscribe-versus-one-time on a single product; they assemble a bigger recurring order in one motion. It fits catalogs bought in mixes (snacks, flavors, pantry staples) better than single-hero-SKU stores. If you run a second recurring program beside it — a paid membership, a loyalty tier — label the two programs clearly; "subscribe" and "join" must never look like the same offer.
+
+**Call 3 — navigation weight.** How prominent the subscription path sits in the nav should match your attach *goal* — the share of first orders you want starting as subscriptions, the number you set in [the widget lesson](/growth-program/store/pdp) — not your enthusiasm. A brand whose whole model is subscription earns a top-level nav slot and the dedicated destination; a brand testing subscription on a few SKUs earns a badge and a collection link, not a takeover. Over-weighting the nav on a low-attach catalog just clutters the path to the products people actually came for.
 
 ## The proof (and its honest edge)
 
 The data cannot tell you that a dedicated collection lifts attach — no such row exists. What it proves is *where entry revenue concentrates*, which is the whole reason this layer matters.
 
-At Brand A, GA4 shows the **home page and the catalog collection page carrying the bulk of converting sessions** — home ~6.0% session CVR on the largest session volume in the store, and the products/collections page ~6.8% CVR, the single highest-converting major surface *(GA4 directional traffic, not ad economics)*. Hero PDPs convert well too (4.6–6.4%), but home and collections are where the *volume* of the buying journey lives.
+At Brand A, GA4 shows the **home page and the catalog collection page carrying the bulk of converting sessions** — home ~6.0% session conversion rate (CVR) on the largest session volume in the store, and the products/collections page ~6.8% CVR, the single highest-converting major surface *(GA4 directional traffic, not ad economics)*. Hero PDPs convert well too (4.6–6.4%), but home and collections are where the *volume* of the buying journey lives.
 
 <div className="os-pull not-prose">
   <p>If the subscription path isn't merchandised into home and collections, you are absent from the surfaces most of your buyers actually travel.</p>
@@ -36,7 +42,7 @@ At Brand A, GA4 shows the **home page and the catalog collection page carrying t
 
 Fixing the widget alone leaves the highest-traffic surfaces silent on subscription.
 
-Second proof, again from concentration: Brand A's demand resolves to a **few hero packages** across every window. That tells you what the dedicated collection should lead with — not an exhaustive A-Z of every subscribable SKU, but the hero routine, merchandised first. A subscription collection that opens with your three best bundles converts the browser; one that opens with 90 tiles makes them leave.
+Second proof, again from concentration: at Brand A, a **handful of hero bundles** account for most of what people buy, in every time window we measure. That tells you what the dedicated collection should lead with — not an exhaustive A-Z of every subscribable SKU, but the hero bundles, merchandised first. A subscription collection that opens with your three best bundles converts the browser; one that opens with 90 product cards makes them leave.
 
 Honest edge: this is entry-surface evidence, not path-attach evidence. The claim it licenses is "merchandise subscription where the traffic is," not "a dedicated collection lifts attach by X" — that X does not exist in the data.
 
@@ -46,17 +52,34 @@ Walk your own store as a first-time visitor and answer each. Any "no" is a hole 
 
 ```text The audit
 Entry surfaces (where the traffic actually lands)
-  [ ] Home page states subscription exists (a section, a hero, or a nav item)
-  [ ] Main collection/shop page signals subscribable products (badges on tiles)
+  [ ] Home hero CTA routes into the subscription path, not just a generic grid
+  [ ] Nav carries a "Subscribe & save" link with the percentage in the label
+      (or "Shop All" itself lands in subscription state)
+  [ ] The announcement bar gives the subscription offer a rotation, not just
+      the shipping threshold
+  [ ] If the program needs explaining, a why-subscribe band on home covers
+      the benefits, how it works, and any sweeteners the program carries
   [ ] The three hero products are reachable from home in one click
 
-The subscription front door
-  [ ] There is one obvious route to "shop subscriptions" (nav item or hero link)
-  [ ] The dedicated collection (if used) leads with hero bundles, not the full catalog
-  [ ] Its landing copy answers "why subscribe" in the first screen
+The destination (the grid in subscription state)
+  [ ] There is one obvious route to a grid in subscription state
+      (dedicated collection, or the main grid with the toggle pre-flipped)
+  [ ] Subscription-state product cards show the badge with the percentage, the plan
+      price with the one-time price struck through, and the delivery frequency
+  [ ] The dollars saved are spelled out on the card ("Save \$12"), not left
+      as percentage math
+  [ ] The button on a subscription-state card says Subscribe, not Add to cart
+  [ ] The toggle's label works in both states (off advertises the offer,
+      on confirms the mode)
+  [ ] A tooltip on the toggle or collection header repeats the widget's benefit bullets
+  [ ] The entry links (hero, announcement bar, nav) actually land in subscription
+      state — the destination exists AND the store routes into it
+  [ ] The collection leads with hero bundles, not the full catalog
+  [ ] If the destination is a box-builder: the discount ladder is tiered by size,
+      and the best-fit tier and frequency are pre-selected
 
-Signal on the grid
-  [ ] Collection tiles for subscribable items carry a consistent "Subscribe & save" badge
+Signal on the grid (outside subscription state)
+  [ ] Product cards for subscribable items carry a consistent "Subscribe & save" badge
   [ ] The badge states the benefit, not just the word ("Save 15%" / "Never run out")
 
 Nav weight (match to your attach goal, not your hope)
@@ -68,7 +91,7 @@ The cold-visitor test
   [ ] A stranger who lands on a collection can start a subscription without hunting
 ```
 
-<InOpenSubs>Subscription badges and a "shop subscriptions" collection are native store objects driven by which products carry a selling plan — no separate merchandising app, and the badge follows the plan automatically.</InOpenSubs>
+<InOpenSubs>The grid's subscription state runs on the same selling plans the widget reads — which products qualify, the percentage, the plan price, and the frequency all come straight from the plan, so the collection layer never drifts out of sync with the PDP and there's no separate merchandising app to maintain.</InOpenSubs>
 
 ## Where next
 
