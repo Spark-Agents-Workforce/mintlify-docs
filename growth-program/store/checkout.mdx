@@ -1,6 +1,6 @@
 ---
 title: "Checkout"
-description: "What Shopify checkout allows and what it never will, the trust elements a recurring commitment needs, and the post-purchase upsell slot."
+description: "What Shopify checkout allows and what it never will, the trust a recurring commitment needs, and the attach chances at checkout's edge."
 ia: "M4.4"
 ---
 
@@ -16,18 +16,20 @@ First, the platform facts — written carefully, because an out-of-date platform
 
 - **You do not freely customize Shopify's checkout.** Checkout UI extensions for the information, shipping, and payment steps are **available only to Shopify Plus stores** — and even on Plus, customization runs through the sanctioned extension system, not arbitrary code. Extensions that appear *after* purchase (Thank you and Order status pages) are available to all plans except Starter. Non-Plus merchants get limited checkout branding and no custom content injection at the checkout steps.
 - **The legacy `checkout.liquid` path is retired.** It stopped working for in-checkout pages in August 2024, and its last remnants (Thank you / Order status pages) were sunset in August 2025. Anything a tutorial says about editing checkout templates directly is stale — Checkout Extensibility is the only path.
-- **Subscriptions require the Selling Plans API and a vaulting-capable payment method.** The card vault belongs to Shopify Payments — which is why a platform switch preserves cards — but it also means the recurring commitment is created through the selling plan plus explicit buyer consent, not through anything you script into the checkout page.
+- **Subscriptions require the Selling Plans API and a vaulted payment method.** Vaulting is the secure storing of the customer's card at the first checkout so every renewal can charge it without the customer ever re-entering it — no vault, no subscription. That vault belongs to Shopify Payments, not to the subscription app — which is why a platform switch preserves cards — and it also means the recurring commitment is created through the selling plan plus explicit buyer consent, not through anything you script into the checkout page.
 - **There is a post-purchase slot, and it can add a subscription.** Shopify supports a post-purchase page that runs *after* payment, and a subscription (selling-plan) item can be added there one-click — the buyer's vaulted payment carries over, with an explicit subscription-consent checkbox required. The verified conditions that bound the tactic: (a) post-purchase checkout extensions are in **beta** — live stores must request access; (b) you **cannot** add a subscription to an order that already contains one; (c) you **cannot** convert an existing one-time line into a subscription — the slot *adds* a subscription item, it doesn't flip the original; (d) the order needs a shipping address (digital-only/local-pickup orders are out), Online Store channel only. Some third-party upsell apps claim one-time→subscription replacement flows; shopify.dev itself forbids the conversion — trust the primary source, and verify any app's claim against it.
 
-Given those edges, two operator moves. (The trust framework and the post-purchase judgment are experience calls; the platform facts above are verified.)
+Given those edges, three operator moves. (The trust framework and the attach judgments are experience calls; the platform facts are verified.)
 
-**Move 1 — trust for a recurring commitment lives upstream.** Because you can't inject reassurance into the checkout itself, the trust that carries a *recurring* commitment has to be fully loaded *before* the buyer arrives: the "skip/swap/cancel anytime" promise on [the widget](/growth-program/store/pdp), the control language in [the cart](/growth-program/store/cart-and-upsell), visible support access, real reviews, and a clear statement of what recurs and when.
+**Move 1 — trust for a recurring commitment lives upstream.** Because you can't inject reassurance into the checkout itself — a Plus store can place a block or two, but nobody's doubt should be answered for the first time at the payment step — the trust that carries a *recurring* commitment has to be fully loaded *before* the buyer arrives: the "skip/swap/cancel anytime" promise on [the widget](/growth-program/store/pdp), the control language in [the cart](/growth-program/store/cart-and-upsell), visible support access, real reviews, and a clear statement of what recurs and when.
 
 <div className="os-pull not-prose">
   <p>By the time they hit Shopify's checkout, the doubt should already be answered — because that's the last place you can answer it.</p>
 </div>
 
-**Move 2 — use the post-purchase slot as a low-friction attach.** The post-purchase page is the one place you *can* add content after checkout, and it's the softest possible attach: the payment is done, the risk is gone, and "add a subscription to your order — one click" costs the buyer nothing they've not already committed to. Verified above: the platform supports exactly this — with the beta-access step, the no-existing-subscription rule, and the adds-don't-flip nuance as the boundaries you design within. It's a genuine second (or third) attach chance, best offered on the companion or refill of the product they just bought, since the original line can't be converted in place.
+**Move 2 — the last chance inside checkout (Plus only).** For Plus stores, one sanctioned extension puts the subscription decision inside the checkout itself: Shopify's own **[Checkout Blocks](https://apps.shopify.com/checkout-blocks)** app can render a **selling plan selector** on a line item in the order summary. The customer clicks it, the line upgrades to a subscription in place — the selling plan's percentage shown, the frequency theirs to choose — and it works in reverse: a subscription line can change frequency or drop back to one-time. It only renders when the product carries a selling plan, and because it runs *before* payment, it can convert the line — the one thing the post-purchase slot below can't do. It's the checkout-step mirror of [the cart upgrade](/growth-program/store/cart-and-upsell): in-place, reversible, and easy to ignore, so it spends almost nothing from the friction budget.
+
+**Move 3 — use the post-purchase slot as a low-friction attach.** The post-purchase page is the one place you *can* add content after checkout, and it's the softest possible attach: the payment is done, the risk is gone, and "add a subscription to your order — one click" costs the buyer nothing they've not already committed to. Verified above: the platform supports exactly this — with the beta-access step, the no-existing-subscription rule, and the adds-don't-flip nuance as the boundaries you design within. One more ceiling to plan around: the slot only surfaces on straight credit-card checkouts — buyers who paid with a wallet or installment service (Apple Pay, Google Pay, Amazon Pay, Klarna and kin) or a gift card never see it, though Shop Pay works — so it reaches a subset of your orders, not all of them. It's a genuine second (or third) attach chance, best offered on the companion or refill of the product they just bought, since the original line can't be converted in place.
 
 ## The proof (and its honest edge)
 
@@ -57,10 +59,19 @@ Platform reality (verified 2026-07-08 — re-verify before you build)
   [x] checkout.liquid is fully retired — Checkout Extensibility is the only path
   [x] Subscription = selling plan + vaulted payment + explicit buyer consent
 
+The in-checkout selector (Plus — Checkout Blocks' selling plan selector)
+  [x] A line item can upgrade to a subscription inside checkout — inline, the
+      plan's percentage shown, frequency selectable; renders only when the
+      product carries a selling plan
+  [ ] If you run it: the terms it shows match what the widget promised, and
+      one-time stays one click away
+
 The post-purchase slot (the one place you can add content after payment)
   [x] A subscription item can be added one-click post-purchase — beta access
       required; not on orders already containing a subscription; adds a sub
       item, cannot flip the original line; shipping address + Online Store only
+  [x] The slot skips wallet, installment, and gift-card payments — it surfaces
+      on credit-card checkouts (Shop Pay included)
   [ ] The offer is a genuine, relevant upgrade — not a bait add-on
   [ ] It's one click, no re-entered payment, easy to decline
 
