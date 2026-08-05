@@ -12,17 +12,34 @@ The pitch every upsell app sells you is that upsells are pure upside — bolt on
 
 ## The decision
 
-Three cart moves, each with a friction budget. (The in-cart upgrade design, the threshold sizing, and the bump-vs-friction rule are frameworks from building these carts; the data has no in-cart attach row. The lifecycle rows below illustrate the *cost of friction*, not the *lift of a bump*.)
+Three cart moves, each spending from the same **friction budget** — the amount of extra decision-making a cart can absorb before people stop finishing their order. (The in-cart upgrade design, the threshold sizing, and the bump-vs-friction rule are frameworks from building these carts; the data has no in-cart attach row. The lifecycle rows below illustrate the *cost of friction*, not the *lift of a bump*.)
 
-**Move 1 — the in-cart subscription upgrade, done right.** This is the highest-value cart move: a one-time buyer sits in the cart, and you offer "Make it a subscription and save 15%" as a single toggle that upgrades the line item in place. Done right it is *one tap, no re-add, no navigation* — the item they already chose, upgraded, with the saving shown inline. Done wrong it's a pop-up modal that interrupts the checkout march, or a swap that empties and rebuilds the cart.
+### Move 1 — the in-cart subscription upgrade
+
+This is the highest-value cart move: a one-time buyer sits in the cart, and the line item itself offers the upgrade — "Subscribe & Save 15%" as a control on the product they already chose. Done right, the conversion happens *in place*: no re-add, no navigation, no cart rebuild. The price updates with the one-time price struck through and the saving spelled out, and a delivery-frequency selector appears on the line where the control used to be.
+
+Two ways to build the control:
+
+- **Direct convert** — one tap and the line becomes a subscription instantly, with the reassurance on the control itself: "Subscribe & Save 15% — change or cancel anytime."
+- **Popover convert** — the control opens a popover first: the program's benefit bullets, a frequency selector, and a confirm button. Two taps instead of one, but the shopper picks their frequency and reads the perks before converting. (A popover is a large tooltip pinned to the control — not a modal, which is the full-screen version that fades the page out and demands an answer.)
+
+Either way, the upgrade must be reversible from the control it created. The frequency selector on the converted line should open to change the cadence — or undo the whole thing, one click back to one-time. Reversibility is what makes the upgrade safe to say yes to: the shopper can see the exit before they walk in.
+
+Done wrong, the upgrade is a full-screen modal that interrupts the checkout march, or a swap that empties and rebuilds the cart. Some stores run the interrupt modal deliberately, betting attach lift against abandonment; no data in this lesson settles that bet, but the proof below shows what friction at this moment costs.
 
 <div className="os-pull not-prose">
   <p>The upgrade must be lighter than the effort of ignoring it. If saying no is easier than saying yes, you've built it right.</p>
 </div>
 
-**Move 2 — threshold offers.** "Add \$X for free shipping" / "Spend \$Y, get a gift." These nudge AOV *up* — the opposite of what a discount does to the same order (see [Free gifting](/growth-program/offer/free-gifting)) — and they're most powerful when the threshold is set just above your current AOV, close enough to feel reachable. The failure is a threshold set so high it reads as a tax, or a threshold that distracts from the subscription upgrade you actually want. One offer at a time in the cart; two competing offers cancel each other.
+### Move 2 — threshold offers
 
-**Move 3 — order bumps vs friction.** An order bump is a pre-checkout add-on ("add the travel size?"). A bump is worth it *only* when it's genuinely relevant to what's in the cart and adds zero steps. Every irrelevant bump, every extra tap, every modal is a withdrawal from a friction budget you cannot see until conversion drops. The discipline: **one relevant bump maximum, and only if it clears the friction budget.** When in doubt, cut it — the order you protect is worth more than the bump you might win.
+"Add \$X for free shipping" / "Spend \$Y, get a gift." These nudge average order value *up* — the opposite of what a discount does to the same order (see [Free gifting](/growth-program/offer/free-gifting)) — and they're most powerful when the threshold is set just above your current AOV, close enough to feel reachable. The failure is a threshold set so high it reads as a tax.
+
+The stacking rule is not "one offer only." A healthy cart can run the subscription upgrade, a threshold bar, and an order bump at once, because each points at a *different decision* — subscribe, spend more, add on. The rule is **one offer per decision, with a clear hierarchy**: the subscription upgrade is the dominant ask; everything else is subordinate. Two offers competing for the same decision cancel each other.
+
+### Move 3 — order bumps vs friction
+
+An order bump is a small, complementary pre-checkout add-on ("add the travel size?"): one tap, and the item joins the order. Two things make a bump pay. It's *complementary* to what's already in the cart — related enough to read as completing the purchase, not starting a second buying decision. And it adds *zero steps*: one tap in the cart on the way to checkout, never a detour. Every irrelevant bump, every extra tap is a withdrawal from a friction budget you cannot see until conversion drops. The discipline: **one relevant bump maximum, and only if it clears the friction budget.** When in doubt, cut it — the order you protect is worth more than the bump you might win.
 
 ## The proof (and its honest edge)
 
@@ -43,23 +60,26 @@ Start: A one-time item is in the cart. What do you want most?
   → Almost always: Attach it (upgrade to subscription). Everything else is secondary.
 
 The in-cart upgrade (do this first)
-  Is the "make it a subscription" upgrade one tap, in place, no re-add?
+  Is the upgrade a control on the line item that converts in place —
+  one tap direct, or a popover (perks + frequency) then confirm?
     No  → fix that before adding anything else. This is the highest-value move.
-    Yes → is the saving shown inline, in the customer's terms?
-            No → add it.  Yes → ship it. Move on.
+    Yes → after converting: saving shown inline, frequency editable on
+          the line, one click back to one-time?
+            No → add them.  Yes → ship it. Move on.
 
 Adding a threshold offer?
-  Is there already an active offer competing for attention in the cart?
-    Yes → stop. One offer at a time. Kill the weaker one.
+  Does it compete with the upgrade for the same decision?
+    Yes → redesign until the upgrade stays dominant.
     No  → is the threshold set just above current AOV (reachable, not a tax)?
             No → resize it.  Yes → ship it.
 
 Adding an order bump?
-  Is it genuinely relevant to what's in this cart?
+  Is it complementary to what's in the cart — completing the purchase,
+  not starting a second buying decision?
     No  → cut it. Irrelevant bumps spend the friction budget for nothing.
-    Yes → does it add any steps, modals, or taps to reach checkout?
-            Yes → cut it or make it zero-step.
-            No  → one bump maximum. Ship it.
+    Yes → is it one tap to add?
+            No → cut it or make it zero-step.
+            Yes → one bump maximum. Ship it.
 
 The friction check (run after any change)
   Did cart→checkout conversion or abandonment move the wrong way?
