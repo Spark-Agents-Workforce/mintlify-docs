@@ -231,7 +231,8 @@
               "growth-program/account-area/portal-as-retention",
               "growth-program/account-area/perks-and-loyalty",
               "growth-program/account-area/flexibility-as-retention",
-              "growth-program/account-area/community-and-identity"
+              "growth-program/account-area/community-and-identity",
+              "growth-program/account-area/support-as-retention"
             ]
           },
           {
@@ -248,7 +249,7 @@
             "group": "M9 \u00b7 Revive",
             "icon": "rotate-ccw",
             "pages": [
-              "growth-program/winback/recapturing-cancelled",
+              "growth-program/winback/reactivating-cancelled",
               "growth-program/winback/reactivating-paused",
               "growth-program/winback/winback-economics"
             ]
@@ -369,6 +370,10 @@
     {
       "source": "/growth-program/churn-defense/exit-interviews",
       "destination": "/growth-program/churn-defense/reading-your-churn"
+    },
+    {
+      "source": "/growth-program/winback/recapturing-cancelled",
+      "destination": "/growth-program/winback/reactivating-cancelled"
     }
   ],
   "seo": {

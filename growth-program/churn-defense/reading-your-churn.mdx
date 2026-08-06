@@ -29,7 +29,7 @@ A cancellation reason without context can send you chasing the loudest answer. A
 - **Pause:** the subscription is inactive for a planned period, but it has not ended.
 - **Merchant-initiated cancellation:** your team ended the subscription, which may reflect support, inventory, or another operating decision.
 
-These events belong to different owners and different fixes. An active failed payment stays in [Dunning](/growth-program/churn-defense/dunning) while payment recovery is running. If recovery ends and the subscription is automatically cancelled, move it into the separate payment-recovery-ended path in [Reactivating cancelled](/growth-program/winback/recapturing-cancelled). A voluntary cancellation routes into the reason and lifecycle analysis in this lesson. A paused subscription belongs in [Resuming paused](/growth-program/winback/reactivating-paused), not in the cancelled pool.
+These events belong to different owners and different fixes. An active failed payment stays in [Dunning](/growth-program/churn-defense/dunning) while payment recovery is running. If recovery ends and the subscription is automatically cancelled, move it into the separate payment-recovery-ended path in [Reactivating cancelled](/growth-program/winback/reactivating-cancelled). A voluntary cancellation routes into the reason and lifecycle analysis in this lesson. A paused subscription belongs in [Resuming paused](/growth-program/winback/reactivating-paused), not in the cancelled pool.
 
 ## Locate the moment
 
@@ -94,7 +94,7 @@ Choose one meaningful pattern. Write the working hypothesis. Change the earliest
 
 ## Carry the reason into winback
 
-The reason does not stop being useful when the cancellation completes. Pass the cancellation date, final state, reason, written context, product, cadence, tenure, and save offers already shown into [Reactivating cancelled](/growth-program/winback/recapturing-cancelled).
+The reason does not stop being useful when the cancellation completes. Pass the cancellation date, final state, reason, written context, product, cadence, tenure, and save offers already shown into [Reactivating cancelled](/growth-program/winback/reactivating-cancelled).
 
 That context protects the subscriber from a generic return campaign. Someone who had too much product should not receive an immediate offer for more of it. Someone who rejected a discount because the product was not working should not see the same discount again. A subscription ended after payment recovery needs a payment-restoration path, not the same message as a voluntary cancellation.
 
@@ -147,7 +147,7 @@ After you complete the record, create the task. Attach the saved report or filte
 
 <div className="os-where-next">
 <Columns cols={1}>
-  <Card icon="rotate-ccw" title="Reactivating cancelled" href="/growth-program/winback/recapturing-cancelled">
+  <Card icon="rotate-ccw" title="Reactivating cancelled" href="/growth-program/winback/reactivating-cancelled">
     Carry the reason and final state into a more relevant path back.
   </Card>
   <Card icon="calculator" title="Churn math" href="/growth-program/numbers/churn-math">

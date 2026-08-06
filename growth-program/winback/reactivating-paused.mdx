@@ -1,6 +1,6 @@
 ---
 title: "Resuming paused"
-description: "Build a clear resume plan for defined, extended, and open-ended pauses."
+description: "Choose how pause works in your store, then build the matching resume plan."
 ia: "M9.2"
 ---
 
@@ -11,11 +11,11 @@ Your job is to help them resume when the timing fits, make another change when i
 ## What this lesson gives you
 
 - The order of changes to offer before a subscriber pauses.
-- A way to separate defined, extended, and open-ended pauses.
-- A practical resume message plan for each pause situation.
-- Clear actions, stop conditions, and outcomes to review.
+- A choice between two pause models for your store.
+- A practical resume message plan for the model you choose.
+- Two operating checklists with clear actions, stops, and outcomes to review.
 
-## Try targeted changes before pausing
+## Decide whether pause is still the right choice
 
 A pause should come after the more targeted flexibility options. Before the subscriber confirms a pause, make these choices easy to find in this order:
 
@@ -24,105 +24,233 @@ A pause should come after the more targeted flexibility options. Before the subs
 3. **Change delivery frequency** when orders repeatedly arrive too soon.
 4. **Pause the subscription** when those changes do not give enough room.
 
-If a pause is still the right choice, the subscriber can choose a defined duration or leave the pause open-ended. [Flexibility as retention](/growth-program/account-area/flexibility-as-retention) covers how these choices prevent an avoidable cancellation, and [Cancellation flow design](/growth-program/churn-defense/cancellation-flow-design) covers where they fit before cancellation.
+If a pause is still the right choice, the store's pause model determines what happens next. [Flexibility as retention](/growth-program/account-area/flexibility-as-retention) covers how these choices prevent an avoidable cancellation, and [Cancellation flow design](/growth-program/churn-defense/cancellation-flow-design) covers where they fit before cancellation.
 
-## Start with the pause situation
+## Choose your store's pause model
 
-Read the current situation before you send anything. The same subscriber may move through several of these situations, so the message should always match what is true now.
+Before you build the messages, choose one operating model for your store. Do not assume every store needs to offer both.
 
-| Pause situation | What it means | What you do next |
-|---|---|---|
-| **Defined pause** | The subscriber chooses a pause duration, which creates a planned resume date. | Confirm the duration and date, then remind the subscriber before the subscription resumes. |
-| **Extended pause** | The subscriber needs more time and chooses a later resume date. | Confirm the new date and replace any reminders tied to the old date. |
-| **Open-ended pause** | There is no planned resume date. | Use a short, limited check-in sequence that helps the subscriber resume, choose a date, or remain paused. |
-| **Resumed subscription** | The subscription is active again. | Stop pause messages and move the subscriber to the normal active-subscriber experience. |
-| **Cancelled from pause** | The subscriber ended the subscription while it was paused. | Stop pause messages and move the subscription to a distinct cancelled-from-pause reactivation path. |
+<div className="os-pause-model-table">
 
-The message should always match the current situation. A reminder tied to an old resume date should not survive an extension, resumption, or cancellation.
+| Store model | What the merchant decides | What the subscriber can do | What happens next |
+|---|---|---|---|
+| **Defined duration** | Which pause durations the store offers. | Choose from the durations you configured. | The next order is scheduled for the end of the selected duration, when the subscription resumes automatically. |
+| **Open-ended** | That pauses have no automatic resume date. | Remain paused until they or the merchant resumes the subscription. | A limited resume sequence begins after the review point you chose. |
 
-## Use the context the pause gives you
+</div>
+
+If you use defined durations, the subscriber chooses among your configured options. If you use an open-ended model, the subscriber does not choose a duration. Your model sets the expectation, and your messages should match it.
+
+## Use only context you actually have
 
 A pause normally does not ask the subscriber to choose a reason. Do not make a pause reason a core input, and do not guess why someone paused.
 
-Build the resume plan from the information the subscriber has already given you through their choices:
+Use the relevant subscription context already available in Klaviyo from your subscription platform to shape the timing and content of the resume flow:
 
-- Whether the pause is defined or open-ended.
-- The selected duration and planned resume date, when one exists.
-- The product and current delivery frequency.
-- What the subscriber actually does, such as extending the pause, choosing a date, resuming, or cancelling.
+- How long the person has subscribed.
+- How many paid orders they have received for the paused product.
+- The product in the paused subscription.
+- The product's delivery frequency.
+- The scheduled next order date for a defined-duration pause.
+- Relevant changes made while the subscription is still paused, such as an extension or an updated resume date.
+
+Product, delivery frequency, and paid-order history can help you estimate when the subscriber may be approaching another replenishment window. For an open-ended pause, use that estimate to place the first check-in shortly before the product would normally be useful again. A newer subscriber may need different timing from someone with a longer purchase history. Treat the timing as a starting hypothesis and adjust it from your own results.
+
+This context can make a segment and its timing more relevant. It does not prove that the subscriber paused because of excess product, budget, travel, cadence, or any other reason. Do not turn an estimate into an individual claim.
+
+Use a more specific message only when the available subscription context makes it relevant. Otherwise, use a broadly relevant sequence that covers common needs without pretending to know why the subscriber paused.
 
 For health and wellness products, a short message can reinforce accurate product-use guidance, realistic consistency expectations, or relevant education. Keep it useful and brief. Do not imply results or progress you cannot see, and do not turn a resume reminder into a long sales pitch.
 
-Cancellation is different. If a subscriber cancels while paused, the cancellation reason can help shape the later reactivation message. That is cancellation context, not a pause reason.
+## If you use defined pause durations
 
-## Build the messages around the next decision
+A defined-duration model gives the subscriber a scheduled next order date. Your pause options may be similar to or somewhat longer than your normal skip window. Choose them to fit the product, normal delivery frequency, consumption pattern, and the common need for a longer break.
 
-There is no perfect pause calendar. For a defined pause, work back from the planned resume date so the subscriber has time to anticipate the order and make another change. For an open-ended pause, choose a review point that makes sense for the product and normal usage. Then review your own outcomes and adjust.
+The subscriber chooses from the pause durations you offer. At the end of the selected duration, the subscription automatically resumes and the next order is processed.
 
-| Message path | When to send | Message job | Main action | Possible channel | Stop when |
-|---|---|---|---|---|---|
-| **Defined pause: confirmation** | When the pause begins | Confirm the selected duration and planned resume date. | Review the paused subscription | Email | The date changes, the subscription resumes, or it is cancelled. |
-| **Defined pause: resume reminder** | Before the planned resume date, with enough time to act | Show what will resume and when. Make another change easy. | Review, resume now, or choose a later date | Email, with a short SMS reminder if useful | The subscriber takes an action or the planned resume date passes. |
-| **Extended pause** | When the resume date changes | Confirm the new date and set the right expectation. | Review the updated pause | Email | The new date is confirmed. Retire the old reminder schedule. |
-| **Open-ended pause: check-in** | At the review point you chose | Ask whether the subscriber is ready to resume or wants to pick a date. | Resume, choose a resume date, or remain paused | Email | The subscriber resumes, chooses a date, or cancels. |
-| **Open-ended pause: final check-in** | Later, if the first check-in received no action | Leave a final useful path back without pressure. | Review the paused subscription | Email or a short SMS | The subscriber acts, or the sequence reaches its planned end. |
-| **Cancelled from pause: reactivation** | After cancellation, on the timing set for this distinct path | Acknowledge that the subscription was paused and is now cancelled. Use the cancellation reason when it changes the message. | Review reactivation options | Email | The subscriber reactivates or the reactivation sequence ends. |
+Use Klaviyo to support two clear moments: confirm the pause when it begins, then send a pause-ending reminder relative to the next order date.
 
-The sequence is a starting point, not a rule about exact timing. A product used daily may need a different lead time from one used occasionally. A defined pause gives you a date to work from, while an open-ended pause does not. Use the information you already have, then test the timing against your own completed pause periods.
+As a starting point, you might send the reminder roughly three to five days before automatic resumption. This is not a universal rule. Adjust the lead time using your own completed pause periods.
+
+<div className="os-defined-pause-table">
+
+| Message | When to send | Message job | Main action | Stop when |
+|---|---|---|---|---|
+| **Pause confirmation** | When the pause begins | Confirm the selected duration and next order date. | Review the paused subscription | The timing changes, the subscription resumes, or it is cancelled. |
+| **Pause-ending reminder** | At your chosen lead time before the next order date | Say the pause is ending, list the included products and next order date, then add relevant value or accurate education. | Continue with the scheduled order, process it sooner, extend the pause, or change the subscription | The next order date changes, the subscription resumes, or it is cancelled. |
+
+</div>
+
+Treat the pause-ending reminder as a specialized upcoming-order reminder. It serves a subscriber whose subscription is still paused but is about to resume automatically.
+
+Keep it gentle and useful. Lead with the subscription facts, then include only the product content that helps the subscriber decide what to do next:
+
+- The included products and next order date.
+- A brief reminder of the product's relevant value or benefits.
+- Accurate product-use education or expectations.
+- Relevant social proof that supports the product's role without making promises about the subscriber.
+- For health and wellness products, plain guidance about routine or consistency without promising a result.
+
+### Offer an extension from the reminder
+
+An extension gives a subscriber who still expects to resume a clearer path back. Without that choice, the subscription may resume before they are ready and turn a timing problem into a cancellation. Treat the extension as flexibility that can prevent an avoidable cancellation, not proof that every extension will retain the subscriber.
+
+Write the reminder like a thoughtful check-in. Use the subscriber's product and next order date, keep the tone personal, and avoid turning it into a sales pitch. Invite the subscriber to reply with questions, and make it clear that a support person can help with their concerns.
+
+Offer a small set of easy extension choices that fit the product and its normal use. You might test one, two, three, or four additional weeks, but these are starting options, not universal defaults. Do not copy another store's duration menu.
+
+Design each extension action to take the subscriber directly to the paused subscription, already signed in, with their selected extension ready to confirm. The intended experience is a few clear actions from the email to the updated resume date.
+
+When the subscriber confirms an extension, update and confirm the next order date. Reset the Klaviyo reminder timing from that new date so the subscriber can receive the same useful reminder as the revised order approaches. The old reminder should no longer apply.
+
+## If you use an open-ended pause
+
+An open-ended pause has no automatic resume date. The subscription remains paused until the subscriber or merchant resumes it. Without a follow-up plan, it can remain inactive and be forgotten.
+
+Choose the first review point from the product's expected replenishment window, the subscriber's delivery frequency, paid-order history, and tenure. Then use Klaviyo for a bounded sequence of periodic check-ins. Do not treat one calendar as the standard. Start with this progression and adjust it to your store:
+
+<Steps>
+  <Step title="Opening check-in">
+    **Message job:** Remind the subscriber that the subscription is still paused.
+
+    **What to include:** The product's relevant value or benefits, supported by concise social proof when useful.
+
+    **Primary action:** Review and resume.
+
+    **Channel:** Email.
+  </Step>
+  <Step title="Remove common friction">
+    **Message job:** Show that resuming does not mean using the old subscription setup unchanged.
+
+    **What to include:** Relevant next-order, delivery-frequency, quantity, or product choices that can address timing or budget friction.
+
+    **Primary action:** Resume with a subscription that fits.
+
+    **Channel:** Email, or a short SMS if useful.
+  </Step>
+  <Step title="Useful education">
+    **Message job:** Help the subscriber decide whether the product fits their routine again.
+
+    **What to include:** Accurate product-use education, realistic expectations, or a brief consistency reminder.
+
+    **Primary action:** Review and resume.
+
+    **Channel:** Email.
+  </Step>
+  <Step title="Final check-in">
+    **Message job:** Test a bounded discount or credit as one final return lever, then end the sequence without pressure.
+
+    **What to include:** A brief explanation of why you stand behind the paused product and its relevant value or benefits, followed by an optional bounded discount or credit. Say that the sequence is ending, and avoid unsupported product promises.
+
+    **Primary action:** Resume with the final offer.
+
+    **Channel:** Email or a short SMS.
+  </Step>
+</Steps>
+
+Treat this progression as a starting structure, not a fixed number of messages or timing schedule. Use the incentive only after the earlier messages have addressed value, common friction, and useful education. It is a later lever to test, not a rule for every paused subscriber. Keep the discount or credit limited to the final check-in and set it at a level the order can support. Do not train subscribers to expect an incentive whenever they pause.
+
+If the subscriber does not resume after the final check-in, end the flow without pressure. Contact them later only when you have a newly relevant reason or campaign. Do not repeat discounts just because the subscription remains paused.
+
+Each message should have one clear job. Combine stages when that keeps the sequence simpler. Add a situation-specific branch only when you have reliable context. Otherwise, let the progression cover common needs without claiming to know the reason for the pause.
+
+### Optional mass resume for long-paused subscriptions
+
+The normal open-ended path lets the subscriber decide when to resume. A separate option is a planned automatic-resumption campaign for subscriptions that have remained paused for a long time.
+
+In a real-world example, an eight-figure DTC brand resumed long-paused subscriptions in two waves. Before each wave, subscribers received a plain-text email from the store's CEO. The message reminded them of the product's value and benefits, gave advance notice that the subscription would be resumed automatically, and explained that a one-time loyalty discount had been applied. Subscribers could cancel if they did not want the subscription resumed or reply to the email for help.
+
+For your own campaign, you could use two or three waves spaced several days or roughly one week apart. Before each wave, tell subscribers which subscription and products will resume, the scheduled next order date, the one-time offer, and how to cancel or get help. Stop the scheduled resumption if a subscriber chooses another path.
+
+Choose the discount percentage for your economics. One starting test could use 10% to 15% in one batch and a higher percentage in another, then compare resumption rates across batches. Keep the discount one-time and bounded. Do not make an incentive the standard response to every pause. That can teach subscribers to pause in expectation of a later discount.
+
+After the waves, compare resumption rates across batches and review how many subscriptions cancelled, completed the next paid order, and stayed active or changed state later. Use that review to refine the audience, spacing, message, and offer for the next campaign.
 
 ## Make resuming easy
 
-Every resume message should lead to the paused subscription, not a generic store page. The subscriber should be able to see what will resume, when the next order is planned, and what they can still change.
+Every resume message should lead to the paused subscription, not a generic store page. For a defined-duration pause, show the scheduled next order date. An open-ended pause has no next order date while it remains paused. When the subscriber resumes, let them choose or confirm the next order timing and review the subscription setup before confirming.
 
 Before you launch the sequence, check that the path lets the subscriber:
 
-- Review the product, delivery frequency, and next order date.
-- Resume the subscription or choose a resume date without searching for the right control.
-- Make a relevant change before confirming the resumption.
+- Review the product and delivery frequency.
+- Resume the subscription without searching for the right control.
+- For a defined-duration pause, continue with the planned resume, process the next order sooner, choose a short extension, or change the subscription.
+- For an open-ended pause, choose or confirm the next order date and subscription setup before resuming.
+- Adjust the next order date, delivery frequency, quantity, or product when that choice is available.
 - See a clear confirmation after the action is complete.
 
-If the subscriber still needs room, help them extend the pause or adjust the schedule. A discount does not solve a timing problem.
+If the subscriber still needs room, help them use the choices available in your pause model or adjust the schedule. A discount does not solve a timing problem. Address timing or subscription setup first, then use a bounded incentive only as a final return lever when price or another hesitation may still matter.
 
 ## Stop messages when they no longer fit
 
-Pause messages should end as soon as the subscriber's situation changes.
+Pause messages should stop as soon as the subscription is no longer paused or the message no longer applies.
 
-- **Resumed:** stop the pause sequence and move to active-subscriber messages.
-- **Extended or rescheduled:** stop reminders tied to the old date and use the new one.
-- **Cancelled from pause:** stop the pause sequence and move the subscription to the distinct cancelled-from-pause reactivation path.
-- **Still paused after the final check-in:** stop the sequence. Do not turn an open-ended pause into an endless reminder loop.
-
-These stops matter as much as the messages. A reminder about an old date tells the subscriber you were not paying attention.
-
-The cancelled-from-pause reactivation message can build on the context used while the subscription was paused, but it must say that the subscription is now cancelled. It can also use the cancellation reason. Do not send a generic cancellation winback that ignores the paused history. [Reactivating cancelled](/growth-program/winback/recapturing-cancelled) covers the wider reactivation sequence.
+- When a subscriber extends or changes the pause, use the updated timing for future reminders. End an open-ended sequence when its planned messages are complete.
+- If a subscriber cancels while paused, end pause messaging and move the subscription into the distinct cancelled-from-pause reactivation path. [Reactivating cancelled](/growth-program/winback/reactivating-cancelled) covers that sequence.
 
 ## Review what happened
 
-Review completed pause periods, not clicks alone. For each path, look at how many subscribers:
+Review the two models separately. Clicks can help you understand a message, but the subscription outcome matters more.
+
+For a defined-duration model, review how many subscribers:
+
+- Selected each configured duration.
+- Resumed before the planned date.
+- Changed the timing or selected an extension.
+- Resumed automatically.
+- Cancelled while paused.
+- Completed the next planned order after resuming.
+- Remained active, paused again, or cancelled at the next review.
+
+For an open-ended model, review how many subscribers:
 
 - Resumed.
-- Chose a later resume date.
-- Remained paused.
+- Adjusted the next order date or delivery frequency when resuming.
+- Remained paused when the bounded sequence ended.
 - Cancelled from pause.
 - Completed the next planned order after resuming.
+- Remained active, paused again, or cancelled at the next review.
 
-Then compare the result with the pause type, selected duration, planned resume date, message timing, product, delivery frequency, and the subscriber's actual actions. If one path repeatedly produces extensions, the timing may be too early or the original delivery frequency may still be wrong. If subscribers resume and then cancel around the next order, the resume experience may not be setting the right expectation.
+Then compare the result with the configured duration or review point, message timing, product, delivery frequency, paid-order history, tenure, and the subscriber's actual actions. If one defined option repeatedly leads to an extension, that option may not fit the product or cadence. If open-ended subscribers remain paused after the sequence, the replenishment estimate, message progression, or resume path may need work. If subscribers resume and then cancel around the next order, the resume experience may not be setting the right expectation.
 
 Use your own completed periods as the baseline. The goal is not to force every pause into a quick resumption. It is to help the subscriber resume at a time that fits and reduce avoidable cancellations caused by surprise or poor timing.
 
-## The artifact: the pause-state sequence plan
+### Check whether the message was noticed
 
-Fill in one row for each pause situation you support. Keep the message job and main action narrow enough that a subscriber can understand both at a glance.
+A subscriber may stay paused because they did not notice every message. Review delivery, recorded opens, clicks, and the actual resume action together. Treat opens as directional only. Some opens can be recorded automatically, and some real opens may not be recorded.
 
-| Pause situation | Timing you will use | Message job | Main action | Stop condition | Outcome to review |
-|---|---|---|---|---|---|
-| **Defined pause** | *At pause start; before the planned resume: ______* | Confirm what resumes and when | Review, resume, or change the date | Date changes, resume, or cancel | Resume, extension, cancel, next order completed |
-| **Extended pause** | *When the resume date changes: ______* | Confirm the new date | Review the updated pause | New date confirmed | Later resume or another extension |
-| **Open-ended pause** | *First review point: ______* | Ask for the next decision | Resume, choose a date, or remain paused | Action or final check-in | Resume, defined pause, remain paused, or cancel |
-| **Resumed subscription** | *Immediately after resumption* | Confirm what happens next | Review the next order | Resumption confirmed | Next order completed or changed |
-| **Cancelled from pause** | *After cancellation: ______* | Confirm the subscription is cancelled and offer the relevant reactivation path | Review reactivation options | Reactivation or sequence end | Reactivation, no action, or later reactivation |
+Do not restart the full pause sequence or resend every message to recorded non-openers. If a message is still relevant and the subscriber has not acted, allow one bounded follow-up before the planned sequence ends. Change one useful element, such as the subject line, sender, timing, or channel. Use another channel only when it provides a clearer or faster path to resume, not to duplicate the email. Judge the follow-up through clicks, resume, the next paid order, and later subscription state.
 
-Use this plan to set up the sequence in the tools you already use. Read it again after a completed review period, change the rows that are not helping, and leave the paths that are working alone.
+## The artifact: two pause-model operating checklists
+
+Use the checklist for the pause model your store offers. Each row is a condition to meet before launch or a review to complete afterward.
+
+### Defined-duration pause
+
+| Stage | Ready when |
+| :--- | :--- |
+| **Pause options** | The configured durations fit the product, normal delivery frequency, and the amount of extra time a subscriber may need. Each option produces a clear scheduled next order date. |
+| **Confirmation** | The subscriber sees the selected duration, paused products, and scheduled next order date. |
+| **Reminder** | A reminder is set relative to the scheduled next order date. It says what will resume and when, includes only relevant product value or education, and offers a support reply. |
+| **Subscriber choices** | The subscriber can continue with the scheduled order, process it sooner, choose a short product-appropriate extension, or make another relevant subscription change. |
+| **Changed timing** | An extension or date change updates the scheduled next order date, and future reminders follow the new date. |
+| **Stop or reroute** | Pause messaging ends when the subscription is no longer paused or the message no longer applies. A cancellation moves to the [cancelled-from-pause reactivation path](/growth-program/winback/reactivating-cancelled). |
+| **Review** | Review duration selections, extensions, early and automatic resumes, cancellations, the next paid order, and later subscription state. Change a duration or reminder choice when the pattern shows it does not fit. |
+
+### Open-ended pause
+
+| Stage | Ready when |
+| :--- | :--- |
+| **Review point** | The first check-in is timed from the product's expected replenishment window, delivery frequency, paid-order history, and subscriber tenure. The message does not guess why the subscriber paused. |
+| **Bounded sequence** | The messages progress through relevant product value, common timing or subscription friction, useful education, and a final bounded incentive only when it fits. The sequence has a clear ending. |
+| **Each message** | Each message has one clear job and one direct path to the paused subscription. Another channel is used only when it gives the subscriber a clearer or faster path to resume, not to repeat the email. |
+| **Resume choices** | Before resuming, the subscriber can choose the next order date and review the subscription setup. They can also change the subscription, remain paused, cancel, or ask support for help. |
+| **Attention follow-up** | If a message still matters and the subscriber has not acted, allow one bounded follow-up that changes the subject line, sender, timing, or channel. Do not restart the full sequence or resend every message to recorded non-openers. |
+| **Optional long-paused campaign** | If you use planned automatic resumption, give advance notice, show what will resume and when, make cancellation or support easy, keep any incentive one-time and bounded, and stop the resumption when the subscriber chooses another path. |
+| **Stop or reroute** | The sequence ends when the subscriber resumes, cancels, changes state, the message no longer applies, or the planned messages are complete. A cancellation moves to the [cancelled-from-pause reactivation path](/growth-program/winback/reactivating-cancelled). |
+| **Review** | Review resumes, subscription changes, continued pauses, cancellations, the next paid order, and later subscription state. Use the pattern to adjust the review point, message progression, or resume path. |
+
+Use the relevant table as a pre-launch check. After a completed review period, return to the final row and decide what to keep, change, or stop.
 
 ## Where next
 

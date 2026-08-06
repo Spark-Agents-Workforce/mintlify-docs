@@ -484,6 +484,37 @@ nav-tag-pill,
   overflow: visible !important;
 }
 
+/* Mintlify renders a page's navigation group as its eyebrow. Keep that group
+   for navigation, then show the numbered lesson label on the M8 and M9 pages. */
+html[data-current-path="/growth-program/churn-defense/cancellation-flow-design"] #header .eyebrow,
+html[data-current-path="/growth-program/churn-defense/save-offers"] #header .eyebrow,
+html[data-current-path="/growth-program/churn-defense/dunning"] #header .eyebrow,
+html[data-current-path="/growth-program/churn-defense/reading-your-churn"] #header .eyebrow,
+html[data-current-path="/growth-program/winback/reactivating-cancelled"] #header .eyebrow,
+html[data-current-path="/growth-program/winback/reactivating-paused"] #header .eyebrow,
+html[data-current-path="/growth-program/winback/winback-economics"] #header .eyebrow {
+  font-size: 0 !important;
+}
+
+html[data-current-path="/growth-program/churn-defense/cancellation-flow-design"] #header .eyebrow::before,
+html[data-current-path="/growth-program/churn-defense/save-offers"] #header .eyebrow::before,
+html[data-current-path="/growth-program/churn-defense/dunning"] #header .eyebrow::before,
+html[data-current-path="/growth-program/churn-defense/reading-your-churn"] #header .eyebrow::before,
+html[data-current-path="/growth-program/winback/reactivating-cancelled"] #header .eyebrow::before,
+html[data-current-path="/growth-program/winback/reactivating-paused"] #header .eyebrow::before,
+html[data-current-path="/growth-program/winback/winback-economics"] #header .eyebrow::before {
+  font-size: 16px;
+  line-height: 0.8;
+}
+
+html[data-current-path="/growth-program/churn-defense/cancellation-flow-design"] #header .eyebrow::before { content: "M8.1 · Save"; }
+html[data-current-path="/growth-program/churn-defense/save-offers"] #header .eyebrow::before { content: "M8.2 · Save"; }
+html[data-current-path="/growth-program/churn-defense/dunning"] #header .eyebrow::before { content: "M8.3 · Save"; }
+html[data-current-path="/growth-program/churn-defense/reading-your-churn"] #header .eyebrow::before { content: "M8.4 · Save"; }
+html[data-current-path="/growth-program/winback/reactivating-cancelled"] #header .eyebrow::before { content: "M9.1 · Revive"; }
+html[data-current-path="/growth-program/winback/reactivating-paused"] #header .eyebrow::before { content: "M9.2 · Revive"; }
+html[data-current-path="/growth-program/winback/winback-economics"] #header .eyebrow::before { content: "M9.3 · Revive"; }
+
 /* Extra room under page eyebrow so the drop-shadow clears the H1 */
 eyebrow,
 .eyebrow {
@@ -816,6 +847,72 @@ html.dark [data-table-wrapper] th {
   padding-right: 14px !important;
 }
 .os-recovery-schedule [data-table-wrapper] [data-component-part="scroll-area-viewport"] {
+  overflow-x: hidden !important;
+}
+
+/* M9.2 pause models: keep the label compact and give explanations more room. */
+.os-pause-model-table [data-table-wrapper] table {
+  table-layout: fixed;
+  width: 100%;
+  max-width: 100%;
+}
+.os-pause-model-table [data-table-wrapper] th,
+.os-pause-model-table [data-table-wrapper] td {
+  min-width: 0 !important;
+  white-space: normal !important;
+}
+.os-pause-model-table [data-table-wrapper] th:nth-child(1),
+.os-pause-model-table [data-table-wrapper] td:nth-child(1) {
+  width: 16%;
+}
+.os-pause-model-table [data-table-wrapper] th:nth-child(2),
+.os-pause-model-table [data-table-wrapper] td:nth-child(2) {
+  width: 23%;
+}
+.os-pause-model-table [data-table-wrapper] th:nth-child(3),
+.os-pause-model-table [data-table-wrapper] td:nth-child(3) {
+  width: 24%;
+}
+.os-pause-model-table [data-table-wrapper] th:nth-child(4),
+.os-pause-model-table [data-table-wrapper] td:nth-child(4) {
+  width: 37%;
+}
+.os-pause-model-table [data-table-wrapper] [data-component-part="scroll-area-viewport"] {
+  overflow-x: hidden !important;
+}
+
+/* M9.2 defined pauses: compact message labels, wider explanatory columns. */
+.os-defined-pause-table [data-table-wrapper] table {
+  table-layout: fixed;
+  width: 100%;
+  max-width: 100%;
+}
+.os-defined-pause-table [data-table-wrapper] th,
+.os-defined-pause-table [data-table-wrapper] td {
+  min-width: 0 !important;
+  white-space: normal !important;
+}
+.os-defined-pause-table [data-table-wrapper] th:nth-child(1),
+.os-defined-pause-table [data-table-wrapper] td:nth-child(1) {
+  width: 14%;
+}
+.os-defined-pause-table [data-table-wrapper] th:nth-child(2),
+.os-defined-pause-table [data-table-wrapper] td:nth-child(2) {
+  width: 17%;
+}
+.os-defined-pause-table [data-table-wrapper] th:nth-child(3),
+.os-defined-pause-table [data-table-wrapper] td:nth-child(3) {
+  width: 26%;
+}
+.os-defined-pause-table [data-table-wrapper] th:nth-child(4),
+.os-defined-pause-table [data-table-wrapper] td:nth-child(4) {
+  width: 25%;
+}
+.os-defined-pause-table [data-table-wrapper] th:nth-child(5),
+.os-defined-pause-table [data-table-wrapper] td:nth-child(5) {
+  width: 18%;
+}
+.os-defined-pause-table [data-table-wrapper] [data-component-part="scroll-area-viewport"] {
   overflow-x: hidden !important;
 }
 

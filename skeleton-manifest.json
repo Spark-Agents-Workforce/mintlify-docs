@@ -647,7 +647,7 @@
     "links": [
       "/growth-program/account-area/portal-as-retention",
       "/growth-program/winback/reactivating-paused",
-      "/growth-program/winback/recapturing-cancelled"
+      "/growth-program/winback/reactivating-cancelled"
     ],
     "status": "PRODUCTION"
   },
@@ -661,6 +661,19 @@
       "/operate/memberships"
     ],
     "status": "PRODUCTION"
+  },
+  "growth-program/account-area/support-as-retention": {
+    "ia": "M7.5",
+    "title": "Support as retention",
+    "platform": "any",
+    "links": [
+      "/growth-program/first-60-days/welcome-sequence",
+      "/growth-program/messaging/lifecycle-map",
+      "/growth-program/account-area/portal-as-retention",
+      "/growth-program/account-area/flexibility-as-retention",
+      "/growth-program/churn-defense/cancellation-flow-design"
+    ],
+    "status": "SKELETON"
   },
   "growth-program/churn-defense/cancellation-flow-design": {
     "ia": "M8.1",
@@ -698,12 +711,12 @@
     "title": "Reading your churn",
     "platform": "any",
     "links": [
-      "/growth-program/winback/recapturing-cancelled",
+      "/growth-program/winback/reactivating-cancelled",
       "/growth-program/numbers/churn-math"
     ],
     "status": "PRODUCTION"
   },
-  "growth-program/winback/recapturing-cancelled": {
+  "growth-program/winback/reactivating-cancelled": {
     "ia": "M9.1",
     "title": "Reactivating cancelled",
     "platform": "any",
@@ -783,7 +796,7 @@
       "/growth-program/messaging/lifecycle-map",
       "/growth-program/account-area/portal-as-retention",
       "/growth-program/churn-defense/cancellation-flow-design",
-      "/growth-program/winback/recapturing-cancelled",
+      "/growth-program/winback/reactivating-cancelled",
       "/growth-program/cadence/operating-rhythm"
     ]
   },
