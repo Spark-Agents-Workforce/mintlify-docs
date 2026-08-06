@@ -4,9 +4,7 @@ description: "Measure whether each return path produces paid orders, contributio
 ia: "M9.3"
 ---
 
-A reactivation or resume is progress, not the final result. A subscription can return to active status and never complete a paid order. A lifecycle or advertising tool can also credit a return to a message without proving that the message caused it.
-
-This lesson helps you follow each return path through paid orders, direct costs, and later subscriber behavior. The result is one decision: keep, change, expand, or stop the path.
+A reactivation or resume is the first action. The economic result is what the return produces after costs and whether paid orders continue over time. This lesson helps you follow each return path through paid orders, direct costs, and later subscriber behavior. The result is one decision: keep, change, expand, or stop the path.
 
 <div className="os-pull not-prose">
   <p>Count the paid return. Then count whether it lasts.</p>
@@ -14,24 +12,25 @@ This lesson helps you follow each return path through paid orders, direct costs,
 
 ## What this lesson gives you
 
-- A way to compare voluntary-cancellation, payment-recovery-ended, cancelled-from-pause, and paused-subscriber returns without mixing them together.
-- A plain calculation for gross returned revenue, contribution after return costs, and estimated incremental impact.
-- A return economics record with an owner, a review date, and a decision to keep, change, expand, or stop each path.
+- A way to compare cancelled-subscription reactivation and paused-subscription resumption without combining their results.
+- A staged review from the eligible group through the first action, paid orders, later health, and contribution after costs.
+- A return-path scorecard with a diagnosis, a decision, an owner, and a next review.
 
 ## Keep each return path separate
 
 [Reactivating cancelled](/growth-program/winback/reactivating-cancelled) and [Resuming paused](/growth-program/winback/reactivating-paused) define who enters each path, what the subscriber sees, and when messages stop. Bring those plans here. Do not combine their results.
 
-| Return path | Immediate event | First paid outcome | Later health read |
+| Return path | First action | First paid outcome | Later health read |
 | :--- | :--- | :--- | :--- |
-| **Voluntary cancellation** | The cancelled subscription reactivates | A paid order completes after reactivation | A later paid order, another cancellation, and whether the same reason returns |
-| **Payment recovery ended** | The cancelled subscription reactivates after recovery has ended | Payment succeeds and a paid order completes | A later paid renewal, another cancellation after payment recovery ends, or another voluntary cancellation |
-| **Cancelled from pause** | The subscription that was paused and then cancelled reactivates | A paid order completes after reactivation | A later paid order, another appropriate pause, or another cancellation |
-| **Paused subscriber** | The subscription resumes or the subscriber chooses a return date | The next planned paid order completes | A later paid order, another appropriate pause or extension, or cancellation |
+| **Cancelled: voluntary cancellation** | The cancelled subscription reactivates | A paid order completes after reactivation | A later paid order, another cancellation, and whether the same reason returns |
+| **Cancelled: payment recovery ended** | The cancelled subscription reactivates after recovery has ended | Payment succeeds and a paid order completes | A later paid renewal, another cancellation after payment recovery ends, or a voluntary cancellation |
+| **Cancelled: cancelled from pause** | The subscription that was paused and then cancelled reactivates | A paid order completes after reactivation | A later paid order, another appropriate pause, or another cancellation |
+| **Paused: defined duration** | The subscription resumes automatically on its scheduled date or earlier after the subscriber acts | The next planned paid order completes | A later paid order, an extension or another appropriate pause, or cancellation |
+| **Paused: open-ended** | The subscription resumes after the subscriber chooses to return | The next planned paid order completes | A later paid order, another appropriate pause, or cancellation |
 
-These paths start from different subscriber decisions. A scheduled resume may have happened without a reminder. A voluntary cancellation may require a changed product, cadence, or offer. A subscription that ended after payment recovery needs a working payment path. A subscription cancelled from pause needs its own reactivation read because the subscriber moved from a temporary stop to a full cancellation. Their raw return rates are not directly comparable.
+These paths start from different subscriber decisions. A voluntary cancellation may require a changed product, cadence, or offer. A subscription that ended after payment recovery needs a working payment path. A subscription cancelled from pause needs its own reactivation read because the subscriber moved from a temporary stop to a full cancellation. Their raw return rates are not directly comparable.
 
-For a paused path, remaining paused or choosing a later date can be the right outcome. Do not call it a failed return when the message helped the subscriber make an appropriate decision.
+Review defined-duration and open-ended pauses separately. A defined-duration pause already has a scheduled resume, so distinguish automatic resumes from early resumes after a message. An open-ended pause has no automatic resume date. Remaining paused can still be the right outcome when the subscriber is not ready to return.
 
 ## Measure the return in stages
 
@@ -39,101 +38,76 @@ Use the eligible group at path entry as the main denominator. Keep the definitio
 
 <Steps>
   <Step title="Record the eligible group">
-    Count the subscriptions that met the path's entry rules before outreach. Keep voluntary cancellations, payment-recovery-ended cancellations, cancelled-from-pause subscriptions, and paused subscriptions in separate groups.
+    Count the subscriptions that met the path's entry rules before the return sequence or scheduled resume. Keep voluntary cancellations, payment-recovery-ended cancellations, cancelled-from-pause subscriptions, defined-duration pauses, and open-ended pauses in separate groups.
   </Step>
-  <Step title="Record the immediate return">
-    Count reactivations or resumes. This shows that the return action worked, but it does not show collected revenue yet.
+  <Step title="Record the first action">
+    Count reactivations for cancelled subscriptions and resumes for paused subscriptions. For defined-duration pauses, separate automatic resumes from early resumes after a message. This records the first action, not paid revenue.
   </Step>
   <Step title="Confirm the first paid order">
-    Count a return only after the first paid order completes. A click, payment-information update, or active status alone is not a paid return.
+    Count a paid return only after the first paid order completes. A click or payment-information update is not a completed paid order.
   </Step>
   <Step title="Read the later outcome">
-    Use the same review window for everyone in the group. Count later paid orders, repeat cancellation, the repeated reason when available, and the final subscription state.
+    Use the same review window for everyone in the group. Count later paid orders, repeat cancellation, the cancellation reason when available, and the final subscription state.
   </Step>
   <Step title="Add costs and make the decision">
-    Calculate contribution after return costs, record the evidence type, then decide whether to keep, change, expand, or stop the path.
+    Calculate contribution after return costs, identify the weakest stage, then decide whether to keep, change, expand, or stop the path.
   </Step>
 </Steps>
 
 Useful rates are:
 
-```text Return rates
-Immediate return rate = reactivated or resumed subscriptions ÷ eligible subscriptions
-Paid return rate = subscriptions with a first paid order ÷ eligible subscriptions
-Durable paid return rate = subscriptions with the chosen later paid outcome ÷ eligible subscriptions
-Later-order rate = subscriptions with a later paid order ÷ subscriptions with a first paid order
-Repeat-ending rate = returned subscriptions that end again ÷ subscriptions with a first paid order
-```
+| Rate | Calculation |
+| :--- | :--- |
+| **Immediate action rate** | Reactivated cancelled subscriptions or resumed paused subscriptions ÷ eligible subscriptions in that path |
+| **Paid return rate** | Subscriptions with a first paid order ÷ eligible subscriptions |
+| **Later paid outcome rate** | Subscriptions with the defined later paid outcome ÷ eligible subscriptions |
+| **Later-order rate** | Subscriptions with a later paid order ÷ subscriptions with a first paid order |
+| **Repeat-ending rate** | Subscriptions with a first paid order that later end again ÷ subscriptions with a first paid order |
 
-Choose a review window that gives the returned subscriber a fair chance to reach a later order. A daily consumable, a longer-cadence wellness product, and an occasional-use product should not inherit one universal window. Mark groups that have not reached the full window as incomplete.
+Define the later paid outcome before reviewing the group. It should be a later completed order at a product-appropriate checkpoint, measured the same way for everyone in that path.
+
+Choose a review window that gives the returned subscriber a fair chance to reach the later checkpoint. A daily consumable, a longer-cadence wellness product, and an occasional-use product should not inherit one universal window. Mark a group incomplete until every included subscription has had the full review window. Do not compare an incomplete group with a completed one as if both were final.
 
 ## Count what the return produced and cost
 
 [Subscription economics](/growth-program/numbers/subscription-economics) owns the contribution-margin definition. Use the same definition here so the return path can be compared with other growth work.
 
-- **Gross returned revenue** is sales from completed paid orders in the return group before direct costs. It shows volume, not profit.
-- **Revenue reductions** include discounts, redeemed credits, refunds, and returns when they are not already removed from the revenue figure.
-- **Direct order costs** include product cost, fulfillment, merchant-funded shipping, and payment costs.
-- **Return-path costs** include gifts, SMS, paid media, direct mail, and extra support work when those costs are material to the decision.
-- **Return-path contribution** is what remains after the reductions and direct costs above.
-
-```text Return-path contribution
-Gross returned revenue
-- discounts, credits, refunds, and returns not already reflected
-- product, fulfillment, merchant-funded shipping, and payment costs
-- gift, message, media, and other material return-path costs
-= return-path contribution
-```
+| Calculation step | What to include |
+| :--- | :--- |
+| **Start with gross returned revenue** | Sales from completed paid orders in the return group before direct costs. This shows volume, not profit. |
+| **Subtract revenue reductions** | Discounts, redeemed credits, refunds, and returns when they are not already removed from the revenue figure. |
+| **Subtract direct order costs** | Product cost, fulfillment, merchant-funded shipping, and payment costs. |
+| **Subtract return-path costs** | Gifts, SMS, paid media, direct mail, and extra support work when those costs are material to the decision. |
+| **Result: return-path contribution** | What remains after the reductions and direct costs above. |
 
 Avoid counting a cost twice. If your sales report already shows revenue after discounts, credits, refunds, or returns, do not subtract them again. If you use gross margin percentage to account for product cost, do not subtract product cost again.
 
-Divide return-path contribution by the eligible group, not only by the subscribers who returned. This keeps the cost of non-responders visible.
-
-```text Contribution per eligible subscription
-Return-path contribution ÷ eligible subscriptions
-```
+Calculate **contribution per eligible subscription** by dividing return-path contribution by the eligible subscriptions in that path. Use the full eligible group, not only subscribers who returned, so the cost of non-responders remains visible.
 
 Use realized paid orders through a common window before relying on a long-range forecast. If you project later value, build the projection from mature returned groups and label it as a projection.
 
-## Read results at the level that changes the decision
+## Find the weak stage
 
-| View | What to review | Decision it can change |
+Review each return path and message version first. Split the result by cancellation reason when available, pause model, offer, product, or cadence only when the split changes what you will do next.
+
+| What looks weak | What to review next | Where the change belongs |
 | :--- | :--- | :--- |
-| **Return path or campaign** | Eligible group, immediate returns, first paid orders, later paid orders, contribution, and subscriber pressure | Keep, change, expand, or stop the path |
-| **Cancellation or pause reason** | Whether the original issue changed and whether the same reason appears again | Change the message, return setup, or upstream experience |
-| **Offer** | Redemptions, actual incentive cost, first paid orders, and later contribution | Keep, narrow, replace, or remove the offer |
-| **Product and cadence** | Returned setup, paid orders, later orders, and repeated cancellation | Change the product path, quantity, timing, or cadence |
-| **Individual return** | Return state, first paid order, later paid behavior, support involvement, and final state | Resolve an exception or improve the self-serve path |
+| **First action** | Message relevance, timing, and whether the return action is clear and available | Update the message, timing, or direct return path in Reactivating cancelled or Resuming paused |
+| **First paid order** | Payment path, next order timing, returned subscription setup, and the choices shown before confirmation | Fix the payment or return setup and give the subscriber a clearer product, cadence, quantity, or next-order choice |
+| **Later health** | Later paid orders, repeated cancellation, another pause, and the original cancellation problem | Improve the product, cadence, return experience, or the upstream problem identified in Reading your churn |
+| **Contribution** | Incentive cost, merchant-funded shipping, channel cost, direct mail, and material support work | Narrow the audience, reduce the cost, change the offer, or stop the added spend |
 
-Stop adding report cuts when another cut would not change the decision. Small groups can create dramatic rates that do not hold up when more subscribers reach the review window.
+Stop adding report cuts when another cut would not change the decision. Small groups can create dramatic rates that do not hold up when more subscriptions reach the full review window.
 
-## Separate attributed results from incremental results
+## Know what your platform report tells you
 
-Your lifecycle or advertising tool may report reactivations, resumes, and revenue after a message. Those are **platform-attributed results**. They are useful for checking delivery, comparing paths under the same attribution rules, and finding places to investigate.
+Klaviyo, your subscription platform, or another reporting tool may show reactivations, resumes, and revenue after a message under its reporting rules. These platform-attributed results are useful for monitoring a path and comparing versions under the same rules.
 
-Attributed results do not prove that the message caused the return. Some subscribers would have returned without the campaign, especially scheduled pauses and former subscribers whose need naturally came back.
+The report does not always show what the message alone caused. This matters most when a subscriber could have returned without added outreach, such as a scheduled resume. Without a credible comparison, describe the result as observed or platform-attributed, not incremental.
 
 <Note>
-  Attributed results show what happened under a platform's attribution rules. A randomized holdout estimates what the return path changed.
+  Use [The testing calendar](/growth-program/cadence/testing-calendar) when a material spend, incentive, or expansion decision needs a formal comparison. M10 owns the test launch, read date, and closeout.
 </Note>
-
-Use a holdout when the causal answer would change a material decision, such as adding paid media, increasing an incentive, or expanding a costly path.
-
-1. Start with one clearly eligible group.
-2. Randomly hold back part of that group before the added treatment begins.
-3. Give the holdout the normal subscriber experience and essential service messages, but not the added treatment being tested.
-4. Give both groups the same review window.
-5. Compare paid return rate and contribution per eligible subscription.
-
-```text Estimated incremental paid return rate
-Paid return rate for the treated group - paid return rate for the holdout group
-```
-
-```text Estimated incremental contribution per eligible subscription
-Treated contribution per eligible subscription - holdout contribution per eligible subscription
-```
-
-There is no universal holdout share or review window. The choice depends on eligible volume, product cadence, and the decision at stake. If the groups are too small or incomplete, mark the result as directional and keep collecting. [The testing calendar](/growth-program/cadence/testing-calendar) owns the launch, read date, and closeout of the test.
 
 ## Decide where effort and spend belong
 
@@ -143,51 +117,42 @@ Start with the lowest-cost relevant path that gives the subscriber a clear way t
 | :--- | :--- |
 | **Keep** | The path produces paid orders and positive contribution, later behavior is acceptable, and the subscriber experience remains clear. |
 | **Change** | Subscribers reactivate or resume but do not complete a paid order, return into the wrong setup, or end again for the same unresolved reason. |
-| **Expand** | A completed comparison suggests positive incremental contribution after the added costs, later outcomes remain healthy, and the wider audience still fits the path. Require whatever margin of safety your business needs. |
+| **Expand** | The path produces positive contribution, later outcomes remain healthy, and the wider audience still fits. Use a formal comparison before materially increasing spend or incentive cost when you need to know what the added effort changed. |
 | **Stop** | The path is no longer relevant, costs exceed contribution, repeated endings show the original problem remains, or subscriber pressure is too high. |
 
 Do not use one path's economics to justify another. A voluntary-cancellation offer does not set the budget for payment-recovery-ended subscribers. A cancelled-from-pause reactivation does not belong in the ordinary voluntary-cancellation group. A scheduled pause does not prove that a reminder caused the resume. Review each path on its own job.
 
-No universal contribution target clears every path. Without a credible comparison, label the result observed or attributed. Do not call it incremental.
+No universal contribution target clears every path. Set the threshold from your own costs, margin requirements, and the decision at stake.
 
-## The artifact: the return economics record
+## The artifact: the return-path scorecard
 
-Complete one record for each path that changes a decision. Split it further by reason, offer, product, or cadence only when the split changes what you will do.
+Complete one scorecard for each separate return path and message version. Do not combine cancelled and paused subscriptions, defined-duration and open-ended pauses, or completed and incomplete review groups. Split the scorecard further only when the split changes what you will do.
 
-| Field | Your entry |
+| Scorecard field | What to record |
 | :--- | :--- |
-| **Return path** | Voluntary cancellation, payment recovery ended, cancelled from pause, or paused subscriber |
-| **Eligible group** | State, reason, product, cadence, prior treatment, and current eligibility |
-| **What this path should accomplish** | What should be different or easier for the subscriber? |
-| **Primary action and stop conditions** | Which return action does the path offer, and when does outreach stop? |
-| **Review window** | Which completed, comparable period will you use? |
-| **Eligible subscriptions** | ______ |
-| **Immediate returns** | ______ reactivated or resumed; ______% of eligible |
-| **First paid orders** | ______ subscriptions; ______% of eligible |
-| **Later paid orders** | ______ subscriptions; ______% of paid returns |
-| **Repeat endings** | ______ subscriptions; repeated reason or how the subscription ended again: ______ |
-| **Gross returned revenue** | ______ from completed paid orders in the review window |
-| **Revenue reductions** | Discounts, credits, refunds, and returns not already reflected: ______ |
-| **Direct order costs** | Product, fulfillment, merchant-funded shipping, and payment costs: ______ |
-| **Return-path costs** | Gift, message, media, direct mail, or material support costs: ______ |
-| **Return-path contribution** | ______ total; ______ per eligible subscription |
-| **How the result was credited** | How your tool credited the result and over what period: ______ |
-| **Evidence the path caused the result** | No holdout, directional comparison, or completed randomized holdout: ______ |
-| **Subscriber pressure** | Unsubscribes, complaints, support load, or other signal: ______ |
-| **Decision** | Keep, change, expand, or stop: ______ |
-| **Owner and next review** | Owner: ______; review date or completed period: ______ |
+| **Path and version** | Cancelled or paused; the specific return path or pause model; the message or campaign version |
+| **Review group** | Entry period, review-through date, and whether the group is incomplete or complete |
+| **Eligible subscriptions** | The subscriptions that met the path's entry rules before the sequence or scheduled resume |
+| **First actions** | Reactivated cancelled subscriptions or resumed paused subscriptions; for defined-duration pauses, automatic and early resumes separately |
+| **Paid outcomes** | Subscriptions with a first paid order, a later paid order, and a repeat ending |
+| **Revenue and costs** | Gross returned revenue, reductions not already reflected, direct order costs, and material return-path costs |
+| **Experience signals** | Unsubscribes, complaints, support load, or another signal that the path is creating pressure |
+| **Calculated results** | Immediate action rate, paid return rate, later paid outcome rate, later-order rate, repeat-ending rate, total contribution, and contribution per eligible subscription |
+| **Diagnosis** | The weakest stage and the message, timing, setup, product, cadence, experience, or cost that needs review |
+| **Decision** | Keep, change, expand, or stop, with one sentence explaining why |
+| **Owner and next review** | The person responsible and the next completed period or review date |
 
-Save the record beside the return plans from the first two M9 lessons. Bring the decision and next review date into M10's operating calendar. Return repeated cancellation reasons or poor product and cadence fit to [Reading your churn](/growth-program/churn-defense/reading-your-churn) instead of trying to solve them with more messages.
+Save the scorecard beside the return plans from the first two M9 lessons. Bring the decision and next review into M10's operating calendar. Return repeated cancellation reasons or poor product and cadence fit to [Reading your churn](/growth-program/churn-defense/reading-your-churn) instead of trying to solve them with more messages.
 
 ## Where next
 
 <div className="os-where-next">
 <Columns cols={1}>
   <Card icon="calendar-range" title="The weekly/monthly/quarterly rhythm" href="/growth-program/cadence/operating-rhythm">
-    Put the return economics record on a recurring review and give every review one decision.
+    Put the return-path scorecard on a recurring review and give every review one decision.
   </Card>
   <Card icon="flask-conical" title="The testing calendar" href="/growth-program/cadence/testing-calendar">
-    Schedule and close a holdout when a material spend or expansion decision needs an incremental read.
+    Schedule and close a formal comparison when a material spend, incentive, or expansion decision needs a stronger read.
   </Card>
 </Columns>
 </div>
