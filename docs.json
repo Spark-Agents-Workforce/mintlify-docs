@@ -274,13 +274,6 @@
             "pages": [
               "growth-program-v2/index"
             ]
-          },
-          {
-            "group": "M8 · Save",
-            "icon": "shield",
-            "pages": [
-              "growth-program-v2/churn-defense/dunning"
-            ]
           }
         ]
       }
