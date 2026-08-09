@@ -117,9 +117,14 @@ Ease: `cubic-bezier(0.16, 1, 0.3, 1)` (~180–350ms).
 - Do not document internal WayFX/Luna history — OpenSubs docs start at OpenSubs.
 - No pricing figures in docs without a corpus source; pricing lives on the marketing site.
 
-## Navigation taxonomy (LOCKED 2026-07-04)
+## Navigation taxonomy (LOCKED 2026-07-04; v2 staging addendum 2026-08-09)
 
-Four tabs, this order: **Start here · Scripts · Platform · Growth Program**.
+Four tabs, this order: **Start here · Scripts · Platform · Growth Program** — plus a
+TEMPORARY fifth tab **Growth Program v2** (JD direction, 2026-08-09): the rolling
+recipe-form rewrite staged NEXT TO the original. Pages land under `growth-program-v2/`
+as they are rebuilt; the original Growth Program tab stays untouched until cutover, then
+v2 replaces it (redirects at cutover). Do not add new content to the OLD growth-program/
+tree during the rewrite.
 These are the product's part names — they match the marketing site verbatim.
 - Prose refers to sections by these names: "the Scripts", "the Platform",
   "the Growth Program". NEVER the old task names ("the instant win",

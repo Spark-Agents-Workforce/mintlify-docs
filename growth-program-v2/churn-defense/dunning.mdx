@@ -1,0 +1,129 @@
+---
+title: "Dunning"
+description: "Failed payments quietly take a quarter of your churn. Recover about half of them with settings you already own."
+ia: "M8.3"
+---
+
+import { InOpenSubs } from "/snippets/InOpenSubs.jsx";
+
+**Outcome:** involuntary churn stops being invisible — silent retries work the first shift, notices decay instead of escalate, failed-payment cancels get tagged and routed, and you read one recovery number with a named denominator.
+
+**Time:** one afternoon to audit and configure. Two full recovery windows (four to eight weeks) before you judge it.
+
+**You'll touch:** your subscription platform's payment-recovery settings, the dunning notices (in-platform or your ESP, depending on who's allowed to send them), the portal's payment-update path, and one dashboard.
+
+## The picture
+
+A cancellation is a decision. A failed payment is a card mumbling — and your revenue can't tell the difference. Failed payments account for roughly a quarter of subscription churn in physical goods (merchandise 23%, Stripe network). {/* cid:save-dunning#000 */} Across the largest published sources the involuntary share of subscription churn runs 24–42% — quote the share with its panel, never as a universal constant. {/* cid:numbers-churn-benchmarks#012 */} You will also meet "50%+ of churn is involuntary." That number traces to a survey sponsored by FlexPay, who sells failed-payment recovery, and Stripe's transaction data contradicts it two to one. {/* cid:numbers-kpi-dashboard#019 */}
+
+Now the good news: this is the cheapest churn you will ever fight. No save offer, no discount, no persuasion — the subscriber already wanted the order. And the bar is lower than the vendors let on: a good processor default already recovers ~51% of failed payments; intelligence on top adds points, not multiples — reason-aware retries +4pp, ML timing +6% converted (per the vendors selling that intelligence). {/* cid:save-dunning#010 cid:save-dunning#009 */} Most brands don't need better dunning software. They need to find the dunning they already own, point it at the right decline codes, and stop the leak from being unmeasured.
+
+<div className="os-pull not-prose">
+  <p>The subscriber didn't choose to leave. Don't make them work to stay.</p>
+</div>
+
+## Inputs
+
+Pull five numbers before touching anything. If one can't be pulled, that's a finding — write it down.
+
+| Number | Where to find it | Worry when |
+| :--- | :--- | :--- |
+| Involuntary share of your churn — failed-payment cancels ÷ all cancels, same window | Your platform's recovery or cancellation dashboard | You can't split it. In our audit of four large subscription brands, none could. {/* cid:save-churn-diagnostics#016 */} |
+| First-attempt failure rate | Processor or platform billing report | You benchmark it against a vendor's number. Recurring-payment "failure rates" disagree 3x+ across vendors because they measure different denominators — name the basis or drop the number (Recharge 7% of first attempts, Recurly 13% of monthly transactions, Stay AI ~24% of recurring card transactions; all three sell recovery). {/* cid:save-dunning#027 */} |
+| Decline-reason mix | Dunning dashboard or processor export | You're planning around expired cards. Insufficient funds dominates declines at 40.6% while expired cards are just 1.1% — the expired-card narrative is wrong in network data (Churnkey × Stripe; Churnkey sells dunning). {/* cid:save-dunning#025 cid:numbers-churn-benchmarks#011 cid:numbers-kpi-dashboard#018 */} |
+| Recovery rate, with its denominator | Skio: recovered ÷ exited dunning. Stay AI: recoveries ÷ (recoveries + cancellations) | You quote it without the denominator, or read it mid-window. {/* cid:save-dunning#021 cid:save-dunning#022 */} |
+| Backup-payment coverage | Platform payment settings report | You expect failures to drive adds. Backup-payment coverage is a tenure phenomenon (5.6%→32.8% by cycle 13+); failed charges barely trigger adds — only ~6% add a backup within a month of one (per Recharge, who sells the recovery product). {/* cid:save-dunning#024 */} |
+
+Every one of these is a rate with a basis. That's denominator discipline, and it pays twice more on this page.
+
+## The recipe
+
+<Steps>
+  <Step title="Find out who owns your retries">
+    **Do:** open your platform's payment-recovery settings and write down the schedule that is actually running — attempts, spacing, window, and what happens at exhaustion. The honest capability map:
+
+    | Platform | Default schedule | You control | Locked |
+    | :--- | :--- | :--- | :--- |
+    | Recharge | ML-timed retries, first retry next day | Notices (A/B-testable), update-payment page, auto-cancel at max retries | Retry timing not merchant-configurable; window changes only via support; disable third-party dunning first or attempts double-fire {/* cid:save-dunning#020 */} |
+    | Skio | Starter: 3-day interval × 7 attempts | Multi-phase campaigns (attempts and intervals per phase), Smart Retries toggle, discounts injectable at late phases | Little — most configurable of the three {/* cid:save-dunning#021 */} |
+    | Stay AI | 6 retries every 6 days, then auto-cancel (settings guide, Mar 2025) | Schedule settings, optional Smart Dunning toggle | Its own Klaviyo doc (Nov 2024) says Smart Dunning runs 7 retries over ~30 days — the two schedules are unreconciled, so trust your dashboard, not either doc {/* cid:save-dunning#022 cid:messaging-klaviyo-architecture#013 */} |
+    | Stripe Billing (direct) | Smart Retries: 8 attempts / 2 weeks, ML-timed | Window (1 week to 2 months) | Hard declines never auto-retried {/* cid:save-dunning#008 */} |
+
+    **You'll see:** platform dunning defaults cluster at 6–8 retries over 2–6 weeks; Stay AI's two documented schedules conflict — present both with dates until reconciled. {/* cid:save-dunning#008 cid:save-dunning#020 cid:save-dunning#021 cid:save-dunning#022 */}
+
+    **Checkpoint:** the running schedule is written down with dates, including the exhaustion behavior.
+  </Step>
+  <Step title="Protect a quiet, front-loaded window">
+    **Do:** keep the first attempts silent — no subscriber message before the second or third retry unless the decline is hard (card invalid or gone). That quiet opening is the documented platform recommendation, not politeness. {/* cid:save-dunning#021 cid:messaging-klaviyo-architecture#013 */} Keep the total window at two weeks minimum, and concentrate attempts early.
+
+    **You'll see:** silent retries clear ~15% of failed payments before any customer sees a message — two competing vendors converge on that floor. {/* cid:save-dunning#011 */} Ninety percent of dunning recoveries land inside 10 days, but windows of ≤7 days recover the fewest invoices — front-load intelligence, don't shorten the window (per Recurly, who sells recovery). {/* cid:save-dunning#006 cid:save-dunning#007 */}
+
+    **Checkpoint:** no notice fires before retry two; the window is 14–30 days with most attempts in the first ten.
+  </Step>
+  <Step title="Wire the notices where you're allowed to">
+    **Do:** on Recharge, dunning email is locked in-platform — you cannot send Failed Payment Recovery notices from Klaviyo, and they go out from Recharge's own no-reply domain — so customize and A/B the platform templates. {/* cid:messaging-klaviyo-architecture#009 */} On Skio and Stay AI, failed-billing events reach Klaviyo with error codes and an attempt counter: build one flow and trigger-split by attempt number, one message per attempt or fewer. {/* cid:messaging-klaviyo-architecture#013 cid:save-dunning#021 */} Every notice deep-links to the payment-update page. Keep the sequence short: the first dunning email recovers 2.8% of failures and the fifth 1.5% (per Churnkey, who sells dunning) — later touches have real but fast-diminishing returns. {/* cid:save-dunning#015 */}
+
+    **You'll see:** what a live version looks like — Brand D (eight-figure sports nutrition) runs exactly this shape, five escalating emails keyed to attempt number: \$110,355 attributed over 24 months from 21,080 recipients. Attributed, not incremental: the flow shares credit with the retry engine that co-produced the recoveries. {/* cid:messaging-lifecycle-map#006 */}
+
+    **Checkpoint:** one flow (or template set), keyed to attempts, every message one tap from the fix.
+  </Step>
+  <Step title="Make the fix one tap">
+    **Do:** send subscribers straight to the affected payment method — no login maze, no account-area scavenger hunt. On Recharge, a card update mid-dunning triggers a next-day retry and auto-reactivates subscriptions already cancelled at max retries, so the update path keeps working even after "too late." {/* cid:save-dunning#016 */} Honesty note: no platform publishes a measured lift for portal update UX — the mechanics are documented, the payoff is not. {/* cid:save-dunning#016 */}
+
+    **Checkpoint:** phone in hand, from notice tap to saved card in under a minute.
+  </Step>
+  <Step title="Turn on the safety nets, sized honestly">
+    **Do:** enable the network card updater and offer a backup payment method at checkout and in the portal.
+
+    **You'll see:** modest, real gains. A network card updater is worth ~2 points of authorization rate, and under half of its responses are usable updates (per Recurly and Spreedly, who sell them). {/* cid:save-dunning#012 cid:save-dunning#013 */} Your decline mix from the inputs table explains the sizing: updaters already absorbed most of the expired-card problem, and insufficient funds — the dominant reason — is not a card-update problem at all. {/* cid:save-dunning#025 */}
+
+    **Checkpoint:** updater on; backup-method slot visible; nobody expecting either to replace dunning.
+  </Step>
+  <Step title="End it cleanly and tag the exit">
+    **Do:** auto-cancel at exhaustion with an involuntary reason code (Recharge writes "Failed Payment flow max retries" for you). {/* cid:save-dunning#020 */} Stay AI's own docs warn that skipping auto-cancel inflates active-subscriber counts by thousands. {/* cid:save-dunning#022 */} Route these cancels into their own segment — they enter [winback](/growth-program/winback/reactivating-cancelled) as "fix the payment," never as "come back, 20% off."
+
+    **Checkpoint:** involuntary cancels are separately countable — the first input on this page now exists for you next month.
+  </Step>
+</Steps>
+
+## Decision gates
+
+| If your mix shows | Then |
+| :--- | :--- |
+| Insufficient-funds-heavy declines (the network norm) {/* cid:save-dunning#025 */} | It's a timing problem. The most common soft declines recover at better than 45% — retry them; hard declines need a card update, not retries (Recurly network; they sell recovery). {/* cid:save-dunning#026 */} Space attempts across the month and don't lead with update-your-card copy. |
+| Hard declines heavy (invalid, lost, expired) | It's an outreach problem. Retries won't resurrect a dead card; recovery there comes from a card update — shorten the update path and confirm the updater is actually on. {/* cid:save-dunning#026 cid:save-dunning#012 */} |
+| Low AOV (under ~\$30) | Expect more of this page to matter. Churn falls as order value rises — 40%/year below \$10 AOV vs 34% at the \$30–100 CPG band — and the involuntary share falls with it, 35% to 19% (Stripe network, published by a dunning vendor). {/* cid:numbers-churn-benchmarks#010 cid:save-dunning#001 */} Prepaid terms cut the count of failure exposures arithmetically, but the realized net effect is publicly unmeasured — fewer, larger, differently-risky charges. {/* cid:offer-prepaid-commitment#010 */} |
+| Failures spiking in discount-acquired cohorts | One recovery vendor claims promo subscribers fail 2–3x via riskier cards (per FlyCode, who sells the fix). Unverified — but the mechanism is checkable in your data: decline rate by acquisition cohort. {/* cid:save-churn-diagnostics#005 */} |
+
+## The readout
+
+Read two numbers: **recovery rate with its denominator named** (recovered ÷ entered dunning, or your platform's stated formula) and **involuntary share of total cancels**. Read them only after two full recovery windows — a mid-window read undercounts recoveries still in flight. "Worked" looks like: recoveries clustering in days 0–10, a stable-or-rising recovery rate on a constant denominator, and involuntary cancels shrinking as a share of churn.
+
+One caveat that keeps you honest: recovered subscribers are not all want-driven demand. The card-network research is blunt — forced active decisions reveal inertia: card-replacement months show ~4x the normal retention drop, and inertia roughly doubles seller revenue — track recovered cohorts separately. {/* cid:save-dunning#023 cid:save-churn-diagnostics#013 */} Some of what dunning "saves" is subscribers who'd cancel if asked directly — so when the recovered cohort churns worse than the base, don't panic. That's composition, not a broken program. It's the same intervention-safety lesson as everywhere in this module: measure what the fix touched, not just the fix.
+
+<InOpenSubs>Billing attempts, decline codes, and recovery outcomes are events your ESP can read, and cancels export with their reason — so the voluntary/involuntary split is a report you open, not a research project. The two numbers this page starts and ends with are the two most brands can't pull.</InOpenSubs>
+
+## Rollback
+
+Dunning changes have a small blast radius — nothing here discounts anything unless you added a discount phase. To undo: restore the platform's default schedule (on Recharge, strategies are immutable once activated — deactivate and recreate, and remember window lengths change only via support). {/* cid:save-dunning#020 */} If you moved notices to your ESP, re-enable the platform's own notices before you pause the flow, never the other way — a gap means silent cancellations. And don't "pause" by turning off auto-cancel: that's how active-subscriber counts grow thousands of ghosts. {/* cid:save-dunning#022 */}
+
+## Open questions, and a test you could run
+
+Pre-dunning — warning subscribers before an expiring card fails — is the obvious next idea, and here is the honest status: no credible public data shows pre-dunning recovers anything; every circulating number traces to dunning-vendor SEO farms. Nobody has measured it. {/* cid:save-dunning#014 */} The nearest live signal is adjacent, not equivalent: Brand A (the \$50M+ consumables brand) sends pre-charge upcoming-order SMS reminders that carry \$173,240 in attributed revenue from 29,611 messages — attributed, not incremental, and a shipment reminder is not an expiry warning. {/* cid:save-dunning#029 */}
+
+So run the test nobody has published: split subscribers with cards expiring inside 60 days, warning vs none, and measure entered-dunning rate and recovery. A second arm tests reminder content — plain upcoming-order reminder vs reminder plus update-payment link. Clean denominators, cheap to run, and you'd be first.
+
+The bigger open question is instrumentation. Across the four brands we audited, zero exported failed-payment outcomes; one (Brand B, the \$35M+ snacks brand) has three separate failed-billing event streams wired from three platform eras and not one recovery count exported. {/* cid:save-dunning#030 cid:save-dunning#028 cid:messaging-klaviyo-architecture#007 */} If your stack can't produce the first input on this page, that — not a smarter retry schedule — is your first project.
+
+## Where next
+
+<div className="os-where-next">
+<Columns cols={1}>
+  <Card icon="chart-no-axes-combined" title="Reading your churn" href="/growth-program/churn-defense/reading-your-churn">
+    Split voluntary from involuntary, find where churn concentrates, and route the next fix upstream.
+  </Card>
+  <Card icon="life-buoy" title="Save offers that work" href="/growth-program/churn-defense/save-offers">
+    The voluntary half: when the customer, not the card, says no.
+  </Card>
+</Columns>
+</div>

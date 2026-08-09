@@ -12,7 +12,6 @@
   "icons": {
     "library": "lucide"
   },
-
   "metadata": {
     "timestamp": true
   },
@@ -158,7 +157,7 @@
             ]
           },
           {
-            "group": "M1 \u00b7 The numbers",
+            "group": "M1 · The numbers",
             "icon": "calculator",
             "pages": [
               "growth-program/numbers/subscription-economics",
@@ -168,7 +167,7 @@
             ]
           },
           {
-            "group": "M2 \u00b7 The offer",
+            "group": "M2 · The offer",
             "icon": "tag",
             "pages": [
               "growth-program/offer/offer-architecture",
@@ -181,7 +180,7 @@
             ]
           },
           {
-            "group": "M3 \u00b7 Acquire",
+            "group": "M3 · Acquire",
             "icon": "megaphone",
             "pages": [
               "growth-program/traffic/paid-ads",
@@ -192,7 +191,7 @@
             ]
           },
           {
-            "group": "M4 \u00b7 Convert",
+            "group": "M4 · Convert",
             "icon": "shopping-cart",
             "pages": [
               "growth-program/store/pdp",
@@ -204,7 +203,7 @@
             ]
           },
           {
-            "group": "M5 \u00b7 The first 60 days",
+            "group": "M5 · The first 60 days",
             "icon": "calendar-days",
             "pages": [
               "growth-program/first-60-days/welcome-sequence",
@@ -214,7 +213,7 @@
             ]
           },
           {
-            "group": "M6 \u00b7 The messaging engine",
+            "group": "M6 · The messaging engine",
             "icon": "mail",
             "pages": [
               "growth-program/messaging/lifecycle-map",
@@ -225,7 +224,7 @@
             ]
           },
           {
-            "group": "M7 \u00b7 Keep",
+            "group": "M7 · Keep",
             "icon": "user-check",
             "pages": [
               "growth-program/account-area/portal-as-retention",
@@ -236,7 +235,7 @@
             ]
           },
           {
-            "group": "M8 \u00b7 Save",
+            "group": "M8 · Save",
             "icon": "shield",
             "pages": [
               "growth-program/churn-defense/cancellation-flow-design",
@@ -246,7 +245,7 @@
             ]
           },
           {
-            "group": "M9 \u00b7 Revive",
+            "group": "M9 · Revive",
             "icon": "rotate-ccw",
             "pages": [
               "growth-program/winback/reactivating-cancelled",
@@ -255,12 +254,32 @@
             ]
           },
           {
-            "group": "M10 \u00b7 Run",
+            "group": "M10 · Run",
             "icon": "repeat",
             "pages": [
               "growth-program/cadence/operating-rhythm",
               "growth-program/cadence/testing-calendar",
               "growth-program/cadence/when-to-get-help"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Growth Program v2",
+        "icon": "sparkles",
+        "groups": [
+          {
+            "group": "The rewrite",
+            "icon": "compass",
+            "pages": [
+              "growth-program-v2/index"
+            ]
+          },
+          {
+            "group": "M8 · Save",
+            "icon": "shield",
+            "pages": [
+              "growth-program-v2/churn-defense/dunning"
             ]
           }
         ]
