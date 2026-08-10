@@ -1,59 +1,70 @@
 ---
 title: "Move the save offer"
-description: "Offer before the reason survey: 26.6% of cancellations saved vs 13.8% without. One reorder in the cancel-flow editor."
+description: "Show the save offer before the reason survey: 26.6% of cancellations saved vs 13.8% without one. Minutes in the cancel-flow editor."
 ia: "S9"
 ---
 
-Open your cancel flow and count the screens between the cancel click and your save offer. If the reason survey comes first, nobody chose that — it shipped that way, and nobody has audited it since. The order turns out to be the lever: across 800k cancel sessions, brands showing an offer *before* the reason step saved 26.6% of cancellations vs 13.8% without (seller). {/* cid:save-cancellation-flow#008 — canon row 30 */} Per hundred subscribers walking into the flow, that is roughly thirteen more still standing — for a screen reorder. {/* cid:save-cancellation-flow#008 — derived: 26.6 − 13.8 ≈ 12.8 per 100 entrants */} No new offer, no deeper discount: the brands saving roughly double the share are the ones whose offer fires first.
+Open your cancel flow and count the screens between the cancel click and your save offer. If the reason survey comes first, nobody chose that — it came configured that way, and nobody has audited it since. The audit exists at network scale: across 800k cancel sessions, brands showing an offer *before* the reason step saved 26.6% of cancellations vs 13.8% without (seller) — 500 brands in the pool, and "without" means no offer screen ahead of the survey at all. {/* cid:save-cancellation-flow#008 — canon row 30; basis: 800k sessions, 500 brands */} Per hundred cancel sessions, that is roughly thirteen more logged as saved — in-session, on the deflection basis every dashboard uses (more on that below). {/* cid:save-cancellation-flow#008 — derived: 26.6 − 13.8 ≈ 12.8 per 100 sessions */} Read it as two facts. Most of that gap is having an offer fire before the survey at all. And if your offer already exists but sits after the survey, moving it first is the free version of the same bet.
 
-A subscriber in a cancel flow is walking to the door, and every screen between their click and your offer adds momentum. An offer on the first screen catches them at the coat rack, still deciding. An offer after a three-question survey is chasing them across the parking lot. Now the honest label: this is Skio's own network, read by Skio, which sells the toggle — correlational, not a randomized test, and brands that configure offer screens likely invest more in retention overall. {/* cid:save-cancellation-flow#008 (caveat) */} It is also the only step-order evidence at this scale, and acting on it is a reorder of screens you already own.
+A subscriber in a cancel flow is walking to the door, and every screen between their click and your offer adds momentum. An offer on the first screen catches them at the coat rack, still deciding. An offer after a three-question survey is chasing them across the parking lot. Now the honest label. The number is Skio's own network, read by Skio, which sells the toggle. {/* cid:save-cancellation-flow#008 (caveat) */} It is correlational, not a randomized test — brands that configure offer screens likely invest more in retention overall. It is also the only screen-order evidence at this scale, and acting on it costs minutes in an editor you already own.
 
 {/* shot:01 keystone-stat "Offer before the reason survey: 26.6% of cancellations saved. Without one: 13.8%." */}
 
-Three competing vendors ship this exact screen today: Recharge a Deflection Page, Skio a Splash Screen (current builder, February 2026), Stay AI a Pre-Survey Screen (January 2026). {/* cid:save-cancellation-flow#035, save-cancellation-flow#036, save-cancellation-flow#037 */} Your platform already built the button.
+All three major platforms have this screen today. Recharge has a Deflection Page. Skio has a Splash Screen (current builder, February 2026). Stay AI has a Pre-Survey Screen (January 2026). {/* cid:save-cancellation-flow#035, save-cancellation-flow#036, save-cancellation-flow#037 */} That is two owners' worth of judgment rather than three — Recharge bought Skio in April 2026. {/* cid:keep-portal-retention#020, meta-incumbent-playbooks#019 */} Either way: your platform already built the button.
 
-**Time:** 10–30 minutes · **You'll touch:** your subscription platform's cancel-flow editor · **Result shows:** days
+**Time:** 15–40 minutes · **You'll touch:** your subscription platform's cancel-flow editor · **Result shows in:** days
 
 ## Do this
 
-{/* shot:02 process-map "Same screens, one reorder: the offer moves ahead of the survey. The cancel button stays visible on every screen." */}
+{/* shot:02 process-map "The offer moves ahead of the survey — and the cancel button stays visible on every screen." */}
 
 Paths verified against vendor help docs, August 2026 — a desk check, not a live-UI walk. If a menu does not match, search your platform's help for the setting names in bold.
 
 <Warning>
-**Keep the cancel button visible.** Under California's ARL, any save offer in the cancel flow must sit beside a simultaneously visible cancel button (effective July 1, 2025). {/* cid:meta-category-playbook#015, convert-pdp#023 — canon row 36 */} If you add or move an offer screen, make sure that a clear cancel path shows on that same screen.
+**Keep the cancel button visible.** Under California's ARL (automatic renewal law), any save offer in the cancel flow must sit beside a simultaneously visible cancel button (effective July 1, 2025). {/* cid:meta-category-playbook#015, convert-pdp#023 — canon row 36, acronym glossed */} If you sell into California, this applies to you. If you add or move an offer screen, make sure that a clear cancel path shows on that same screen.
 </Warning>
+
+One default before you click: lead with a pause or a delay, not a discount. Offer-first shows the offer to every entrant — including natural abandoners, who leave the flow and stay subscribed at zero cost. A discount pays some of them for doing what they were already doing. A pause does not spend margin.
 
 <Tabs>
   <Tab title="Recharge">
-    Cancellation Prevention flows apply to the Shopify Checkout integrations — for most Shopify stores, that is you. {/* cid:save-cancellation-flow#035 */} Recharge is also mid-rollout of a new portal nav, so menus can drift.
+    Cancellation Prevention flows apply to the Shopify Checkout integrations — for most Shopify stores, that is you. {/* cid:save-cancellation-flow#035 */} Unsure which checkout you run? Search Recharge help for **Shopify Checkout Integration**. Recharge is also mid-rollout of a new portal nav, so menus can move.
 
     <Steps>
       <Step title="Open the flow">
         In the merchant portal, go to **Churn tools > Cancellation prevention**. Open your active flow, or click **Create from template**.
       </Step>
+      <Step title="Capture the baseline first">
+        Before you edit, open **⋮ More actions > Reports**, Performance tab. Record the save rate and **Experiences delivered**, far enough back to cover about 900 entrants. If this is a new flow, there is no before window — record the go-live date instead.
+      </Step>
       <Step title="Place the offer first">
         Drag the **Deflection Page** node onto the canvas, directly before the cancellation survey node. {/* cid:save-cancellation-flow#035 */}
       </Step>
       <Step title="Pick the offer">
-        Click the node. Select the offer that this page shows — for example, a delay, a pause, a discount, a gift, or a swap.
+        Click the node. Select the offer that the **Deflection Page** node shows — for example, a pause, a delay, a discount, or a swap.
+      </Step>
+      <Step title="Retire the double offer">
+        If an offer already fires after your survey, turn that one off. Two offers in a row spend margin twice.
       </Step>
       <Step title="Keep the cancel path">
         Make sure that the page keeps a visible option to continue the cancellation.
       </Step>
-      <Step title="Activate and test">
-        Click **Save**, then **Activate**. Then do a test: start a cancellation in your own customer portal.
+      <Step title="Publish and test">
+        Click **Save**, then **Activate**. Then start a test cancellation on a test subscription in your own customer portal. Abandon the flow at the end. Expect that session to appear in your entrant count.
       </Step>
     </Steps>
 
-    The portal's separate **pause options before cancellation** setting is a different lever. Cancellation Prevention analytics exclude it — if you ship only that setting, your readout will not move. {/* cid:numbers-kpi-dashboard#015 */}
+    The portal's separate **pause options before cancellation** setting is a different lever. Cancellation Prevention analytics exclude it — if you change only that setting, nothing will register in this report. {/* cid:numbers-kpi-dashboard#015 */}
 
     If the menus moved, search Recharge help for **Deflection Page** or **Cancellation Prevention**.
   </Tab>
   <Tab title="Skio">
-    The current flow builder shipped in February 2026 — old cancel flows auto-migrated to the Default flow. {/* cid:save-cancellation-flow#036 */}
+    The current flow builder arrived in February 2026 — old cancel flows auto-migrated to the Default flow. {/* cid:save-cancellation-flow#036 */} Skio is Recharge-owned as of April 2026, so expect the dashboards to consolidate over time. {/* cid:keep-portal-retention#020, numbers-kpi-dashboard#003 */}
 
     <Steps>
+      <Step title="Capture the baseline first">
+        Before you edit, open **Analytics > Cancel Flow Dashboard**. In the **Cancel flow performance** block, record the save rate and the session count, far enough back to cover about 900 sessions. {/* cid:numbers-kpi-dashboard#003 */}
+      </Step>
       <Step title="Open the flow">
         In the Skio Dashboard, go to **Retain > Cancel Flow**. Open your **Default flow**. Editing needs the Cancel Flows permission.
       </Step>
@@ -61,13 +72,16 @@ Paths verified against vendor help docs, August 2026 — a desk check, not a liv
         Click **+** below the **Start** node and add the **Splash Screen** node. {/* cid:save-cancellation-flow#036 */}
       </Step>
       <Step title="Fill it in">
-        Click **Edit splash screen**. Set the title, the description, and the **Action** — for example, a skip, a discount, a pause, or a swap.
+        Click **Edit splash screen**. Set the title, the description, and the **Action** — for example, a pause, a skip, or a swap.
+      </Step>
+      <Step title="Retire the double offer">
+        If an offer already fires after the reasons, turn that one off. Two offers in a row spend margin twice.
       </Step>
       <Step title="Save">
-        Click **Save splash screen**. The screen now shows first, before reasons or treatments, and the subscriber keeps a **Continue** button. {/* cid:save-cancellation-flow#036 */}
+        Click **Save splash screen**. The screen now shows first, before reasons or treatments. The subscriber keeps a **Continue** button that continues the cancellation. {/* cid:save-cancellation-flow#036 */}
       </Step>
       <Step title="Turn on compliance">
-        Under **Settings**, open **Cancel compliance settings**. Turn on the state toggles. Affected subscribers get a persistent **Cancel anyway** button. {/* cid:save-cancellation-flow#036 */}
+        Under **Settings**, open **Cancel compliance settings**. Turn on the toggles for the states whose laws cover your sales — the doc names California and Colorado. Affected subscribers get a persistent **Cancel anyway** button. {/* cid:save-cancellation-flow#036 */}
       </Step>
     </Steps>
 
@@ -77,56 +91,66 @@ Paths verified against vendor help docs, August 2026 — a desk check, not a liv
     Stay replaced RetentionEngine with the **Cancellation Survey** in January 2026 — the legacy tool has no pre-survey offer screen. {/* cid:save-cancellation-flow#037 */} If you still see RetentionEngine in your menu, build the new survey.
 
     <Steps>
+      <Step title="Capture the baseline first">
+        Before you edit, open **Analytics > Cancel Survey**. Record **Save Rate Through Cancel Survey** and the session count, far enough back to cover about 900 sessions.
+      </Step>
       <Step title="Open the surveys">
-        In the merchant portal, go to **Optimization > Cancellation Surveys**. Stay allows one active survey, and Active surveys lock structural edits. {/* cid:save-cancellation-flow#037 */}
+        In the merchant portal, go to **Optimization > Cancellation Surveys**. Stay runs one active survey at a time. You cannot edit the structure of a survey while it is Active. {/* cid:save-cancellation-flow#037 */}
       </Step>
       <Step title="Duplicate before you edit">
-        Duplicate your live survey. Edit the draft copy.
+        Duplicate your live survey. Edit the duplicate.
+      </Step>
+      <Step title="Configure the accept path">
+        The Pre-Survey Screen requires an **Offer Accepted** screen. If none exists, configure that screen now.
       </Step>
       <Step title="Add the Pre-Survey Screen">
         Add the **Pre-Survey Screen** component. Select the save offers it shows. {/* cid:save-cancellation-flow#037 */}
       </Step>
-      <Step title="Configure the accept path">
-        If no **Offer Accepted** screen exists, configure that screen first. The Pre-Survey Screen requires it.
-      </Step>
       <Step title="Set the starter node">
         In **Build Your Cancellation Flow**, set the **starter node** to **Pre-Survey Screen**. The starter node decides what subscribers see first. {/* cid:save-cancellation-flow#037 */}
       </Step>
+      <Step title="Keep the cancel path plain">
+        Keep the **Continue to Cancellation** text visible as a plain cancel path. Do not turn on **Show Continue Button as Offer** — it restyles the cancel path as an offer. {/* cid:save-cancellation-flow#037 */}
+      </Step>
+      <Step title="Retire the double offer">
+        If a save offer already fires after the reasons, turn that one off. Two offers in a row spend margin twice.
+      </Step>
       <Step title="Activate">
-        Activate the survey. Write the ship date in your ledger.
+        Activate the duplicate so it becomes your one active survey. If Stay asks you to deactivate the old survey first, do that in the same sitting. Note the go-live date.
       </Step>
     </Steps>
 
-    For compliance-sensitive regions, turn on **Global Settings > Global Immediate Cancel**. Conditions can scope it — for example, by shipping location. If the label moved, search Stay help for **Immediate Cancel**.
+    Stay also has **Global Settings > Global Immediate Cancel** for compliance-sensitive regions. It bypasses the survey and the offers entirely for everyone it covers. {/* cid:save-cancellation-flow#037 */} Limit it with **Conditions** — for example, to shipping addresses in the states that need it — before you turn it on. If the label moved, search Stay help for **Immediate Cancel**.
 
     If the menus moved, search Stay help for **Pre-Survey Screen** or **Cancellation Survey**.
   </Tab>
   <Tab title="Other">
-    The industry converged on this screen — your platform likely has one under some name.
+    Every major platform now has some version of this screen — yours likely does too, under one of these names.
 
     <Steps>
+      <Step title="Capture the baseline first">
+        Record your current save rate and entrant count from your platform's cancellation analytics, covering about 900 entrants.
+      </Step>
       <Step title="Find the editor">
         Search your platform's help for **cancel flow**, **cancellation prevention**, or **exit survey**. Open the editor it names.
       </Step>
       <Step title="Find the offer screen">
-        Look for the node the vendor calls a **splash screen**, **deflection page**, **pre-survey screen**, or **offer screen**.
+        Look for the screen the vendor calls a **splash screen**, **deflection page**, **pre-survey screen**, or **offer screen**.
       </Step>
       <Step title="Place it first">
-        Place that screen before the reason step, as the first screen after the cancel click.
+        Place that screen before the reason step, as the first screen after the cancel click. If an offer already fires after the survey, turn that one off.
       </Step>
       <Step title="Keep the exit visible">
-        If the screen cannot show a visible cancel path, do not ship it.
+        If the screen cannot show a visible cancel path, do not publish it.
       </Step>
       <Step title="No option at all?">
-        If no such screen exists, ask your platform's support for an offer-before-survey option, by these vendor names.
+        If no such screen exists, ask your platform's support for an offer-before-survey option. Use the vendor names from step 3.
       </Step>
     </Steps>
   </Tab>
 </Tabs>
 
-<Note>
-Worried about the reason survey? It still runs — after the offer instead of before it. On Recharge, subscribers who accept bypass the survey. Decliners still answer it. You lose reasons only from the people who stayed. And the only controlled test found favors optimized reason-agnostic offers (~2x save) over reason-matched routing — reason data diagnoses; it doesn't have to gate (seller). {/* cid:save-cancellation-flow#029 — canon row 34 */}
-</Note>
+**You might be thinking:** reason-first is the responsible order — you match the offer to the reason. Two answers. First, the survey still runs, after the offer instead of before it. On Recharge, subscribers who accept bypass the survey. Decliners still answer it. You lose reasons only from the people the dashboard logs as saved. Second, reason-matching is not where the save comes from. In the only controlled test, optimized reason-agnostic offers roughly doubled the save rate vs reason-matched routing (seller). {/* cid:save-cancellation-flow#029 — canon row 34, rewritten per R2 brief; row amendment proposed */} The base: one brand — Vital Proteins — whose deflect rate went from 17% to 23% over a year. Session counts were not published. Reason data diagnoses. It does not have to gate the offer. (The same momentum model predicts a shorter survey lifts saves too — nobody has published that test either.)
 
 ## You'll see
 
@@ -136,29 +160,29 @@ Worried about the reason survey? It still runs — after the offer instead of be
 | Skio | **Analytics > Cancel Flow Dashboard**, the "Cancel flow performance" block — updates every 4 hours {/* cid:numbers-kpi-dashboard#003 */} |
 | Stay AI | **Analytics > Cancel Survey**, "Save Rate Through Cancel Survey" |
 
-Record the save rate and the entrant count for the 30 days before your change. The entrant count lives on that same screen — Recharge calls it **Experiences delivered**, and Skio and Stay count cancel-flow sessions. After the change, read the same screen. Compare only numbers from the same definition.
+You already recorded the before side in the baseline step — a window that covers about 900 entrants, as far back as the definition holds. After the change, read the same screen over the next ~900. The entrant count lives on that same screen — Recharge calls it **Experiences delivered**, and Skio and Stay count cancel-flow sessions. Compare only numbers from the same definition.
 
 <Note>
-Platform save rates count survey abandoners as saved — treat every dashboard save rate as a deflection metric, never a retention outcome. {/* cid:save-churn-diagnostics#019, numbers-kpi-dashboard#015, numbers-kpi-dashboard#016 — canon row 26 */} Roughly a quarter of cancel-flow entrants deflect in-session but only ~17% are still saved at 30 days — always quote both numbers (seller). {/* cid:save-cancellation-flow#005 — canon row 27 */} Your before/after survives that inflation because the definition holds constant. On Stay AI it does not hold across the 2026 survey switch — never compare a new-survey save rate to a RetentionEngine-era one. {/* cid:numbers-kpi-dashboard#016 */}
+Platform save rates count survey abandoners as saved — treat every dashboard save rate as a deflection metric, never a retention outcome. {/* cid:save-churn-diagnostics#019, numbers-kpi-dashboard#015, numbers-kpi-dashboard#016 — canon row 26 */} Roughly a quarter of cancel-flow entrants deflect in-session but only ~17% are still saved at 30 days — always quote both numbers (seller). {/* cid:save-cancellation-flow#005 — canon row 27 */} That pair is Chargebee's 2022 e-commerce benchmark. Your before/after still works, because the definition holds constant. On Stay AI it does not hold across the 2026 survey switch — never compare a new-survey save rate to a RetentionEngine-era one. {/* cid:numbers-kpi-dashboard#016 */}
 </Note>
 
-A 5-point save-rate move reads at about 905 entrants on each side of the change, on a 15% base. {/* cid:run-operating-cadence#010 */} If 300 subscribers enter your cancel flow each month, that is roughly three months per side. Do not call the result at week one — the dashboard moves daily, the verdict does not.
+To read a 5-point move on a 15% base, you need about 905 entrants on each side of the change. {/* cid:run-operating-cadence#010 */} If 300 subscribers enter your cancel flow each month, that is roughly three months per side. Do not judge the result at week one — the dashboard moves daily, the verdict does not.
 
-For scale: Skio's named case, Cornbread Hemp, went from a 9.5% save rate to 25.6% — after adding a splash screen and reworking its offers in the same push, so read it as a vendor-published ceiling, not a promise. {/* cid:save-cancellation-flow#009 */}
+One named case, for calibration: Skio's Cornbread Hemp went from a 9.5% save rate to 25.6% (no session counts published) — after adding a splash screen and reworking its offers in the same push, so read it as a vendor-published ceiling, not a promise. {/* cid:save-cancellation-flow#009 */}
 
 **Checkpoint:** the save rate rises on the same definition, and the offer screen shows a visible cancel path.
 
 ## Bank it
 
-Copy this line into your wins ledger and fill it as the read matures:
+Copy this line into your wins ledger and fill it in on the read date:
 
 ```text S9 ledger line
-S9 · moved save offer before reason survey · shipped [date] · save rate (deflection basis, same dashboard and definition): [before]% on [n] entrants → [after]% on [n] entrants · read date [date]
+S9 · save offer moved before reason survey · live [date] · save rate (deflection basis, same dashboard and definition): [before]% on [n] entrants → [after]% on [n] entrants · read date [date]
 ```
 
-Set the read date now. Divide 900 by the monthly entrant count you recorded. The result is your wait in months. (Your S1 scoreboard's monthly cancel volume is a rough cross-check.) The deep module — Cancellations and saves — calls this number due.
+Set the read date now. Divide 905 by the monthly entrant count you recorded. The result is your wait in months. (Your S1 scoreboard's monthly cancel volume is a rough cross-check.) You will use this number again in the deep module, Cancellations and saves.
 
-Write it even though it is unglamorous: the only public evidence on this move is cross-brand and vendor-read. {/* cid:save-cancellation-flow#008 (caveat) */} The before/after in your ledger will be the first number here you can fully trust.
+Write it even though it is unglamorous: no public within-brand test of this move exists — the numbers above are cross-brand comparisons or vendor cases. {/* cid:save-cancellation-flow#008 (caveat) */} The before/after in your ledger will be the first number on this move that you can fully trust.
 
 ---
 
