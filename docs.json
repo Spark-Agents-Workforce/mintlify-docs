@@ -269,10 +269,149 @@
         "icon": "sparkles",
         "groups": [
           {
-            "group": "The rewrite",
-            "icon": "compass",
+            "group": "Use this program",
+            "icon": "book-open",
             "pages": [
-              "growth-program-v2/index"
+              "growth-program-v2/index",
+              "growth-program-v2/start/how-this-program-works",
+              "growth-program-v2/start/where-does-it-hurt"
+            ]
+          },
+          {
+            "group": "The week-one sprint",
+            "icon": "zap",
+            "pages": [
+              "growth-program-v2/sprint/index",
+              "growth-program-v2/sprint/install-the-scoreboard",
+              "growth-program-v2/sprint/find-your-cliff",
+              "growth-program-v2/sprint/count-your-flips",
+              "growth-program-v2/sprint/audit-your-ad-events",
+              "growth-program-v2/sprint/cut-cohorts-by-source",
+              "growth-program-v2/sprint/watch-your-skips",
+              "growth-program-v2/sprint/restack-your-welcome-flow",
+              "growth-program-v2/sprint/send-the-renewal-reminder",
+              "growth-program-v2/sprint/move-the-save-offer",
+              "growth-program-v2/sprint/delay-the-coupon",
+              "growth-program-v2/sprint/deepen-the-first-order-discount",
+              "growth-program-v2/sprint/start-a-winback-holdout"
+            ]
+          },
+          {
+            "group": "Read your numbers",
+            "icon": "gauge",
+            "pages": [
+              "growth-program-v2/numbers/why-your-wins-worked",
+              "growth-program-v2/numbers/churn-math",
+              "growth-program-v2/numbers/cohorts",
+              "growth-program-v2/numbers/subscription-economics",
+              "growth-program-v2/numbers/reading-your-churn"
+            ]
+          },
+          {
+            "group": "Plug the leaks",
+            "icon": "shield",
+            "pages": [
+              {
+                "group": "Failed payments",
+                "pages": [
+                  "growth-program-v2/billing/dunning"
+                ]
+              },
+              {
+                "group": "The first sixty days",
+                "pages": [
+                  "growth-program-v2/first-sixty/the-cliff",
+                  "growth-program-v2/first-sixty/the-first-box",
+                  "growth-program-v2/first-sixty/subscriber-onboarding",
+                  "growth-program-v2/first-sixty/the-cliff-campaign"
+                ]
+              },
+              {
+                "group": "Cancellations and saves",
+                "pages": [
+                  "growth-program-v2/exit/cancellation-flow-design",
+                  "growth-program-v2/exit/save-offers",
+                  "growth-program-v2/exit/pause-and-flexibility",
+                  "growth-program-v2/exit/the-portal",
+                  "growth-program-v2/exit/support-cancellations"
+                ]
+              },
+              {
+                "group": "Winback",
+                "pages": [
+                  "growth-program-v2/revive/winback-economics",
+                  "growth-program-v2/revive/reactivating-cancelled"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Email and SMS",
+            "icon": "mail",
+            "pages": [
+              "growth-program-v2/messaging/klaviyo-architecture",
+              "growth-program-v2/messaging/lifecycle-map",
+              "growth-program-v2/messaging/transactional-and-reminder",
+              "growth-program-v2/messaging/deliverability-and-cadence",
+              "growth-program-v2/messaging/sms"
+            ]
+          },
+          {
+            "group": "Get more subscribers",
+            "icon": "trending-up",
+            "pages": [
+              {
+                "group": "The offer",
+                "pages": [
+                  "growth-program-v2/offer/the-discount-question",
+                  "growth-program-v2/offer/first-order-incentives",
+                  "growth-program-v2/offer/free-gifts",
+                  "growth-program-v2/offer/offer-architecture"
+                ]
+              },
+              {
+                "group": "The storefront",
+                "pages": [
+                  "growth-program-v2/store/pdp",
+                  "growth-program-v2/store/checkout-and-cart",
+                  "growth-program-v2/store/converting-one-time-buyers",
+                  "growth-program-v2/store/site-and-collections"
+                ]
+              },
+              {
+                "group": "Traffic",
+                "pages": [
+                  "growth-program-v2/traffic/list-first-acquisition",
+                  "growth-program-v2/traffic/organic-and-social",
+                  "growth-program-v2/traffic/paid-ads",
+                  "growth-program-v2/traffic/landing-pages",
+                  "growth-program-v2/traffic/the-creator-decode"
+                ]
+              },
+              {
+                "group": "Big sale events",
+                "pages": [
+                  "growth-program-v2/sales/run-a-big-sale",
+                  "growth-program-v2/sales/the-debrief"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Memberships and loyalty",
+            "icon": "crown",
+            "pages": [
+              "growth-program-v2/membership/memberships",
+              "growth-program-v2/membership/perks-credits-community"
+            ]
+          },
+          {
+            "group": "Run it like an operator",
+            "icon": "repeat",
+            "pages": [
+              "growth-program-v2/run/the-operating-rhythm",
+              "growth-program-v2/run/honest-testing",
+              "growth-program-v2/run/when-to-get-help"
             ]
           }
         ]
