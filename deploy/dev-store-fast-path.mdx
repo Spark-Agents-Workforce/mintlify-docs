@@ -8,13 +8,346 @@ import { PlatformTag } from "/snippets/PlatformTag.jsx";
 
 <PlatformTag platform="opensubs" />
 
-<Note>**Skeleton page.** The structure and links are final; the content lands in the production pass.</Note>
+From zero to your first test sale:
 
-## What this page gives you
+- **Outcome:** a complete subscription machine, in accounts you own, proven with one test sale on a store that doesn't matter.
+- **Time:** about an hour, most of it watching the installer work.
+- **You'll touch:**
+  - The Shopify Dev Dashboard (your app and your dev store)
+  - Supabase and Vercel (two Pro signups)
+  - The OpenSubs installer (Launchpad)
+  - Your dev store's admin and theme editor
+  - Your dev storefront, once, as the test subscriber
 
-- The shortest path to a running store: hours, not weeks.
-- Ends with the renewal you watched frame by frame running in *your* logs.
-- This is the moment the abstraction becomes yours.
+## The picture: read this once
+
+Self-hosting sounds like a weekend of DevOps. It's an hour, and almost none of it is yours.
+
+One line makes the money: a shopper picks **Subscription** on your product page, checks out, and Shopify writes a subscription contract. That contract mirrors into your engine and lands in your admin and your subscriber's portal. Everything else — database, app, webhooks — exists to make that line possible.
+
+And it's all yours. The database is a Supabase project in your account: your subscription state, in Postgres you can open. The app runs in your Vercel account. The Shopify app is a custom app you create. Cards vault in Shopify Payments and never touch OpenSubs; OpenSubs only tells Shopify when to bill. The stack floors around \$45 a month, and nobody takes a percentage.
+
+The installer (Launchpad) does the assembly. It asks for everything up front, builds unattended, proves each piece as it goes, and, at the finish, purges its own secrets. It keeps nothing.
+
+Today it runs against a dev store: free, disposable, zero subscribers. Watch it sell once where mistakes are free. Going live is [the next page](/deploy/production-approval), the easy one.
+
+{/* shot:01 sell-line-diagram "Widget → checkout → Shopify contract → your engine → admin + portal, your three accounts underneath. Caption: 'One line makes the money. You own every box.'" */}
+
+## Recipe 1: gather the accounts (20 min)
+
+**Goal:** have everything ready before starting the installer.
+
+**You'll need:**
+
+- A [Shopify Partner account](https://www.shopify.com/partners) (free to create)
+- A payment card for the two Pro signups in step 3
+- Your OpenSubs license key (delivered with your purchase)
+
+<Steps>
+  <Step title="Create the custom app">
+    <Warning>
+    **The one fatal wrong turn.** Create the custom app in the **Dev Dashboard**, never inside a store's admin. Store-admin custom apps can't use the subscription APIs, and no toggle fixes it. Dev Dashboard: every grant is instant.
+    </Warning>
+
+    - Go to the [Shopify Dev Dashboard](https://dev.shopify.com/dashboard) and click **Create app**.
+    - Enter your app name, such as "OpenSubs", and click **Create**.
+
+    <Frame>
+      <img src="/images/deploy/dev-store-fast-path/02-create-app.png" alt="Create app dialog with the app name entered." />
+    </Frame>
+
+    - Click **Settings** in the left menu. Copy the **Client ID** and **Client secret**, then scroll down to **App automation token** and create an App Automation Token (deploy-only). Copy that too.
+
+    <Tip>
+    Keep these three values easily accessible during setup: **Client ID**, **Client secret**, and the **App Automation Token**.
+    </Tip>
+
+    - Back on the **App Overview** page, click **Select distribution method** in the **Distribution** block and select **Custom distribution** — this makes the gated API approvals on the next step instant.
+
+    <Frame>
+      <img src="/images/deploy/dev-store-fast-path/03-custom-distribution.png" alt="Select distribution method — Custom distribution." />
+    </Frame>
+
+    - Enter the store domain where the app will be installed and click **Generate link**.
+
+    <Frame>
+      <img src="/images/deploy/dev-store-fast-path/04-generate-link.png" alt="Custom distribution: store domain entered, Generate link." />
+    </Frame>
+
+    <Warning>
+    Enter your live production store here — the store where subscriptions will be processed — never a development store. This locks in the store the app will serve in production; your dev store can still install the app for this walk regardless. No live store yet? Select **Custom distribution** and defer **Generate link** until you have one. The approvals on the next step unlock either way.
+    </Warning>
+
+    - Click **API access requests** in the left menu and click **Request access** for both:
+      - **Read all orders scope**
+      - **Access subscriptions APIs**
+
+    Paste this as the data-use justification wherever the form asks why:
+
+    ```text Data-use justification
+    We use the Subscriptions APIs to create and manage our store's own subscription contracts (selling plans, recurring billing, customer self-service). Read all orders lets the customer portal show the full order history of a subscription beyond 60 days.
+    ```
+
+    **Checkpoint:** app created with Custom distribution; Client ID, Client secret, and App Automation Token copied; every access request granted.
+  </Step>
+  <Step title="Create the dev store">
+    - Go to the [Shopify Dev Dashboard](https://dev.shopify.com/dashboard) and click **Stores** in the left menu.
+    - Click **Create store** and select the **Dev** option.
+
+    <Frame>
+      <img src="/images/deploy/dev-store-fast-path/05-create-dev-store.png" alt="Create store — the Dev option, with Generate test data selected." />
+    </Frame>
+
+    <Tip>
+    Select **Generate test data for store** to automatically add placeholder products to your development store for a quicker setup.
+    </Tip>
+
+    - Note your new store's `.myshopify.com` domain; the installer asks for it later.
+
+    **Checkpoint:** a dev store with test products, domain noted.
+  </Step>
+  <Step title="Create the hosting accounts">
+    - Sign up for a **Pro plan** at [Supabase](https://supabase.com/pricing).
+    - Sign up for a **Pro plan** at [Vercel](https://vercel.com/pricing).
+
+    <Accordion title="Why Pro?">
+      Free Supabase projects can pause after inactivity, taking billing and subscriptions offline. Pro adds more compute, database capacity, and higher usage limits.
+    </Accordion>
+
+    <Note>
+    When signing up, don't create a new project in either — the OpenSubs installer auto-creates this for you.
+    </Note>
+
+    **Checkpoint:** Supabase and Vercel accounts exist. Everything gathered: Client ID, Client secret, App Automation Token, dev store domain, license key nearby. Email can wait; SMS is optional.
+
+    <Note>
+    **SMS can wait.** Lifecycle texts ship switched off, and a missing Twilio key stalls nothing. Wire it the week you want it.
+    </Note>
+  </Step>
+</Steps>
+
+## Recipe 2: sign in to the installer (2 min)
+
+**Goal:** be signed in with a fresh run open, ready for the installer's first ask.
+
+**You'll need:** the email inbox tied to your OpenSubs membership.
+
+- Go to the [OpenSubs installer (Launchpad)](https://opensubs-launchpad-1076886952284.us-central1.run.app/) and click **Log in and start a new run**.
+
+<Frame>
+  <img src="/images/deploy/dev-store-fast-path/06-launchpad-home.png" alt="Launchpad home, signed out — Log in and start a new run." />
+</Frame>
+
+- Enter the email address associated with your membership, then enter the 6-digit code sent to that address.
+
+<Frame>
+  <img src="/images/deploy/dev-store-fast-path/07-launchpad-login.png" alt="Login: membership email, then the 6-digit code." />
+</Frame>
+
+**Checkpoint:** you're in, a fresh run open at its first ask. Keep your license key, the three Shopify values, and your dev store domain from Recipe 1 at hand; the run asks for them next.
+
+## Recipe 3: feed it everything (Connect · ~10 min)
+
+The run is a 24-step ledger in three phases (**Connect · Build · Go live**), and the header always says whose turn it is: **WAITING ON YOU** means you. Connect is seven asks, all up front. Answer them and your part is mostly over.
+
+<Steps>
+  <Step title="Identity">
+    - Enter your **license key** and click **Continue**.
+
+    <Frame>
+      <img src="/images/deploy/dev-store-fast-path/08-license-key.png" alt="Connect: the license key ask." />
+    </Frame>
+
+    - Review the running costs, a recurring floor of **Supabase Pro (\~\$25/mo) + Vercel Pro (\~\$20/mo)** plus usage, and click **I understand the costs**.
+
+    <Frame>
+      <img src="/images/deploy/dev-store-fast-path/09-running-costs.png" alt="Connect: the running-costs acknowledgement." />
+    </Frame>
+
+    **Checkpoint:** license validated, costs acknowledged. 2 of 7.
+  </Step>
+  <Step title="The Shopify asks">
+    The **Create your Shopify app** card asks for four values, and you gathered every one in Recipe 1. It keeps them only long enough to provision, then purges them.
+
+    - Paste the **Client ID** and **Client secret**.
+    - Paste the **App Automation Token (deploy-only)**.
+    - Enter your dev store's `.myshopify.com` domain from Recipe 1 (your install link builds itself from it later), then click **Continue**.
+
+    <Frame>
+      <img src="/images/deploy/dev-store-fast-path/10-shopify-app-card.png" alt="Connect: the Create your Shopify app card — four values." />
+    </Frame>
+
+    - On **Request Shopify scopes**, confirm the two requests you filed in Recipe 1 (**Access subscriptions APIs** and **Read all orders**) show granted in the Dev Dashboard, then click **Access requested**. *"With Custom distribution every item below is approved instantly."* The data-use justification sits right there with a copy button if a form still wants it.
+
+    <Frame>
+      <img src="/images/deploy/dev-store-fast-path/11-request-scopes.png" alt="Connect: Request Shopify scopes — approved instantly under Custom distribution." />
+    </Frame>
+
+    **Checkpoint:** every item granted. No wait, no review queue.
+  </Step>
+  <Step title="The hosting asks">
+    - Click **Connect Vercel**.
+
+    <Frame>
+      <img src="/images/deploy/dev-store-fast-path/12-connect-vercel.png" alt="Connect: Connect Vercel." />
+    </Frame>
+
+    - Click **Connect Supabase**.
+
+    <Frame>
+      <img src="/images/deploy/dev-store-fast-path/13-connect-supabase.png" alt="Connect: Connect Supabase." />
+    </Frame>
+
+    - **Choose your region:** pick your Supabase organization and the region your subscriber data will live in, then click **Continue**.
+
+    <Frame>
+      <img src="/images/deploy/dev-store-fast-path/14-supabase-region.png" alt="Connect: Supabase organization and region picker." />
+    </Frame>
+
+    **Checkpoint:** 7 of 7, nothing left to type. Build begins on its own.
+  </Step>
+</Steps>
+
+## Recipe 4: the build builds itself (Build · ~5–10 min)
+
+**Do:** nothing. Walk away. The header flips to **PROVISIONING YOUR STACK** and the run stops waiting on you.
+
+**You'll see:** the **We build your stack** column turn green, twelve rows top to bottom: install secrets generated, the app build checked, your database created and migrations installed (the scheduled jobs that keep the machine ticking, billing included, ship inside them), edge secrets set, edge functions deployed and *verified* — every webhook receiver answers a signed test. Then the app itself: Vercel project created, app deployed, vault wired, drain verified (the line notifications ride on). It proves as it builds, and tells you what each row just proved.
+
+<Frame>
+  <img src="/images/deploy/dev-store-fast-path/15-build-stack.png" alt="Build: the We build your stack column, twelve rows going green." />
+</Frame>
+
+**Checkpoint:** build rows green, 12 of 12; the run parks at install, waiting for you.
+
+<Note>
+**Parked ≠ broken.** The installer is a resumable ledger. Close the laptop, lose Wi-Fi, reopen: it replays from the first unfinished step. A red row parks with Retry, not a ruined run. Still stuck? Email [support@opensubs.com](mailto:support@opensubs.com) with your run ID (top of the installer).
+</Note>
+
+## Recipe 5: install and finish (Go live · ~10 min)
+
+<Steps>
+  <Step title="Install on the dev store">
+    The run deploys your Shopify config itself (the app's URLs are written for you), then parks **WAITING ON YOU** at **Install on your store**.
+
+    - Open your install link (already built from the domain you gave in Recipe 3) and install on your dev store. Shopify opens the app right after installing, and that first open connects your store automatically.
+    - Come back to the run: it detects the connection, and **Verify scopes** passes by itself. (App never opened? Open it once from **Apps > OpenSubs**; it connects on open.)
+
+    <Frame>
+      <img src="/images/deploy/dev-store-fast-path/16-install-connected.png" alt="Go live: installed and connected — Verify scopes passes on its own." />
+    </Frame>
+
+    **Checkpoint:** installed, connected, scopes verified. All without you.
+  </Step>
+  <Step title="Configure integrations, or skip">
+    - In the dev store's admin, under **Apps > OpenSubs > Integrations**, add your SendGrid, Klaviyo, or Twilio keys (each lives in the provider's settings, under API keys) and send a test.
+    - Under **Notification routing**, select the active email and SMS routes and save; a connected provider that isn't selected stays silent.
+    - Back in the run, click **Integrations configured**.
+
+    <Frame>
+      <img src="/images/deploy/dev-store-fast-path/17-integrations.png" alt="Go live: the Integrations configured step." />
+    </Frame>
+
+    First connect provisions the provider for you: SendGrid gets every branded template created, Klaviyo a template and a draft flow per notification. (Klaviyo can carry SMS as well as email.)
+
+    <Warning>
+    Skipping is allowed, eyes open: with no provider configured, notifications are **discarded**, not queued for later. And if you use Klaviyo: imported flows start as **drafts**. Turn each flow live in Klaviyo or nothing sends, *including subscriber login codes*.
+    </Warning>
+
+    **Checkpoint:** provider connected and tested, or deliberately skipped. Confirm.
+  </Step>
+  <Step title="The finish">
+    **You'll see:** the last row, **Verify the live stack**, prove the whole build end to end; then the run completes and purges every secret it held. The completion screen reads **"EVERYTHING'S INSTALLED."** — your store, with secrets purged after provisioning. Nothing is shown to shoppers yet; the storefront widgets stay off until you enable them. (The reference run provisioned in under ten minutes.)
+
+    - Open the app from your Shopify admin (**Apps > OpenSubs**).
+    - Go to **Settings > Extensions** and enable the **theme app embed**: it opens the theme editor with the embed ready; click **Save**. The widget can't render without it. Placing the widget itself is Recipe 6, on the same Extensions page.
+
+    <Frame>
+      <img src="/images/deploy/dev-store-fast-path/18-everything-installed.png" alt="The completion screen: EVERYTHING'S INSTALLED, secrets purged." />
+    </Frame>
+
+    **Checkpoint:** run complete · secrets purged · theme app embed on · one widget left to place.
+  </Step>
+</Steps>
+
+## Recipe 6: make something to sell (5 min)
+
+<Steps>
+  <Step title="Create a plan">
+    - In your dev store's admin, open **Apps > OpenSubs**, then **Settings > Selling plans** and create a new group.
+    - Name it **Subscribe & Save**, set delivery to **every 1 Month** with **10%** off, and attach your product.
+
+    <Frame>
+      <img src="/images/deploy/dev-store-fast-path/19-selling-plan.png" alt="Selling plans: the Subscribe & Save group — monthly, 10% off, product attached." />
+    </Frame>
+
+    **Checkpoint:** plan saved. Monthly · 10% subscribe & save.
+  </Step>
+  <Step title="Place the widget">
+    - In the OpenSubs admin: **Settings > Extensions > Product page widget**, then click **Open theme editor**.
+    - The editor opens with the **Subscription options** block on the product template; click **Save**.
+
+    <Frame>
+      <img src="/images/deploy/dev-store-fast-path/20-widget-theme-editor.png" alt="The Subscription options block on the product template." />
+    </Frame>
+
+    **You'll see:** example plans in the editor preview; real ones render on the storefront, and the widget hides itself on products without plans. The app has also added subscription panels to the product, customer, and order pages in your admin — no setup needed.
+
+    **Checkpoint:** block saved. The sell surface is live, on a store with zero subscribers.
+  </Step>
+</Steps>
+
+## Recipe 7: watch it sell once (5 min)
+
+<Steps>
+  <Step title="Buy your own subscription">
+    - Open your storefront and visit your product page. (Dev storefronts are password-gated; find the password in the dev store admin under **Online Store > Preferences**.) Under **Purchase options**, pick the subscription and add to cart.
+    - Check out with Shopify's test gateway: card number **1**, any name, any future expiry, any CVC. (No test payment option at checkout? Activate the test gateway first: dev store admin, **Settings > Payments**.)
+
+    <Frame>
+      <img src="/images/deploy/dev-store-fast-path/21-test-checkout.png" alt="Purchase options: the subscription selected, headed to test checkout." />
+    </Frame>
+
+    **Checkpoint:** order placed, no real money.
+  </Step>
+  <Step title="See it in both places">
+    - Find the subscription in the OpenSubs admin.
+    - Still signed in as the test subscriber, open `/a/account` on the storefront; the account area loads with no login screen.
+
+    <Frame>
+      <img src="/images/deploy/dev-store-fast-path/22-admin-subscription.png" alt="The subscription in the OpenSubs admin." />
+    </Frame>
+
+    <Frame>
+      <img src="/images/deploy/dev-store-fast-path/23-subscriber-portal.png" alt="/a/account: the subscriber portal, no login screen." />
+    </Frame>
+
+    **Checkpoint:** same subscription in both. The subscriber's receipt is Shopify's own order confirmation.
+
+    <Note>
+    **No welcome email is not a bug.** Your subscriber gets Shopify's order confirmation, same as any order. OpenSubs sends no checkout welcome of its own. Want a branded one? That's your Klaviyo flow or SendGrid template, provisioned as a draft when you connect, yours to set live.
+    </Note>
+  </Step>
+  <Step title="Look at the health page">
+    - In the OpenSubs admin, open **Settings > Operational health**.
+
+    **You'll see:** jobs green, webhooks delivering, queues quiet — the page the machine reports to from now on.
+
+    <Frame>
+      <img src="/images/deploy/dev-store-fast-path/24-operational-health.png" alt="Operational health: jobs green, webhooks delivering, queues quiet." />
+    </Frame>
+
+    **Checkpoint:** green board. It sold once, and you own every piece of it.
+  </Step>
+</Steps>
+
+## Congratulations: the machine is yours
+
+A shopper subscribed, Shopify wrote the contract, your engine mirrored it, the portal served it: every node lit, and green means proven. The installer left nothing behind but the machine itself: your database, your app, your store. Time spent: about an hour. Percentage owed on every order it ever takes: zero.
+
+When you're ready for your real store, the next rung is [production approval](/deploy/production-approval).
+
+---
 
 ## Where next
 
