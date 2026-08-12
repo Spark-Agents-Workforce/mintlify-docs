@@ -126,8 +126,9 @@ as they are rebuilt; the original Growth Program tab stays untouched until cutov
 v2 replaces it (redirects at cutover). Do not add new content to the OLD growth-program/
 tree during the rewrite.
 A second TEMPORARY staging tab **Platform v2** (2026-08-12): the deploy cookbook pages
-split recipe-per-page under `platform-v2/` (groups: Setup · Live for New Orders). The
-original Platform tab stays untouched until cutover.
+split recipe-per-page under `platform-v2/` (groups: Setup · Live for New Orders · Migrate,
+the last built from the Notion "Migrate Easily" cookbook). The original Platform tab stays
+untouched until cutover.
 These are the product's part names — they match the marketing site verbatim.
 - Prose refers to sections by these names: "the Scripts", "the Platform",
   "the Growth Program". NEVER the old task names ("the instant win",

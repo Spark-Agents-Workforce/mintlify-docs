@@ -20,11 +20,13 @@ From zero to your first test sale:
 
 Self-hosting sounds like a weekend of DevOps. It's an hour, and almost none of it is yours.
 
-One line makes the money: a shopper picks **Subscription** on your product page, checks out, and Shopify writes a subscription contract. That contract mirrors into your engine and lands in your admin and your subscriber's portal. Everything else (database, app, webhooks) exists to make that line possible.
+How the money gets made: a shopper picks **Subscription** on your product page and checks out, Shopify writes the subscription contract, and OpenSubs mirrors it into your admin and your subscriber's portal. Everything else exists to support that sale, and every piece sits in an account you own:
 
-And it's all yours. The database is a Supabase project in your account: your subscription state, in Postgres you can open. The app runs in your Vercel account. The Shopify app is a custom app you create. Cards stay in Shopify Payments and never touch OpenSubs; OpenSubs only tells Shopify when to bill. The stack starts around \$45 a month, and nobody takes a percentage.
+- **Supabase** holds your database: your subscription state, in Postgres you can open.
+- **Vercel** runs your app.
+- **Shopify** holds the custom app you create, and the cards: they stay in Shopify Payments and never touch OpenSubs. OpenSubs only tells Shopify when to bill.
 
-The installer (Launchpad) does the assembly. It asks for everything up front, builds unattended, proves each piece as it goes, and, at the finish, purges its own secrets. It keeps nothing.
+The stack starts around \$45 a month, and nobody takes a percentage. The installer (Launchpad) assembles everything: it asks for what it needs up front, builds unattended, proves each piece, and purges its own secrets at the finish. It keeps nothing.
 
 Today it runs against a dev store: free, disposable, zero subscribers. Watch it sell once where mistakes are free. Going live is [the next page](/platform-v2/live-for-new-orders/what-today-changes), the easy one.
 
