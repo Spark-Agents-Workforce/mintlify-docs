@@ -23,11 +23,11 @@ From the dev store to your real store:
 
 On the dev-store walk you built the machine on a store that didn't matter, and watched it sell. Nothing you built gets rebuilt today. The custom app, its API access, the deployment, the database: all of it belongs to the app, not to any store. What your real store gets is new rows in the same machine: its own tokens, its own webhook registrations, its own plans.
 
-Today has one real act: **the swap**, the moment your real product page offers *your* subscription instead of nobody's (new store) or somebody else's (switcher). Everything before the swap is prep. Everything after is proof.
+Today has one real act: **the swap**, the moment your real product page offers *your* subscription instead of nobody's (new store) or somebody else's (if you're switching). Everything before the swap is prep. Everything after is proof.
 
 Two facts before you start. First: installing writes nothing to your theme and nothing to your checkout; the widget appears only when you place the block, and it comes down just as fast. Second, for anyone leaving Skio, Stay AI, or Recharge: OpenSubs cannot touch their subscriptions. Not *won't*, **can't**. Shopify scopes every app to the contracts it owns, so the old platform's subscriptions are invisible to us by permission. They keep billing exactly as they did yesterday, while every new subscriber lands on your book of subscriptions at 0%.
 
-New store? Today is simply launch. Switcher? Today is the de-risking move: new subscriptions start here at 0%, existing ones keep billing where they are, and you migrate later, when you're ready.
+New store? Today is simply launch. Switching? Today is the de-risking move: new subscriptions start here at 0%, existing ones keep billing where they are, and you migrate later, when you're ready.
 
 ## Recipe 1: preflight
 
@@ -86,10 +86,6 @@ Confirm real payments:
     <Frame>
       <img src="/images/deploy/go-live-verification/03-home-checklist.png" alt="The OpenSubs admin Home on the live store: the checklist, with the catalog filling in." />
     </Frame>
-
-    <Warning>
-    **Seeing your customers appear is not migration.** The mirror is read-only bookkeeping: products, customers, orders. Your old app's subscriptions are not in it; Shopify won't even show them to us. Nothing moved. Nothing bills differently than it did an hour ago.
-    </Warning>
   </Step>
 </Steps>
 
@@ -158,7 +154,7 @@ Same moves you made on the dev store, sized to your real catalog. The Home check
 
 One theme save swaps the page. That's the entire choreography.
 
-**New store?** There's nothing to take down; skip the switcher bullets.
+**New store?** There's nothing to take down; skip the bullets marked **Switching?**
 
 Swap in your offer:
 
@@ -171,7 +167,7 @@ Swap in your offer:
 - Using a sidebar cart with a "switch to subscription" upgrade? Open it and confirm it now offers your new plans, not the old platform's.
 
 <Check>
-**Checkpoint:** exactly one subscription offer on the page: yours. Switchers: old book still billing.
+**Checkpoint:** exactly one subscription offer on the page: yours. If you're switching, the old platform's book is still billing, untouched.
 </Check>
 
 <Columns cols={2}>
@@ -187,9 +183,9 @@ Swap in your offer:
 **The two-step revert, if you ever need it.** Both steps are on your side; the old platform is not involved.
 
 1. In the theme editor, take the **Subscription options** block back out. Your widget vanishes from the page.
-2. In the OpenSubs admin, delete your own plan groups at **Settings > Selling plans** ("Delete group?" · Delete). Your products sell one-time only, exactly as before.
+2. In the OpenSubs admin, delete your own plan groups at **Settings > Selling plans** ("Delete group?" · Delete). Your subscription offer is gone from the store.
 
-Switching? The old platform's plans and widget are wherever you left them, and its book kept billing the whole time. Contracts your team already sold on OpenSubs keep billing until you cancel them; nothing is left stranded. That's the whole undo.
+New store? Your products sell one-time only, exactly as before. Switching? The old platform's plans stayed attached and its book kept billing the whole time; unhide or re-add its widget in the theme editor and your page offers its subscriptions again, exactly as before the swap. Contracts your team already sold on OpenSubs keep billing until you cancel them; nothing is left stranded. That's the whole undo.
 </Note>
 
 ## Recipe 5: prove it with real money
