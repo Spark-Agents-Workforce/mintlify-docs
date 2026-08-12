@@ -1,0 +1,80 @@
+---
+title: "Watch it sell once"
+description: "Buy your own subscription and see it land everywhere it should."
+---
+
+import { PlatformTag } from "/snippets/PlatformTag.jsx";
+
+<PlatformTag platform="opensubs" />
+
+<span className="os-chip">5 min</span>
+
+<Steps>
+  <Step title="Buy your own subscription">
+    - Open your storefront and visit your product page. (Dev storefronts are password-gated; find the password in the dev store admin under **Online Store > Preferences**.) Under **Purchase options**, pick the subscription and add to cart.
+    - Check out with Shopify's test gateway: card number **1**, any name, any future expiry, any CVC. (No test payment option at checkout? Activate the test gateway first: dev store admin, **Settings > Payments**.)
+
+    <Frame>
+      <img src="/images/deploy/dev-store-fast-path/21-test-checkout.png" width="560" alt="Purchase options: the subscription selected, headed to test checkout." />
+    </Frame>
+
+    <Check>
+    **Checkpoint:** order placed, no real money.
+    </Check>
+  </Step>
+  <Step title="See it in both places">
+    - Find the subscription in the OpenSubs admin.
+    - Still signed in as the test subscriber, open `/a/account` on the storefront; the account area loads with no login screen.
+
+    <Columns cols={2}>
+      <Frame>
+        <img src="/images/deploy/dev-store-fast-path/22-admin-subscription.png" alt="The subscription in the OpenSubs admin." />
+      </Frame>
+      <Frame>
+        <img src="/images/deploy/dev-store-fast-path/23-subscriber-portal.png" alt="/a/account: the subscriber portal, no login screen." />
+      </Frame>
+    </Columns>
+
+    <Check>
+    **Checkpoint:** same subscription in both. The subscriber's receipt is Shopify's own order confirmation.
+    </Check>
+
+    <Note>
+    **No welcome email is not a bug.** Your subscriber gets Shopify's order confirmation, same as any order. OpenSubs sends no checkout welcome of its own. Want a branded one? That's your Klaviyo flow or SendGrid template, provisioned as a draft when you connect, yours to set live.
+    </Note>
+  </Step>
+  <Step title="Look at the health page">
+    - In the OpenSubs admin, open **Settings > Operational health**.
+
+    **You'll see:** jobs green, webhooks delivering, queues quiet: the page the machine reports to from now on.
+
+    <Frame>
+      <img src="/images/deploy/dev-store-fast-path/24-operational-health.png" width="560" alt="Operational health: jobs green, webhooks delivering, queues quiet." />
+    </Frame>
+
+    <Check>
+    **Checkpoint:** green board. It sold once, and you own every piece of it.
+    </Check>
+  </Step>
+</Steps>
+
+## Congratulations: the machine is yours
+
+A shopper subscribed, Shopify wrote the contract, your engine mirrored it, the portal served it: every part lit, and green means proven. The installer left nothing behind but the machine itself: your database, your app, your store. Time spent: about an hour. Percentage owed on every order it ever takes: zero.
+
+When you're ready for your real store, the next rung is [Live for New Orders](/platform-v2/live-for-new-orders/what-today-changes).
+
+---
+
+## Where next
+
+<div className="os-where-next">
+<Columns cols={1}>
+  <Card icon="arrow-up-right" title="A renewal, frame by frame" href="/curtain/a-renewal-frame-by-frame">
+    The charge you're about to watch.
+  </Card>
+  <Card icon="arrow-up-right" title="Live for New Orders" href="/platform-v2/live-for-new-orders/what-today-changes">
+    From the dev store to your real store.
+  </Card>
+</Columns>
+</div>

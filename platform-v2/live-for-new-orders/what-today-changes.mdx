@@ -1,0 +1,35 @@
+---
+title: "What today changes"
+description: "Nothing gets rebuilt. Today swaps the offer on your product page; everything after is proof."
+---
+
+import { PlatformTag } from "/snippets/PlatformTag.jsx";
+
+<PlatformTag platform="opensubs" />
+
+From the dev store to your real store:
+
+- **Outcome:** your real store selling subscriptions through OpenSubs at a 0% fee, while whatever billed yesterday keeps billing, untouched.
+- **Time:** one sitting. Your customers can't tell it's happening.
+- **Before you start:** finish [Setup](/platform-v2/setup/what-youre-installing) first: your machine live on a dev store, one test sale proven.
+- **You'll touch:**
+  - The Shopify Dev Dashboard, once, for one link
+  - Your live store's admin: Payments, then the theme editor
+  - The OpenSubs admin on your live store: plans, integrations, health
+  - Your old subscription app's admin, only if you're switching off one
+
+Nothing from Setup gets rebuilt today. The custom app, its API access, the deployment, the database: none of it belongs to a store. Your real store simply becomes new rows in the same machine, with its own plans.
+
+Today has one real act: **the swap**, the moment your real product page offers *your* subscription instead of nobody's (new store) or somebody else's (if you're switching). Everything before the swap is prep. Everything after is proof.
+
+Where you're coming from decides the details:
+
+|  | New store | Switching |
+| --- | --- | --- |
+| Today is | Launch | The de-risking move |
+| Your theme | Untouched until you place the widget | You place your widget and remove the old one |
+| New subscriptions | Land on OpenSubs at a 0% fee | Land on OpenSubs at a 0% fee |
+| Existing subscriptions | None yet | Keep billing on the old platform, untouched |
+| Migrating the old ones | Nothing to migrate | Later, when you're ready |
+
+Both guarantees are structural: installing writes nothing to your theme or checkout until you place the block, and Shopify scopes every app to the contracts it owns, so OpenSubs cannot touch the old platform's subscriptions, whether that's Skio, Stay AI, or Recharge.

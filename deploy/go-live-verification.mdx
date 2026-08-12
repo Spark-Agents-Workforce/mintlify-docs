@@ -10,9 +10,9 @@ import { PlatformTag } from "/snippets/PlatformTag.jsx";
 
 From the dev store to your real store:
 
-- **Outcome:** your real store selling subscriptions through OpenSubs, every new subscription at a 0% platform fee (you host the stack yourself, so nobody takes a cut of your subscription revenue), while whatever billed yesterday keeps billing, untouched.
+- **Outcome:** your real store selling subscriptions through OpenSubs at a 0% fee, while whatever billed yesterday keeps billing, untouched.
 - **Time:** one sitting. Your customers can't tell it's happening.
-- **Before you start:** finish [the dev-store fast path](/deploy/dev-store-fast-path) first; this page assumes your machine is live on a dev store and has sold a test subscription.
+- **Before you start:** finish [the dev-store fast path](/deploy/dev-store-fast-path) first: your machine live on a dev store, one test sale proven.
 - **You'll touch:**
   - The Shopify Dev Dashboard, once, for one link
   - Your live store's admin: Payments, then the theme editor
@@ -21,20 +21,28 @@ From the dev store to your real store:
 
 ## The picture
 
-On the dev-store walk you built the machine on a store that didn't matter, and watched it sell. Nothing you built gets rebuilt today. The custom app, its API access, the deployment, the database: all of it belongs to the app, not to any store. What your real store gets is new rows in the same machine: its own tokens, its own webhook registrations, its own plans.
+Nothing you built on the dev store gets rebuilt today. The custom app, its API access, the deployment, the database: none of it belongs to a store. Your real store simply becomes new rows in the same machine, with its own plans.
 
 Today has one real act: **the swap**, the moment your real product page offers *your* subscription instead of nobody's (new store) or somebody else's (if you're switching). Everything before the swap is prep. Everything after is proof.
 
-Two facts before you start. First: installing writes nothing to your theme and nothing to your checkout; the widget appears only when you place the block, and it comes down just as fast. Second, for anyone leaving Skio, Stay AI, or Recharge: OpenSubs cannot touch their subscriptions. Not *won't*, **can't**. Shopify scopes every app to the contracts it owns, so the old platform's subscriptions are invisible to us by permission. They keep billing exactly as they did yesterday, while every new subscriber lands on your book of subscriptions at 0%.
+Where you're coming from decides the details:
 
-New store? Today is simply launch. Switching? Today is the de-risking move: new subscriptions start here at 0%, existing ones keep billing where they are, and you migrate later, when you're ready.
+|  | New store | Switching |
+| --- | --- | --- |
+| Today is | Launch | The de-risking move |
+| Your theme | Untouched until you place the widget | You place your widget and remove the old one |
+| New subscriptions | Land on OpenSubs at a 0% fee | Land on OpenSubs at a 0% fee |
+| Existing subscriptions | None yet | Keep billing on the old platform, untouched |
+| Migrating the old ones | Nothing to migrate | Later, when you're ready |
+
+Both guarantees are structural: installing writes nothing to your theme or checkout until you place the block, and Shopify scopes every app to the contracts it owns, so OpenSubs cannot touch the old platform's subscriptions, whether that's Skio, Stay AI, or Recharge.
 
 ## Recipe 1: preflight
 
 <span className="os-chip">5 min</span>
 
 <Note>
-**The machine you built on the dev-store walk carries over. You don't rebuild any of it today.** Your custom app, and the API access it was granted, live in the Dev Dashboard, not in any store; your live store inherits both the moment it installs. One deployment serves every store; the database, the scheduled jobs, and the webhook receivers are already running. Your live store simply becomes new rows in the same machine. The installer (Launchpad) finished its work back then and does not run again: from here on, everything happens in the admins.
+**Nothing gets rebuilt today, and the installer does not run again.** Everything you set up carries over: your live store inherits the app, the database, and the scheduled jobs the moment it installs.
 </Note>
 
 Confirm real payments:
@@ -57,7 +65,7 @@ Confirm real payments:
 
 <Steps>
   <Step title="Copy the install link">
-    - Odds are you already generated this link on the dev-store walk: right after selecting **Custom distribution**, you entered your live store's domain and clicked **Generate link**.
+    - Odds are you already generated this link back when you created the app: right after selecting **Custom distribution**, you entered your live store's domain and clicked **Generate link**.
     - The link is waiting where you left it: in the Dev Dashboard, under your app's **Distribution** page. Copy it.
     - If you deferred back then (no live store to name yet), generate it now on the same screen: enter your live store's `.myshopify.com` domain, click **Generate link**, then copy it.
     - You'll see an install link scoped to your app; this link *is* how a custom app reaches a real store.
@@ -75,7 +83,7 @@ Confirm real payments:
     </Note>
   </Step>
   <Step title="Install on your live store">
-    - Open the link, confirm your live store, and approve the access screen (the same grants you approved on the dev-store walk).
+    - Open the link, confirm your live store, and approve the access screen (the same grants you approved when you created the app).
     - You'll see the OpenSubs admin open inside your real store's admin. Home greets you with a short checklist: **Migrate from another app** (optional) · **Create a selling plan** · **Connect email & SMS** · **Build a cancellation flow** · **Brand your customer portal**. That checklist is the rest of this page; the optional Migrate item has [its own page](/migrate/why-switching-is-safe), for when you're ready.
     - Meanwhile the app builds its mirror of your store: your real products, customers, and orders appear on their own. The sync plumbing set itself up at install; there is nothing for you to configure.
 
@@ -152,22 +160,22 @@ Same moves you made on the dev store, sized to your real catalog. The Home check
 
 <span className="os-chip">10 min</span>
 
-One theme save swaps the page. That's the entire choreography.
+One theme save swaps the page.
 
-**New store?** There's nothing to take down; skip the bullets marked **Switching?**
+**New store?** Nothing to take down: skip the bullets marked **Switching?**
 
 Swap in your offer:
 
 - Your selling plans from Recipe 3 are already on your products; this step makes the offer visible.
-- Switching? Leave the old platform's selling plan groups exactly where they are: attached to your products, active, in their admin. Current subscriptions bill through those plans, and pulling them off risks interrupting that billing. The backend isn't the swap; the theme is: widgets decide what shoppers see, plans decide what bills.
-- Open the theme editor and go to your product template. Add the **Subscription options** block near the buy buttons. Switching? Remove or hide the old platform's widget while you're in here: their widget gone means their new signups stop, while their existing book keeps billing, untouched.
-- Click **Save**. One save: the swap is done.
-- The block hides itself on products with no plans, so placing it store-wide is safe. If your theme needs the app embed for quick-view, enable it at **Settings > Extensions**, like you did on the dev-store walk.
+- Switching? Leave the old platform's plan groups alone: attached, active, in their admin. Current subscriptions bill through them. The swap happens in the theme: widgets decide what shoppers see, plans decide what bills.
+- Open the theme editor and go to your product template. Add the **Subscription options** block near the buy buttons. Switching? Remove or hide the old platform's widget while you're in here; that stops their new signups and nothing else.
+- Click **Save**. The swap is done.
+- The block hides itself on products with no plans, so placing it store-wide is safe. If your theme needs the app embed for quick-view, enable it at **Settings > Extensions**.
 - You'll see your product page offering one-time *and* your subscription spread, priced right.
-- Using a sidebar cart with a "switch to subscription" upgrade? Open it and confirm it now offers your new plans, not the old platform's.
+- Using a sidebar cart with a "switch to subscription" upgrade? Confirm it now offers your plans, not the old platform's.
 
 <Check>
-**Checkpoint:** exactly one subscription offer on the page: yours. If you're switching, the old platform's book is still billing, untouched.
+**Checkpoint:** exactly one subscription offer on the page: yours. If you're switching, the old platform's existing subscriptions are still billing, untouched.
 </Check>
 
 <Columns cols={2}>
@@ -183,9 +191,9 @@ Swap in your offer:
 **The two-step revert, if you ever need it.** Both steps are on your side; the old platform is not involved.
 
 1. In the theme editor, take the **Subscription options** block back out. Your widget vanishes from the page.
-2. In the OpenSubs admin, delete your own plan groups at **Settings > Selling plans** ("Delete group?" · Delete). Your subscription offer is gone from the store.
+2. In the OpenSubs admin, delete your plan groups at **Settings > Selling plans**. Your subscription offer is gone from the store.
 
-New store? Your products sell one-time only, exactly as before. Switching? The old platform's plans stayed attached and its book kept billing the whole time; unhide or re-add its widget in the theme editor and your page offers its subscriptions again, exactly as before the swap. Contracts your team already sold on OpenSubs keep billing until you cancel them; nothing is left stranded. That's the whole undo.
+New store? Your products sell one-time only, exactly as before. Switching? The old platform's plans stayed attached and its subscriptions kept billing the whole time; re-add its widget and your page offers its subscriptions again. Contracts your team already sold on OpenSubs keep billing until you cancel them; nothing is left stranded. That's the whole undo.
 </Note>
 
 ## Recipe 5: prove it with real money
@@ -232,7 +240,7 @@ New store? Your products sell one-time only, exactly as before. Switching? The o
   <Step title="Clean up, or don't">
     - Refund the team orders in Shopify if you like, but remember: a refund is not a cancel. A subscription bills until its contract is cancelled.
     - Cancel the team's contracts in the portal. It's a free test-drive of your cancellation flow and its save offers.
-    - Or leave one running as a canary: a real contract the daily billing tick bills on schedule, proof that renews itself every cycle. The tick runs at 9:00 AM store time by default; change it in **Settings > Billing**.
+    - Or leave one running as a canary: a real contract the daily billing run charges on schedule, proof that renews itself every cycle. The billing run fires at 9:00 AM store time by default; change it in **Settings > Billing**.
 
     <Check>
     **Checkpoint:** team contracts cancelled, or one canary alive, on purpose.
@@ -253,7 +261,7 @@ If you're switching, your store now carries two books: the old platform's (every
 |  | The old book | Your new book |
 | --- | --- | --- |
 | What it holds | Every subscription sold before today | Every subscription sold from today |
-| Who bills it | The old platform, at its old fee | OpenSubs, at 0% |
+| Who bills it | The old platform, at its old fee | OpenSubs, at a 0% fee |
 | When a card fails | Its retries and reminders run exactly as before | OpenSubs retries automatically; tune the schedule at **Settings > Payment recovery** |
 | Where subscribers manage it | The old platform's portal | Your portal, at `/a/account` |
 | Where it's heading | Only shrinks: natural churn retires it | Only grows: every new subscriber lands here |
@@ -264,11 +272,11 @@ Two books also means two subscriber portals until you consolidate; that is the h
 
 ## You are live for new orders
 
-Somewhere ahead, a stranger subscribes. No ceremony. It lands exactly like your team's orders did: three places, no drama, and at the next daily tick the machine bills a contract **you sold**. That's the whole event. The dev store proved the machine; today the machine started earning.
+Somewhere ahead, a stranger subscribes. No ceremony. It lands exactly like your team's orders did: three places, no drama, and at the next daily billing run the machine charges a contract **you sold**. That's the whole event. The dev store proved the machine; today the machine started earning.
 
 Stuck anywhere along the way? Email [support@opensubs.com](mailto:support@opensubs.com) with your store domain and the step you're on.
 
-**Next up: [Migrate](/migrate/why-switching-is-safe).** When the old book's remainder is ready to come over, the cards never move; we only change who pulls the trigger. The finish line looks just like today's proof: the same daily tick, billing a contract **you moved**.
+**Next up: [Migrate](/migrate/why-switching-is-safe).** When the old book's remainder is ready to come over, the cards never move; we only change who pulls the trigger. The finish line looks just like today's proof: the same daily billing run, charging a contract **you moved**.
 
 ---
 

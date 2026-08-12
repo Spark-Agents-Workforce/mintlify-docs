@@ -1,0 +1,76 @@
+---
+title: "Connect your accounts"
+description: "Seven short prompts, all up front."
+---
+
+import { PlatformTag } from "/snippets/PlatformTag.jsx";
+
+<PlatformTag platform="opensubs" />
+
+<span className="os-chip">Connect · ~10 min</span>
+
+Connect is seven short prompts, all up front. Answer them and your part is mostly over. The header always says whose turn it is: **WAITING ON YOU** means you.
+
+<Steps>
+  <Step title="The license key">
+    - Enter your **license key** and click **Continue**.
+
+    <Frame>
+      <img src="/images/deploy/dev-store-fast-path/08-license-key.png" alt="Connect: the license key prompt." />
+    </Frame>
+
+    - Review the running costs, a recurring floor of **Supabase Pro (\~\$25/mo) + Vercel Pro (\~\$20/mo)** plus usage, and click **I understand the costs**.
+
+    <Frame>
+      <img src="/images/deploy/dev-store-fast-path/09-running-costs.png" alt="Connect: the running-costs acknowledgement." />
+    </Frame>
+
+    <Check>
+    **Checkpoint:** license validated, costs acknowledged. 2 of 7.
+    </Check>
+  </Step>
+  <Step title="The Shopify values">
+    The **Create your Shopify app** card asks for four values, and you gathered every one in [Gather the accounts](/platform-v2/setup/gather-the-accounts). It keeps them only long enough to provision, then purges them.
+
+    - Paste the **Client ID** and **Client secret**.
+    - Paste the **App Automation Token (deploy-only)**.
+    - Enter your dev store's `.myshopify.com` domain from [Gather the accounts](/platform-v2/setup/gather-the-accounts) (your install link builds itself from it later), then click **Continue**.
+
+    <Frame>
+      <img src="/images/deploy/dev-store-fast-path/10-shopify-app-card.png" width="620" alt="Connect: the Create your Shopify app card, four values." />
+    </Frame>
+
+    - On **Request Shopify scopes**, confirm the two requests you filed in [Gather the accounts](/platform-v2/setup/gather-the-accounts) (**Access subscriptions APIs** and **Read all orders**) show granted in the Dev Dashboard, then click **Access requested**. *"With Custom distribution every item below is approved instantly."* The data-use justification sits right there with a copy button if a form still wants it.
+
+    <Frame>
+      <img src="/images/deploy/dev-store-fast-path/11-request-scopes.png" alt="Connect: Request Shopify scopes, approved instantly under Custom distribution." />
+    </Frame>
+
+    <Check>
+    **Checkpoint:** every item granted. No wait, no review queue.
+    </Check>
+  </Step>
+  <Step title="The hosting connections">
+    - Click **Connect Vercel**.
+    - Click **Connect Supabase**.
+
+    <Columns cols={2}>
+      <Frame>
+        <img src="/images/deploy/dev-store-fast-path/12-connect-vercel.png" alt="Connect: Connect Vercel." />
+      </Frame>
+      <Frame>
+        <img src="/images/deploy/dev-store-fast-path/13-connect-supabase.png" alt="Connect: Connect Supabase." />
+      </Frame>
+    </Columns>
+
+    - **Choose your region:** pick your Supabase organization and the region your subscriber data will live in, then click **Continue**.
+
+    <Frame>
+      <img src="/images/deploy/dev-store-fast-path/14-supabase-region.png" alt="Connect: Supabase organization and region picker." />
+    </Frame>
+
+    <Check>
+    **Checkpoint:** 7 of 7, nothing left to type. Build begins on its own.
+    </Check>
+  </Step>
+</Steps>

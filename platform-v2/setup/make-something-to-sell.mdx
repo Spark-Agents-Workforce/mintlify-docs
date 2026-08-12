@@ -1,0 +1,39 @@
+---
+title: "Make something to sell"
+description: "A plan and a widget: your product page starts selling subscriptions."
+---
+
+import { PlatformTag } from "/snippets/PlatformTag.jsx";
+
+<PlatformTag platform="opensubs" />
+
+<span className="os-chip">5 min</span>
+
+<Steps>
+  <Step title="Create a plan">
+    - In your dev store's admin, open **Apps > OpenSubs**, then **Settings > Selling plans** and create a new group.
+    - Name it **Subscribe & Save**, set delivery to **every 1 Month** with **10%** off, and attach your product.
+
+    <Frame>
+      <img src="/images/deploy/dev-store-fast-path/19-selling-plan.png" alt="Selling plans: the Subscribe & Save group (monthly, 10% off, product attached)." />
+    </Frame>
+
+    <Check>
+    **Checkpoint:** plan saved. Monthly · 10% subscribe & save.
+    </Check>
+  </Step>
+  <Step title="Place the widget">
+    - In the OpenSubs admin: **Settings > Extensions > Product page widget**, then click **Open theme editor**.
+    - The editor opens with the **Subscription options** block on the product template; click **Save**.
+
+    <Frame>
+      <img src="/images/deploy/dev-store-fast-path/20-widget-theme-editor.png" alt="The Subscription options block on the product template." />
+    </Frame>
+
+    **You'll see:** example plans in the editor preview; real ones render on the storefront, and the widget hides itself on products without plans. The app has also added subscription panels to the product, customer, and order pages in your admin (no setup needed).
+
+    <Check>
+    **Checkpoint:** block saved. The widget is live, on a store with zero subscribers.
+    </Check>
+  </Step>
+</Steps>

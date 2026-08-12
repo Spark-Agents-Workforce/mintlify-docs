@@ -1,0 +1,44 @@
+---
+title: "Coexistence"
+description: "Two systems, no fight: the old platform's subscriptions shrink while yours grow."
+---
+
+import { PlatformTag } from "/snippets/PlatformTag.jsx";
+
+<PlatformTag platform="opensubs" />
+
+If you're switching, your store now carries two books: the old platform's (every subscription sold before today) and yours (every subscription sold from today). This is a stable stage, not a countdown. The two don't fight: Shopify lets each app pull the billing trigger only on the contracts it owns, so no contract answers to two apps and nobody gets double-charged. That is a Shopify permission rule, not a promise.
+
+<div className="os-compare-ours-last">
+
+|  | The old book | Your new book |
+| --- | --- | --- |
+| What it holds | Every subscription sold before today | Every subscription sold from today |
+| Who bills it | The old platform, at its old fee | OpenSubs, at a 0% fee |
+| When a card fails | Its retries and reminders run exactly as before | OpenSubs retries automatically; tune the schedule at **Settings > Payment recovery** |
+| Where subscribers manage it | The old platform's portal | Your portal, at `/a/account` |
+| Where it's heading | Only shrinks: natural churn retires it | Only grows: every new subscriber lands here |
+
+</div>
+
+Two books also means two subscriber portals until you consolidate; that is the honest, temporary cost of this stage. Watch the old platform's fee line shrink with its book, and when the math and your nerves agree, migrate the remainder. No deadline.
+
+## You are live for new orders
+
+Somewhere ahead, a stranger subscribes. No ceremony. It lands exactly like your team's orders did: three places, no drama, and at the next daily billing run the machine charges a contract **you sold**. That's the whole event. The dev store proved the machine; today the machine started earning.
+
+Stuck anywhere along the way? Email [support@opensubs.com](mailto:support@opensubs.com) with your store domain and the step you're on.
+
+**Next up: [Migrate](/migrate/why-switching-is-safe).** When the old book's remainder is ready to come over, the cards never move; we only change who pulls the trigger. The finish line looks just like today's proof: the same daily billing run, charging a contract **you moved**.
+
+---
+
+## Where next
+
+<div className="os-where-next">
+<Columns cols={1}>
+  <Card icon="arrow-up-right" title="When something goes wrong" href="/deploy/when-something-goes-wrong">
+    The page to open when something breaks at 11pm.
+  </Card>
+</Columns>
+</div>

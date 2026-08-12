@@ -1,0 +1,44 @@
+---
+title: "The swap"
+description: "One theme save swaps the page."
+---
+
+import { PlatformTag } from "/snippets/PlatformTag.jsx";
+
+<PlatformTag platform="opensubs" />
+
+<span className="os-chip">10 min</span>
+
+**New store?** Nothing to take down: skip the bullets marked **Switching?**
+
+Swap in your offer:
+
+- Your selling plans from [Configure your store](/platform-v2/live-for-new-orders/configure-your-store) are already on your products; this step makes the offer visible.
+- Switching? Leave the old platform's plan groups alone: attached, active, in their admin. Current subscriptions bill through them. The swap happens in the theme: widgets decide what shoppers see, plans decide what bills.
+- Open the theme editor and go to your product template. Add the **Subscription options** block near the buy buttons. Switching? Remove or hide the old platform's widget while you're in here; that stops their new signups and nothing else.
+- Click **Save**. The swap is done.
+- The block hides itself on products with no plans, so placing it store-wide is safe. If your theme needs the app embed for quick-view, enable it at **Settings > Extensions**.
+- You'll see your product page offering one-time *and* your subscription spread, priced right.
+- Using a sidebar cart with a "switch to subscription" upgrade? Confirm it now offers your plans, not the old platform's.
+
+<Check>
+**Checkpoint:** exactly one subscription offer on the page: yours. If you're switching, the old platform's existing subscriptions are still billing, untouched.
+</Check>
+
+<Columns cols={2}>
+  <Frame>
+    <img src="/images/deploy/go-live-verification/07-remove-old-widget.png" alt="Theme editor: the old platform's subscription widget coming off the product template." />
+  </Frame>
+  <Frame>
+    <img src="/images/deploy/go-live-verification/08-add-subscription-block.png" alt="Theme editor: adding the OpenSubs Subscription options block from the Apps tab." />
+  </Frame>
+</Columns>
+
+<Note>
+**The two-step revert, if you ever need it.** Both steps are on your side; the old platform is not involved.
+
+1. In the theme editor, take the **Subscription options** block back out. Your widget vanishes from the page.
+2. In the OpenSubs admin, delete your plan groups at **Settings > Selling plans**. Your subscription offer is gone from the store.
+
+New store? Your products sell one-time only, exactly as before. Switching? The old platform's plans stayed attached and its subscriptions kept billing the whole time; re-add its widget and your page offers its subscriptions again. Contracts your team already sold on OpenSubs keep billing until you cancel them; nothing is left stranded. That's the whole undo.
+</Note>

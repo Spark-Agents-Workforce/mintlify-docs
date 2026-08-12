@@ -1,0 +1,62 @@
+---
+title: "Prove it with real money"
+description: "Your team buys with real cards; Operational health goes green."
+---
+
+import { PlatformTag } from "/snippets/PlatformTag.jsx";
+
+<PlatformTag platform="opensubs" />
+
+<span className="os-chip">15 min</span>
+
+<Steps>
+  <Step title="Your team buys">
+    - No test cards this time: have one or several teammates subscribe on the live product page, with real cards and small stakes.
+    - Spread the purchases on purpose: different plans, different frequencies, different terms.
+    - You'll see an ordinary checkout, with the subscription terms on the line item.
+    - Then find each order in three places: Shopify's order confirmation email, the contract in the OpenSubs admin, and the subscriber's portal: your store's domain followed by `/a/account`.
+    - If your Klaviyo flow is live, or your SendGrid templates are set up, your branded welcome arrives too: your email setup's first real send.
+
+    <Check>
+    **Checkpoint:** every order visible in all three places.
+    </Check>
+
+    <Frame>
+      <img src="/images/deploy/go-live-verification/09-subscriber-portal.png" alt="The subscriber's portal at /a/account: the team subscription, next order scheduled." />
+    </Frame>
+
+    <Columns cols={2}>
+      <Frame>
+        <img src="/images/deploy/go-live-verification/10-admin-contract.png" alt="The contract in the OpenSubs admin: active, with its next billing date." />
+      </Frame>
+      <Frame>
+        <img src="/images/deploy/go-live-verification/11-order-confirmation.png" alt="Shopify's order confirmation: the subscription terms on the line item." />
+      </Frame>
+    </Columns>
+  </Step>
+  <Step title="The health check">
+    - In the OpenSubs admin, open **Settings > Operational health**.
+    - You'll see jobs green, webhooks delivering, queues quiet: the page the machine reports to from now on.
+
+    <Check>
+    **Checkpoint:** Operational health green on the live store.
+    </Check>
+
+    <Frame>
+      <img src="/images/deploy/go-live-verification/12-operational-health.png" width="560" alt="Operational health on the live store: jobs green, webhooks delivering, queues quiet." />
+    </Frame>
+  </Step>
+  <Step title="Clean up, or don't">
+    - Refund the team orders in Shopify if you like, but remember: a refund is not a cancel. A subscription bills until its contract is cancelled.
+    - Cancel the team's contracts in the portal. It's a free test-drive of your cancellation flow and its save offers: the discount, gift, or pause it tries before letting a subscriber go.
+    - Or leave one running as a canary: a real contract the daily billing run charges on schedule, proof that renews itself every cycle. The billing run fires at 9:00 AM store time by default; change it in **Settings > Billing**.
+
+    <Check>
+    **Checkpoint:** team contracts cancelled, or one canary alive, on purpose.
+    </Check>
+
+    <Frame>
+      <img src="/images/deploy/go-live-verification/13-cancel-success.png" width="440" alt="The portal's cancel path: a team contract cancelled." />
+    </Frame>
+  </Step>
+</Steps>

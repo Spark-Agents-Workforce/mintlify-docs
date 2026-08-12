@@ -1,0 +1,32 @@
+---
+title: "The build builds itself"
+description: "Do nothing. Walk away. It proves as it builds."
+---
+
+import { PlatformTag } from "/snippets/PlatformTag.jsx";
+
+<PlatformTag platform="opensubs" />
+
+<span className="os-chip">Build · ~5–10 min</span>
+
+This step needs nothing from you. The header flips to **Provisioning your stack**, the installer takes over, and you can walk away.
+
+While it runs, it builds and verifies your whole stack:
+
+- Your database, with the scheduled jobs that keep the machine ticking (billing included).
+- Your app, built and deployed to your Vercel account.
+- Every webhook receiver (each one answers a signed test) and the channel your notifications ride on.
+
+In the **Setup log**, each step gets a yellow checkmark as it passes, with a note on what was just verified.
+
+<Frame>
+  <img src="/images/deploy/dev-store-fast-path/15-build-stack.png" width="640" alt="Build: the We build your stack column, twelve rows going green." />
+</Frame>
+
+<Check>
+**Checkpoint:** all twelve build steps checked off; the run stops at install, waiting for you.
+</Check>
+
+<Note>
+**You can't break the run.** Close the laptop or lose Wi-Fi and it picks up where it left off when you reopen. If a step fails, click **Retry**. Still stuck? Email [support@opensubs.com](mailto:support@opensubs.com) with your run ID (top of the installer).
+</Note>

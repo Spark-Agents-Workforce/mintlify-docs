@@ -1,0 +1,33 @@
+---
+title: "What you're installing"
+description: "What the installer assembles, and why every piece of it is yours."
+---
+
+import { PlatformTag } from "/snippets/PlatformTag.jsx";
+
+<PlatformTag platform="opensubs" />
+
+From zero to your first test sale:
+
+- **Outcome:** a complete subscription machine, in accounts you own, proven with one test sale on a store that doesn't matter.
+- **Time:** about an hour, most of it watching the installer work.
+- **You'll touch:**
+  - The Shopify Dev Dashboard (your app and your dev store)
+  - Supabase and Vercel (two Pro signups)
+  - The OpenSubs installer (Launchpad)
+  - Your dev store's admin and theme editor
+  - Your dev storefront, once, as the test subscriber
+
+Self-hosting sounds like a weekend of DevOps. It's an hour, and almost none of it is yours.
+
+One line makes the money: a shopper picks **Subscription** on your product page, checks out, and Shopify writes a subscription contract. That contract mirrors into your engine and lands in your admin and your subscriber's portal. Everything else (database, app, webhooks) exists to make that line possible.
+
+And it's all yours. The database is a Supabase project in your account: your subscription state, in Postgres you can open. The app runs in your Vercel account. The Shopify app is a custom app you create. Cards stay in Shopify Payments and never touch OpenSubs; OpenSubs only tells Shopify when to bill. The stack starts around \$45 a month, and nobody takes a percentage.
+
+The installer (Launchpad) does the assembly. It asks for everything up front, builds unattended, proves each piece as it goes, and, at the finish, purges its own secrets. It keeps nothing.
+
+Today it runs against a dev store: free, disposable, zero subscribers. Watch it sell once where mistakes are free. Going live is [the next page](/platform-v2/live-for-new-orders/what-today-changes), the easy one.
+
+<Frame caption="One line makes the money. You own every box.">
+  <img src="/images/deploy/dev-store-fast-path/01-sell-line.svg" alt="The sell line: widget, checkout, Shopify contract, your engine, admin and portal, running on your three accounts: Shopify, Supabase, and Vercel." noZoom />
+</Frame>

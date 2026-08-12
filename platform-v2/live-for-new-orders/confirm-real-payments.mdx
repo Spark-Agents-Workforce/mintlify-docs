@@ -1,0 +1,26 @@
+---
+title: "Confirm real payments"
+description: "Shopify Payments active, test mode off, before anything installs."
+---
+
+import { PlatformTag } from "/snippets/PlatformTag.jsx";
+
+<PlatformTag platform="opensubs" />
+
+<span className="os-chip">5 min</span>
+
+<Note>
+**Nothing gets rebuilt today, and the installer does not run again.** Everything you set up carries over: your live store inherits the app, the database, and the scheduled jobs the moment it installs.
+</Note>
+
+- In your live store's Shopify admin, go to **Settings > Payments**.
+- Confirm **Shopify Payments** is active, and that test mode is off.
+- You'll see your real payout account and no orange test-mode banner.
+
+<Check>
+**Checkpoint:** Shopify Payments active on the live store, test mode off.
+</Check>
+
+<Frame>
+  <img src="/images/deploy/go-live-verification/01-shopify-payments.png" width="620" alt="Settings > Payments on the live store: Shopify Payments active, no test-mode banner." />
+</Frame>

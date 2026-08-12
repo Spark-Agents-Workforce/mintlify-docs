@@ -1,0 +1,44 @@
+---
+title: "Install on the real store"
+description: "One link from the Dev Dashboard; your store's data syncs in by itself."
+---
+
+import { PlatformTag } from "/snippets/PlatformTag.jsx";
+
+<PlatformTag platform="opensubs" />
+
+<span className="os-chip">5 min</span>
+
+<Steps>
+  <Step title="Copy the install link">
+    - Odds are you already generated this link back when you created the app: right after selecting **Custom distribution**, you entered your live store's domain and clicked **Generate link**.
+    - The link is waiting where you left it: in the Dev Dashboard, under your app's **Distribution** page. Copy it.
+    - If you deferred back then (no live store to name yet), generate it now on the same screen: enter your live store's `.myshopify.com` domain, click **Generate link**, then copy it.
+    - You'll see an install link scoped to your app; this link *is* how a custom app reaches a real store.
+
+    <Check>
+    **Checkpoint:** install link copied.
+    </Check>
+
+    <Frame>
+      <img src="/images/deploy/go-live-verification/02-install-link.png" alt="Distribution: the install link, generated and ready to copy." />
+    </Frame>
+
+    <Note>
+    **On Shopify Plus?** The same screen offers "Allow multi-store installs for one Plus organization." Leave it unchecked for one production store; check it if sister stores in your organization will run OpenSubs too. Either way, dev stores stay fair game; the app's access carries wherever it installs.
+    </Note>
+  </Step>
+  <Step title="Install on your live store">
+    - Open the link, confirm your live store, and approve the access screen (the same grants you approved when you created the app).
+    - You'll see the OpenSubs admin open inside your real store's admin. Home greets you with a short checklist: **Migrate from another app** (optional) · **Create a selling plan** · **Connect email & SMS** · **Build a cancellation flow** · **Brand your customer portal**. That checklist is the next page, [Configure your store](/platform-v2/live-for-new-orders/configure-your-store); the optional Migrate item has [its own page](/migrate/why-switching-is-safe), for when you're ready.
+    - Meanwhile the app builds its mirror of your store: your real products, customers, and orders appear on their own. The sync plumbing set itself up at install; there is nothing for you to configure.
+
+    <Check>
+    **Checkpoint:** OpenSubs admin open on the live store; Home checklist showing; catalog filling in.
+    </Check>
+
+    <Frame>
+      <img src="/images/deploy/go-live-verification/03-home-checklist.png" alt="The OpenSubs admin Home on the live store: the checklist, with the catalog filling in." />
+    </Frame>
+  </Step>
+</Steps>

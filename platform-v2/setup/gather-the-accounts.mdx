@@ -1,0 +1,103 @@
+---
+title: "Gather the accounts"
+description: "The custom app, the dev store, and the hosting, ready before the installer."
+---
+
+import { PlatformTag } from "/snippets/PlatformTag.jsx";
+
+<PlatformTag platform="opensubs" />
+
+<span className="os-chip">20 min</span>
+
+**Goal:** have everything ready before starting the installer.
+
+**You'll need:**
+
+- A [Shopify Partner account](https://www.shopify.com/partners) (free to create)
+- A payment card for the two Pro signups in step 3
+- Your OpenSubs license key (delivered with your purchase)
+
+<Steps>
+  <Step title="Create the custom app">
+    <Warning>
+    **The one fatal wrong turn.** Create the custom app in the **Dev Dashboard**, never inside a store's admin. Store-admin custom apps can't use the subscription APIs, and no toggle fixes it. Dev Dashboard: every grant is instant.
+    </Warning>
+
+    - Go to the [Shopify Dev Dashboard](https://dev.shopify.com/dashboard) and click **Create app**.
+    - Enter your app name, such as "OpenSubs", and click **Create**.
+
+    <Frame>
+      <img src="/images/deploy/dev-store-fast-path/02-create-app.png" width="560" alt="Create app dialog with the app name entered." />
+    </Frame>
+
+    - Click **Settings** in the left menu. Copy the **Client ID** and **Client secret**, then scroll down to **App automation token** and create an App Automation Token (deploy-only). Copy that too.
+
+    <Tip>
+    Keep these three values easily accessible during setup: **Client ID**, **Client secret**, and the **App Automation Token**.
+    </Tip>
+
+    - Back on the **App Overview** page, click **Select distribution method** in the **Distribution** block and select **Custom distribution**: this makes the gated API approvals on the next step instant.
+
+    <Frame>
+      <img src="/images/deploy/dev-store-fast-path/03-custom-distribution.png" alt="Select distribution method: Custom distribution." />
+    </Frame>
+
+    - Enter the store domain where the app will be installed and click **Generate link**.
+
+    <Frame>
+      <img src="/images/deploy/dev-store-fast-path/04-generate-link.png" alt="Custom distribution: store domain entered, Generate link." />
+    </Frame>
+
+    <Warning>
+    Enter your live production store here (the store where subscriptions will be processed), never a development store. This locks in the store the app will serve in production; your dev store can still install the app regardless. No live store yet? Select **Custom distribution** and defer **Generate link** until you have one. The approvals on the next step unlock either way.
+    </Warning>
+
+    - Click **API access requests** in the left menu and click **Request access** for both:
+      - **Read all orders scope**
+      - **Access subscriptions APIs**
+
+    Paste this as the data-use justification wherever the form asks why:
+
+    ```text Data-use justification
+    We use the Subscriptions APIs to create and manage our store's own subscription contracts (selling plans, recurring billing, customer self-service). Read all orders lets the customer portal show the full order history of a subscription beyond 60 days.
+    ```
+
+    <Check>
+    **Checkpoint:** app created with Custom distribution; Client ID, Client secret, and App Automation Token copied; every access request granted.
+    </Check>
+  </Step>
+  <Step title="Create the dev store">
+    - Go to the [Shopify Dev Dashboard](https://dev.shopify.com/dashboard) and click **Stores** in the left menu.
+    - Click **Create store** and select the **Dev** option.
+
+    <Frame>
+      <img src="/images/deploy/dev-store-fast-path/05-create-dev-store.png" alt="Create store: the Dev option, with Generate test data selected." />
+    </Frame>
+
+    <Tip>
+    Select **Generate test data for store** to automatically add placeholder products to your development store for a quicker setup.
+    </Tip>
+
+    - Note your new store's `.myshopify.com` domain; the installer asks for it later.
+
+    <Check>
+    **Checkpoint:** a dev store with test products, domain noted.
+    </Check>
+  </Step>
+  <Step title="Create the hosting accounts">
+    - Sign up for a **Pro plan** at [Supabase](https://supabase.com/pricing).
+    - Sign up for a **Pro plan** at [Vercel](https://vercel.com/pricing).
+
+    <Accordion title="Why Pro?">
+      Free Supabase projects can pause after inactivity, taking billing and subscriptions offline. Pro adds more compute, database capacity, and higher usage limits.
+    </Accordion>
+
+    <Note>
+    When signing up, don't create a new project in either; the OpenSubs installer auto-creates this for you.
+    </Note>
+
+    <Check>
+    **Checkpoint:** Supabase and Vercel accounts exist. Everything gathered: Client ID, Client secret, App Automation Token, dev store domain, license key nearby. No email or SMS provider needed yet.
+    </Check>
+  </Step>
+</Steps>

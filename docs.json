@@ -146,6 +146,39 @@
         ]
       },
       {
+        "tab": "Platform v2",
+        "icon": "server-cog",
+        "groups": [
+          {
+            "group": "Setup",
+            "icon": "hammer",
+            "pages": [
+              "platform-v2/setup/what-youre-installing",
+              "platform-v2/setup/gather-the-accounts",
+              "platform-v2/setup/sign-in-to-the-installer",
+              "platform-v2/setup/connect-your-accounts",
+              "platform-v2/setup/the-build-builds-itself",
+              "platform-v2/setup/install-and-finish",
+              "platform-v2/setup/make-something-to-sell",
+              "platform-v2/setup/watch-it-sell-once"
+            ]
+          },
+          {
+            "group": "Live for New Orders",
+            "icon": "rocket",
+            "pages": [
+              "platform-v2/live-for-new-orders/what-today-changes",
+              "platform-v2/live-for-new-orders/confirm-real-payments",
+              "platform-v2/live-for-new-orders/install-on-the-real-store",
+              "platform-v2/live-for-new-orders/configure-your-store",
+              "platform-v2/live-for-new-orders/the-swap",
+              "platform-v2/live-for-new-orders/prove-it-with-real-money",
+              "platform-v2/live-for-new-orders/coexistence"
+            ]
+          }
+        ]
+      },
+      {
         "tab": "Growth Program",
         "icon": "trending-up",
         "groups": [

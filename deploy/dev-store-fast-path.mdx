@@ -25,7 +25,7 @@ Self-hosting sounds like a weekend of DevOps. It's an hour, and almost none of i
 
 One line makes the money: a shopper picks **Subscription** on your product page, checks out, and Shopify writes a subscription contract. That contract mirrors into your engine and lands in your admin and your subscriber's portal. Everything else (database, app, webhooks) exists to make that line possible.
 
-And it's all yours. The database is a Supabase project in your account: your subscription state, in Postgres you can open. The app runs in your Vercel account. The Shopify app is a custom app you create. Cards vault in Shopify Payments and never touch OpenSubs; OpenSubs only tells Shopify when to bill. The stack floors around \$45 a month, and nobody takes a percentage.
+And it's all yours. The database is a Supabase project in your account: your subscription state, in Postgres you can open. The app runs in your Vercel account. The Shopify app is a custom app you create. Cards stay in Shopify Payments and never touch OpenSubs; OpenSubs only tells Shopify when to bill. The stack starts around \$45 a month, and nobody takes a percentage.
 
 The installer (Launchpad) does the assembly. It asks for everything up front, builds unattended, proves each piece as it goes, and, at the finish, purges its own secrets. It keeps nothing.
 
@@ -79,7 +79,7 @@ Today it runs against a dev store: free, disposable, zero subscribers. Watch it 
     </Frame>
 
     <Warning>
-    Enter your live production store here (the store where subscriptions will be processed), never a development store. This locks in the store the app will serve in production; your dev store can still install the app for this walk regardless. No live store yet? Select **Custom distribution** and defer **Generate link** until you have one. The approvals on the next step unlock either way.
+    Enter your live production store here (the store where subscriptions will be processed), never a development store. This locks in the store the app will serve in production; your dev store can still install the app regardless. No live store yet? Select **Custom distribution** and defer **Generate link** until you have one. The approvals on the next step unlock either way.
     </Warning>
 
     - Click **API access requests** in the left menu and click **Request access** for both:
@@ -127,7 +127,7 @@ Today it runs against a dev store: free, disposable, zero subscribers. Watch it 
     </Note>
 
     <Check>
-    **Checkpoint:** Supabase and Vercel accounts exist. Everything gathered: Client ID, Client secret, App Automation Token, dev store domain, license key nearby. Email can wait; SMS is optional.
+    **Checkpoint:** Supabase and Vercel accounts exist. Everything gathered: Client ID, Client secret, App Automation Token, dev store domain, license key nearby. No email or SMS provider needed yet.
     </Check>
   </Step>
 </Steps>
@@ -136,7 +136,7 @@ Today it runs against a dev store: free, disposable, zero subscribers. Watch it 
 
 <span className="os-chip">2 min</span>
 
-**Goal:** be signed in with a fresh run open, ready for the installer's first ask.
+**Goal:** be signed in with a fresh run open, ready to enter your license key.
 
 **You'll need:** the email inbox tied to your OpenSubs membership.
 
@@ -153,21 +153,21 @@ Today it runs against a dev store: free, disposable, zero subscribers. Watch it 
 </Frame>
 
 <Check>
-**Checkpoint:** you're in, a fresh run open at its first ask. Keep your license key, the three Shopify values, and your dev store domain from Recipe 1 at hand; the run asks for them next.
+**Checkpoint:** you're in, with a fresh run open. Keep your license key, the three Shopify values, and your dev store domain from Recipe 1 at hand; the run asks for them next.
 </Check>
 
 ## Recipe 3: feed it everything
 
 <span className="os-chip">Connect · ~10 min</span>
 
-The run is a 24-step ledger in three phases (**Connect · Build · Go live**), and the header always says whose turn it is: **WAITING ON YOU** means you. Connect is seven asks, all up front. Answer them and your part is mostly over.
+Connect is seven short prompts, all up front. Answer them and your part is mostly over. The header always says whose turn it is: **WAITING ON YOU** means you.
 
 <Steps>
-  <Step title="Identity">
+  <Step title="The license key">
     - Enter your **license key** and click **Continue**.
 
     <Frame>
-      <img src="/images/deploy/dev-store-fast-path/08-license-key.png" alt="Connect: the license key ask." />
+      <img src="/images/deploy/dev-store-fast-path/08-license-key.png" alt="Connect: the license key prompt." />
     </Frame>
 
     - Review the running costs, a recurring floor of **Supabase Pro (\~\$25/mo) + Vercel Pro (\~\$20/mo)** plus usage, and click **I understand the costs**.
@@ -180,7 +180,7 @@ The run is a 24-step ledger in three phases (**Connect · Build · Go live**), a
     **Checkpoint:** license validated, costs acknowledged. 2 of 7.
     </Check>
   </Step>
-  <Step title="The Shopify asks">
+  <Step title="The Shopify values">
     The **Create your Shopify app** card asks for four values, and you gathered every one in Recipe 1. It keeps them only long enough to provision, then purges them.
 
     - Paste the **Client ID** and **Client secret**.
@@ -201,7 +201,7 @@ The run is a 24-step ledger in three phases (**Connect · Build · Go live**), a
     **Checkpoint:** every item granted. No wait, no review queue.
     </Check>
   </Step>
-  <Step title="The hosting asks">
+  <Step title="The hosting connections">
     - Click **Connect Vercel**.
     - Click **Connect Supabase**.
 
@@ -230,20 +230,26 @@ The run is a 24-step ledger in three phases (**Connect · Build · Go live**), a
 
 <span className="os-chip">Build · ~5–10 min</span>
 
-**Do:** nothing. Walk away. The header flips to **PROVISIONING YOUR STACK** and the run stops waiting on you.
+This step needs nothing from you. The header flips to **Provisioning your stack**, the installer takes over, and you can walk away.
 
-**You'll see:** the **We build your stack** column turn green, twelve rows top to bottom: install secrets generated, the app build checked, your database created and migrations installed (the scheduled jobs that keep the machine ticking, billing included, ship inside them), edge secrets set, edge functions deployed and *verified* (every webhook receiver answers a signed test). Then the app itself: Vercel project created, app deployed, vault wired, drain verified (the line notifications ride on). It proves as it builds, and tells you what each row just proved.
+While it runs, it builds and verifies your whole stack:
+
+- Your database, with the scheduled jobs that keep the machine ticking (billing included).
+- Your app, built and deployed to your Vercel account.
+- Every webhook receiver (each one answers a signed test) and the channel your notifications ride on.
+
+In the **Setup log**, each step gets a yellow checkmark as it passes, with a note on what was just verified.
 
 <Frame>
   <img src="/images/deploy/dev-store-fast-path/15-build-stack.png" width="640" alt="Build: the We build your stack column, twelve rows going green." />
 </Frame>
 
 <Check>
-**Checkpoint:** build rows green, 12 of 12; the run parks at install, waiting for you.
+**Checkpoint:** all twelve build steps checked off; the run stops at install, waiting for you.
 </Check>
 
 <Note>
-**Parked ≠ broken.** The installer is a resumable ledger. Close the laptop, lose Wi-Fi, reopen: it replays from the first unfinished step. A red row parks with Retry, not a ruined run. Still stuck? Email [support@opensubs.com](mailto:support@opensubs.com) with your run ID (top of the installer).
+**You can't break the run.** Close the laptop or lose Wi-Fi and it picks up where it left off when you reopen. If a step fails, click **Retry**. Still stuck? Email [support@opensubs.com](mailto:support@opensubs.com) with your run ID (top of the installer).
 </Note>
 
 ## Recipe 5: install and finish
@@ -252,7 +258,7 @@ The run is a 24-step ledger in three phases (**Connect · Build · Go live**), a
 
 <Steps>
   <Step title="Install on the dev store">
-    The run deploys your Shopify config itself (the app's URLs are written for you), then parks **WAITING ON YOU** at **Install on your store**.
+    The run deploys your Shopify config itself (the app's URLs are written for you), then stops at **Install on your store**: the header is back to **WAITING ON YOU**.
 
     - Open your install link (already built from the domain you gave in Recipe 3) and install on your dev store. Shopify opens the app right after installing, and that first open connects your store automatically.
     - Come back to the run: it detects the connection, and **Verify scopes** passes by itself. (App never opened? Open it once from **Apps > OpenSubs**; it connects on open.)
@@ -285,13 +291,13 @@ The run is a 24-step ledger in three phases (**Connect · Build · Go live**), a
     </Check>
   </Step>
   <Step title="The finish">
-    **You'll see:** the last row, **Verify the live stack**, prove the whole build end to end; then the run completes and purges every secret it held. The completion screen reads **"EVERYTHING'S INSTALLED."**: your store, with secrets purged after provisioning. Nothing is shown to shoppers yet; the storefront widgets stay off until you enable them. (The reference run provisioned in under ten minutes.)
+    The last step, **Verify the live stack**, checks the whole build end to end. Then the run completes and purges every secret it held. The screen says **Everything's installed.** Shoppers still see nothing: the storefront widgets stay off until you enable them. (When we ran it, provisioning took under ten minutes.)
 
     - Open the app from your Shopify admin (**Apps > OpenSubs**).
     - Go to **Settings > Extensions** and enable the **theme app embed**: it opens the theme editor with the embed ready; click **Save**. The widget can't render without it. Placing the widget itself is Recipe 6, on the same Extensions page.
 
     <Frame>
-      <img src="/images/deploy/dev-store-fast-path/18-everything-installed.png" width="640" alt="The completion screen: EVERYTHING'S INSTALLED, secrets purged." />
+      <img src="/images/deploy/dev-store-fast-path/18-everything-installed.png" width="640" alt="The completion screen: Everything's installed, secrets purged." />
     </Frame>
 
     <Check>
@@ -328,7 +334,7 @@ The run is a 24-step ledger in three phases (**Connect · Build · Go live**), a
     **You'll see:** example plans in the editor preview; real ones render on the storefront, and the widget hides itself on products without plans. The app has also added subscription panels to the product, customer, and order pages in your admin (no setup needed).
 
     <Check>
-    **Checkpoint:** block saved. The sell surface is live, on a store with zero subscribers.
+    **Checkpoint:** block saved. The widget is live, on a store with zero subscribers.
     </Check>
   </Step>
 </Steps>
@@ -388,7 +394,7 @@ The run is a 24-step ledger in three phases (**Connect · Build · Go live**), a
 
 ## Congratulations: the machine is yours
 
-A shopper subscribed, Shopify wrote the contract, your engine mirrored it, the portal served it: every node lit, and green means proven. The installer left nothing behind but the machine itself: your database, your app, your store. Time spent: about an hour. Percentage owed on every order it ever takes: zero.
+A shopper subscribed, Shopify wrote the contract, your engine mirrored it, the portal served it: every part lit, and green means proven. The installer left nothing behind but the machine itself: your database, your app, your store. Time spent: about an hour. Percentage owed on every order it ever takes: zero.
 
 When you're ready for your real store, the next rung is [production approval](/deploy/production-approval).
 
