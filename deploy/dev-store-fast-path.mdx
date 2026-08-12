@@ -23,7 +23,7 @@ From zero to your first test sale:
 
 Self-hosting sounds like a weekend of DevOps. It's an hour, and almost none of it is yours.
 
-One line makes the money: a shopper picks **Subscription** on your product page, checks out, and Shopify writes a subscription contract. That contract mirrors into your engine and lands in your admin and your subscriber's portal. Everything else — database, app, webhooks — exists to make that line possible.
+One line makes the money: a shopper picks **Subscription** on your product page, checks out, and Shopify writes a subscription contract. That contract mirrors into your engine and lands in your admin and your subscriber's portal. Everything else (database, app, webhooks) exists to make that line possible.
 
 And it's all yours. The database is a Supabase project in your account: your subscription state, in Postgres you can open. The app runs in your Vercel account. The Shopify app is a custom app you create. Cards vault in Shopify Payments and never touch OpenSubs; OpenSubs only tells Shopify when to bill. The stack floors around \$45 a month, and nobody takes a percentage.
 
@@ -31,9 +31,13 @@ The installer (Launchpad) does the assembly. It asks for everything up front, bu
 
 Today it runs against a dev store: free, disposable, zero subscribers. Watch it sell once where mistakes are free. Going live is [the next page](/deploy/production-approval), the easy one.
 
-{/* shot:01 sell-line-diagram "Widget → checkout → Shopify contract → your engine → admin + portal, your three accounts underneath. Caption: 'One line makes the money. You own every box.'" */}
+<Frame caption="One line makes the money. You own every box.">
+  <img src="/images/deploy/dev-store-fast-path/01-sell-line.svg" alt="The sell line: widget, checkout, Shopify contract, your engine, admin and portal, running on your three accounts: Shopify, Supabase, and Vercel." noZoom />
+</Frame>
 
-## Recipe 1: gather the accounts (20 min)
+## Recipe 1: gather the accounts
+
+<span className="os-chip">20 min</span>
 
 **Goal:** have everything ready before starting the installer.
 
@@ -53,7 +57,7 @@ Today it runs against a dev store: free, disposable, zero subscribers. Watch it 
     - Enter your app name, such as "OpenSubs", and click **Create**.
 
     <Frame>
-      <img src="/images/deploy/dev-store-fast-path/02-create-app.png" alt="Create app dialog with the app name entered." />
+      <img src="/images/deploy/dev-store-fast-path/02-create-app.png" width="560" alt="Create app dialog with the app name entered." />
     </Frame>
 
     - Click **Settings** in the left menu. Copy the **Client ID** and **Client secret**, then scroll down to **App automation token** and create an App Automation Token (deploy-only). Copy that too.
@@ -62,10 +66,10 @@ Today it runs against a dev store: free, disposable, zero subscribers. Watch it 
     Keep these three values easily accessible during setup: **Client ID**, **Client secret**, and the **App Automation Token**.
     </Tip>
 
-    - Back on the **App Overview** page, click **Select distribution method** in the **Distribution** block and select **Custom distribution** — this makes the gated API approvals on the next step instant.
+    - Back on the **App Overview** page, click **Select distribution method** in the **Distribution** block and select **Custom distribution**: this makes the gated API approvals on the next step instant.
 
     <Frame>
-      <img src="/images/deploy/dev-store-fast-path/03-custom-distribution.png" alt="Select distribution method — Custom distribution." />
+      <img src="/images/deploy/dev-store-fast-path/03-custom-distribution.png" alt="Select distribution method: Custom distribution." />
     </Frame>
 
     - Enter the store domain where the app will be installed and click **Generate link**.
@@ -75,7 +79,7 @@ Today it runs against a dev store: free, disposable, zero subscribers. Watch it 
     </Frame>
 
     <Warning>
-    Enter your live production store here — the store where subscriptions will be processed — never a development store. This locks in the store the app will serve in production; your dev store can still install the app for this walk regardless. No live store yet? Select **Custom distribution** and defer **Generate link** until you have one. The approvals on the next step unlock either way.
+    Enter your live production store here (the store where subscriptions will be processed), never a development store. This locks in the store the app will serve in production; your dev store can still install the app for this walk regardless. No live store yet? Select **Custom distribution** and defer **Generate link** until you have one. The approvals on the next step unlock either way.
     </Warning>
 
     - Click **API access requests** in the left menu and click **Request access** for both:
@@ -88,14 +92,16 @@ Today it runs against a dev store: free, disposable, zero subscribers. Watch it 
     We use the Subscriptions APIs to create and manage our store's own subscription contracts (selling plans, recurring billing, customer self-service). Read all orders lets the customer portal show the full order history of a subscription beyond 60 days.
     ```
 
+    <Check>
     **Checkpoint:** app created with Custom distribution; Client ID, Client secret, and App Automation Token copied; every access request granted.
+    </Check>
   </Step>
   <Step title="Create the dev store">
     - Go to the [Shopify Dev Dashboard](https://dev.shopify.com/dashboard) and click **Stores** in the left menu.
     - Click **Create store** and select the **Dev** option.
 
     <Frame>
-      <img src="/images/deploy/dev-store-fast-path/05-create-dev-store.png" alt="Create store — the Dev option, with Generate test data selected." />
+      <img src="/images/deploy/dev-store-fast-path/05-create-dev-store.png" alt="Create store: the Dev option, with Generate test data selected." />
     </Frame>
 
     <Tip>
@@ -104,7 +110,9 @@ Today it runs against a dev store: free, disposable, zero subscribers. Watch it 
 
     - Note your new store's `.myshopify.com` domain; the installer asks for it later.
 
+    <Check>
     **Checkpoint:** a dev store with test products, domain noted.
+    </Check>
   </Step>
   <Step title="Create the hosting accounts">
     - Sign up for a **Pro plan** at [Supabase](https://supabase.com/pricing).
@@ -115,10 +123,12 @@ Today it runs against a dev store: free, disposable, zero subscribers. Watch it 
     </Accordion>
 
     <Note>
-    When signing up, don't create a new project in either — the OpenSubs installer auto-creates this for you.
+    When signing up, don't create a new project in either; the OpenSubs installer auto-creates this for you.
     </Note>
 
+    <Check>
     **Checkpoint:** Supabase and Vercel accounts exist. Everything gathered: Client ID, Client secret, App Automation Token, dev store domain, license key nearby. Email can wait; SMS is optional.
+    </Check>
 
     <Note>
     **SMS can wait.** Lifecycle texts ship switched off, and a missing Twilio key stalls nothing. Wire it the week you want it.
@@ -126,7 +136,9 @@ Today it runs against a dev store: free, disposable, zero subscribers. Watch it 
   </Step>
 </Steps>
 
-## Recipe 2: sign in to the installer (2 min)
+## Recipe 2: sign in to the installer
+
+<span className="os-chip">2 min</span>
 
 **Goal:** be signed in with a fresh run open, ready for the installer's first ask.
 
@@ -135,7 +147,7 @@ Today it runs against a dev store: free, disposable, zero subscribers. Watch it 
 - Go to the [OpenSubs installer (Launchpad)](https://opensubs-launchpad-1076886952284.us-central1.run.app/) and click **Log in and start a new run**.
 
 <Frame>
-  <img src="/images/deploy/dev-store-fast-path/06-launchpad-home.png" alt="Launchpad home, signed out — Log in and start a new run." />
+  <img src="/images/deploy/dev-store-fast-path/06-launchpad-home.png" width="620" alt="Launchpad home, signed out: Log in and start a new run." />
 </Frame>
 
 - Enter the email address associated with your membership, then enter the 6-digit code sent to that address.
@@ -144,9 +156,13 @@ Today it runs against a dev store: free, disposable, zero subscribers. Watch it 
   <img src="/images/deploy/dev-store-fast-path/07-launchpad-login.png" alt="Login: membership email, then the 6-digit code." />
 </Frame>
 
+<Check>
 **Checkpoint:** you're in, a fresh run open at its first ask. Keep your license key, the three Shopify values, and your dev store domain from Recipe 1 at hand; the run asks for them next.
+</Check>
 
-## Recipe 3: feed it everything (Connect · ~10 min)
+## Recipe 3: feed it everything
+
+<span className="os-chip">Connect · ~10 min</span>
 
 The run is a 24-step ledger in three phases (**Connect · Build · Go live**), and the header always says whose turn it is: **WAITING ON YOU** means you. Connect is seven asks, all up front. Answer them and your part is mostly over.
 
@@ -164,7 +180,9 @@ The run is a 24-step ledger in three phases (**Connect · Build · Go live**), a
       <img src="/images/deploy/dev-store-fast-path/09-running-costs.png" alt="Connect: the running-costs acknowledgement." />
     </Frame>
 
+    <Check>
     **Checkpoint:** license validated, costs acknowledged. 2 of 7.
+    </Check>
   </Step>
   <Step title="The Shopify asks">
     The **Create your Shopify app** card asks for four values, and you gathered every one in Recipe 1. It keeps them only long enough to provision, then purges them.
@@ -174,29 +192,31 @@ The run is a 24-step ledger in three phases (**Connect · Build · Go live**), a
     - Enter your dev store's `.myshopify.com` domain from Recipe 1 (your install link builds itself from it later), then click **Continue**.
 
     <Frame>
-      <img src="/images/deploy/dev-store-fast-path/10-shopify-app-card.png" alt="Connect: the Create your Shopify app card — four values." />
+      <img src="/images/deploy/dev-store-fast-path/10-shopify-app-card.png" width="620" alt="Connect: the Create your Shopify app card, four values." />
     </Frame>
 
     - On **Request Shopify scopes**, confirm the two requests you filed in Recipe 1 (**Access subscriptions APIs** and **Read all orders**) show granted in the Dev Dashboard, then click **Access requested**. *"With Custom distribution every item below is approved instantly."* The data-use justification sits right there with a copy button if a form still wants it.
 
     <Frame>
-      <img src="/images/deploy/dev-store-fast-path/11-request-scopes.png" alt="Connect: Request Shopify scopes — approved instantly under Custom distribution." />
+      <img src="/images/deploy/dev-store-fast-path/11-request-scopes.png" alt="Connect: Request Shopify scopes, approved instantly under Custom distribution." />
     </Frame>
 
+    <Check>
     **Checkpoint:** every item granted. No wait, no review queue.
+    </Check>
   </Step>
   <Step title="The hosting asks">
     - Click **Connect Vercel**.
-
-    <Frame>
-      <img src="/images/deploy/dev-store-fast-path/12-connect-vercel.png" alt="Connect: Connect Vercel." />
-    </Frame>
-
     - Click **Connect Supabase**.
 
-    <Frame>
-      <img src="/images/deploy/dev-store-fast-path/13-connect-supabase.png" alt="Connect: Connect Supabase." />
-    </Frame>
+    <Columns cols={2}>
+      <Frame>
+        <img src="/images/deploy/dev-store-fast-path/12-connect-vercel.png" alt="Connect: Connect Vercel." />
+      </Frame>
+      <Frame>
+        <img src="/images/deploy/dev-store-fast-path/13-connect-supabase.png" alt="Connect: Connect Supabase." />
+      </Frame>
+    </Columns>
 
     - **Choose your region:** pick your Supabase organization and the region your subscriber data will live in, then click **Continue**.
 
@@ -204,27 +224,35 @@ The run is a 24-step ledger in three phases (**Connect · Build · Go live**), a
       <img src="/images/deploy/dev-store-fast-path/14-supabase-region.png" alt="Connect: Supabase organization and region picker." />
     </Frame>
 
+    <Check>
     **Checkpoint:** 7 of 7, nothing left to type. Build begins on its own.
+    </Check>
   </Step>
 </Steps>
 
-## Recipe 4: the build builds itself (Build · ~5–10 min)
+## Recipe 4: the build builds itself
+
+<span className="os-chip">Build · ~5–10 min</span>
 
 **Do:** nothing. Walk away. The header flips to **PROVISIONING YOUR STACK** and the run stops waiting on you.
 
-**You'll see:** the **We build your stack** column turn green, twelve rows top to bottom: install secrets generated, the app build checked, your database created and migrations installed (the scheduled jobs that keep the machine ticking, billing included, ship inside them), edge secrets set, edge functions deployed and *verified* — every webhook receiver answers a signed test. Then the app itself: Vercel project created, app deployed, vault wired, drain verified (the line notifications ride on). It proves as it builds, and tells you what each row just proved.
+**You'll see:** the **We build your stack** column turn green, twelve rows top to bottom: install secrets generated, the app build checked, your database created and migrations installed (the scheduled jobs that keep the machine ticking, billing included, ship inside them), edge secrets set, edge functions deployed and *verified* (every webhook receiver answers a signed test). Then the app itself: Vercel project created, app deployed, vault wired, drain verified (the line notifications ride on). It proves as it builds, and tells you what each row just proved.
 
 <Frame>
-  <img src="/images/deploy/dev-store-fast-path/15-build-stack.png" alt="Build: the We build your stack column, twelve rows going green." />
+  <img src="/images/deploy/dev-store-fast-path/15-build-stack.png" width="640" alt="Build: the We build your stack column, twelve rows going green." />
 </Frame>
 
+<Check>
 **Checkpoint:** build rows green, 12 of 12; the run parks at install, waiting for you.
+</Check>
 
 <Note>
 **Parked ≠ broken.** The installer is a resumable ledger. Close the laptop, lose Wi-Fi, reopen: it replays from the first unfinished step. A red row parks with Retry, not a ruined run. Still stuck? Email [support@opensubs.com](mailto:support@opensubs.com) with your run ID (top of the installer).
 </Note>
 
-## Recipe 5: install and finish (Go live · ~10 min)
+## Recipe 5: install and finish
+
+<span className="os-chip">Go live · ~10 min</span>
 
 <Steps>
   <Step title="Install on the dev store">
@@ -234,10 +262,12 @@ The run is a 24-step ledger in three phases (**Connect · Build · Go live**), a
     - Come back to the run: it detects the connection, and **Verify scopes** passes by itself. (App never opened? Open it once from **Apps > OpenSubs**; it connects on open.)
 
     <Frame>
-      <img src="/images/deploy/dev-store-fast-path/16-install-connected.png" alt="Go live: installed and connected — Verify scopes passes on its own." />
+      <img src="/images/deploy/dev-store-fast-path/16-install-connected.png" alt="Go live: installed and connected; Verify scopes passes on its own." />
     </Frame>
 
+    <Check>
     **Checkpoint:** installed, connected, scopes verified. All without you.
+    </Check>
   </Step>
   <Step title="Configure integrations, or skip">
     - In the dev store's admin, under **Apps > OpenSubs > Integrations**, add your SendGrid, Klaviyo, or Twilio keys (each lives in the provider's settings, under API keys) and send a test.
@@ -254,23 +284,29 @@ The run is a 24-step ledger in three phases (**Connect · Build · Go live**), a
     Skipping is allowed, eyes open: with no provider configured, notifications are **discarded**, not queued for later. And if you use Klaviyo: imported flows start as **drafts**. Turn each flow live in Klaviyo or nothing sends, *including subscriber login codes*.
     </Warning>
 
+    <Check>
     **Checkpoint:** provider connected and tested, or deliberately skipped. Confirm.
+    </Check>
   </Step>
   <Step title="The finish">
-    **You'll see:** the last row, **Verify the live stack**, prove the whole build end to end; then the run completes and purges every secret it held. The completion screen reads **"EVERYTHING'S INSTALLED."** — your store, with secrets purged after provisioning. Nothing is shown to shoppers yet; the storefront widgets stay off until you enable them. (The reference run provisioned in under ten minutes.)
+    **You'll see:** the last row, **Verify the live stack**, prove the whole build end to end; then the run completes and purges every secret it held. The completion screen reads **"EVERYTHING'S INSTALLED."**: your store, with secrets purged after provisioning. Nothing is shown to shoppers yet; the storefront widgets stay off until you enable them. (The reference run provisioned in under ten minutes.)
 
     - Open the app from your Shopify admin (**Apps > OpenSubs**).
     - Go to **Settings > Extensions** and enable the **theme app embed**: it opens the theme editor with the embed ready; click **Save**. The widget can't render without it. Placing the widget itself is Recipe 6, on the same Extensions page.
 
     <Frame>
-      <img src="/images/deploy/dev-store-fast-path/18-everything-installed.png" alt="The completion screen: EVERYTHING'S INSTALLED, secrets purged." />
+      <img src="/images/deploy/dev-store-fast-path/18-everything-installed.png" width="640" alt="The completion screen: EVERYTHING'S INSTALLED, secrets purged." />
     </Frame>
 
+    <Check>
     **Checkpoint:** run complete · secrets purged · theme app embed on · one widget left to place.
+    </Check>
   </Step>
 </Steps>
 
-## Recipe 6: make something to sell (5 min)
+## Recipe 6: make something to sell
+
+<span className="os-chip">5 min</span>
 
 <Steps>
   <Step title="Create a plan">
@@ -278,10 +314,12 @@ The run is a 24-step ledger in three phases (**Connect · Build · Go live**), a
     - Name it **Subscribe & Save**, set delivery to **every 1 Month** with **10%** off, and attach your product.
 
     <Frame>
-      <img src="/images/deploy/dev-store-fast-path/19-selling-plan.png" alt="Selling plans: the Subscribe & Save group — monthly, 10% off, product attached." />
+      <img src="/images/deploy/dev-store-fast-path/19-selling-plan.png" alt="Selling plans: the Subscribe & Save group (monthly, 10% off, product attached)." />
     </Frame>
 
+    <Check>
     **Checkpoint:** plan saved. Monthly · 10% subscribe & save.
+    </Check>
   </Step>
   <Step title="Place the widget">
     - In the OpenSubs admin: **Settings > Extensions > Product page widget**, then click **Open theme editor**.
@@ -291,13 +329,17 @@ The run is a 24-step ledger in three phases (**Connect · Build · Go live**), a
       <img src="/images/deploy/dev-store-fast-path/20-widget-theme-editor.png" alt="The Subscription options block on the product template." />
     </Frame>
 
-    **You'll see:** example plans in the editor preview; real ones render on the storefront, and the widget hides itself on products without plans. The app has also added subscription panels to the product, customer, and order pages in your admin — no setup needed.
+    **You'll see:** example plans in the editor preview; real ones render on the storefront, and the widget hides itself on products without plans. The app has also added subscription panels to the product, customer, and order pages in your admin (no setup needed).
 
+    <Check>
     **Checkpoint:** block saved. The sell surface is live, on a store with zero subscribers.
+    </Check>
   </Step>
 </Steps>
 
-## Recipe 7: watch it sell once (5 min)
+## Recipe 7: watch it sell once
+
+<span className="os-chip">5 min</span>
 
 <Steps>
   <Step title="Buy your own subscription">
@@ -305,24 +347,29 @@ The run is a 24-step ledger in three phases (**Connect · Build · Go live**), a
     - Check out with Shopify's test gateway: card number **1**, any name, any future expiry, any CVC. (No test payment option at checkout? Activate the test gateway first: dev store admin, **Settings > Payments**.)
 
     <Frame>
-      <img src="/images/deploy/dev-store-fast-path/21-test-checkout.png" alt="Purchase options: the subscription selected, headed to test checkout." />
+      <img src="/images/deploy/dev-store-fast-path/21-test-checkout.png" width="560" alt="Purchase options: the subscription selected, headed to test checkout." />
     </Frame>
 
+    <Check>
     **Checkpoint:** order placed, no real money.
+    </Check>
   </Step>
   <Step title="See it in both places">
     - Find the subscription in the OpenSubs admin.
     - Still signed in as the test subscriber, open `/a/account` on the storefront; the account area loads with no login screen.
 
-    <Frame>
-      <img src="/images/deploy/dev-store-fast-path/22-admin-subscription.png" alt="The subscription in the OpenSubs admin." />
-    </Frame>
+    <Columns cols={2}>
+      <Frame>
+        <img src="/images/deploy/dev-store-fast-path/22-admin-subscription.png" alt="The subscription in the OpenSubs admin." />
+      </Frame>
+      <Frame>
+        <img src="/images/deploy/dev-store-fast-path/23-subscriber-portal.png" alt="/a/account: the subscriber portal, no login screen." />
+      </Frame>
+    </Columns>
 
-    <Frame>
-      <img src="/images/deploy/dev-store-fast-path/23-subscriber-portal.png" alt="/a/account: the subscriber portal, no login screen." />
-    </Frame>
-
+    <Check>
     **Checkpoint:** same subscription in both. The subscriber's receipt is Shopify's own order confirmation.
+    </Check>
 
     <Note>
     **No welcome email is not a bug.** Your subscriber gets Shopify's order confirmation, same as any order. OpenSubs sends no checkout welcome of its own. Want a branded one? That's your Klaviyo flow or SendGrid template, provisioned as a draft when you connect, yours to set live.
@@ -331,13 +378,15 @@ The run is a 24-step ledger in three phases (**Connect · Build · Go live**), a
   <Step title="Look at the health page">
     - In the OpenSubs admin, open **Settings > Operational health**.
 
-    **You'll see:** jobs green, webhooks delivering, queues quiet — the page the machine reports to from now on.
+    **You'll see:** jobs green, webhooks delivering, queues quiet: the page the machine reports to from now on.
 
     <Frame>
-      <img src="/images/deploy/dev-store-fast-path/24-operational-health.png" alt="Operational health: jobs green, webhooks delivering, queues quiet." />
+      <img src="/images/deploy/dev-store-fast-path/24-operational-health.png" width="560" alt="Operational health: jobs green, webhooks delivering, queues quiet." />
     </Frame>
 
+    <Check>
     **Checkpoint:** green board. It sold once, and you own every piece of it.
+    </Check>
   </Step>
 </Steps>
 

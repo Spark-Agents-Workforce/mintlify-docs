@@ -8,13 +8,273 @@ import { PlatformTag } from "/snippets/PlatformTag.jsx";
 
 <PlatformTag platform="opensubs" />
 
-<Note>**Skeleton page.** The structure and links are final; the content lands in the production pass.</Note>
+From the dev store to your real store:
 
-## What this page gives you
+- **Outcome:** your real store selling subscriptions through OpenSubs, every new subscription at a 0% platform fee (you host the stack yourself, so nobody takes a cut of your subscription revenue), while whatever billed yesterday keeps billing, untouched.
+- **Time:** one sitting. Your customers can't tell it's happening.
+- **Before you start:** finish [the dev-store fast path](/deploy/dev-store-fast-path) first; this page assumes your machine is live on a dev store and has sold a test subscription.
+- **You'll touch:**
+  - The Shopify Dev Dashboard, once, for one link
+  - Your live store's admin: Payments, then the theme editor
+  - The OpenSubs admin on your live store: plans, integrations, health
+  - Your old subscription app's admin, only if you're switching off one
 
-- The checklist that has to be green before real subscribers touch this.
-- Each check: what it proves and how to run it.
-- No vibes. Verification.
+## The picture
+
+On the dev-store walk you built the machine on a store that didn't matter, and watched it sell. Nothing you built gets rebuilt today. The custom app, its API access, the deployment, the database: all of it belongs to the app, not to any store. What your real store gets is new rows in the same machine: its own tokens, its own webhook registrations, its own plans.
+
+Today has one real act: **the swap**, the moment your real product page offers *your* subscription instead of nobody's (new store) or somebody else's (switcher). Everything before the swap is prep. Everything after is proof.
+
+Two facts before you start. First: installing writes nothing to your theme and nothing to your checkout; the widget appears only when you place the block, and it comes down just as fast. Second, for anyone leaving Skio, Stay AI, or Recharge: OpenSubs cannot touch their subscriptions. Not *won't*, **can't**. Shopify scopes every app to the contracts it owns, so the old platform's subscriptions are invisible to us by permission. They keep billing exactly as they did yesterday, while every new subscriber lands on your book of subscriptions at 0%.
+
+New store? Today is simply launch. Switcher? Today is the de-risking move: new subscriptions start here at 0%, existing ones keep billing where they are, and you migrate later, when you're ready.
+
+## Recipe 1: preflight
+
+<span className="os-chip">5 min</span>
+
+<Note>
+**The machine you built on the dev-store walk carries over. You don't rebuild any of it today.** Your custom app, and the API access it was granted, live in the Dev Dashboard, not in any store; your live store inherits both the moment it installs. One deployment serves every store; the database, the scheduled jobs, and the webhook receivers are already running. Your live store simply becomes new rows in the same machine. The installer (Launchpad) finished its work back then and does not run again: from here on, everything happens in the admins.
+</Note>
+
+Confirm real payments:
+
+- In your live store's Shopify admin, go to **Settings > Payments**.
+- Confirm **Shopify Payments** is active, and that test mode is off.
+- You'll see your real payout account and no orange test-mode banner.
+
+<Check>
+**Checkpoint:** Shopify Payments active on the live store, test mode off.
+</Check>
+
+<Frame>
+  <img src="/images/deploy/go-live-verification/01-shopify-payments.png" width="620" alt="Settings > Payments on the live store: Shopify Payments active, no test-mode banner." />
+</Frame>
+
+## Recipe 2: install on the real store
+
+<span className="os-chip">5 min</span>
+
+<Steps>
+  <Step title="Copy the install link">
+    - Odds are you already generated this link on the dev-store walk: right after selecting **Custom distribution**, you entered your live store's domain and clicked **Generate link**.
+    - The link is waiting where you left it: in the Dev Dashboard, under your app's **Distribution** page. Copy it.
+    - If you deferred back then (no live store to name yet), generate it now on the same screen: enter your live store's `.myshopify.com` domain, click **Generate link**, then copy it.
+    - You'll see an install link scoped to your app; this link *is* how a custom app reaches a real store.
+
+    <Check>
+    **Checkpoint:** install link copied.
+    </Check>
+
+    <Frame>
+      <img src="/images/deploy/go-live-verification/02-install-link.png" alt="Distribution: the install link, generated and ready to copy." />
+    </Frame>
+
+    <Note>
+    **On Shopify Plus?** The same screen offers "Allow multi-store installs for one Plus organization." Leave it unchecked for one production store; check it if sister stores in your organization will run OpenSubs too. Either way, dev stores stay fair game; the app's access carries wherever it installs.
+    </Note>
+  </Step>
+  <Step title="Install on your live store">
+    - Open the link, confirm your live store, and approve the access screen (the same grants you approved on the dev-store walk).
+    - You'll see the OpenSubs admin open inside your real store's admin. Home greets you with a short checklist: **Migrate from another app** (optional) · **Create a selling plan** · **Connect email & SMS** · **Build a cancellation flow** · **Brand your customer portal**. That checklist is the rest of this page; the optional Migrate item has [its own page](/migrate/why-switching-is-safe), for when you're ready.
+    - Meanwhile the app builds its mirror of your store: your real products, customers, and orders appear on their own. The sync plumbing set itself up at install; there is nothing for you to configure.
+
+    <Check>
+    **Checkpoint:** OpenSubs admin open on the live store; Home checklist showing; catalog filling in.
+    </Check>
+
+    <Frame>
+      <img src="/images/deploy/go-live-verification/03-home-checklist.png" alt="The OpenSubs admin Home on the live store: the checklist, with the catalog filling in." />
+    </Frame>
+
+    <Warning>
+    **Seeing your customers appear is not migration.** The mirror is read-only bookkeeping: products, customers, orders. Your old app's subscriptions are not in it; Shopify won't even show them to us. Nothing moved. Nothing bills differently than it did an hour ago.
+    </Warning>
+  </Step>
+</Steps>
+
+## Recipe 3: the store-sized slice
+
+<span className="os-chip">25 min</span>
+
+Same moves you made on the dev store, sized to your real catalog. The Home checklist ticks itself off as you go.
+
+<Steps>
+  <Step title="Plans on real products">
+    - In **Settings > Selling plans**, create your real plan groups and apply them to real products.
+    - Plans live in *this* store; dev plans don't copy over.
+    - Build the actual spread you want to sell: your "Monthly · 10% subscribe & save," plus the other frequencies and terms you intend to offer.
+    - You'll see groups listed with product counts, and the Home checklist ticks **Create a selling plan**.
+
+    <Check>
+    **Checkpoint:** real plans on real products.
+    </Check>
+
+    <Frame>
+      <img src="/images/deploy/go-live-verification/04-selling-plans.png" alt="Selling plans: real plan groups with product counts." />
+    </Frame>
+  </Step>
+  <Step title="Connect email and SMS">
+    - In **Settings > Integrations**, connect this store's providers: SendGrid or Klaviyo for email, Twilio or Klaviyo for SMS (SMS is optional). Integrations are per-store, so paste your keys again.
+    - Under **Notification routing**, set the **Email notifications** and **SMS notifications** routes, then **Save**. Pick one email sender: a live Klaviyo flow sends even when SendGrid holds the route, and your subscriber gets two emails.
+    - In **Settings > Notifications > Email**, click **Set up templates & flows** (Klaviyo) or **Set up email templates** (SendGrid): one click builds the defaults in your own account. Branding bakes in at import; if you rebrand in the next step, hit **Re-import**.
+    - Then do what the Home checklist warns: "Klaviyo flows import as drafts. **Turn them live** in Klaviyo or login codes won't send." The same **Email** page shows each event's live-or-draft status.
+
+    <Check>
+    **Checkpoint:** providers connected; routing saved; flows live, not drafts.
+    </Check>
+
+    <Frame>
+      <img src="/images/deploy/go-live-verification/05-email-flows.png" alt="Notifications > Email: each event's templates and flows, with live-or-draft status." />
+    </Frame>
+  </Step>
+  <Step title="Brand the portal">
+    - In **Settings > Branding**, give the portal your real face: logo and colors start at defaults on a new store.
+    - Add translations too, if you sell in more than one language.
+    - Already imported email templates in the last step? Hit **Re-import** there so your emails wear the new look too.
+    - Branding isn't alone: every OpenSubs setting on this store starts at defaults. Skim the Settings page and re-set anything you tuned on the dev store, like payment recovery or rewards.
+
+    <Check>
+    **Checkpoint:** portal preview wears your brand.
+    </Check>
+
+    <Frame>
+      <img src="/images/deploy/go-live-verification/06-portal-branding.png" alt="Branding: the portal preview wearing your logo and colors." />
+    </Frame>
+  </Step>
+  <Step title="Build a cancellation flow">
+    - In **Settings > Cancellation flows**, build what a subscriber sees when they try to cancel: save offers first (a discount, a free gift, or a pause), cancel as the last resort.
+    - The Home checklist ticks **Build a cancellation flow**, and your team test-drives the flow in Recipe 5.
+
+    <Check>
+    **Checkpoint:** a cancellation flow built, with at least one save offer.
+    </Check>
+  </Step>
+</Steps>
+
+## Recipe 4: the swap
+
+<span className="os-chip">10 min</span>
+
+One theme save swaps the page. That's the entire choreography.
+
+**New store?** There's nothing to take down; skip the switcher bullets.
+
+Swap in your offer:
+
+- Your selling plans from Recipe 3 are already on your products; this step makes the offer visible.
+- Switching? Leave the old platform's selling plan groups exactly where they are: attached to your products, active, in their admin. Current subscriptions bill through those plans, and pulling them off risks interrupting that billing. The backend isn't the swap; the theme is: widgets decide what shoppers see, plans decide what bills.
+- Open the theme editor and go to your product template. Add the **Subscription options** block near the buy buttons. Switching? Remove or hide the old platform's widget while you're in here: their widget gone means their new signups stop, while their existing book keeps billing, untouched.
+- Click **Save**. One save: the swap is done.
+- The block hides itself on products with no plans, so placing it store-wide is safe. If your theme needs the app embed for quick-view, enable it at **Settings > Extensions**, like you did on the dev-store walk.
+- You'll see your product page offering one-time *and* your subscription spread, priced right.
+- Using a sidebar cart with a "switch to subscription" upgrade? Open it and confirm it now offers your new plans, not the old platform's.
+
+<Check>
+**Checkpoint:** exactly one subscription offer on the page: yours. Switchers: old book still billing.
+</Check>
+
+<Columns cols={2}>
+  <Frame>
+    <img src="/images/deploy/go-live-verification/07-remove-old-widget.png" alt="Theme editor: the old platform's subscription widget coming off the product template." />
+  </Frame>
+  <Frame>
+    <img src="/images/deploy/go-live-verification/08-add-subscription-block.png" alt="Theme editor: adding the OpenSubs Subscription options block from the Apps tab." />
+  </Frame>
+</Columns>
+
+<Note>
+**The two-step revert, if you ever need it.** Both steps are on your side; the old platform is not involved.
+
+1. In the theme editor, take the **Subscription options** block back out. Your widget vanishes from the page.
+2. In the OpenSubs admin, delete your own plan groups at **Settings > Selling plans** ("Delete group?" · Delete). Your products sell one-time only, exactly as before.
+
+Switching? The old platform's plans and widget are wherever you left them, and its book kept billing the whole time. Contracts your team already sold on OpenSubs keep billing until you cancel them; nothing is left stranded. That's the whole undo.
+</Note>
+
+## Recipe 5: prove it with real money
+
+<span className="os-chip">15 min</span>
+
+<Steps>
+  <Step title="Your team buys">
+    - No test cards this time: have one or several teammates subscribe on the live product page, with real cards and small stakes.
+    - Spread the purchases on purpose: different plans, different frequencies, different terms.
+    - You'll see an ordinary checkout, with the subscription terms on the line item.
+    - Then find each order in three places: Shopify's order confirmation email, the contract in the OpenSubs admin, and the subscriber's portal: your store's domain followed by `/a/account`.
+    - If your Klaviyo flow is live, or your SendGrid templates are set up, your branded welcome arrives too: your email setup's first real send.
+
+    <Check>
+    **Checkpoint:** every order visible in all three places.
+    </Check>
+
+    <Frame>
+      <img src="/images/deploy/go-live-verification/09-subscriber-portal.png" alt="The subscriber's portal at /a/account: the team subscription, next order scheduled." />
+    </Frame>
+
+    <Columns cols={2}>
+      <Frame>
+        <img src="/images/deploy/go-live-verification/10-admin-contract.png" alt="The contract in the OpenSubs admin: active, with its next billing date." />
+      </Frame>
+      <Frame>
+        <img src="/images/deploy/go-live-verification/11-order-confirmation.png" alt="Shopify's order confirmation: the subscription terms on the line item." />
+      </Frame>
+    </Columns>
+  </Step>
+  <Step title="The health check">
+    - In the OpenSubs admin, open **Settings > Operational health**.
+    - You'll see jobs green, webhooks delivering, queues quiet: the page the machine reports to from now on.
+
+    <Check>
+    **Checkpoint:** Operational health green on the live store.
+    </Check>
+
+    <Frame>
+      <img src="/images/deploy/go-live-verification/12-operational-health.png" width="560" alt="Operational health on the live store: jobs green, webhooks delivering, queues quiet." />
+    </Frame>
+  </Step>
+  <Step title="Clean up, or don't">
+    - Refund the team orders in Shopify if you like, but remember: a refund is not a cancel. A subscription bills until its contract is cancelled.
+    - Cancel the team's contracts in the portal. It's a free test-drive of your cancellation flow and its save offers.
+    - Or leave one running as a canary: a real contract the daily billing tick bills on schedule, proof that renews itself every cycle. The tick runs at 9:00 AM store time by default; change it in **Settings > Billing**.
+
+    <Check>
+    **Checkpoint:** team contracts cancelled, or one canary alive, on purpose.
+    </Check>
+
+    <Frame>
+      <img src="/images/deploy/go-live-verification/13-cancel-success.png" width="440" alt="The portal's cancel path: a team contract cancelled." />
+    </Frame>
+  </Step>
+</Steps>
+
+## Coexistence: two books, one direction
+
+If you're switching, your store now carries two books: the old platform's (every subscription sold before today) and yours (every subscription sold from today). This is a stable stage, not a countdown. The two don't fight: Shopify lets each app pull the billing trigger only on the contracts it owns, so no contract answers to two apps and nobody gets double-charged. That is a Shopify permission rule, not a promise.
+
+<div className="os-compare-ours-last">
+
+|  | The old book | Your new book |
+| --- | --- | --- |
+| What it holds | Every subscription sold before today | Every subscription sold from today |
+| Who bills it | The old platform, at its old fee | OpenSubs, at 0% |
+| When a card fails | Its retries and reminders run exactly as before | OpenSubs retries automatically; tune the schedule at **Settings > Payment recovery** |
+| Where subscribers manage it | The old platform's portal | Your portal, at `/a/account` |
+| Where it's heading | Only shrinks: natural churn retires it | Only grows: every new subscriber lands here |
+
+</div>
+
+Two books also means two subscriber portals until you consolidate; that is the honest, temporary cost of this stage. Watch the old platform's fee line shrink with its book, and when the math and your nerves agree, migrate the remainder. No deadline.
+
+## You are live for new orders
+
+Somewhere ahead, a stranger subscribes. No ceremony. It lands exactly like your team's orders did: three places, no drama, and at the next daily tick the machine bills a contract **you sold**. That's the whole event. The dev store proved the machine; today the machine started earning.
+
+Stuck anywhere along the way? Email [support@opensubs.com](mailto:support@opensubs.com) with your store domain and the step you're on.
+
+**Next up: [Migrate](/migrate/why-switching-is-safe).** When the old book's remainder is ready to come over, the cards never move; we only change who pulls the trigger. The finish line looks just like today's proof: the same daily tick, billing a contract **you moved**.
+
+---
 
 ## Where next
 

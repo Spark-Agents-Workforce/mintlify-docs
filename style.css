@@ -816,6 +816,14 @@ html.dark [data-table-wrapper] th {
   font-weight: 550;
 }
 
+/* Markdown tables can't class their cells — wrap the table in
+   <div className="os-compare-ours-last"> to cream-well the last (ours) column. */
+.os-compare-ours-last [data-table-wrapper] td:last-child {
+  background: var(--nh2-well-pie);
+  color: var(--nh2-ink);
+  font-weight: 550;
+}
+
 /* Dunning cadence: compact text schedule, not a numeric proof table. */
 .os-recovery-schedule [data-table-wrapper] table {
   table-layout: fixed;
