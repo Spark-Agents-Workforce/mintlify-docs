@@ -175,6 +175,18 @@
               "platform-v2/live-for-new-orders/prove-it-with-real-money",
               "platform-v2/live-for-new-orders/coexistence"
             ]
+          },
+          {
+            "group": "Migrate",
+            "icon": "arrow-right-left",
+            "pages": [
+              "platform-v2/migrate/what-actually-moves",
+              "platform-v2/migrate/practice-run",
+              "platform-v2/migrate/the-day-before",
+              "platform-v2/migrate/run-the-migration",
+              "platform-v2/migrate/bring-the-order-history",
+              "platform-v2/migrate/prove-it-then-finish"
+            ]
           }
         ]
       },

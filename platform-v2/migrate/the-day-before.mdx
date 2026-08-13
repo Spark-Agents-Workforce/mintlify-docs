@@ -1,0 +1,58 @@
+---
+title: "The day before"
+description: "Freeze changes, let retries finish, decide your discounts, export fresh."
+---
+
+import { PlatformTag } from "/snippets/PlatformTag.jsx";
+
+<PlatformTag platform="opensubs" />
+
+Five moves. The migration page prints the same playbook under **Before you start**, so the tool and this page tell one story.
+
+<Steps>
+  <Step title="Match your selling plans">
+    - In **Settings > Selling plans**, mirror the old platform's plans: same frequencies, same discount levels.
+    - Migrated subscriptions keep their exact price and cadence no matter what. But the options a subscriber can switch to come from your selling plans, so matching them means nothing looks different after the move.
+
+    <Check>
+    **Checkpoint:** every frequency you're migrating exists in your plans.
+    </Check>
+
+    {/* shot:16 ui-migration "Settings > Selling plans mirroring the old platform's frequencies and discounts." */}
+  </Step>
+  <Step title="Freeze changes in the old app">
+    - Announce a change freeze: no plan swaps, address edits, or pauses in the old app between export and import.
+    - The export is a snapshot. Anything edited after it is silently lost.
+
+    <Check>
+    **Checkpoint:** the team knows the freeze window.
+    </Check>
+  </Step>
+  <Step title="Let payment retries finish">
+    - In the old app, let in-flight failed-payment retries resolve, or cancel them.
+    - Subscriptions caught mid-retry don't travel cleanly; OpenSubs imports a clean list.
+
+    <Check>
+    **Checkpoint:** no subscriptions mid-retry.
+    </Check>
+  </Step>
+  <Step title="Decide which discounts travel">
+    - Nothing to do yet; just know the rule: permanent line discounts travel automatically. Discount codes and time-limited discounts don't.
+    - The preview will name each one that can't travel. You either remove it in the old app or hold that subscriber back and migrate them in a later pass (partial migrations are normal).
+
+    <Check>
+    **Checkpoint:** you know which discounts you're carrying.
+    </Check>
+  </Step>
+  <Step title="Export fresh">
+    - On migration day, export subscriptions from the old app's dashboard. Skio and Stay AI: one file. Recharge: four (subscriptions, line items, addresses, payment methods). Loop and any other provider: map your export into the template files, with instructions on the upload screen. The screen shows the exact path for each provider.
+    - Doing the optional [orders import](/platform-v2/migrate/bring-the-order-history)? Grab the orders export in the same sitting.
+    - Fresh matters: every next charge date must still be in the future. A date that has slipped past blocks at the preview, and the fix is a fresh export, never a backdate.
+
+    <Check>
+    **Checkpoint:** the row count roughly matches the old app's active-subscriber count.
+    </Check>
+  </Step>
+</Steps>
+
+{/* shot:03 ui-migration "A fresh export from the old app's dashboard, ready to upload." */}

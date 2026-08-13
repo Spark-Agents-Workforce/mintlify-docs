@@ -1,0 +1,35 @@
+---
+title: "Bring the order history"
+description: "Optional: list each old order under its subscription, and carry its billing cycle."
+---
+
+import { PlatformTag } from "/snippets/PlatformTag.jsx";
+
+<PlatformTag platform="opensubs" />
+
+<span className="os-chip">optional</span>
+
+The migration itself never needs your orders: they are Shopify orders, already in your store, and the portal shows each subscriber their history either way. What the orders import adds is the connection. With it, the OpenSubs admin and the account area list each old order under the specific subscription it belonged to, and the subscription knows its current billing cycle (how many renewals it has taken since it began), instead of counting from migration day.
+
+It creates no contracts and changes no billing. It only connects records that already exist.
+
+<Steps>
+  <Step title="Export orders from the old app">
+    - The same dashboard that exported your subscriptions exports orders too: Skio, Stay AI, and Recharge each have one, and the upload screen shows the exact path for each provider.
+    - Grab it in the same sitting as your subscriptions export, before the old app is uninstalled.
+  </Step>
+  <Step title="Upload it">
+    - On **Settings > Migration**, choose the orders import and upload the file. It runs any time after your subscriptions have migrated.
+    - Each order matches to a migrated subscription through the same provider IDs the migration already recorded. Orders that match nothing are listed, not guessed at.
+
+    <Check>
+    **Checkpoint:** pick one migrated subscription. Its old orders are listed under it in the admin and in the portal, and its billing cycle matches reality.
+    </Check>
+
+    {/* shot:15 ui-migration "The optional orders import on the migration page, and a migrated subscription showing its full order history." */}
+  </Step>
+</Steps>
+
+<Note>
+**Skipping it is fine.** Without the orders import, nothing is lost or hidden: subscribers still see their full order history in the portal (it comes from Shopify), and every renewal from migration day forward attaches to the new subscription on its own. The only difference is that each subscription's own list, and its billing cycle count, starts at the migration.
+</Note>

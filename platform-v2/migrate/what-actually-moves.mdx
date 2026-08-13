@@ -1,0 +1,46 @@
+---
+title: "What actually moves"
+description: "Nothing heavy. A migration changes who tells Shopify to bill, and that's all."
+---
+
+import { PlatformTag } from "/snippets/PlatformTag.jsx";
+
+<PlatformTag platform="opensubs" />
+
+From the old platform to yours:
+
+- **Outcome:** every existing subscriber billing on OpenSubs at a 0% fee.
+- **Time:** one sitting, plus an optional ten-minute practice run.
+- **Before you start:** finish [Live for New Orders](/platform-v2/live-for-new-orders/what-today-changes) first. New subscriptions already land on OpenSubs; the old app is only billing the subscribers it already had.
+- **You'll touch:**
+  - Your old app's dashboard: an export and one switch
+  - The OpenSubs admin: **Settings > Migration**
+
+Everyone believes the migration is the scary part. Months of work, consultants, credit cards in transit, subscribers getting strange emails. That picture describes things that cannot happen, because none of the heavy pieces are where people imagine them.
+
+|  | Where it lives | What the migration does to it |
+| --- | --- | --- |
+| The cards | Shopify's vault, with Shopify Payments | Nothing. Your old platform never held them, and OpenSubs never will. |
+| The billing | Shopify runs every charge | Nothing. A subscription platform only tells Shopify when to charge. |
+| The subscriptions | Shopify's own subscription contracts | Recreated, pointed at the same saved card, next charge on the same date. |
+| Who tells Shopify to bill | The old app, today | OpenSubs, tomorrow. This is the entire change. |
+
+What you actually do: export a spreadsheet from the old app and import it into OpenSubs. That is the whole job. One rule governs it: only one system tells Shopify to bill at any moment. You stop the old app's billing before the import, and the confirm screen makes you state, in writing, that you have.
+
+Your subscribers notice nothing. The migration sends zero emails and asks nobody to re-enter a card. Their subscription is simply there in your portal, next charge on the date it always was. The only person who knows it happened is you.
+
+Three guards stand between you and a mistake:
+
+- Nothing is written until you confirm in writing.
+- Every row is verified against your live store first.
+- Until a migrated contract takes its first charge, rollback is one click.
+
+Your order history needs no export either: orders were always Shopify orders, and they are already in your store. If you also want each old order listed under its specific subscription, with its billing cycle carried over, that's the optional [orders import](/platform-v2/migrate/bring-the-order-history).
+
+<Note>
+**Scope.** OpenSubs migrates subscriptions billed through Shopify Payments. Rows on any other payment processor are named and skipped at the preview, never silently dropped.
+</Note>
+
+<Frame>
+  <img src="/images/platform-v2/migrate/01-migration-page.png" alt="The Migrate subscriptions in page: provider guides, template files, and the four upload slots." />
+</Frame>

@@ -1,0 +1,83 @@
+---
+title: "Prove it, then finish"
+description: "Spot-check one subscriber everywhere, then retire the old app."
+---
+
+import { PlatformTag } from "/snippets/PlatformTag.jsx";
+
+<PlatformTag platform="opensubs" />
+
+<Steps>
+  <Step title="Spot-check one subscriber in all three places">
+    - Pick one migrated contract. Open it in the Shopify admin, then the OpenSubs admin, then sign into the portal as that subscriber.
+
+    <Check>
+    **Checkpoint:** same card, same next charge date, same line prices, in all three.
+    </Check>
+
+    {/* shot:11 ui-migration "One migrated contract, matching in the Shopify admin, the OpenSubs admin, and the portal." */}
+  </Step>
+  <Step title="Turn on frequency editing">
+    - Migrated subscriptions keep billing on their own cadence no matter what. But the frequencies a subscriber can switch to come from your selling plans, and you matched those to the old platform's in [The day before](/platform-v2/migrate/the-day-before).
+    - Under **Migration results**, open the **Enable frequency editing** card. With your plans already matched, it confirms it: "Nothing needed attaching."
+    - See **Attach N product(s)** instead? Some migrated cadences have no matching plan yet. One click builds a "Migrated subscriptions" plan group that covers them, at a 0% discount, editable later under **Selling plans**.
+
+    <Check>
+    **Checkpoint:** the card confirms every migrated cadence is covered by a plan.
+    </Check>
+
+    {/* shot:12 ui-migration "The Enable frequency editing card under Migration results." */}
+  </Step>
+  <Step title="Collect the missing cards">
+    - From the receipt, message the **needs card** subscribers a portal link; they add a card under their account details.
+    - When the cards land, run again from a fresh export. Everyone who already moved is skipped automatically.
+
+    <Check>
+    **Checkpoint:** the needs-card list is shrinking.
+    </Check>
+  </Step>
+  <Step title="Repoint your links">
+    - Update every "manage your subscription" link to your portal: email templates, Klaviyo flows, and the theme's account menu (point it at `/a/account`).
+    - Using Shopify's customer accounts? Enable the OpenSubs customer accounts extension there, so subscribers signed into the main account area can jump straight to the subscription portal to manage their subscription.
+
+    <Check>
+    **Checkpoint:** old portal links gone from subscriber-facing surfaces.
+    </Check>
+
+    {/* shot:17 ui-migration "The OpenSubs extension enabled in Shopify's customer accounts editor." */}
+  </Step>
+  <Step title="Uninstall the old app, last">
+    - Only after the spot-check. Uninstalling can delete the old app's contracts (some apps do), which is fine once yours exist. Do it early and you lose the ability to compare or re-export.
+
+    <Check>
+    **Checkpoint:** old app gone. The percentage stops here.
+    </Check>
+
+    {/* shot:13 ui-migration "The old app uninstalled, after the spot-check." */}
+  </Step>
+  <Step title="Watch the first migrated renewal">
+    - The first morning a migrated charge date comes due, the daily billing run charges a subscription you moved. The order lands in Shopify. Revenue, at a 0% fee.
+
+    <Check>
+    **Checkpoint:** the first migrated renewal is in your orders list. Done.
+    </Check>
+
+    {/* shot:14 ui-migration "The first migrated renewal in the orders list." */}
+  </Step>
+</Steps>
+
+## The scary part is behind you
+
+The cards never moved; there was nothing to move. Your subscribers never heard a thing. What changed is one quiet fact at the center of your business: when Shopify fires a charge tomorrow, it's because your machine said so. Every subscriber, billing at a 0% fee, and the scariest word in commerce turned out to be a spreadsheet and an afternoon.
+
+---
+
+## Where next
+
+<div className="os-where-next">
+<Columns cols={1}>
+  <Card icon="arrow-up-right" title="A day in the life" href="/operate/a-day-in-the-life">
+    Billing, retries, messages: the machine runs it from here.
+  </Card>
+</Columns>
+</div>
