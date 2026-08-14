@@ -1,0 +1,56 @@
+---
+title: "When an order is refunded"
+description: "Refunds live in Shopify. The subscription doesn't notice, and stopping it is its own move."
+---
+
+import { PlatformTag } from "/snippets/PlatformTag.jsx";
+
+<PlatformTag platform="opensubs" />
+
+Orders belong to Shopify; the subscription belongs to the platform. Money moves in one, the schedule lives in the other, and neither cancels the other. This page is that rule, in both directions, and the two-move recipe for when a subscriber really is done.
+
+<Steps>
+  <Step title="Refund or cancel the order, in Shopify">
+    - Start from the subscription: the **Summary** card's **Linked orders** list deep-links every order straight into the Shopify admin, the origin order wearing an **Origin** badge.
+    - Refund it, partially refund it, or cancel it there, like any other Shopify order. The platform mirrors the numbers and changes nothing else.
+
+    <Check>
+    **Checkpoint:** the refund is done where the money lives: Shopify.
+    </Check>
+
+    <Frame>
+      <img src="/images/platform-v2/run/27-linked-orders.png" alt="The Summary card's linked orders, each deep-linking into Shopify, the origin order badged." width="360" />
+    </Frame>
+  </Step>
+  <Step title="Know what didn't happen">
+    Nothing else moves. Surface by surface:
+
+    | Where you look | After the refund |
+    | --- | --- |
+    | The subscription | Unchanged: same status, next billing date unmoved, nothing paused, no email sent. |
+    | **Billing history** | Still reads **Paid**. It records the charge, which happened; the refund is the order's story, told in Shopify. |
+    | The subscriber's portal | Shows it: **Refunded** or **Partially Refunded** on their order history and the order's own page (a cancelled order reads as Refunded or Voided). |
+    | **Analytics** | Overview revenue is net of refunds, and cancelled orders drop out. The Revenue tab's category breakdown states its own exception: categories are classified before refunds. |
+
+    <Check>
+    **Checkpoint:** nothing changed except the money. That's the design, not a miss.
+    </Check>
+  </Step>
+  <Step title="If the subscriber is done, cancel the subscription too">
+    - A refund over one bad box may need no second move at all: the schedule keeps rolling and the next order ships as normal.
+    - When they're actually done, cancel the subscription as its own step: **Cancel subscription** in the title bar ([Edit one subscription](/platform-v2/run/edit-one-subscription)), or better, send a login link and let them cancel in the portal so your cancellation flow gets its chance ([When a subscriber asks for help](/platform-v2/run/when-a-subscriber-asks)).
+    - The rule holds in reverse too: cancelling a subscription refunds nothing by itself. Money already charged stays charged until you refund it in Shopify.
+
+    <Check>
+    **Checkpoint:** refunded in Shopify, cancelled here. Both moves made, or one skipped on purpose.
+    </Check>
+  </Step>
+</Steps>
+
+<Note>
+**A refund doesn't rewind rewards.** The refunded order still counts toward the subscriber's reward progress, and a gift that shipped on it stays **Processed** ([When a reward goes missing](/platform-v2/run/when-a-reward-goes-missing)).
+</Note>
+
+<Note>
+**One order can belong to several subscriptions.** When one customer has sibling subscriptions due the same day, on the same card, address, and currency, the platform bills them as one combined order: one charge row on the base subscription, and the order linked from all of them. Two subscriptions sharing one order isn't a fault; it's a kindness to the customer's inbox and your shipping bill.
+</Note>

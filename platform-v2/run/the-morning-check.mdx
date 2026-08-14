@@ -1,0 +1,66 @@
+---
+title: "The morning check"
+description: "Five minutes on two screens, then walk away."
+---
+
+import { PlatformTag } from "/snippets/PlatformTag.jsx";
+
+<PlatformTag platform="opensubs" />
+
+<span className="os-chip">5 min</span>
+
+The machine from [What runs without you](/platform-v2/run/what-runs-without-you) ran all night. This is how you check that it did: two screens, in order, most days both quiet. Once a week, a third look at Analytics.
+
+<Steps>
+  <Step title="Open Home">
+    - Open the OpenSubs admin. Home is where it lands.
+    - **Needs attention** sits at the top only when something needs you. It counts two things: subscriptions with payment trouble and operations alerts waiting for review. **Review subscriptions** opens the subscriptions list already filtered to **Billing issues**; **Review operations** opens the second screen of this check.
+    - Glance at **Store health** (revenue, new and cancelled subscriptions over the last 7 days, plus the current active count) and **Recent wins** (recovered revenue, subscriptions recovered, net active growth).
+
+    <Check>
+    **Checkpoint:** no banner, numbers moving the right way. One screen down, one to go.
+    </Check>
+
+    <Frame>
+      <img src="/images/platform-v2/run/02-home-needs-attention.png" alt="Home: the Needs attention banner counting an open operations alert." />
+    </Frame>
+
+    <Note>
+    **A failed payment is already being handled.** The moment a charge failed, a recovery campaign opened: emails, retries on your schedule, the backup card tried automatically. [When a payment fails](/platform-v2/run/when-a-payment-fails) shows the whole timeline; this morning, the count is all you need to know.
+    </Note>
+
+    <Note>
+    **Home also nudges.** The setup checklist and the recommendation cards under it are adoption prompts, not problems: dismiss what you don't want (dismissing the checklist is permanent; recommendation cards may return another day). And on a young store, quiet placeholders under **Recent wins** mean the nightly analytics are still collecting, not that something broke.
+    </Note>
+  </Step>
+  <Step title="Open Operational health">
+    - Open **Settings > Operational health**: four panels, read top to bottom.
+
+    | Panel | What it shows | Healthy looks like |
+    | --- | --- | --- |
+    | **Alerts** | anything the platform wants you to know | **"Everything is running normally"** |
+    | **Scheduled jobs** | every scheduled job with its last run | green, meaning the last run succeeded |
+    | **Webhook delivery (24h)** | Shopify's deliveries, counted by topic (the kind of event) | ok counts, failed at zero |
+    | **Queues & drains** | work waiting in line and the runs that clear it | numbers near zero, and moving |
+
+    - Read any alert, then click **Acknowledge**. That marks it read; the alert resolves itself when the check behind it passes again. A job that has gone quiet doesn't fake green, it raises an alert instead.
+    - Most mornings the whole screen is the expected quiet: "There are no open alerts. The watchdog checks every 15 minutes." Don't linger.
+    - Anything red, failed, or lagging: [When an alert opens](/platform-v2/run/when-an-alert-opens) names every alert kind and its fix.
+
+    <Check>
+    **Checkpoint:** no open alerts, jobs green, failed and waiting counts near zero. Walk away.
+    </Check>
+
+    <Frame>
+      <img src="/images/platform-v2/run/03-operational-health.png" alt="Operational health: alerts, scheduled jobs, webhook delivery, and queues, all quiet." width="560" />
+    </Frame>
+  </Step>
+  <Step title="Once a week, not every day">
+    - Open **Analytics** and give three tabs a minute each: **Overview**, **Dunning**, **Cancellations**.
+    - Pick a date range on any of them; on **Overview** you can also set **Compare to** and see the numbers against the previous period.
+    - **Dunning:** what failed and what recovery won back.
+    - **Cancellations:** why subscribers leave and what your cancellation flow saves.
+    - Two honest quirks: trend charts lag one nightly snapshot, so today's row appears tomorrow (the headline numbers are live), and money is never summed across currencies.
+    - This is a look, not a lesson: reading the trends and acting on them is territory for the [Growth Program](/growth-program/orientation).
+  </Step>
+</Steps>

@@ -1,0 +1,90 @@
+---
+title: "When emails don't arrive"
+description: "Four causes explain nearly every missing or doubled email, and every fix is on two settings screens."
+---
+
+import { PlatformTag } from "/snippets/PlatformTag.jsx";
+
+<PlatformTag platform="opensubs" />
+
+Nearly every notification problem, missing or doubled, has one of four causes, and every fix lives on two screens: **Settings > Integrations** decides who sends, **Settings > Notifications** decides what sends. Work the list in order; the first cause is the most common. Texts have their own page: [When texts don't arrive](/platform-v2/run/when-texts-dont-arrive).
+
+<Steps>
+  <Step title="No provider connected">
+    - The symptom: nothing arrives on any channel. No automatic emails, no login codes, no texts.
+    - The platform never sends from its own servers. SendGrid or Klaviyo sends your email; Twilio or Klaviyo sends your texts. Both send from accounts you own, so no provider means no messages.
+    - In **Settings > Integrations**, connect a provider. Credentials, settings, and the test all live in the provider's **Connect** modal (**Manage** once connected). Send yourself a test with **Test connection**. First-time setup, end to end: [Set up email and SMS](/platform-v2/run/set-up-email-and-sms).
+    - Back on **Settings > Integrations**, under **Notification routing**, pick the **Email notifications** and **SMS notifications** routes and **Save**. SendGrid and Twilio send only once connected *and* selected; Klaviyo, once connected, receives every event whether or not it holds a route. That difference drives the next two causes.
+
+    <Warning>
+    **Nothing waits for a provider.** With no provider connected, notifications are discarded, not queued (portal login codes included). Connecting starts delivery from that moment; nothing older comes back.
+    </Warning>
+
+    <Frame>
+      <img src="/images/platform-v2/run/16-integrations.png" alt="Settings > Integrations: the three providers connected, with the Notification routing card below." width="560" />
+    </Frame>
+
+    <Check>
+    **Checkpoint:** the test arrives: SendGrid's test in your inbox, Klaviyo's in the Klaviyo activity feed, Twilio's on your phone.
+    </Check>
+  </Step>
+  <Step title="Klaviyo flows are still drafts">
+    - The symptom: Klaviyo is connected and routed, and still nothing sends, login codes included.
+    - Klaviyo flows import as drafts, and a draft flow sends nothing for its event.
+    - Open **Settings > Notifications > Email** and click **View created flows & templates**: the list shows each flow's live-or-draft status and links you into it. In Klaviyo itself, set every flow you rely on to live.
+
+    <Check>
+    **Checkpoint:** every flow you rely on reads live, not draft.
+    </Check>
+  </Step>
+  <Step title="Two emails for one event">
+    - The symptom: subscribers get everything twice.
+    - A connected Klaviyo always receives events, and a live Klaviyo flow sends no matter which provider holds the email route. A live flow plus an active SendGrid route is two senders for one event.
+    - Pick one: set the flow back to draft in Klaviyo, or, under **Settings > Integrations**, move the **Email notifications** route to Klaviyo. The **Email** page flags the overlap for you.
+
+    <Frame>
+      <img src="/images/platform-v2/run/17-notification-routing.png" alt="The Notification routing card: one email route, one SMS route." width="640" />
+    </Frame>
+
+    <Check>
+    **Checkpoint:** the **Email** page no longer flags an overlap.
+    </Check>
+  </Step>
+  <Step title="The event is off, or the subscriber never opted in">
+    - The symptom: one specific email never sends while the rest arrive fine.
+    - A new install starts quiet on purpose: every lifecycle event begins switched off.
+    - Flip the event's switch under **Settings > Notifications > Email**; the page shows how many events are on. (One subscriber missing texts specifically is a consent case: [When texts don't arrive](/platform-v2/run/when-texts-dont-arrive).)
+
+    <Note>
+    **Login codes are never off.** The login code and login link always send and can't be disabled. If those are missing, the cause is one of the first two, not a toggle.
+    </Note>
+
+    <Check>
+    **Checkpoint:** the event's switch is on.
+    </Check>
+  </Step>
+  <Step title="Confirm the fix">
+    - Open the subscriber's page in admin: the **Notifications** table lists every send with its channel and status.
+    - Wrong API keys are never silent: a bad key retries a few times, then fails with the **Notification deliveries failed** alert.
+    - Watch **Settings > Operational health**: that alert resolves on its own. It counts failures over a rolling 24 hours, so it can stay open up to a day after the fix while old ones age out. Anything else open there is [When an alert opens](/platform-v2/run/when-an-alert-opens).
+
+    {/* shot:18 ui-admin "A subscriber's Notifications table: each send with its channel and status." */}
+
+    <Check>
+    **Checkpoint:** new sends read sent; any open alert resolves within the day.
+    </Check>
+  </Step>
+  <Step title="Still stuck? Read the provider's log">
+    - "Sent" in the admin means your provider accepted the message; delivering it is the provider's half. When a message reads sent but never lands, the rest of the story lives in the provider's own dashboard.
+    - Failed in the admin's table instead? The row's own error text is the place to start; the provider log adds detail only when that text is vague.
+
+    | The message went through | Where the rest of the story lives |
+    | --- | --- |
+    | **SendGrid** | The **Activity** page in the SendGrid dashboard: search the subscriber's address. Bounces and blocks usually also write themselves back into the admin row; spam reports show only here. |
+    | **Klaviyo** | The flow's recipient activity in Klaviyo: a skipped or suppressed profile says why right there. |
+
+    <Check>
+    **Checkpoint:** the provider's log names the reason, and it's theirs to explain, not the platform's.
+    </Check>
+  </Step>
+</Steps>

@@ -1,0 +1,43 @@
+---
+title: "Brand and word the portal"
+description: "Logo and colors, every phrase rewritable, and an FAQ that deflects tickets."
+---
+
+import { PlatformTag } from "/snippets/PlatformTag.jsx";
+
+<PlatformTag platform="opensubs" />
+
+<span className="os-chip">15 min</span>
+
+The portal ships looking clean and speaking plainly; this page is how you make it look and sound like your store. Three screens: branding, translations, FAQ.
+
+<Steps>
+  <Step title="Brand it">
+    - **Settings > Branding** holds the look: logo, colors, and theme for the customer account area, with **Customer portal features** further down the same page ([What subscribers can do for themselves](/platform-v2/run/what-subscribers-can-do-themselves)).
+    - The live preview beside the settings shows your changes as you make them, desktop and mobile.
+
+    <Check>
+    **Checkpoint:** the preview looks like your store, both sizes.
+    </Check>
+  </Step>
+  <Step title="Reword it, in any language">
+    - **Settings > Translations** lists every phrase the portal can say, editable per language, searchable once you type a couple of characters.
+    - The English row isn't only for translation: edit it to reword the portal store-wide, and every other language layers on top.
+    - Leave a field blank and it falls back to the default wording; each language saves as a whole.
+    - A language still marked draft never serves to subscribers; its **Preview** link is the only place it renders until you set it live.
+
+    <Check>
+    **Checkpoint:** the phrases subscribers see most (the dashboard, the cancel path) read like you.
+    </Check>
+  </Step>
+  <Step title="Add the FAQ">
+    - **Settings > FAQ** is the portal's help content, in sections of questions and answers. While it's empty, the portal simply doesn't show an FAQ item; add rows and it appears.
+    - A section named **Featured** (any capitalization) is special: it feeds the portal's featured help block. Rename it and nothing breaks; the dashboard's FAQ block falls back to your first section, and only the FAQ page's featured preview drops.
+    - Saving replaces the whole FAQ, so edit in place rather than assuming removed rows survive somewhere.
+    - Want the FAQ on the portal dashboard itself? That's the **Dashboard FAQ** switch, off by default, back on the Branding page.
+
+    <Check>
+    **Checkpoint:** the three questions your inbox answers weekly are in the FAQ, findable in one scroll.
+    </Check>
+  </Step>
+</Steps>

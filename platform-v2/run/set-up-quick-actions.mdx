@@ -1,0 +1,59 @@
+---
+title: "Set up quick actions"
+description: "One-click links that do the thing for a subscriber: build them once, send them anywhere."
+---
+
+import { PlatformTag } from "/snippets/PlatformTag.jsx";
+
+<PlatformTag platform="opensubs" />
+
+<span className="os-chip">10 min</span>
+
+A quick action is a link that performs one change on a subscription the moment the subscriber taps it: no login, one confirmation page, done. Build the actions once here; then they're available on every subscription page to paste into replies, and in your notification emails as merge tags.
+
+<Steps>
+  <Step title="Create the action">
+    - Open **Settings > Quick actions** and click **Create quick action**.
+    - Give it a **Name** you'll recognize, then pick the **Action type**:
+
+    | Family | Action types |
+    | --- | --- |
+    | Schedule | **Skip next order** · **Delay next order** · **Ship now** |
+    | Status | **Pause subscription** · **Resume subscription** · **Reactivate subscription** · **Reactivate with a discount** · **Reactivate with a one-time add-on** |
+    | Changes | **Apply a discount code** · **Add a product** · **Swap a product** · **Change delivery frequency** · **Update payment method** |
+    | Combined | **Multiple actions**: two to four steps run in order, each type once, reactivation first when present |
+    | Special | **Convert order to subscription**: works on a past one-time order instead of a subscription, with an optional discount code |
+
+    - Types that need details ask for them right there: the discount code, the product and variant, the new frequency.
+
+    <Check>
+    **Checkpoint:** the action does one clear thing, and its name says what.
+    </Check>
+
+    <Frame>
+      <img src="/images/platform-v2/run/29-quick-actions.png" alt="Settings > Quick actions: the list of actions with their status badges." width="640" />
+    </Frame>
+  </Step>
+  <Step title="Set its availability">
+    - Under **Availability**: **Status** (**Active**, **Paused**, or **Archived**), **Max uses per subscription** (empty means unlimited), and **Expires**.
+    - The expiry field's own note is the rule: "Leave empty to never expire. Expires at 11:59 PM on the selected date." That's the action's lifetime; individual links have their own, shorter one (below).
+
+    <Check>
+    **Checkpoint:** status reads **Active**, with the limits you mean.
+    </Check>
+  </Step>
+  <Step title="Put it to work, two ways">
+    - **In your replies:** every active action appears in the **Quick action link** menu on a subscription's page. Click one and a link for that subscriber lands on your clipboard, single-use, alive for 60 minutes ([When a subscriber asks for help](/platform-v2/run/when-a-subscriber-asks)).
+    - **In your notifications:** save the action first; its **Notifications** section appears after the first save. Under **Add this link to notification sends**, tick the sends that should carry it, or copy its **Merge tag** into a template yourself.
+    - Links inside notification sends are the durable kind: reusable for that send's life (about 30 days), so the email keeps working when it's opened next week.
+    - The classic: a dunning email carrying a one-tap **Update payment method** link, which skips the confirmation page and goes straight to Shopify's card screen. It recovers more cards than a paragraph ever will.
+
+    <Check>
+    **Checkpoint:** the action shows in the subscription page's **Quick action link** menu, and on the sends you picked.
+    </Check>
+  </Step>
+</Steps>
+
+<Note>
+**A quick action link is a key, scoped to one subscriber.** It acts on that subscriber's subscription alone, but treat it like a signed-in session: anyone holding a live link can use it. The admin-copied kind works once and dies in an hour; the kind inside notification emails stays usable for the send's life, which is why it belongs in their inbox and nowhere public.
+</Note>

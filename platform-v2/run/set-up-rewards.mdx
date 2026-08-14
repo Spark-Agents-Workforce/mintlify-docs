@@ -1,0 +1,58 @@
+---
+title: "Set up rewards"
+description: "Tiers earned by renewal count: free gifts to redeem, discounts that apply themselves."
+---
+
+import { PlatformTag } from "/snippets/PlatformTag.jsx";
+
+<PlatformTag platform="opensubs" />
+
+<span className="os-chip">10 min</span>
+
+Rewards pay subscribers for staying: each tier is earned once a customer has placed a set number of recurring orders. Gifts wait in their portal to redeem; discounts apply to the next order by themselves.
+
+<Steps>
+  <Step title="Turn the program on">
+    - Open **Settings > Rewards** and flip **Enable rewards**, in the **Rewards program** panel on the right.
+    - The switch explains the model itself: "When on, customers earn the tiers as their subscription renews. Free gifts appear in their account to redeem; amount and percentage rewards apply automatically to their next order."
+    - Left off, the page warns you plainly: tiers below won't be earned until the program is on.
+
+    <Check>
+    **Checkpoint:** the program is on, or deliberately off while you build tiers first.
+    </Check>
+
+    <Frame>
+      <img src="/images/platform-v2/run/28-rewards-settings.png" alt="Settings > Rewards: the program switch, reward tiers with their rewards, and the reset section below." width="560" />
+    </Frame>
+  </Step>
+  <Step title="Build the tiers">
+    - Click **Add tier** and set its earn point: **Earned after N recurring orders**.
+    - **Add reward** fills the tier. Three kinds:
+
+    | Reward type | What the subscriber gets |
+    | --- | --- |
+    | **Free gift** | A product you pick (**Choose gift**), added to their next order at no charge once they redeem it. |
+    | **Amount off** | A fixed amount off their next order, applied automatically. |
+    | **Percentage off** | A percentage off their next order, applied automatically. |
+
+    - A tier can hold any number of free gifts but only one discount; the page enforces it: "Each tier can include only one discount."
+    - Pick gifts while you're inside the Shopify admin; opened anywhere else, the gift picker can't browse your catalog.
+
+    <Check>
+    **Checkpoint:** each tier reads like a milestone worth reaching, and every gift resolves to a real product.
+    </Check>
+  </Step>
+  <Step title="Save, then watch it work">
+    - **Save.** The banner confirms: "Reward settings saved."
+    - **View analytics** in the title bar opens **Analytics > Rewards**: processed versus claimed, top gifts, the program's pulse.
+    - Per subscriber, earned rewards live on the subscription page's **Reward history** card, and available gifts wait in the **Available rewards** section ([When a reward goes missing](/platform-v2/run/when-a-reward-goes-missing) reads both).
+
+    <Check>
+    **Checkpoint:** saved clean, and the first earned reward shows up in Reward history as subscribers renew.
+    </Check>
+  </Step>
+</Steps>
+
+<Warning>
+**The one dangerous control here is Reset all order counts**, under **Reset reward progress**. It sets every customer's recurring-order count back to zero, restarting reward progress for all customers, and it can't be undone. The tiers themselves stay. Use it for relaunches, not tidying.
+</Warning>

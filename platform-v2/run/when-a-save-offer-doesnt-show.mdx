@@ -1,0 +1,46 @@
+---
+title: "When a save offer doesn't show"
+description: "Two gates decide whether a cancelling subscriber sees your offer. Check both, then read the funnel."
+---
+
+import { PlatformTag } from "/snippets/PlatformTag.jsx";
+
+<PlatformTag platform="opensubs" />
+
+Your flow is published, a subscriber cancelled, and no offer appeared, or the wrong one did. Exactly two gates decide whether an offer shows, both deliberate. Check them, then rule out the look-alike.
+
+<Steps>
+  <Step title="The cooldown already spent this subscriber">
+    - A subscriber who took a save incentive recently doesn't get offered another one: the incentive cooldown (default 60 days) is enforced server-side, so it holds even across flow edits.
+    - Blocked by cooldown doesn't mean a dead end; the flow falls back to its non-incentive path instead.
+    - The cooldown is adjustable, and zero disables it, for stores that would rather save at any price.
+
+    <Check>
+    **Checkpoint:** the subscriber's last saved-with-an-offer date explains what they saw.
+    </Check>
+  </Step>
+  <Step title="The offer's portal feature is switched off">
+    - An offer can only run what the portal allows. A pause offer needs pausing switched on, a delay offer needs delaying, a frequency offer needs frequency changes: all under **Customer portal features** ([What subscribers can do for themselves](/platform-v2/run/what-subscribers-can-do-themselves)).
+    - An offer whose feature is off is skipped silently: the subscriber goes straight to your fallback offer if it passes the same gates, otherwise to the plain cancel confirmation. Follow-up offers only enter after an explicit decline, and gated ones are skipped the same way.
+
+    <Check>
+    **Checkpoint:** every offer type in your flow has its matching portal feature on.
+    </Check>
+  </Step>
+  <Step title="The look-alike: a taken discount that later disappears">
+    - A discount save the subscriber accepted applies to their subscription for a limited number of billing cycles, one by default. Once used, it stops discounting and drops off the subscription's summary.
+    - That's not a gate failing, it's the offer being spent: an offer that discounts forever isn't an offer, it's a price. If the same subscriber cancels again soon after, what they see is governed by the cooldown in the first step.
+
+    <Check>
+    **Checkpoint:** the "missing" discount ran its cycle and left. Working as built.
+    </Check>
+  </Step>
+  <Step title="Read the funnel, not the anecdote">
+    - **Analytics > Cancellations** shows the whole path: flow started, reason selected, offer shown, declined, cancelled. One subscriber's screenshot is a data point; the funnel is the answer.
+    - If offers show but never save, that's not a gate, that's the offer: back to [Set up your cancellation flow](/platform-v2/run/set-up-your-cancellation-flow).
+
+    <Check>
+    **Checkpoint:** the funnel says offers are showing at the rate the gates predict.
+    </Check>
+  </Step>
+</Steps>

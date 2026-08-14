@@ -1,0 +1,83 @@
+---
+title: "Update the platform"
+description: "Four commands in order, about ten minutes, safe to re-run."
+---
+
+import { PlatformTag } from "/snippets/PlatformTag.jsx";
+
+<PlatformTag platform="opensubs" />
+
+<span className="os-chip">10 min</span>
+
+You own the stack, so updates are something you run, not something pushed to you. Four commands in a terminal at your repository root, always the same, always in this order. The order is the one rule.
+
+<Note>
+**You can't break it by re-running.** Every command skips what's already done: pulling again does nothing new, applied migrations stay applied, a repeat deploy just replaces the app with the same build. Interrupted halfway? Run the same command again and it picks up where it stopped.
+</Note>
+
+<Steps>
+  <Step title="One-time prep">
+    - Create a Supabase personal access token at [supabase.com/dashboard/account/tokens](https://supabase.com/dashboard/account/tokens).
+    - Put two lines in the `.env` file at your repository root: the token, and your project ref, the `<ref>` part of your Supabase URL (`https://<ref>.supabase.co`). The update scripts read them automatically.
+
+    ```bash
+    SUPABASE_ACCESS_TOKEN=sbp_xxxxxxxx
+    SUPABASE_PROJECT_REF=yourprojectref
+    ```
+
+    <Check>
+    **Checkpoint:** `.env` shows both lines. Every update from now on starts at the next step.
+    </Check>
+  </Step>
+  <Step title="Get the new version">
+    ```bash
+    git pull
+    ```
+
+    - Then read `CHANGELOG.md` for the version you just pulled. Anything needing manual attention is called out under **Action required**: rare, but always flagged there.
+  </Step>
+  <Step title="Apply the database migrations">
+    ```bash
+    npm run merchant:migrate
+    ```
+
+    - Applies every pending migration to your Supabase project, in order, recording each one as it lands. Want to look first? `npm run merchant:migrate -- --dry-run` lists what would apply and changes nothing.
+    - A one-time `adopted ... (ledger row only)` line after some updates is normal: bookkeeping, not a change to your data. Nothing to do.
+
+    <Check>
+    **Checkpoint:** the run finishes clean; running it again reports `0 pending`.
+    </Check>
+  </Step>
+  <Step title="Deploy the webhook functions">
+    ```bash
+    npm run merchant:functions
+    ```
+
+    - Redeploys your Supabase Edge Functions, the receivers Shopify's webhooks land on. If the changelog asks for just one, add `-- --only` plus the name it gives, like `-- --only orders-webhook`.
+
+    <Check>
+    **Checkpoint:** the command finishes without errors.
+    </Check>
+  </Step>
+  <Step title="Redeploy the app, last">
+    ```bash
+    cd app && vercel deploy --prod
+    ```
+
+    - Connected your Vercel project to your repository during setup? Then skip the command: push your pulled update (`git push`) and Vercel rebuilds on its own. Otherwise, the first time only, run `vercel link` from `app/` and pick your existing OpenSubs project; after that, the command above deploys.
+    - Last on purpose: at startup the app checks that every migration its code expects is actually applied. Deploy new code before migrating and it refuses API traffic with a 503 reading **Database schema out of date**, naming the missing migrations. [When an alert opens](/platform-v2/run/when-an-alert-opens) covers that same 503. Migrate first, deploy last, and the check never trips.
+
+    <Check>
+    **Checkpoint:** the deploy finishes and the admin opens clean. That's the whole update.
+    </Check>
+  </Step>
+</Steps>
+
+<Note>
+**If a step fails.**
+
+- A migration that fails partway resumes on the next run, skipping everything already applied.
+- The same migration failing twice is your stop sign: don't force it, never hand-edit the database, and [get help](/platform-v2/run/your-job-and-when-to-get-help) with the error text.
+- A 503 right after an update means you deployed before migrating: run the migrate step, then reload the site.
+- Updates roll forward, never back. Undoing one means restoring the database from Supabase's Point-in-Time Recovery (**Project > Database > Backups**) and redeploying the previous build from Vercel's deployment history.
+</Note>

@@ -1,0 +1,43 @@
+---
+title: "Set up a promotion"
+description: "Targeted offers inside the portal: pick the audience, place the banner, watch the funnel."
+---
+
+import { PlatformTag } from "/snippets/PlatformTag.jsx";
+
+<PlatformTag platform="opensubs" />
+
+<span className="os-chip">15 min</span>
+
+Promotions are offers shown inside the customer portal to the subscribers you choose: a banner with a one-tap action, placed where they'll see it. Merchandising for people you already have.
+
+<Steps>
+  <Step title="Create it">
+    - Open **Settings > Promotions** and create a promotion. The editor runs top to bottom: **Details** (name it), **Creative** (the message and look), **Call to action** (what the button does), **Placement** (where in the portal it shows; one promotion can hold several).
+
+    <Check>
+    **Checkpoint:** the banner says one thing, and the button does exactly that thing.
+    </Check>
+
+    <Frame>
+      <img src="/images/platform-v2/run/32-promotion-editor.png" alt="The promotion editor: details, creative, call to action, placement, and targeting, top to bottom." width="560" />
+    </Frame>
+  </Step>
+  <Step title="Aim it">
+    - **Targeting** picks the audience: conditions combinable with all-of and any-of logic and a live estimate of how many subscribers match, the same building grammar as [bulk operations](/platform-v2/run/change-many-at-once), aimed at people instead of runs.
+    - **Schedule** bounds it if it's seasonal; leave it open-ended if it's standing.
+
+    <Check>
+    **Checkpoint:** the estimate matches who you meant, and the dates bound it.
+    </Check>
+  </Step>
+  <Step title="Watch it, and retire it">
+    - The editor's **Performance** section tracks impressions, clicks, conversions, and revenue, with **Export stats** and **Export activity** CSVs.
+    - Pause a promotion to stop it showing; archive it when it's done. Its stats stay.
+    - A promotion's temporary discount that can't be taken back off a subscription surfaces in two places: a banner on the promotion's own page, and the **Promo revert abandoned** alert on **Settings > Operational health** ([When an alert opens](/platform-v2/run/when-an-alert-opens)).
+
+    <Check>
+    **Checkpoint:** the funnel moves, and nothing on the promotion's page asks for attention.
+    </Check>
+  </Step>
+</Steps>

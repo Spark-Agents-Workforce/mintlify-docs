@@ -1,0 +1,86 @@
+---
+title: "When texts don't arrive"
+description: "Texts have more ways to go quiet than emails. Five checks cover them all."
+---
+
+import { PlatformTag } from "/snippets/PlatformTag.jsx";
+
+<PlatformTag platform="opensubs" />
+
+A text has more ways to go quiet than an email: the same provider and routing rules, plus consent, the phone number itself, and webhook wiring on the Twilio side. Work the checks in order. If email is silent too, start at [When emails don't arrive](/platform-v2/run/when-emails-dont-arrive) instead: that's the shared machinery.
+
+<Steps>
+  <Step title="Twilio isn't connected, or isn't the route">
+    - In **Settings > Integrations**, connect Twilio: the **Connect Twilio** modal takes your **Auth token** and **Account SID**, then lets you pick a **Messaging Service** or a **From number** from your account. One of those two is required; the save refuses without it.
+    - Back on the same screen, under **Notification routing**, set **SMS notifications** to Twilio and **Save**. Connected but not routed sends nothing, and the SMS settings page says so in a banner rather than letting you guess.
+    - Prove it: in the Twilio modal, enter your own number under **Send a test SMS to (phone)** and click **Test connection**.
+    - The whole wiring, walked from zero: [Set up email and SMS](/platform-v2/run/set-up-email-and-sms).
+
+    <Check>
+    **Checkpoint:** the test lands on your phone.
+    </Check>
+
+    <Note>
+    **Klaviyo can hold the SMS route instead.** Then whether a text goes out is decided by your Klaviyo flows, and the admin logs those sends under the Klaviyo channel rather than SMS. Consent still applies on the platform side, though: the subscriber's phone only reaches Klaviyo for opted-in subscribers (login texts excepted), so check 3 below matters either way. The rest of this page assumes Twilio.
+    </Note>
+  </Step>
+  <Step title="The text's event is switched off">
+    - Open **Settings > Notifications > SMS texts**. Every lifecycle text is a row with a switch and a preview; switch one on, then click the row to edit its message.
+    - A new install starts with every lifecycle text off. Only two rows read **Always on** and can't be switched: **Portal login code** and **Login link**.
+    - Flip on the events you want, edit the copy if you like (**Insert tag** for merge tags; the counter shows characters and how many SMS segments you're paying for), and **Save**.
+
+    <Check>
+    **Checkpoint:** the event's switch is on.
+    </Check>
+
+    <Frame>
+      <img src="/images/platform-v2/run/21-sms-texts.png" alt="Settings > Notifications > SMS texts: lifecycle texts with per-event switches, the login texts always on." width="560" />
+    </Frame>
+  </Step>
+  <Step title="The subscriber never opted in, or has no phone">
+    - A lifecycle text only goes to a subscriber who has opted in, and opting in happens one way: they text START to your number. STOP opts them out again.
+    - Login codes and login links are the exception: they send regardless of consent. So a subscriber can receive a login text and still get no lifecycle texts. That's consent working, not a bug.
+    - No phone on file means no text. The phone comes in from Shopify with the customer, and subscribers can add or change it on their portal profile.
+
+    <Note>
+    **Consent is invisible in the admin.** There's no opt-in column anywhere, and a lifecycle text blocked on consent or a missing phone leaves no record; silence is the designed behavior. The portal's SMS preference checkbox doesn't grant consent either: only texting START does. So when one subscriber gets no texts and everyone else does, ask them to text START. One catch: START only counts from the phone number on their record. Texting it from a different number gets a friendly reply and stores nothing.
+    </Note>
+
+    <Check>
+    **Checkpoint:** the subscriber has a phone on their portal profile and has texted START.
+    </Check>
+  </Step>
+  <Step title="Sent, but stuck at queued or never delivered">
+    A text's status in the admin follows Twilio's receipts:
+
+    | Status | What it means |
+    | --- | --- |
+    | **Queued** | Twilio accepted the text; the delivery receipt isn't back yet. |
+    | **Sent** | Twilio confirmed delivery. |
+    | **Failed** | Rejected, with Twilio's reason and numeric error code in the row. |
+
+    - Everything stuck at **Queued** forever means delivery receipts aren't making it back. The merchant-fixable cause: the **Messaging Service** or **From number** saved in the Twilio modal isn't the one that actually sends, so receipts can't be matched to your store. Make them match; if receipts still don't land after that, hand it to whoever runs your code.
+    - For the descriptive story behind any failure, read Twilio's own log: in the Twilio Console, open **Monitor > Logs > Messaging**, find the message, and read its status and error code. The code is the answer: 21610, for example, means the recipient texted STOP and Twilio is blocking sends to them.
+
+    <Check>
+    **Checkpoint:** new texts move from queued to sent, and failures name their code.
+    </Check>
+  </Step>
+  <Step title="Replies do nothing">
+    - SKIP, PAUSE, STOP and the rest only reach the platform if the **Incoming messages** URL is set on your Twilio Messaging Service (or on the phone number itself, if you connected with just a number). The Twilio modal shows it under **Webhooks: paste into your Twilio Messaging Service**, next to the delivery-status URL; paste both while you're there.
+    - The Messaging Service or From number saved in the modal must be the same one whose webhooks point at your app. A mismatch drops every inbound text silently, and it's the same mismatch that parks outbound texts at queued.
+    - Which commands are on, and their reply wording, live under **Settings > Notifications > SMS replies**; what subscribers can do with them is on [When a subscriber asks for help](/platform-v2/run/when-a-subscriber-asks).
+
+    <Check>
+    **Checkpoint:** text MANAGE to your own number. Any reply at all proves the inbound wiring; no reply means the URL or the service doesn't match.
+    </Check>
+
+    <Frame>
+      <img src="/images/platform-v2/run/22-twilio-modal.png" alt="The Manage Twilio modal: credentials, the two webhook URLs to paste into Twilio, and the test send." width="560" />
+    </Frame>
+  </Step>
+</Steps>
+
+<Note>
+**Confirm the fix the same way as email.** The subscriber's page in admin lists every send under **Notifications** with its channel and status; the row's error text is the first read, and [When an alert opens](/platform-v2/run/when-an-alert-opens) covers the alert that watches the whole sending pipeline.
+</Note>

@@ -1,0 +1,38 @@
+---
+title: "When the subscribe option disappears"
+description: "A theme change can silently drop the widget, and every new sale becomes one-time. Two checks find it."
+---
+
+import { PlatformTag } from "/snippets/PlatformTag.jsx";
+
+<PlatformTag platform="opensubs" />
+
+The subscription widget lives inside your published Shopify theme. Swap themes, duplicate one and publish it, or take a big theme update, and the widget can quietly vanish, while the product page keeps selling everything as one-time. No error anywhere; just a revenue line bending down. Two checks find it.
+
+<Steps>
+  <Step title="Check placement on Extensions">
+    - Open **Settings > Extensions**: a row per surface, storefront widget included, each with its placement status and (where placing is your job) a button into the right editor (theme editor for the product page, checkout editor for the rest).
+    - Widget missing after a theme change? Follow that button and add the block back to the product page, the same move as go-live's [The swap](/platform-v2/live-for-new-orders/the-swap).
+    - Read the statuses knowing where they come from: opened inside the Shopify admin, each surface reports **Placed** or **Not placed** directly. Opened outside it, the page falls back to activity heartbeats, where "No activity yet" means untested, not necessarily unplaced.
+
+    <Check>
+    **Checkpoint:** the product page shows the subscription option again, in a private window too.
+    </Check>
+
+    <Frame>
+      <img src="/images/platform-v2/run/33-extensions.png" alt="Settings > Extensions: each surface with its placement status and a button into its editor." width="560" />
+    </Frame>
+  </Step>
+  <Step title="The widget is there but looks broken">
+    - A widget that renders unstyled, or where every add lands as one-time, usually means the storefront is serving leftover development assets from an interrupted engineering session.
+    - That one belongs to [whoever runs your code](/platform-v2/run/your-job-and-when-to-get-help): a redeploy of the extensions fixes it, and it isn't something theme editing can reach.
+
+    <Check>
+    **Checkpoint:** styled widget, and a test add lands as a subscription, not a one-time.
+    </Check>
+  </Step>
+</Steps>
+
+<Note>
+**After any theme work, buy once.** The sixty-second habit that catches all of this: open a product page, add the subscription option to cart, and confirm the cart says subscription. The same proof-by-purchase your go-live used ([Prove it with real money](/platform-v2/live-for-new-orders/prove-it-with-real-money)).
+</Note>

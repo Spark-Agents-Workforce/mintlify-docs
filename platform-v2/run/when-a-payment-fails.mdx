@@ -1,0 +1,106 @@
+---
+title: "When a payment fails"
+description: "Retries, emails, and the backup card run by themselves. Watch it happen; step in rarely."
+---
+
+import { PlatformTag } from "/snippets/PlatformTag.jsx";
+
+<PlatformTag platform="opensubs" />
+
+A failed charge opens a recovery campaign, and the campaign runs itself. Your part: know the timeline, know where to watch it, and step in only for the three cases a schedule can't fix: a card that never gets updated, a bank that wants a confirmation, a product that's out of stock.
+
+<Steps>
+  <Step title="Let it run">
+    The whole response is automatic, in this order:
+
+    | Moment | What happens by itself |
+    | --- | --- |
+    | The charge fails | It's recorded on the subscription, and a recovery campaign opens. |
+    | Right away | The subscriber gets the first email, with a secure link to update their card. A backup card on file is tried automatically: one try per failed attempt on the primary. |
+    | On your schedule | Each step runs on its day and retries the charge, sends a reminder, or both. |
+    | After the last step | The ending you chose: cancel the subscription (the default), pause it, or leave it active and stop retrying. |
+
+    <Check>
+    **Checkpoint:** nothing above needed you. The next step is where you confirm it ran.
+    </Check>
+  </Step>
+  <Step title="Watch it happen">
+    - **Subscriptions**, filtered to **Billing issues**, lists everyone in recovery. Home counts them too: the **Needs attention** banner's **Review subscriptions** button lands on that filtered list.
+    - Two filter names look alike and aren't:
+
+    | Filter | Who's in it |
+    | --- | --- |
+    | **Billing issues** | Every subscription that isn't cancelled or expired whose last billing attempt errored, whatever its status badge says. This is the set Home counts each morning. |
+    | **Failed** | Subscriptions whose contract status is actually Failed, mirrored from Shopify. Recovery never sets it; its endings are cancel, pause, or stop retrying. |
+
+    {/* shot:13 ui-admin "The Billing issues filter: every subscription in recovery, with the failure reason as a badge." */}
+
+    - Open one and the **Payment recovery** card is the campaign, live: the amount at risk, charge retries used, the next retry time, the last error in plain words, and the dunning schedule with each step marked **Done**, **Next**, or **Upcoming**. The card only exists mid-campaign; it leaves when the campaign closes.
+
+    <Frame>
+      <img src="/images/platform-v2/run/35-recovery-card.png" alt="The Payment recovery card: amount at risk, retries used, next retry, last error, and the dunning schedule with Done, Next, and Upcoming steps." width="640" />
+    </Frame>
+
+    - Below it, **Billing history** is the paper trail: one row per attempt, **Paid** or **Failed**, with a **Recovery** badge on scheduled retries and **Backup card** on automatic backup tries. Failed rows label the amount "attempted": no money moved.
+
+    <Frame>
+      <img src="/images/platform-v2/run/14-billing-history.png" alt="Billing history: the attempt ledger, a Paid row linking to its order." width="640" />
+    </Frame>
+
+    - **Analytics > Dunning** totals recovery over time: what failed, and what the schedule won back.
+
+    <Check>
+    **Checkpoint:** every attempt is on the screen, and none of them needed you.
+    </Check>
+  </Step>
+  <Step title="Tune the schedule, once">
+    - Everything the campaign does comes from **Settings > Payment recovery**: the retry days, which email each step sends, and the ending. [Set up payment recovery](/platform-v2/run/set-up-payment-recovery) walks every field.
+    - The knob that matters most: **After the last step** decides the ending, cancel, pause, or stop retrying and leave the subscription active.
+    - **Out-of-stock retries** run their own quieter schedule, with no emails to the subscriber; the last step below leans on it.
+
+    <Check>
+    **Checkpoint:** the schedule matches how hard you want to chase. Most stores never change it.
+    </Check>
+  </Step>
+  <Step title="The subscriber who never fixes the card">
+    - Most campaigns end well without you: the subscriber taps the emailed link, the next charge succeeds, the campaign closes.
+    - When one doesn't, nudge once. Either open the subscription and click the pencil on its **Payment method** card to find **Send payment update email**, or create a **Quick action link** and paste it into a personal reply ([When a subscriber asks for help](/platform-v2/run/when-a-subscriber-asks)).
+    - The email's link opens a Shopify-hosted secure page; a payment quick action forwards there too, by way of their portal. Card numbers never pass through you or OpenSubs.
+  </Step>
+  <Step title="The bank that wants a confirmation">
+    - Sometimes the bank makes the subscriber confirm the charge (3D Secure). The bank-authentication email carries the bank's own confirmation link, and the campaign stops its clock and waits for both the bank and the subscriber. You can see the wait: the **Payment recovery** card's next retry reads **Waiting for customer authentication**.
+    - It waits as long as it has to: a bank wait isn't a failure, and nothing is broken. The confirmation is between the subscriber and their bank; if they write in confused, point them back at that email.
+  </Step>
+  <Step title="The product that's out of stock">
+    - A renewal that fails because your product is out of stock never emails the subscriber: it's your stock, not their card.
+    - A partly stocked renewal doesn't fail at all. It bills without the missing line, the order ships smaller, and the subscription keeps every line for the next cycle.
+    - With every line out of stock, the charge waits on the **Out-of-stock retries** schedule. Restock in Shopify and the next retry bills as normal.
+
+    <Check>
+    **Checkpoint:** restocking is the whole fix. The schedule does the rest.
+    </Check>
+  </Step>
+  <Step title="End a campaign on purpose">
+    A campaign closes through one of four doors, and three of them are levers you can pull:
+
+    | How it ends | What closes it |
+    | --- | --- |
+    | The payment succeeds | Any successful charge on the subscription: a scheduled retry, the backup card, the subscriber's updated card, or your **Charge & ship now**. The campaign notices the paid charge within the hour and closes as recovered. |
+    | You click **Stop recovery** | The button on the **Payment recovery** card. Retries and reminder emails stop immediately, and the **After the last step** ending never fires. The subscription itself doesn't change. |
+    | The schedule runs out | The last step fails, one more retry gap passes, and the **After the last step** ending fires: cancel, pause, or leave active and stop retrying. |
+    | The subscription stops | Cancel or pause the subscription and the next scheduled retry finds a contract it can't charge. The campaign is quietly abandoned: no failure email, no ending action. |
+
+    - Want it over today because the card works now? **Charge & ship now** on the subscription. Paid charge, campaign closed within the hour.
+    - Want the chasing to stop and nothing else? **Stop recovery**. The subscription keeps running toward its next cycle; the missed order is simply let go, the same outcome as the stop-retrying ending. To collect it after all, move the next order date up or **Charge & ship now**. It stays in the **Billing issues** list until a charge succeeds, and a later failed cycle opens a fresh campaign as usual.
+    - Want the subscription ended too? Cancel or pause it; the campaign winds down on its own at the next retry.
+    - Want every future campaign shorter? That's the schedule itself: cut steps on **Settings > Payment recovery**, and the change applies immediately, to campaigns already running too.
+
+    <Check>
+    **Checkpoint:** ending a campaign is one decision: pay it, stop it, outlast it, or end the subscription under it.
+    </Check>
+  </Step>
+</Steps>
+
+<Note>
+**There is no retry button, on purpose.** The schedule owns retries, so a failed card is chased exactly as hard as you decided, and never twice at once. The escape hatch when a subscriber has fixed their card and needs the order today: open the subscription and click **Charge & ship now** to charge immediately ([Edit one subscription](/platform-v2/run/edit-one-subscription)).
+</Note>

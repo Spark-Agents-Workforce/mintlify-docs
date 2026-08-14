@@ -187,6 +187,92 @@
               "platform-v2/migrate/bring-the-order-history",
               "platform-v2/migrate/prove-it-then-finish"
             ]
+          },
+          {
+            "group": "Run",
+            "icon": "activity",
+            "pages": [
+              "platform-v2/run/what-runs-without-you",
+              {
+                "group": "Operational health",
+                "pages": [
+                  "platform-v2/run/the-morning-check",
+                  "platform-v2/run/when-an-alert-opens"
+                ]
+              },
+              {
+                "group": "Subscriptions",
+                "pages": [
+                  "platform-v2/run/edit-one-subscription",
+                  "platform-v2/run/when-a-subscriber-asks",
+                  "platform-v2/run/retire-a-product",
+                  "platform-v2/run/when-an-order-is-refunded"
+                ]
+              },
+              {
+                "group": "Quick actions",
+                "pages": [
+                  "platform-v2/run/set-up-quick-actions"
+                ]
+              },
+              {
+                "group": "Bulk operations",
+                "pages": [
+                  "platform-v2/run/change-many-at-once"
+                ]
+              },
+              {
+                "group": "Payment recovery",
+                "pages": [
+                  "platform-v2/run/set-up-payment-recovery",
+                  "platform-v2/run/when-a-payment-fails"
+                ]
+              },
+              {
+                "group": "Email and SMS",
+                "pages": [
+                  "platform-v2/run/set-up-email-and-sms",
+                  "platform-v2/run/when-emails-dont-arrive",
+                  "platform-v2/run/when-texts-dont-arrive"
+                ]
+              },
+              {
+                "group": "Helpdesk",
+                "pages": [
+                  "platform-v2/run/set-up-gorgias"
+                ]
+              },
+              {
+                "group": "Rewards",
+                "pages": [
+                  "platform-v2/run/set-up-rewards",
+                  "platform-v2/run/when-a-reward-goes-missing"
+                ]
+              },
+              {
+                "group": "Cancellation flows",
+                "pages": [
+                  "platform-v2/run/set-up-your-cancellation-flow",
+                  "platform-v2/run/when-a-save-offer-doesnt-show"
+                ]
+              },
+              {
+                "group": "Promotions",
+                "pages": [
+                  "platform-v2/run/set-up-a-promotion"
+                ]
+              },
+              {
+                "group": "The customer portal",
+                "pages": [
+                  "platform-v2/run/what-subscribers-can-do-themselves",
+                  "platform-v2/run/brand-the-portal"
+                ]
+              },
+              "platform-v2/run/when-the-subscribe-option-disappears",
+              "platform-v2/run/update-the-platform",
+              "platform-v2/run/your-job-and-when-to-get-help"
+            ]
           }
         ]
       },

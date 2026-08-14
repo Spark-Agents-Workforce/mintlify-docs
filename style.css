@@ -1259,3 +1259,22 @@ kbd {
 }
 
 /* Mintlify supplies the moving active marker; keep its current spacing. */
+
+/* Tables inside Steps — Mintlify's table scroll-wrapper widens itself by
+   --page-padding per side to bleed into the page gutters; inside a Step
+   (overflow hidden) that overhang clips the table's right edge. Zero the
+   variable within steps so tables sit flush with the step's own text. */
+.step-container [class*="page-padding"],
+.step [class*="page-padding"] {
+  --page-padding: 0px !important;
+}
+
+/* Table cards — the wrapper pads 16px above/below the table and indents it
+   by --page-padding left/right, leaving white bands between the rounded card
+   edge and the header row. Flush all four sides; cells keep their own padding
+   and the scroll area's inherited radius clips the header corners cleanly. */
+[class*="[--page-padding:20px]"]:has(table) {
+  --page-padding: 0px !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}

@@ -1,0 +1,71 @@
+---
+title: "Change many at once"
+description: "Pick the audience, stack up to four actions, preview the list, watch the run."
+---
+
+import { PlatformTag } from "/snippets/PlatformTag.jsx";
+
+<PlatformTag platform="opensubs" />
+
+<span className="os-chip">15 min</span>
+
+Price changes, holiday delays, a discount for everyone you migrated: the changes too big for one subscription at a time. **Bulk operations** in the left nav lists your runs. **New bulk operation** opens the builder; the **Bulk operation** button on the Subscriptions list jumps straight to it. The steps below follow the builder top to bottom.
+
+<Tip>
+**A handful of rows doesn't need a builder.** Tick them on the Subscriptions list and an action bar appears: **Change status**, **Change frequency**, **Change next billing date**. Three moves, no audience to build, no run to watch.
+</Tip>
+
+<Steps>
+  <Step title="Build the audience">
+    - Open **Bulk operations**, click **New bulk operation**, and name the run something you'll recognize in a week.
+    - Under **1. Audience**, click **Add condition** and stack your filters: status, next billing date, the products a subscription contains, billing frequency, shipping country, migrated from another platform, a customer tag, and more. **Add condition group** lets you mix "all of these" with "any of these": one level of grouping, no deeper.
+    - The estimate updates as you build: how many subscriptions match, with a per-status breakdown. **View sample** opens the most recent matches; each row has an **Exclude** button. **Download CSV** saves the matched list.
+
+    <Check>
+    **Checkpoint:** download the CSV and read the names. If everyone on it should get this change, move on.
+    </Check>
+
+    <Frame>
+      <img src="/images/platform-v2/run/10-bulk-audience.png" alt="The bulk builder: status and product conditions stacked, the live estimate counting the matched audience." width="560" />
+    </Frame>
+
+    <Note>
+    **The estimate is live, not locked.** The audience is re-evaluated when the run starts, so the count can drift between now and then; the confirm screen shows the current match count, not a locked one. Scheduled for later? The audience is whoever matches at run time.
+    </Note>
+  </Step>
+  <Step title="Stack the actions">
+    - Under **2. Actions**, pick from the **Add an action** menu: up to four, in three groups.
+
+    | Group | Actions |
+    | --- | --- |
+    | Subscription | **Delay billing** · **Change interval** · **Add discount** · **Pause subscription** · **Cancel subscription** · and more |
+    | Products | **Swap product variant** · **Update product price** · **Remove product** · and more |
+    | Customers | **Add customer tag** · **Remove customer tag** |
+
+    - Order matters. Actions run in order on each matched subscription, and if one fails, the remaining actions are skipped for that subscription only; the run keeps moving. Reorder with the arrows.
+    - A warning banner names any matched status an action can't act on: those subscriptions are skipped, not failed, unless you flip the option below.
+    - Under **3. Options**: **Don't send customer notifications for these changes** keeps the run silent. **Schedule for later** runs it at a date and time you pick, in your store's timezone. **Treat skipped subscriptions as failures in the run report** turns the skips from the warning banner into failures.
+
+    <Check>
+    **Checkpoint:** four actions or fewer, in the order you mean them.
+    </Check>
+
+    <Frame>
+      <img src="/images/platform-v2/run/11-actions-stack.png" alt="The actions stack: ordered steps, the add-action picker, and the three run options." width="560" />
+    </Frame>
+  </Step>
+  <Step title="Run and watch">
+    - Click **Run operation**. The confirm restates the count, the per-status breakdown, and every action in order; if the run cancels subscriptions, the confirm says so outright. **Run now** starts it. (**Save & schedule**, if you set a date, books the run instead.)
+    - Watch the progress count climb, filtering the per-subscription results by status (All, Succeeded, Failed, Skipped, Pending). **Pause** and **Resume** mid-run; **Cancel** stops the rest: subscriptions already processed keep their changes, and a cancelled run can't resume.
+    - When it finishes, click **Retry failed** to re-run only the failures, and **Download results CSV** for the receipt.
+    - A run that fails outright opens a **Bulk operation failed** alert on **Settings > Operational health**; [When an alert opens](/platform-v2/run/when-an-alert-opens) explains how to read it.
+
+    <Check>
+    **Checkpoint:** processed equals matched, failures retried or explained, the results CSV saved.
+    </Check>
+
+    <Frame>
+      <img src="/images/platform-v2/run/12-bulk-run-report.png" alt="The run report: completed, with per-subscription results and the results CSV." />
+    </Frame>
+  </Step>
+</Steps>

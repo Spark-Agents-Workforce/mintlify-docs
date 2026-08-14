@@ -1,0 +1,49 @@
+---
+title: "Set up payment recovery"
+description: "The retry schedule that chases failed cards for you: set it once, rarely touch it."
+---
+
+import { PlatformTag } from "/snippets/PlatformTag.jsx";
+
+<PlatformTag platform="opensubs" />
+
+<span className="os-chip">5 min</span>
+
+Payment recovery is the machinery behind [When a payment fails](/platform-v2/run/when-a-payment-fails): the retries, the dunning emails, the ending. It ships with a sane default schedule; this page is where you make it yours.
+
+<Steps>
+  <Step title="Shape the schedule">
+    - Open **Settings > Payment recovery**. The schedule is a list of steps, each running on its day, counted from the first failure.
+    - Each step carries three controls: its **Day**, a **Retry charge** switch, and an email to send (**First failure**, **Retry reminder**, **Second reminder**, **Final notice**, or **Off**). A step can retry, remind, or both.
+    - The one exception is Day 0: the charge already failed, so that step only sends an email, and its retry switch stays off.
+    - **Add step** to chase longer; remove steps to chase less.
+
+    <Check>
+    **Checkpoint:** the steps read like the collection sequence you'd run by hand.
+    </Check>
+
+    <Frame>
+      <img src="/images/platform-v2/run/15-payment-recovery.png" alt="Payment recovery: the step schedule with retry switches and emails, and the after-the-last-step action." width="560" />
+    </Frame>
+  </Step>
+  <Step title="Choose the ending">
+    - **After the last step** decides what happens when the schedule runs out: cancel the subscription (the default), pause it, or stop retrying and leave it active.
+    - The ending runs one retry-gap after the final step, so the last email gets its chance to land before anything terminal happens.
+
+    <Check>
+    **Checkpoint:** cancel, pause, or leave active: the ending is a choice you made, not a default you inherited.
+    </Check>
+  </Step>
+  <Step title="The two extras">
+    - **Out-of-stock retries** are three plain fields: **Retry attempts**, **Days between retries**, and their own ending, **If still out of stock after all retries** (default: skip). No emails go to the subscriber: a renewal blocked by your stock is your problem, not their card.
+    - **Other emails** holds two switches: the bank-confirmation notice (3D Secure), on by default, and a payment-recovered note, off by default.
+
+    <Check>
+    **Checkpoint:** both switches say what you want subscribers to hear.
+    </Check>
+  </Step>
+</Steps>
+
+<Note>
+**Most stores set this once and never return.** The defaults are reasonable, and edits take effect immediately, including for campaigns already in flight; the sweep reads the live schedule on every pass. The day-to-day view of it all working is [When a payment fails](/platform-v2/run/when-a-payment-fails), including the **Payment recovery** card each in-recovery subscription carries, with its **Stop recovery** button for ending one campaign early.
+</Note>

@@ -1,0 +1,57 @@
+---
+title: "Set up your cancellation flow"
+description: "The offers a subscriber sees before the cancel goes through. Build it once; tune it forever."
+---
+
+import { PlatformTag } from "/snippets/PlatformTag.jsx";
+
+<PlatformTag platform="opensubs" />
+
+<span className="os-chip">15 min</span>
+
+When a subscriber cancels in their portal, your cancellation flow gets the last word: a reason, then an offer matched to that reason, then, only then, the cancel. This is the feature the whole portal-first doctrine leans on ([When a subscriber asks for help](/platform-v2/run/when-a-subscriber-asks)), and it's why an admin cancel is the expensive kind.
+
+<Steps>
+  <Step title="Create the flow">
+    - Open **Settings > Cancellation flows** and create a flow. The builder walks four stages: name it, pick the reasons, attach the offers, review and publish.
+    - Reasons are the choices a cancelling subscriber picks from ("Too expensive", "Too much product", yours to write). Their order on screen is randomized on purpose, so there's no reorder control and no first-position bias in your reason data.
+
+    <Check>
+    **Checkpoint:** every reason a real subscriber might have is on the list, in their words.
+    </Check>
+
+    <Frame>
+      <img src="/images/platform-v2/run/30-flow-builder.png" alt="The cancellation flow builder: the flow's reasons with their offers, stage by stage." width="560" />
+    </Frame>
+  </Step>
+  <Step title="Attach the offers">
+    - Each reason can carry its own offer branch; the first matching branch wins, and a default offer catches everyone else.
+    - Offers are the saves: a discount, a pause, a delay, a frequency change. Match them to the reason: "too expensive" wants a discount; "too much product" wants a delay or a lower frequency.
+    - Follow-up offers give you a second swing after a declined first offer.
+
+    <Check>
+    **Checkpoint:** every reason lands on an offer that actually answers it, with the default as the safety net.
+    </Check>
+  </Step>
+  <Step title="Publish, and know the switch">
+    - **Save draft** keeps it private; **Publish flow** makes it live after the readiness checklist passes.
+    - There is no separate on/off switch for the feature: publishing a flow turns the save machinery on, and deactivating your last flow turns it off.
+    - One flow is the active default per store; targeted flows can sit alongside it.
+
+    <Check>
+    **Checkpoint:** the flow reads published, and a test cancel in the portal walks through it.
+    </Check>
+  </Step>
+  <Step title="Tune it from the numbers">
+    - **Analytics > Cancellations** shows the funnel: flow started, reason selected, offer shown, offer declined, cancelled. A reason with many starts and no saves is an offer problem; a reason nobody picks is a wording problem.
+    - Offers that don't fire are usually gating, not the flow: [When a save offer doesn't show](/platform-v2/run/when-a-save-offer-doesnt-show).
+
+    <Check>
+    **Checkpoint:** you know your save rate, and which reason earns its keep.
+    </Check>
+  </Step>
+</Steps>
+
+<Note>
+**Only the portal runs the flow.** A cancel done in your admin skips every offer, which is exactly why the fastest reply to "please cancel me" is a login link, not a favor.
+</Note>
