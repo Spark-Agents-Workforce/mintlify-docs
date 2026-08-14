@@ -77,7 +77,7 @@ You own the stack, so updates are something you run, not something pushed to you
 **If a step fails.**
 
 - A migration that fails partway resumes on the next run, skipping everything already applied.
-- The same migration failing twice is your stop sign: don't force it, never hand-edit the database, and [get help](/platform-v2/run/your-job-and-when-to-get-help) with the error text.
+- The same migration failing twice is your stop sign: don't force it, never hand-edit the database, and hand it to whoever runs your code, with the error text.
 - A 503 right after an update means you deployed before migrating: run the migrate step, then reload the site.
 - Updates roll forward, never back. Undoing one means restoring the database from Supabase's Point-in-Time Recovery (**Project > Database > Backups**) and redeploying the previous build from Vercel's deployment history.
 </Note>
