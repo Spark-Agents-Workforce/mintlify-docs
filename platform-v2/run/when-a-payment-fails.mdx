@@ -85,13 +85,13 @@ A failed charge opens a recovery campaign, and the campaign runs itself. Your pa
 
     | How it ends | What closes it |
     | --- | --- |
-    | The payment succeeds | Any successful charge on the subscription: a scheduled retry, the backup card, the subscriber's updated card, or your **Charge & ship now**. The campaign notices the paid charge within the hour and closes as recovered. |
+    | The payment succeeds | A scheduled retry that lands (on the primary card, the backup card, or the card the subscriber fixed) closes the campaign on the spot, as recovered. A **Charge & ship now** payment also ends the chase, but the campaign closes at its next scheduled retry, when the sweep notices the paid charge. |
     | You click **Stop recovery** | The button on the **Payment recovery** card. Retries and reminder emails stop immediately, and the **After the last step** ending never fires. The subscription itself doesn't change. |
     | The schedule runs out | The last step fails, one more retry gap passes, and the **After the last step** ending fires: cancel, pause, or leave active and stop retrying. |
     | The subscription stops | Cancel or pause the subscription and the next scheduled retry finds a contract it can't charge. The campaign is quietly abandoned: no failure email, no ending action. |
 
-    - Want it over today because the card works now? **Charge & ship now** on the subscription. Paid charge, campaign closed within the hour.
-    - Want the chasing to stop and nothing else? **Stop recovery**. The subscription keeps running toward its next cycle; the missed order is simply let go, the same outcome as the stop-retrying ending. To collect it after all, move the next order date up or **Charge & ship now**. It stays in the **Billing issues** list until a charge succeeds, and a later failed cycle opens a fresh campaign as usual.
+    - Want the order out today because the card works now? **Charge & ship now** on the subscription. The money is collected immediately; the campaign closes quietly at its next scheduled retry, and the card stays on the page until then.
+    - Want the chasing to stop and nothing else? **Stop recovery**. The subscription stays active but frozen on the missed date, the same place the stop-retrying ending leaves it: nothing bills again until you move the next order date or **Charge & ship now**. It stays in the **Billing issues** list until a charge succeeds, and once billing is moving again, a later failed cycle opens a fresh campaign as normal.
     - Want the subscription ended too? Cancel or pause it; the campaign winds down on its own at the next retry.
     - Want every future campaign shorter? That's the schedule itself: cut steps on **Settings > Payment recovery**, and the change applies immediately, to campaigns already running too.
 
