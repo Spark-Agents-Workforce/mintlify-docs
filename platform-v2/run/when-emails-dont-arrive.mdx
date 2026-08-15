@@ -7,17 +7,17 @@ import { PlatformTag } from "/snippets/PlatformTag.jsx";
 
 <PlatformTag platform="opensubs" />
 
-Nearly every notification problem, missing or doubled, has one of four causes, and every fix lives on two screens: **Settings > Integrations** decides who sends, **Settings > Notifications** decides what sends. Work the list in order; the first cause is the most common. Texts have their own page: [When texts don't arrive](/platform-v2/run/when-texts-dont-arrive).
+**Settings > Integrations** decides who sends; **Settings > Notifications** decides what sends. Work the list in order; texts have their own page: [When texts don't arrive](/platform-v2/run/when-texts-dont-arrive).
 
 <Steps>
   <Step title="No provider connected">
-    - The symptom: nothing arrives on any channel. No automatic emails, no login codes, no texts.
-    - The platform never sends from its own servers. SendGrid or Klaviyo sends your email; Twilio or Klaviyo sends your texts. Both send from accounts you own, so no provider means no messages.
-    - In **Settings > Integrations**, connect a provider. Credentials, settings, and the test all live in the provider's **Connect** modal (**Manage** once connected). Send yourself a test with **Test connection**. First-time setup, end to end: [Set up email and SMS](/platform-v2/run/set-up-email-and-sms).
-    - Back on **Settings > Integrations**, under **Notification routing**, pick the **Email notifications** and **SMS notifications** routes and **Save**. SendGrid and Twilio send only once connected *and* selected; Klaviyo, once connected, receives every event whether or not it holds a route. That difference drives the next two causes.
+    - The symptom: nothing arrives on any channel, login codes included.
+    - The platform never sends from its own servers: SendGrid or Klaviyo sends email, Twilio or Klaviyo texts; no provider, no messages.
+    - In **Settings > Integrations**, connect a provider: credentials, settings, and **Test connection** live in its **Connect** modal (**Manage** once connected). First-time setup: [Set up email and SMS](/platform-v2/run/set-up-email-and-sms).
+    - Under **Notification routing**, pick the **Email notifications** and **SMS notifications** routes, then **Save** in the bar at the top. SendGrid and Twilio send only once connected *and* selected; Klaviyo, once connected, receives every event whether or not it holds a route.
 
     <Warning>
-    **Nothing waits for a provider.** With no provider connected, notifications are discarded, not queued (portal login codes included). Connecting starts delivery from that moment; nothing older comes back.
+    **Nothing waits for a provider.** With none connected, notifications are discarded, not queued (login codes included). Connecting starts delivery from that moment; nothing older comes back.
     </Warning>
 
     <Frame>
@@ -25,22 +25,22 @@ Nearly every notification problem, missing or doubled, has one of four causes, a
     </Frame>
 
     <Check>
-    **Checkpoint:** the test arrives: SendGrid's test in your inbox, Klaviyo's in the Klaviyo activity feed, Twilio's on your phone.
+    **Checkpoint:** the test arrives (inbox, Klaviyo activity feed, or your phone).
     </Check>
   </Step>
   <Step title="Klaviyo flows are still drafts">
-    - The symptom: Klaviyo is connected and routed, and still nothing sends, login codes included.
-    - Klaviyo flows import as drafts, and a draft flow sends nothing for its event.
-    - Open **Settings > Notifications > Email** and click **View created flows & templates**: the list shows each flow's live-or-draft status and links you into it. In Klaviyo itself, set every flow you rely on to live.
+    - The symptom: Klaviyo connected and routed, still nothing sends, login codes included.
+    - Klaviyo flows import as drafts, and a draft flow sends nothing.
+    - Open **Settings > Notifications > Email**, click **View created flows & templates** to see each flow's status, and set every flow you rely on to live in Klaviyo.
 
     <Check>
-    **Checkpoint:** every flow you rely on reads live, not draft.
+    **Checkpoint:** every flow you rely on reads live.
     </Check>
   </Step>
   <Step title="Two emails for one event">
     - The symptom: subscribers get everything twice.
-    - A connected Klaviyo always receives events, and a live Klaviyo flow sends no matter which provider holds the email route. A live flow plus an active SendGrid route is two senders for one event.
-    - Pick one: set the flow back to draft in Klaviyo, or, under **Settings > Integrations**, move the **Email notifications** route to Klaviyo. The **Email** page flags the overlap for you.
+    - A live Klaviyo flow sends regardless of the email route, so a live flow plus an active SendGrid route is two senders for one event.
+    - Pick one: set the flow back to draft in Klaviyo, or move the **Email notifications** route to Klaviyo under **Settings > Integrations**. The **Email** page flags the overlap.
 
     <Frame>
       <img src="/images/platform-v2/run/17-notification-routing.png" alt="The Notification routing card: one email route, one SMS route." width="640" />
@@ -51,12 +51,12 @@ Nearly every notification problem, missing or doubled, has one of four causes, a
     </Check>
   </Step>
   <Step title="The event is off, or the subscriber never opted in">
-    - The symptom: one specific email never sends while the rest arrive fine.
-    - A new install starts quiet on purpose: every lifecycle event begins switched off.
-    - Flip the event's switch under **Settings > Notifications > Email**; the page shows how many events are on. (One subscriber missing texts specifically is a consent case: [When texts don't arrive](/platform-v2/run/when-texts-dont-arrive).)
+    - The symptom: one email never sends; the rest arrive.
+    - A new install starts with every lifecycle event switched off.
+    - Flip the event's switch under **Settings > Notifications > Email**. One subscriber missing texts is a consent case: [When texts don't arrive](/platform-v2/run/when-texts-dont-arrive).
 
     <Note>
-    **Login codes are never off.** The login code and login link always send and can't be disabled. If those are missing, the cause is one of the first two, not a toggle.
+    **Login codes always send.** **Portal login code** is marked always on; **Login link** shows a switch, but turning it off changes nothing. Missing login emails point to the first two causes, not a switch.
     </Note>
 
     <Check>
@@ -64,27 +64,29 @@ Nearly every notification problem, missing or doubled, has one of four causes, a
     </Check>
   </Step>
   <Step title="Confirm the fix">
-    - Open the subscriber's page in admin: the **Notifications** table lists every send with its channel and status.
-    - Wrong API keys are never silent: a bad key retries a few times, then fails with the **Notification deliveries failed** alert.
-    - Watch **Settings > Operational health**: that alert resolves on its own. It counts failures over a rolling 24 hours, so it can stay open up to a day after the fix while old ones age out. Anything else open there is [When an alert opens](/platform-v2/run/when-an-alert-opens).
+    - The subscriber's page in admin lists every send under **Notifications** with channel and status.
+    - A bad API key retries a few times, then fails with the **Notification deliveries failed** alert. On **Settings > Operational health**, the **Integration connections** panel re-checks each key live: a bad one reads **Failing** with the provider's reason and recent delivery errors quoted, and **View logs** opens the provider's console.
+    - The alert counts failures over a rolling 24 hours, so it can stay open up to a day after the fix; anything else there is [When an alert opens](/platform-v2/run/when-an-alert-opens).
 
-    {/* shot:18 ui-admin "A subscriber's Notifications table: each send with its channel and status." */}
+    <Frame>
+      <img src="/images/platform-v2/run/18-notification-history.png" alt="A subscriber's Notifications table: each send with its channel, status, and engagement." width="640" />
+    </Frame>
 
     <Check>
     **Checkpoint:** new sends read sent; any open alert resolves within the day.
     </Check>
   </Step>
   <Step title="Still stuck? Read the provider's log">
-    - "Sent" in the admin means your provider accepted the message; delivering it is the provider's half. When a message reads sent but never lands, the rest of the story lives in the provider's own dashboard.
-    - Failed in the admin's table instead? The row's own error text is the place to start; the provider log adds detail only when that text is vague.
+    - "Sent" means your provider accepted the message; if it never lands, read the provider's dashboard.
+    - Failed instead? Start with the row's own error text.
 
     | The message went through | Where the rest of the story lives |
     | --- | --- |
-    | **SendGrid** | The **Activity** page in the SendGrid dashboard: search the subscriber's address. Bounces and blocks usually also write themselves back into the admin row; spam reports show only here. |
-    | **Klaviyo** | The flow's recipient activity in Klaviyo: a skipped or suppressed profile says why right there. |
+    | **SendGrid** | **Activity** in the SendGrid dashboard: search the subscriber's address. Bounces and blocks usually write back to the admin row; spam reports show only here. The feed holds about 3 days unless your plan includes Email Activity History. |
+    | **Klaviyo** | Open the flow, then **Analytics > Recipient activity**, and search the subscriber's email: skipped or suppressed profiles state their reason. For one person across all flows, the profile's **Activity feed** is faster. |
 
     <Check>
-    **Checkpoint:** the provider's log names the reason, and it's theirs to explain, not the platform's.
+    **Checkpoint:** the provider's log names the reason.
     </Check>
   </Step>
 </Steps>

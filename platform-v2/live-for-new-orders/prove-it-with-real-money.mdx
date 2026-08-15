@@ -15,31 +15,31 @@ import { PlatformTag } from "/snippets/PlatformTag.jsx";
     - Spread the purchases on purpose: different plans, different frequencies, different terms.
     - You'll see an ordinary checkout, with the subscription terms on the line item.
     - Then find each order in three places: Shopify's order confirmation email, the contract in the OpenSubs admin, and the subscriber's portal: your store's domain followed by `/a/account`.
-    - If your Klaviyo flow is live, or your SendGrid templates are set up, your branded welcome arrives too: your email setup's first real send.
+    - If your Klaviyo flow is live, or the SendGrid event is switched on, your branded welcome arrives too: your email setup's first real send.
 
     <Check>
     **Checkpoint:** every order visible in all three places.
     </Check>
 
     <Frame>
-      <img src="/images/deploy/go-live-verification/09-subscriber-portal.png" alt="The subscriber's portal at /a/account: the team subscription, next order scheduled." />
+      <img src="/images/deploy/go-live-verification/09-subscriber-portal.png" width="640" alt="The subscriber's portal at /a/account: the team subscription, next order scheduled." />
     </Frame>
 
     <Columns cols={2}>
       <Frame>
-        <img src="/images/deploy/go-live-verification/10-admin-contract.png" alt="The contract in the OpenSubs admin: active, with its next billing date." />
+        <img src="/images/deploy/go-live-verification/10-admin-contract.png" width="640" alt="The contract in the OpenSubs admin: active, with its next billing date." />
       </Frame>
       <Frame>
-        <img src="/images/deploy/go-live-verification/11-order-confirmation.png" alt="Shopify's order confirmation: the subscription terms on the line item." />
+        <img src="/images/deploy/go-live-verification/11-order-confirmation.png" width="560" alt="Shopify's order confirmation: the subscription terms on the line item." />
       </Frame>
     </Columns>
   </Step>
   <Step title="The health check">
     - In the OpenSubs admin, open **Settings > Operational health**.
-    - You'll see jobs green, webhooks delivering, queues quiet: the page the machine reports to from now on.
+    - You'll see jobs green, webhooks delivering, queues quiet, and providers **Healthy** under **Integration connections**: the page the machine reports to from now on. Reading it daily is [The morning check](/platform-v2/run/the-morning-check).
 
     <Check>
-    **Checkpoint:** Operational health green on the live store.
+    **Checkpoint:** Operational health green on the live store; providers **Healthy**.
     </Check>
 
     <Frame>

@@ -7,32 +7,30 @@ import { PlatformTag } from "/snippets/PlatformTag.jsx";
 
 <PlatformTag platform="opensubs" />
 
-From launch day to every ordinary day:
-
-- **Outcome:** you know what the platform does on its own, and the two screens that prove it did.
+- **Outcome:** you know what runs on its own, and the two screens that prove it.
 - **Time:** a read, about 5 minutes.
-- **Before you start:** [Live for New Orders](/platform-v2/live-for-new-orders/what-today-changes) is behind you, and if you switched platforms, [Migrate](/platform-v2/migrate/what-actually-moves) too.
-- **You'll touch:** the OpenSubs admin. Most days, nothing else.
+- **Before you start:** [Live for New Orders](/platform-v2/live-for-new-orders/what-today-changes) is behind you; if you switched platforms, [Migrate](/platform-v2/migrate/what-actually-moves) too.
+- **You'll touch:** the OpenSubs admin.
 
-Running a subscription platform sounds like a job. It's a glance. Everything below fires on a schedule inside your own Supabase project (no vendor in the loop, nothing extra to keep running), and every run is recorded, so a quiet screen means "checked and fine", not "hopefully fine".
+Every schedule below lives inside your own Supabase project, no vendor in the loop. Some work runs in your own app; if that app is down, those queues wait and drain when it's back. Every run is recorded.
 
 | When | What runs by itself |
 | --- | --- |
 | Every minute | Queued emails and texts go out. Imports, bulk edits, and queued Shopify changes advance. |
 | Every 15 minutes | A watchdog checks every job and queue, and opens an alert on **Settings > Operational health** when something stalls or fails. |
-| Every hour | **Billing.** Each due subscription is charged after your store's clock passes the **Daily billing time** you chose in **Settings > Billing**: the hour is a floor, not a slot, so a subscription that comes due later in the day still bills the same day. Timed pauses resume when they end; failed payments get their scheduled retries. |
-| Overnight | Shipment reminders queue up, analytics snapshots run, multi-currency display prices re-sync from Shopify, old records get cleaned out. |
+| Every hour | **Billing.** Each due subscription is charged after your store's clock passes the **Daily billing time** you chose in **Settings > Billing**. That time is a start, not a deadline: billing stays open for the rest of the day, so a subscription that comes due later still bills the same day. Timed pauses resume when they end; failed payments get their scheduled retries. |
+| Overnight | Shipment reminders queue up, analytics snapshots run, multi-currency display prices re-sync from Shopify, and old records get cleaned out (some cleanups weekly). These run at fixed UTC times, so "overnight" is literal only for stores near UTC. |
 
-A missed hour catches up on the next one, and a caught-up run can't double-charge: each due charge is picked up exactly once, no matter how many runs see it.
+A missed hour catches up on the next one; each due charge is picked up exactly once, so nothing double-charges.
 
-Which leaves you two screens:
+Your two screens:
 
-- **Home** greets you with a **Needs attention** banner only when something needs you: failed payments, or an open alert. No banner, nothing needed.
-- **Settings > Operational health** is where the machine reports: scheduled jobs, webhook delivery, queue health, and any alerts. All of it re-checked every 15 minutes.
+- **Home** shows a **Needs attention** banner only when something needs you: failed payments, or an open alert.
+- **Settings > Operational health** shows alerts, connected providers checked live against their own servers, scheduled jobs, webhook delivery, and queue health. Alert checks re-run every 15 minutes; the panels read live when you open the page.
 
-Most blips fix themselves before you see them. Failed payments follow a recovery schedule you control. Shopify redelivers webhooks that didn't land. Queued work retries until it clears. The alerts that do open are the small set of things that genuinely want a human, and [When an alert opens](/platform-v2/run/when-an-alert-opens) matches each one to its fix.
+Most blips fix themselves: failed payments follow a recovery schedule you control, Shopify redelivers webhooks that didn't land, and queued work retries until it clears. [When an alert opens](/platform-v2/run/when-an-alert-opens) matches each alert to its fix.
 
-So this group is organized by feature, and the sidebar shows it: each feature keeps its setup guide and its what-went-wrong pages side by side. [The morning check](/platform-v2/run/the-morning-check) is still the whole job most days: five minutes on those two screens, with its triage partner right below it in the sidebar. Around it sit [subscriptions](/platform-v2/run/edit-one-subscription) and the requests that follow them, [quick actions](/platform-v2/run/set-up-quick-actions), [bulk operations](/platform-v2/run/change-many-at-once), [payment recovery](/platform-v2/run/set-up-payment-recovery), [email and SMS](/platform-v2/run/set-up-email-and-sms), and [rewards](/platform-v2/run/set-up-rewards). The one recurring chore, [updates](/platform-v2/run/update-the-platform), closes the group.
+The group is organized by feature, each setup guide beside its what-went-wrong pages. [The morning check](/platform-v2/run/the-morning-check) is the whole job most days, with [When an alert opens](/platform-v2/run/when-an-alert-opens) directly beneath it. The one recurring chore, [updates](/platform-v2/run/update-the-platform), closes the group.
 
 <Frame caption="Four schedules, two screens. The machine works; the screens prove it did.">
   <img src="/images/platform-v2/run/01-schedule-clock.svg" alt="The schedule: every minute the queues drain, every 15 minutes the watchdog checks, every hour billing and retries sweep, overnight reminders and snapshots run. All of it reports to Home and Operational health." noZoom />

@@ -9,16 +9,25 @@ import { PlatformTag } from "/snippets/PlatformTag.jsx";
 
 <span className="os-chip">10 min</span>
 
-You own the stack, so updates are something you run, not something pushed to you. Four commands in a terminal at your repository root, always the same, always in this order. The order is the one rule.
+You received this repository with your license, and `git pull` is how our releases reach your copy. An update is four commands, run in a terminal at your repository root, in this order:
+
+```bash
+git pull
+npm run merchant:migrate
+npm run merchant:functions
+cd app && vercel deploy --prod
+```
+
+The order is the one rule: database first, app last. After one-time prep, the steps below walk through one command each.
 
 <Note>
-**You can't break it by re-running.** Every command skips what's already done: pulling again does nothing new, applied migrations stay applied, a repeat deploy just replaces the app with the same build. Interrupted halfway? Run the same command again and it picks up where it stopped.
+**You can't break it by re-running.** Every command skips what's already done; applied migrations stay applied. Interrupted halfway, run the same command again and it picks up where it stopped.
 </Note>
 
 <Steps>
   <Step title="One-time prep">
     - Create a Supabase personal access token at [supabase.com/dashboard/account/tokens](https://supabase.com/dashboard/account/tokens).
-    - Put two lines in the `.env` file at your repository root: the token, and your project ref, the `<ref>` part of your Supabase URL (`https://<ref>.supabase.co`). The update scripts read them automatically.
+    - Put two lines in the `.env` file at your repository root: the token, and your project ref (the `<ref>` in `https://<ref>.supabase.co`). The update scripts read them automatically.
 
     ```bash
     SUPABASE_ACCESS_TOKEN=sbp_xxxxxxxx
@@ -26,7 +35,7 @@ You own the stack, so updates are something you run, not something pushed to you
     ```
 
     <Check>
-    **Checkpoint:** `.env` shows both lines. Every update from now on starts at the next step.
+    **Checkpoint:** `.env` shows both lines.
     </Check>
   </Step>
   <Step title="Get the new version">
@@ -34,18 +43,18 @@ You own the stack, so updates are something you run, not something pushed to you
     git pull
     ```
 
-    - Then read `CHANGELOG.md` for the version you just pulled. Anything needing manual attention is called out under **Action required**: rare, but always flagged there.
+    - Read `CHANGELOG.md` for the version you pulled; anything needing manual attention is flagged under **Action required**.
   </Step>
   <Step title="Apply the database migrations">
     ```bash
     npm run merchant:migrate
     ```
 
-    - Applies every pending migration to your Supabase project, in order, recording each one as it lands. Want to look first? `npm run merchant:migrate -- --dry-run` lists what would apply and changes nothing.
-    - A one-time `adopted ... (ledger row only)` line after some updates is normal: bookkeeping, not a change to your data. Nothing to do.
+    - Applies every pending migration to your Supabase project, in order. To preview first, run `npm run merchant:migrate -- --dry-run`: it lists what would apply and changes nothing.
+    - A one-time `adopted ... (ledger row only)` line is normal bookkeeping; nothing to do.
 
     <Check>
-    **Checkpoint:** the run finishes clean; running it again reports `0 pending`.
+    **Checkpoint:** running it again reports `0 pending`.
     </Check>
   </Step>
   <Step title="Deploy the webhook functions">
@@ -53,7 +62,7 @@ You own the stack, so updates are something you run, not something pushed to you
     npm run merchant:functions
     ```
 
-    - Redeploys your Supabase Edge Functions, the receivers Shopify's webhooks land on. If the changelog asks for just one, add `-- --only` plus the name it gives, like `-- --only orders-webhook`.
+    - Redeploys your Supabase Edge Functions, where Shopify's webhooks land. If the changelog asks for just one, add `-- --only` plus the name, like `-- --only orders-webhook`.
 
     <Check>
     **Checkpoint:** the command finishes without errors.
@@ -64,20 +73,36 @@ You own the stack, so updates are something you run, not something pushed to you
     cd app && vercel deploy --prod
     ```
 
-    - Connected your Vercel project to your repository during setup? Then skip the command: push your pulled update (`git push`) and Vercel rebuilds on its own. Otherwise, the first time only, run `vercel link` from `app/` and pick your existing OpenSubs project; after that, the command above deploys.
-    - Last on purpose: at startup the app checks that every migration its code expects is actually applied. Deploy new code before migrating and it refuses API traffic with a 503 reading **Database schema out of date**, naming the missing migrations. [When an alert opens](/platform-v2/run/when-an-alert-opens) covers that same 503. Migrate first, deploy last, and the check never trips.
+    - First time only: run `vercel link` from `app/` and pick your existing OpenSubs project.
+    - If your Vercel project is connected to your repository, skip the command: `git push` and Vercel rebuilds on its own.
+    - Last on purpose: at startup the app checks that every migration its code expects is applied. Deploy before migrating and it refuses API traffic with a 503 reading **Database schema out of date**, naming the missing migrations ([When an alert opens](/platform-v2/run/when-an-alert-opens)).
 
     <Check>
-    **Checkpoint:** the deploy finishes and the admin opens clean. That's the whole update.
+    **Checkpoint:** the deploy finishes and the admin opens clean.
     </Check>
   </Step>
 </Steps>
 
 <Note>
+**Two things also get newer versions over time. One updates itself; one needs a click.**
+
+- **API versions update with the platform.** The versions used to talk to Shopify and your providers move forward as part of this procedure; there is nothing to set. Check **Settings > Operational health**, panel **Integration connections**: every version row should read **Current**. A Shopify row reading **Update available** or **Unsupported** means run this update: **Update available** is the routine pre-update state, **Unsupported** means do it soon.
+- **Your provider accounts update with a click.** The pieces setup created inside them (SendGrid email templates, Klaviyo flows, the Gorgias sidebar widget) are not touched by this procedure. When a newer version ships, that provider's card on **Settings > Integrations** shows **Update available**: click **Update to latest**.
+</Note>
+
+<Frame>
+  <img src="/images/platform-v2/run/40-shopify-version-rows.png" alt="The Shopify version rows before an update: Update available, resolved by running this procedure." width="640" />
+</Frame>
+
+<Frame>
+  <img src="/images/platform-v2/run/39-update-to-latest.png" alt="A provider card with an update waiting: the Update available badge and the Update to latest button." width="640" />
+</Frame>
+
+<Note>
 **If a step fails.**
 
-- A migration that fails partway resumes on the next run, skipping everything already applied.
-- The same migration failing twice is your stop sign: don't force it, never hand-edit the database, and hand it to whoever runs your code, with the error text.
-- A 503 right after an update means you deployed before migrating: run the migrate step, then reload the site.
-- Updates roll forward, never back. Undoing one means restoring the database from Supabase's Point-in-Time Recovery (**Project > Database > Backups**) and redeploying the previous build from Vercel's deployment history.
+- A migration that fails partway resumes on the next run, skipping what already applied.
+- The same migration failing twice is your stop sign: don't force it or hand-edit the database; hand the error text to whoever runs your code.
+- A 503 right after an update means you deployed before migrating: run the migrate step, then reload.
+- Updates roll forward, never back: undoing one means restoring the database from Supabase's Point-in-Time Recovery (**Project > Database > Backups**) and redeploying the previous build from Vercel.
 </Note>

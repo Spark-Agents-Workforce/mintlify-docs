@@ -9,69 +9,79 @@ import { PlatformTag } from "/snippets/PlatformTag.jsx";
 
 <span className="os-chip">15 min</span>
 
-If your support team answers tickets in Gorgias, this integration shows them who they're talking to: the subscriber, every subscription, and seven quick actions that run without leaving the ticket. The direction is the unusual part: once it's running, OpenSubs never calls Gorgias. Gorgias calls your store when a ticket opens, and what comes back renders as the sidebar widget.
+Once running, Gorgias calls your store when a ticket opens and renders the reply as the sidebar widget; OpenSubs never calls Gorgias.
 
 <Steps>
   <Step title="Save the shared secret">
     - Open **Settings > Integrations** and find **Gorgias** under **Support**. Click **Connect**.
-    - In **Shared secret**, click **Generate** (or paste your own). If you plan to set up manually, copy it now: it isn't shown again, though you can always save a new one.
-    - Click **Connect**. This secret is how Gorgias proves itself to your store on every call; treat it like a password.
+    - In **Shared secret**, click **Generate** (or paste your own), then click **Connect**. Gorgias sends this secret as its authorization header; it isn't shown again after saving.
 
     <Check>
-    **Checkpoint:** the Gorgias card reads Connected, with the secret's last digits on the badge.
+    **Checkpoint:** the Gorgias card reads Connected.
+    </Check>
+  </Step>
+  <Step title="Let it build Gorgias for you">
+    - In the **Gorgias account** box, enter your **Gorgias subdomain**, **Gorgias account email**, and a **Gorgias REST API key** (created in Gorgias under **Settings > REST API**).
+    - Click **Create integration and widget**: OpenSubs creates the HTTP integration and the sidebar widget in your Gorgias account.
+    - Credentials are stored; **Edit credentials** swaps them out. After setup the button reads **Resync widget**: click it to update the installed widget in place.
+    - When a newer widget is available, the card shows an **Update available** badge and an **Update to latest** button.
+
+    <Check>
+    **Checkpoint:** a ticket in Gorgias shows the widget.
     </Check>
 
     <Frame>
-      <img src="/images/platform-v2/run/34-gorgias-modal.png" alt="The Connect Gorgias modal: the shared secret with Generate, the Set up via API box, and the manual-setup URLs." width="560" />
+      <img src="/images/platform-v2/run/34-gorgias-modal.png" alt="The Connect Gorgias modal: the shared secret saved, the Gorgias account fields filled in, and the one-click setup button." width="560" />
     </Frame>
   </Step>
-  <Step title="Let it build Gorgias for you">
-    - The modal stays open after the secret saves, and the **Set up via API** box unlocks in place (coming back later, it's **Manage** on the card). Fill in your **Gorgias subdomain**, **Gorgias account email**, and a **Gorgias REST API key** (create one in Gorgias under **Settings > You and other users > REST API**).
-    - Click **Create in Gorgias**. OpenSubs creates both halves inside your Gorgias account: the HTTP integration (the URL, the auth header, the ticket triggers) and a ready-made sidebar widget with a subscriber card, one card per subscription, and the seven action buttons.
-    - Your Gorgias credentials are used for that one call and never stored. Rerun it whenever you like (the button becomes **Update in Gorgias**): it updates what it created rather than duplicating it.
-
-    <Check>
-    **Checkpoint:** the modal confirms, and a "Set up in Gorgias" line names your subdomain.
-    </Check>
-  </Step>
   <Step title="Read the sidebar">
-    - Open a ticket in Gorgias. The widget loads when a ticket is created, updated, or gets a new message, looked up by the ticket customer's email.
-    - The top card is the subscriber: status, subscription counts, total spent, orders. Below it, one card per subscription, active ones first: products, total, frequency, next order, payment method, discounts, delivery address. A subscription whose last charge failed carries a **Payment issue** line.
-    - The values are made for reading aloud: a paused subscription's next order says "Paused", and a cancelled one shows its cancellation date and reason. A ticket from someone who has never subscribed renders the widget empty; no cards, no error.
+    - The widget loads when a ticket is created, updated, or gets a new message, looked up by the ticket customer's email.
+    - The top card is the subscriber: status, subscription counts, first subscribed date, recurring revenue and orders, and lifetime spend and orders. **Log in as customer** opens their portal; the card's title opens them in your admin.
+    - Below, three lists: **Active subscriptions** (the first three), **Paused subscriptions**, and **Cancelled subscriptions**. Each card is titled with its subscription ID (opens it in your admin), lists products under **Items** (rows expand to quantity and price), and shows what fits its status: next order and payment issues for active, pause date for paused, date and reason for cancelled.
+    - Cards carry your store's logo, copied from your branding at setup; no logo means Gorgias's default icons.
+    - A ticket from someone who never subscribed renders the widget empty, without error.
 
     <Check>
-    **Checkpoint:** a ticket from a real subscriber's email shows their subscriptions in the sidebar.
+    **Checkpoint:** a real subscriber's ticket sorts their subscriptions into the right lists.
     </Check>
   </Step>
-  <Step title="Know the seven buttons">
-    | Button | What it does |
-    | --- | --- |
-    | **Cancel** | Cancels the subscription |
-    | **Pause** | Pauses it until someone resumes it |
-    | **Resume** | Restarts a paused subscription; billing lands on the next date the original rhythm would have hit |
-    | **Reactivate** | Restarts a cancelled subscription, with the same date behavior as Resume |
-    | **Skip next order** | Moves the next order out by one full interval (active subscriptions with a scheduled order only) |
-    | **Change frequency** | Asks the agent for the interval unit (DAY, WEEK, MONTH, YEAR) and count |
-    | **Set next billing date** | Asks the agent for the date (YYYY-MM-DD) |
+  <Step title="Know the buttons">
+    Each list carries only the actions that make sense there:
 
-    - Every button runs through the same machinery as the same change made in your admin: the Shopify contract updates, the subscription's **History** gets its row, and the subscriber's usual notifications send.
-    - Attribution is honest: the History row and **Analytics > Activity** name Gorgias as the source, so you can always tell an agent's change from your own. The ticket itself gets a short confirmation back (status, next order, frequency) as the action's result.
-    - One caution carries over: **Cancel** here is an admin-style cancel, so it skips your cancellation flow's save offers. The login-link-first habit from [When a subscriber asks for help](/platform-v2/run/when-a-subscriber-asks) still earns its keep.
+    | On | Button | What it does |
+    | --- | --- | --- |
+    | Active | **Ship now** | Bills and ships the next order today; asks the agent to type YES first |
+    | Active | **Skip next order** | Moves the next order out by one full interval |
+    | Active | **Change frequency** | One plain-language field: "30 days", "2 weeks", "1 month" |
+    | Active | **Set next billing date** | Asks for the date (YYYY-MM-DD) |
+    | Active | **Pause** | Pauses until someone resumes it |
+    | Active or paused | **Cancel** | Cancels, with an optional reason box |
+    | Paused | **Resume** | Restarts billing on the next date the original rhythm would have hit |
+    | Cancelled | **Reactivate** | Restarts a cancelled subscription, same date behavior as Resume |
+
+    - Buttons with a field open a small dialog first; the rest run on one click.
+    - A click on a stale widget gets a plain "refresh the ticket" message.
+    - Every button runs the same machinery as the admin: the Shopify contract updates, the subscription's **History** gets its row, and the usual notifications send. The History row and **Analytics > Activity** name Gorgias as the source.
+    - **Cancel** here is an admin-style cancel and skips your cancellation flow's save offers, so the login-link habit from [When a subscriber asks for help](/platform-v2/run/when-a-subscriber-asks) still applies.
 
     <Check>
-    **Checkpoint:** one test action on a test subscription, and its History row names Gorgias.
+    **Checkpoint:** a test action's History row names Gorgias.
     </Check>
   </Step>
 </Steps>
 
 <Note>
-**Building it by hand instead.** The modal's **Manual setup (alternative)** box shows the two endpoint URLs with exact instructions: create the HTTP integration in Gorgias yourself with the data URL, method GET, the ticket triggers, and an Authorization header of "Bearer " followed by your secret, then build the widget from the fetched data and add action buttons that POST to the action URL. The one-click path exists so you never have to; the box exists so you can.
+**Building it by hand instead.** **Manual setup** at the bottom of the modal unfolds the two endpoint URLs: the HTTP integration uses the data URL, method GET, the three ticket triggers, and an Authorization header of "Bearer " plus your secret; action buttons POST to the action URL.
 </Note>
 
 <Warning>
-**Rotating the secret is a two-step move.** Saving a new secret changes what your store accepts, but Gorgias keeps sending the old one until you click **Update in Gorgias** (or edit the header in Gorgias yourself). Between the two steps, every call fails as unauthorized and the sidebar goes empty, so do them back to back.
+**Rotating the secret is a two-step move.** A new secret changes what your store accepts, but Gorgias sends the old one until you click **Resync widget** (or edit the header in Gorgias). Between the steps every call fails as unauthorized, so do them back to back.
 </Warning>
 
 <Note>
-**When the sidebar is empty**, check the ticket's email first: a customer with no subscriptions renders the widget empty by design. Empty for a known subscriber too? Debug from the Gorgias side: the integration's **Events** tab logs every request and the status it got back. An unauthorized response has three possible causes, deliberately indistinguishable: the header secret doesn't match the saved one, the shop parameter is wrong, or the card was disconnected. Two facts about Gorgias worth knowing: it waits five seconds for a response and doesn't retry errors, and after 500 consecutive failures it switches the integration off on its side, so a long-broken secret needs the integration re-enabled in Gorgias too.
+**Disconnecting cleans up both sides.** With your REST API key on file, **Disconnect** deletes the widget and HTTP integration from Gorgias, then removes the shared secret and setup state here.
+</Note>
+
+<Note>
+**When the sidebar is empty**, check the ticket's email first (no subscriptions renders it empty by design), then **Settings > Operational health**: the **Integration connections** panel verifies the integration and widget still exist in Gorgias, counts failed calls over the last day, and quotes the latest errors, and the integration's **Events** tab in Gorgias logs every request and status. Unauthorized means the secret doesn't match, the shop parameter is wrong, or the card was disconnected; Gorgias waits five seconds, doesn't retry, and disables the integration after 500 consecutive failures, so re-enable it there after a long-broken secret.
 </Note>

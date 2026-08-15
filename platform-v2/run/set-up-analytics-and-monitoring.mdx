@@ -1,0 +1,67 @@
+---
+title: "Set up analytics and monitoring"
+description: "See what subscribers do in the portal, what breaks for them, and what subscriptions earn, in tools you already use."
+---
+
+import { PlatformTag } from "/snippets/PlatformTag.jsx";
+
+<PlatformTag platform="opensubs" />
+
+<span className="os-chip">10 min</span>
+
+Three optional connections on **Settings > Integrations** watch instead of send: **Triple Whale** receives subscription events for attribution, **PostHog** shows portal usage, and **Sentry** reports portal errors. Connect each with a key from your own account; the senders (Klaviyo, SendGrid, Twilio) have [their own page](/platform-v2/run/set-up-email-and-sms).
+
+<Steps>
+  <Step title="Forward subscription events to Triple Whale">
+    - Open **Settings > Integrations**, find **Triple Whale** under **Analytics providers**, and click **Connect**.
+    - Paste an API key created in Triple Whale under **Settings > API Keys** with the data-in scope, then click **Connect**.
+    - Every subscription change then flows by itself: created, active, paused, cancelled, with the cancellation reason.
+    - No test button; proof is data arriving after the next subscription event. Disconnecting stops it.
+
+    <Check>
+    **Checkpoint:** the Triple Whale card reads Connected.
+    </Check>
+  </Step>
+  <Step title="Watch portal usage in PostHog">
+    - Find **PostHog** under **Analytics providers** and click **Connect**.
+    - **Project API key** is the `phc_` key from PostHog under **Settings > Project**. **API host** stays blank for PostHog Cloud US; `https://eu.i.posthog.com` for EU Cloud, or your self-hosted address.
+    - Click **Connect**, then **Test connection**: it captures an **OpenSubs Test Event** you can watch arrive in PostHog.
+    - Portal visits are tracked like any site, subscription lifecycle events are captured server-side, and after login both land on one PostHog person, keyed by email.
+    - Only the portal is tracked, never your admin; it loads its own PostHog instance, separate from any in your storefront theme.
+
+    <Frame>
+      <img src="/images/platform-v2/run/37-posthog-modal.png" alt="The PostHog modal: the project API key, the optional API host, and the test that captures an OpenSubs Test Event." width="560" />
+    </Frame>
+
+    <Check>
+    **Checkpoint:** the test event shows in PostHog.
+    </Check>
+
+    <Note>
+    **Events arrive scrubbed.** Login codes and click-to-act links are stripped before events leave for PostHog.
+    </Note>
+  </Step>
+  <Step title="Send portal errors to Sentry">
+    - Find **Sentry** under **Monitoring** and click **Connect**.
+    - **DSN** comes from your Sentry project under **Settings > Client Keys (DSN)**. **Environment** is optional and tags every report; `production` is the usual choice.
+    - Click **Connect**, then **Send test event**: a real event lands in your Sentry **Issues** feed.
+    - Portal errors then report themselves as they happen: browser crashes and server-route failures, tagged with your shop.
+    - The scope is the portal only: your admin is not tracked, and storefront theme errors are filtered out.
+
+    <Frame>
+      <img src="/images/platform-v2/run/38-sentry-modal.png" alt="The Sentry modal: the DSN, the optional environment tag, and the test that sends a real event to the Issues feed." width="560" />
+    </Frame>
+
+    <Check>
+    **Checkpoint:** the test event is in your Sentry Issues feed.
+    </Check>
+
+    <Note>
+    **This watches your subscribers' side, not the machine.** Monitoring for the admin, background jobs, and webhooks is a deployment-level setting for whoever runs your code; the platform also watches itself: [When an alert opens](/platform-v2/run/when-an-alert-opens).
+    </Note>
+  </Step>
+</Steps>
+
+<Note>
+**Operational health keeps an eye on all three.** Each card gets a row under **Integration connections** on **Settings > Operational health**: PostHog and Sentry are re-verified live, Triple Whale shows Connected only, and a failing row names the reason. The panel is part of [the morning check](/platform-v2/run/the-morning-check).
+</Note>

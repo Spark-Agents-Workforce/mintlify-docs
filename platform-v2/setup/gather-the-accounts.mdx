@@ -39,17 +39,17 @@ import { PlatformTag } from "/snippets/PlatformTag.jsx";
     - Back on the **App Overview** page, click **Select distribution method** in the **Distribution** block and select **Custom distribution**: this makes the gated API approvals on the next step instant.
 
     <Frame>
-      <img src="/images/deploy/dev-store-fast-path/03-custom-distribution.png" alt="Select distribution method: Custom distribution." />
+      <img src="/images/deploy/dev-store-fast-path/03-custom-distribution.png" width="640" alt="Select distribution method: Custom distribution." />
     </Frame>
 
     - Enter the store domain where the app will be installed and click **Generate link**.
 
     <Frame>
-      <img src="/images/deploy/dev-store-fast-path/04-generate-link.png" alt="Custom distribution: store domain entered, Generate link." />
+      <img src="/images/deploy/dev-store-fast-path/04-generate-link.png" width="560" alt="Custom distribution: store domain entered, Generate link." />
     </Frame>
 
     <Warning>
-    Enter your live production store here (the store where subscriptions will be processed), never a development store. This locks in the store the app will serve in production; your dev store can still install the app regardless. No live store yet? Select **Custom distribution** and defer **Generate link** until you have one. The approvals on the next step unlock either way.
+    This field locks in the live production store the app will serve; your dev store installs regardless. With no live store yet, skip **Generate link**; the approvals on the next step unlock either way.
     </Warning>
 
     - Click **API access requests** in the left menu and click **Request access** for both:
@@ -71,7 +71,7 @@ import { PlatformTag } from "/snippets/PlatformTag.jsx";
     - Click **Create store** and select the **Dev** option.
 
     <Frame>
-      <img src="/images/deploy/dev-store-fast-path/05-create-dev-store.png" alt="Create store: the Dev option, with Generate test data selected." />
+      <img src="/images/deploy/dev-store-fast-path/05-create-dev-store.png" width="560" alt="Create store: the Dev option, with Generate test data selected." />
     </Frame>
 
     <Tip>

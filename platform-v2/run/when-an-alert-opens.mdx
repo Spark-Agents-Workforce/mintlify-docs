@@ -7,69 +7,87 @@ import { PlatformTag } from "/snippets/PlatformTag.jsx";
 
 <PlatformTag platform="opensubs" />
 
-Every alert lands on one screen: **Settings > Operational health**. The watchdog checks every 15 minutes, opens an alert when a check fails, and resolves it by itself when the check passes again: a vanished alert is a healed problem. Home's **Needs attention** banner counts the open ones.
-
-The kinds, in plain words. The numbered outages each get a fix step below:
+Every alert lands on **Settings > Operational health**; Home's **Needs attention** banner counts the open ones. The watchdog checks every 15 minutes and resolves an alert by itself once its check passes again.
 
 | Alert | What it usually means |
 | --- | --- |
-| **Job stalled** | A scheduled job hasn't finished a run on time. If the stalled job is **Notification sender**, the app itself is usually unreachable (outage 2); if every daily job stalls at once, suspect a paused database (outage 1). |
+| **Job stalled** | A scheduled job hasn't finished on time. **Notification sender** stalled usually means the app is unreachable (outage 2); every daily job stalled at once suggests a paused database (outage 1). |
 | **Job failed** | The job's latest run errored, and the alert carries the error text. Clears on the next clean run. |
 | **Queue lagging** | Queued work (emails, imports, bulk runs, Shopify updates) is piling up faster than it drains. Usually the app is unreachable (outage 2). |
-| **Notification deliveries failed** | Emails or texts gave up after their retries in the last 24 hours. The fixes live on [When emails don't arrive](/platform-v2/run/when-emails-dont-arrive) and [When texts don't arrive](/platform-v2/run/when-texts-dont-arrive). |
-| **Store import failed** | The initial sync of your store's data (products, customers, subscriptions) stopped partway. Home shows the same failure with a **Retry import** button; the import resumes where it stopped. |
-| **Bulk operation failed** | A bulk run stopped and gave up partway. Different from finishing with a few failed rows, which never alerts. Open the run and read its results ([Change many at once](/platform-v2/run/change-many-at-once)). |
+| **Notification deliveries failed** | Emails or texts gave up after their retries in the last 24 hours. Fixes: [When emails don't arrive](/platform-v2/run/when-emails-dont-arrive) and [When texts don't arrive](/platform-v2/run/when-texts-dont-arrive); the **Integration connections** panel quotes the provider's own errors (step 5). |
+| **Store import failed** | The initial store sync stopped partway. Home shows the same failure with a **Retry import** button; the import resumes where it stopped. |
+| **Bulk operation failed** | A bulk run gave up partway (finishing with a few failed rows never alerts). Open the run and read its results ([Change many at once](/platform-v2/run/change-many-at-once)). |
 | **Promo revert abandoned** | A promotion's temporary discount is stuck on a subscription: \~24 hours of retries couldn't take it off. The promotion's own page shows the same problem. |
-| `shopify-jobs-failed` | A queued Shopify update gave up after its retries. Worth reading closely: if the failed update was removing a one-time item, that item bills again next cycle. This one shows its raw name. |
+| `shopify-jobs-failed` | A queued Shopify update gave up after its retries; this one shows its raw name. If the failed update was removing a one-time item, that item bills again next cycle. |
 
 <Steps>
   <Step title="Read it, then acknowledge it">
-    - Each alert names its kind and the job behind it, plus when it was first seen, when the watchdog last confirmed it, and a detail line of counts or error text.
-    - Click **Acknowledge** once you've read it. The alert softens and gains an **Acknowledged** badge.
-    - Acknowledging is bookkeeping, not a fix: the alert stays until its check actually passes.
+    - Each alert names its kind and job, when first seen, when last confirmed, and a detail line of counts or error text.
+    - Click **Acknowledge**: the banner turns from yellow to blue and gains an **Acknowledged** badge.
+    - Acknowledging is bookkeeping, not a fix: the alert stays until its check passes.
+    - For a **Job failed**, find the job on the **Scheduled jobs** panel and click **Recent runs**: a failed run shows its error and what the job recorded, and **View all runs in Supabase** has the full history. A single failed run between clean ones already healed.
 
     <Frame>
       <img src="/images/platform-v2/run/19-open-alert.png" alt="Operational health: an open alert naming its kind and job, already acknowledged." width="640" />
     </Frame>
 
     <Check>
-    **Checkpoint:** alert read, acknowledged, and matched to its row in the table.
+    **Checkpoint:** alert acknowledged and matched to its row in the table.
     </Check>
+
+    <Note>
+    **The next three steps are three different outages.** Do the one that matches and skip the others.
+    </Note>
   </Step>
   <Step title="Outage 1: a paused Supabase project">
     - Free-tier Supabase projects pause themselves, and everything scheduled stops with them, billing included. The symptom: **Job stalled** across the daily jobs.
-    - The fix: unpause the project in Supabase, then watch the **Scheduled jobs** panel for runs landing again. Keep your Supabase organization on Pro so it can't pause itself again.
-    - Billing catches up on its own: the next hourly tick past your billing hour sweeps everything that came due while the project slept.
+    - The fix: unpause the project in Supabase and watch the **Scheduled jobs** panel for runs landing again; keep your organization on Pro so it can't recur.
+    - Billing catches up on its own: the next hourly billing run after your **Daily billing time** sweeps everything that came due.
 
     <Note>
-    **Catch-up can't double-charge.** Each due cycle bills exactly once, even when catch-up lands more than one on the same day: every charge checks a per-subscription ledger that only moves forward, and repeats are refused.
+    **Catch-up can't double-charge.** Each due cycle bills exactly once, even when catch-up lands more than one on the same day.
     </Note>
 
     <Check>
-    **Checkpoint:** jobs green again, alerts resolving on their own.
+    **Checkpoint:** jobs green again.
     </Check>
   </Step>
   <Step title="Outage 2: the app unreachable">
-    - When your app's Vercel deployment goes down, the portal goes dark and queued work backs up. **Job stalled** opens for **Notification sender** within 30 minutes; **Queue lagging** follows.
+    - When your Vercel deployment goes down, the portal goes dark and queued work backs up: **Job stalled** opens for **Notification sender** within 30 minutes, then **Queue lagging**.
     - Billing is unaffected: it runs inside your database, not the app.
-    - The fix: open your Vercel dashboard and check the latest deployment. Once the app answers again, the queues drain themselves. No replay, no cleanup.
+    - The fix: check the latest deployment in your Vercel dashboard. Once the app answers, the queues drain themselves; no replay, no cleanup.
 
     <Check>
-    **Checkpoint:** app back, queues empty, alerts resolved on their own.
+    **Checkpoint:** app back, queues empty.
     </Check>
   </Step>
   <Step title="Outage 3: a 503 after an update">
-    - A 503 that says **Database schema out of date** means new code deployed before its database migrations ran. The refusal is deliberate: code against an old schema corrupts data quietly, so the platform fails loudly instead.
+    - A 503 that says **Database schema out of date** means new code deployed before its database migrations ran.
     - The fix is the migrate step of [Update the platform](/platform-v2/run/update-the-platform): run `npm run merchant:migrate`, then reload the site.
 
     <Check>
-    **Checkpoint:** the site answers again. Nothing to roll back.
+    **Checkpoint:** the site answers again.
+    </Check>
+  </Step>
+  <Step title="Check the integration connections panel">
+    - **Integration connections** checks every connected provider live against its own servers: the same checks each card's **Test connection** button runs.
+    - **Healthy**: the saved credentials verified just now. **Failing**: the provider rejected them or never answered (after three tries); the row says which, and **View logs in** that provider opens its console. **Connected** just means there's no live check to run.
+    - Each row also counts the last 24 hours' failures in both directions (errored calls *from* the provider, rejected sends *to* it), with the latest messages quoted underneath.
+    - **Update available** just means a newer one-click setup shipped; the row links to **Integrations** to apply it. On the Shopify rows, **Current** is the aim, **Update available** resolves with a normal [platform update](/platform-v2/run/update-the-platform), and **Unsupported** means update soon.
+    - Checks refresh in the background (the line under the panel says when), so give a fix a couple of minutes to show.
+
+    <Frame>
+      <img src="/images/platform-v2/run/36-integration-connections.png" alt="Integration connections: the Shopify version rows, then each connected provider checked live against its own servers." width="640" />
+    </Frame>
+
+    <Check>
+    **Checkpoint:** every row **Healthy** or **Connected**, nothing **Failing**.
     </Check>
   </Step>
   <Step title="Check the webhook delivery panel">
-    - Still on **Operational health**, one more panel worth a look. **Webhook delivery (24h)** counts what Shopify told your platform in the last day, topic by topic; **Recent failures (7d)** lists the latest failures with their error text.
-    - The occasional failed row heals itself: Shopify retries failed deliveries on its own, and the retry processes as if it were the first try.
-    - Sustained failures across many topics are the real signal. Check your Supabase project's Edge Function logs for the error text, then hand what you find to whoever runs your code.
+    - **Webhook delivery (24h)** counts what Shopify told your platform, topic by topic; **Recent failures (7d)** lists the latest with their error text.
+    - The occasional failed row heals itself: Shopify retries failed deliveries on its own.
+    - Sustained failures across many topics are the real signal: check your Supabase project's Edge Function logs, then hand the error text to whoever runs your code.
 
     <Frame>
       <img src="/images/platform-v2/run/20-webhook-delivery.png" alt="Webhook delivery over 24 hours, counted by topic." width="640" />
@@ -82,5 +100,5 @@ The kinds, in plain words. The numbered outages each get a fix step below:
 </Steps>
 
 <Warning>
-**The stop rule.** A migration failing the same way twice, a 503 that stays after the migrate step of [Update the platform](/platform-v2/run/update-the-platform) reports `0 pending`, or any advice that starts with "just edit the database": stop and hand it to whoever runs your code. Never hand-edit the database.
+**The stop rule.** A migration failing the same way twice, a 503 that won't clear even though `npm run merchant:migrate` reports `0 pending` ([Update the platform](/platform-v2/run/update-the-platform)), or any advice that starts with "just edit the database": stop and hand it to whoever runs your code. Never hand-edit the database.
 </Warning>

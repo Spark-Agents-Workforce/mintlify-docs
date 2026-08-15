@@ -11,9 +11,7 @@ import { PlatformTag } from "/snippets/PlatformTag.jsx";
 
 <Steps>
   <Step title="Copy the install link">
-    - Odds are you already generated this link back when you created the app: right after selecting **Custom distribution**, you entered your live store's domain and clicked **Generate link**.
-    - The link is waiting where you left it: in the Dev Dashboard, under your app's **Distribution** page. Copy it.
-    - If you deferred back then (no live store to name yet), generate it now on the same screen: enter your live store's `.myshopify.com` domain, click **Generate link**, then copy it.
+    - In the Dev Dashboard, open the app's **Distribution** page and copy the install link. Never generated one? Enter the live store's `.myshopify.com` domain and click **Generate link**.
     - You'll see an install link scoped to your app; this link *is* how a custom app reaches a real store.
 
     <Check>
@@ -21,7 +19,7 @@ import { PlatformTag } from "/snippets/PlatformTag.jsx";
     </Check>
 
     <Frame>
-      <img src="/images/deploy/go-live-verification/02-install-link.png" alt="Distribution: the install link, generated and ready to copy." />
+      <img src="/images/deploy/go-live-verification/02-install-link.png" width="560" alt="Distribution: the install link, generated and ready to copy." />
     </Frame>
 
     <Note>
@@ -30,7 +28,7 @@ import { PlatformTag } from "/snippets/PlatformTag.jsx";
   </Step>
   <Step title="Install on your live store">
     - Open the link, confirm your live store, and approve the access screen (the same grants you approved when you created the app).
-    - You'll see the OpenSubs admin open inside your real store's admin. Home greets you with a short checklist: **Migrate from another app** (optional) · **Create a selling plan** · **Connect email & SMS** · **Build a cancellation flow** · **Brand your customer portal**. That checklist is the next page, [Configure your store](/platform-v2/live-for-new-orders/configure-your-store); the optional Migrate item has [its own pages](/platform-v2/migrate/what-actually-moves), for when you're ready.
+    - You'll see the OpenSubs admin open inside your real store's admin. Home greets you with a short checklist: **Migrate from another app** (optional) · **Create a selling plan** · **Connect email and SMS** · **Build a cancellation flow** · **Brand your customer portal**. That checklist is the next page, [Configure your store](/platform-v2/live-for-new-orders/configure-your-store); the optional Migrate item has [its own pages](/platform-v2/migrate/what-actually-moves), for when you're ready.
     - Meanwhile the app builds its mirror of your store: your real products, customers, and orders appear on their own. The sync plumbing set itself up at install; there is nothing for you to configure.
 
     <Check>
@@ -38,7 +36,7 @@ import { PlatformTag } from "/snippets/PlatformTag.jsx";
     </Check>
 
     <Frame>
-      <img src="/images/deploy/go-live-verification/03-home-checklist.png" alt="The OpenSubs admin Home on the live store: the checklist, with the catalog filling in." />
+      <img src="/images/deploy/go-live-verification/03-home-checklist.png" width="640" alt="The OpenSubs admin Home on the live store: the checklist, with the catalog filling in." />
     </Frame>
   </Step>
 </Steps>

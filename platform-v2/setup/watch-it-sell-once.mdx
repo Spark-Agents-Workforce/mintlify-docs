@@ -28,10 +28,10 @@ import { PlatformTag } from "/snippets/PlatformTag.jsx";
 
     <Columns cols={2}>
       <Frame>
-        <img src="/images/deploy/dev-store-fast-path/22-admin-subscription.png" alt="The subscription in the OpenSubs admin." />
+        <img src="/images/deploy/dev-store-fast-path/22-admin-subscription.png" width="640" alt="The subscription in the OpenSubs admin." />
       </Frame>
       <Frame>
-        <img src="/images/deploy/dev-store-fast-path/23-subscriber-portal.png" alt="/a/account: the subscriber portal, no login screen." />
+        <img src="/images/deploy/dev-store-fast-path/23-subscriber-portal.png" width="640" alt="/a/account: the subscriber portal, no login screen." />
       </Frame>
     </Columns>
 
@@ -40,13 +40,13 @@ import { PlatformTag } from "/snippets/PlatformTag.jsx";
     </Check>
 
     <Note>
-    **No welcome email is not a bug.** Your subscriber gets Shopify's order confirmation, same as any order. OpenSubs sends no checkout welcome of its own. Want a branded one? That's your Klaviyo flow or SendGrid template, provisioned as a draft when you connect, yours to set live.
+    **No welcome email is not a bug.** With no provider connected, the only receipt is Shopify's order confirmation, same as any order. Once SendGrid or Klaviyo is connected and the event is on, the **Subscription created** email takes that role (Klaviyo flows arrive as drafts).
     </Note>
   </Step>
   <Step title="Look at the health page">
     - In the OpenSubs admin, open **Settings > Operational health**.
 
-    **You'll see:** jobs green, webhooks delivering, queues quiet: the page the machine reports to from now on.
+    **You'll see:** five panels: alerts quiet, providers healthy, jobs green, webhooks delivering, queues quiet. The page the machine reports to from now on; reading it each morning is [The morning check](/platform-v2/run/the-morning-check).
 
     <Frame>
       <img src="/images/deploy/dev-store-fast-path/24-operational-health.png" width="560" alt="Operational health: jobs green, webhooks delivering, queues quiet." />
@@ -72,6 +72,9 @@ When you're ready for your real store, the next rung is [Live for New Orders](/p
 <Columns cols={1}>
   <Card icon="arrow-up-right" title="A renewal, frame by frame" href="/curtain/a-renewal-frame-by-frame">
     The charge you're about to watch.
+  </Card>
+  <Card icon="arrow-up-right" title="What runs without you" href="/platform-v2/run/what-runs-without-you">
+    Billing, retries, and emails on schedule.
   </Card>
   <Card icon="arrow-up-right" title="Live for New Orders" href="/platform-v2/live-for-new-orders/what-today-changes">
     From the dev store to your real store.

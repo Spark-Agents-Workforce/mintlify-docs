@@ -9,57 +9,62 @@ import { PlatformTag } from "/snippets/PlatformTag.jsx";
 
 <span className="os-chip">2 min</span>
 
-Almost anything a subscriber writes in about is self-serve in their portal at `/a/account` on your storefront, so the fastest reply is a login link, not doing it for them. It's also the commercially smart reply: a cancel in the portal walks through your cancellation flow, so your save offers show first. A cancel in your admin skips all of it.
+Almost anything a subscriber writes in about is self-serve in their portal at `/a/account` on your storefront, so the fastest reply is a login link.
 
 |  | What gets done there |
 |---|---|
 | **Their portal** (send a login link) | Delay the next order, change its date or frequency, edit quantities, swap or add products, ship an order now, change addresses, add or switch cards, apply discount codes, cancel through your cancellation flow, reactivate. |
-| **Your admin** ([do it yourself](/platform-v2/run/edit-one-subscription)) | The shipping price on a subscription, and most of the portal list when you'd rather fix it while they wait. Exceptions: cards (email only, below) and cancels (possible in admin, but it skips your cancellation flow). |
-| **Shopify admin** | Refunds, returns, and edits to a placed order. Orders are Shopify orders, handled where they live. |
+| **Your admin** ([do it yourself](/platform-v2/run/edit-one-subscription)) | Everything in the portal row, plus a custom shipping price. Exceptions: cards (email only, below) and cancels (skips your cancellation flow). |
+| **Gorgias** ([if you've set it up](/platform-v2/run/set-up-gorgias)) | Cancel, pause, resume, reactivate, ship now, skip, change frequency, or move the next order date, from the ticket sidebar. A cancel here also skips your cancellation flow. |
+| **Shopify admin** | Refunds, returns, and edits to a placed order. |
 
-The portal row obeys your toggles: anything you switched off under **Customer portal features** in **Settings > Branding** moves to the **Your admin** row.
+Anything switched off under **Customer portal features** (**Settings > Branding**) moves to the **Your admin** row.
 
 <Steps>
   <Step title="I can't log in">
-    - The portal has no passwords; subscribers sign in with a single-use code or link. So "I can't log in" means one thing: send a fresh link.
-    - Open **Subscribers**, open the person, and click **Magic Link**. **Copy login link** puts the link on your clipboard for your reply; **Email login link** sends it straight to them.
-    - Either way it's single-use and expires in 60 minutes, so create it when you're ready to reply, not before.
+    - The portal has no passwords, only single-use codes and links, so the fix is a fresh link.
+    - Open **Subscribers**, open the person, and click **Magic Link**: **Copy login link** for your reply, **Email login link** to send it to them.
+    - It's single-use and expires in 60 minutes, so create it when you're ready to reply.
 
     <Check>
-    **Checkpoint:** the link is in your reply or their inbox; it signs them in without a password.
+    **Checkpoint:** the link is in your reply or their inbox.
     </Check>
 
-    {/* shot:08 ui-admin "The subscriber's page: the Magic Link menu open, with Copy login link and Email login link." */}
+    <Frame>
+      <img src="/images/platform-v2/run/08-magic-link.png" alt="The subscriber's page: the Magic Link menu open, with Copy login link and Email login link." width="320" />
+    </Frame>
 
     <Warning>
-    **Login emails need a working email provider.** **Email login link** and the portal's emailed sign-in codes only arrive if an email provider is connected and sending. (If Twilio sends your texts, the same sign-in code also goes by text when the subscriber has a phone on file.) Nothing landing? Start at [When emails don't arrive](/platform-v2/run/when-emails-dont-arrive), and use **Copy login link** in the meantime: paste works in any channel.
+    **Login emails need a working email provider.** **Email login link** and the portal's emailed sign-in codes need a connected email provider (with Twilio, the code also goes by text when a phone is on file). If nothing lands, see [When emails don't arrive](/platform-v2/run/when-emails-dont-arrive) and use **Copy login link** meanwhile.
     </Warning>
   </Step>
   <Step title="My card needs updating">
-    - Open the subscription (find it under **Subscriptions**, or come in through the subscriber's page), then click the pencil on the **Payment method** card. It holds exactly one action: **Send payment update email**.
-    - Shopify sends the email and hosts the secure update page. Card numbers never pass through you, your admin, or the platform.
+    - Open the subscription (under **Subscriptions**) and click the pencil on the **Payment method** card; its one action is **Send payment update email**.
+    - Shopify sends the email and hosts the secure update page; card numbers never pass through you or the platform.
 
     <Check>
-    **Checkpoint:** email sent. The card stays between the subscriber and Shopify.
+    **Checkpoint:** email sent.
     </Check>
   </Step>
   <Step title="Anything else, one tap">
-    - Any request you've built a quick action for becomes a single-use link that does it in one tap: skip, delay, ship now, reactivate with a discount, update payment (the same Shopify-hosted card page as above).
-    - On the subscription's page, click **Quick action link** and pick one. The link is created for this subscriber alone and copied to your clipboard: paste it into your reply.
-    - Single-use, expires in 60 minutes. On their side: one tap, a confirmation page, done.
+    - Any request you've built a quick action for becomes a single-use link that does it in one tap: skip, delay, ship now, reactivate with a discount, update payment.
+    - On the subscription's page, click **Quick action link** and pick one; a link for this subscriber lands on your clipboard.
+    - Single-use, expires in 60 minutes.
 
     <Check>
-    **Checkpoint:** the fix is in your reply, one tap on their side.
+    **Checkpoint:** the fix is in your reply.
     </Check>
 
-    {/* shot:09 ui-admin "The subscription's title bar: the Quick action link menu creating a single-use link for this subscriber." */}
+    <Frame>
+      <img src="/images/platform-v2/run/09-quick-action-link.png" alt="The subscription's title bar: the Quick action link menu creating a single-use link for this subscriber." width="480" />
+    </Frame>
 
     <Note>
-    **The menu lists what you've built.** No **Quick action link** button on the page means no quick action is active yet. [Set up quick actions](/platform-v2/run/set-up-quick-actions) takes ten minutes; every active one appears in this menu.
+    **The menu lists what you've built.** No **Quick action link** button means nothing is active yet; [Set up quick actions](/platform-v2/run/set-up-quick-actions) takes ten minutes.
     </Note>
   </Step>
 </Steps>
 
 <Tip>
-**Some subscribers would rather text.** With Twilio connected, inbound texts handle the basics without you: `SKIP`, `PAUSE`, `RESUME`, `CANCEL` (the subscriber confirms before it runs), and `MANAGE` or `HELP` for the menu with their portal link. Turn any of the four commands (not the menu) off under **Settings > Notifications > SMS replies**.
+**Some subscribers would rather text.** With Twilio connected, inbound texts handle `SKIP`, `PAUSE`, `RESUME`, `CANCEL` (the subscriber confirms first), and `MANAGE` or `HELP` for the menu with their portal link. Turn any of the four commands (not the menu) off under **Settings > Notifications > SMS replies**.
 </Tip>

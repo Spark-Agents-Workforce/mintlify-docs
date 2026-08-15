@@ -7,7 +7,7 @@ import { PlatformTag } from "/snippets/PlatformTag.jsx";
 
 <PlatformTag platform="opensubs" />
 
-Loyalty rewards are earned by renewal count, in the tiers you built in [Set up rewards](/platform-v2/run/set-up-rewards), and come in two kinds: free gifts the subscriber redeems, and discounts that apply to the next order by themselves. When one seems to vanish, everything you need is on the subscription's page, and nothing about a reward is ever lost.
+Loyalty rewards ([Set up rewards](/platform-v2/run/set-up-rewards)) come in two kinds: free gifts the subscriber redeems, and discounts that apply to the next order by themselves. Everything you need is on the subscription's page.
 
 <Steps>
   <Step title="Read the reward's state first">
@@ -17,30 +17,29 @@ Loyalty rewards are earned by renewal count, in the tiers you built in [Set up r
     | --- | --- |
     | **Available** | Earned, not yet used. |
     | **Redeemed** | On the upcoming order. |
-    | **Processed** | Shipped, with a **View order** link to prove it. |
+    | **Processed** | Billed onto an order, with a **View order** link. |
 
-    - The card's footer states the whole lifecycle in one line: "A redeemed gift becomes Processed once it ships on an order."
-    - The **Customer** card on the same page shows the running count: recurring orders toward rewards.
+    - The **Customer** card shows the running count of recurring orders toward rewards.
 
     <Check>
-    **Checkpoint:** the status names your case. Redeemed but the gift line is gone: next step. Processed: step three. A discount: step four.
+    **Checkpoint:** the status names your case; the steps below match.
     </Check>
 
     <Frame>
-      <img src="/images/platform-v2/run/23-reward-history.png" alt="Reward history: discounts and free gifts with Redeemed and Processed statuses, Revert on a redeemed gift." />
+      <img src="/images/platform-v2/run/23-reward-history.png" alt="Reward history: discounts and free gifts with Redeemed and Processed statuses, Revert on a redeemed gift." width="640" />
     </Frame>
   </Step>
   <Step title="Put a removed free gift back">
-    - The scenario: the gift line is gone from **Items** (removed by hand, or lost in a swap), but **Reward history** still reads **Redeemed**. The reward isn't lost; it's just still marked as used.
-    - In **Reward history**, click **Revert** on the gift's row and confirm. It works even though the line is already gone, and the reward returns to **Available**.
-    - The **Available rewards** section appears above the history. Click **Redeem** on the gift and confirm with **Add gift**. The line returns to **Items** at zero, marked **Free Gift**.
+    - The scenario: the gift line is gone from **Items**, but **Reward history** still reads **Redeemed**.
+    - Click **Revert** on the gift's row and confirm; the reward returns to **Available**.
+    - In **Available rewards**, above the history, click **Redeem** and confirm with **Add gift**. The line returns to **Items** at zero, marked **Free Gift**.
 
     <Warning>
-    **Don't re-add the gift with Add product.** That creates an ordinary paid line at the product's subscription price: the subscriber gets billed for their own reward, and the reward never notices it's back. Revert, then redeem, is the free path.
+    **Don't re-add the gift with Add product.** That creates a paid line: the subscriber gets billed for their own reward.
     </Warning>
 
     <Check>
-    **Checkpoint:** the gift is back on the items list at zero, and its history row reads **Redeemed** again.
+    **Checkpoint:** the gift is back at zero, history row **Redeemed** again.
     </Check>
 
     <Frame>
@@ -48,30 +47,30 @@ Loyalty rewards are earned by renewal count, in the tiers you built in [Set up r
     </Frame>
   </Step>
   <Step title="A gift that vanished after an order isn't missing">
-    - Gifts ride one order. Once that order is billed, the line leaves the subscription by itself and the history row reads **Processed**, with the **View order** link. That's completion, not loss; there's nothing to fix.
-    - Merging subscriptions leaves gift lines behind on the retired subscription for the same reason: they belong to their order, not the schedule. An unshipped gift stranded that way still reads **Redeemed**; **Revert** is still the move to free it, and a retired subscription that refuses the revert is one for whoever runs your code.
+    - A gift belongs to one order: once billed, the line leaves the subscription by itself and the history row reads **Processed**, with a **View order** link. Nothing to fix.
+    - Merging subscriptions strands gift lines on the retired subscription; an unshipped gift there still reads **Redeemed**, and **Revert** works from the surviving subscription. **Unable to revert the reward gift** means the retired contract is no longer editable in Shopify: raise it with whoever runs your code.
 
     <Note>
-    **Not every free gift is a reward.** A gift from your cancellation flow's save offer looks identical on the items list, but it has no Reward history row, so Revert and Redeem never show for it.
+    **Not every free gift is a reward.** A save-offer gift from your cancellation flow looks identical but has no Reward history row, so Revert and Redeem never show for it.
     </Note>
   </Step>
   <Step title="The discount that never appeared">
-    - Amount-off and percentage-off rewards skip the redeem step entirely: a queued update applies them, and they show on the **Payment summary** card as **Reward Discount**, good for one order.
-    - A customer with several subscriptions gets the discount on whichever bills next, not necessarily the one you're looking at. Check the sibling subscriptions before anything else.
-    - Remove buttons on the **Payment summary** target promo codes, not reward discounts: a reward discount survives them.
-    - A discount that couldn't land yet isn't lost: it applies as the subscriber's renewals advance. One that gave up entirely shows on **Settings > Operational health** ([When an alert opens](/platform-v2/run/when-an-alert-opens)).
+    - Amount-off and percentage-off rewards apply themselves and show on the **Payment summary** card as **Reward Discount**, good for one order.
+    - A customer with several subscriptions gets the discount on whichever bills next: check the siblings first.
+    - Remove buttons on the **Payment summary** target promo codes, not reward discounts.
+    - A discount that couldn't land yet applies as renewals advance; one that gave up shows on **Settings > Operational health** ([When an alert opens](/platform-v2/run/when-an-alert-opens)).
 
     <Check>
-    **Checkpoint:** one of the customer's subscriptions shows **Reward Discount** on its Payment summary, or Operational health explains why not.
+    **Checkpoint:** one subscription shows **Reward Discount**, or Operational health explains why not.
     </Check>
   </Step>
   <Step title="When Redeem is refused">
-    - "Reward not found" usually means it was redeemed already, perhaps from the portal while you had the page open. Refresh and re-read the history.
-    - "Unable to add reward gift" means the gift couldn't be added. The usual cause: the gift product or its variant no longer exists in your catalog, in which case the history row falls back to the bare title "Free gift" with no price. Restore the product in Shopify and redeem again.
-    - If the product is gone for good, an already-earned gift can't attach to anything: pick a new gift for the tier under **Settings > Rewards** so future earns work, and make this subscriber whole however fits.
+    - "Reward not found" usually means it was redeemed already: refresh and re-read the history.
+    - "Unable to add reward gift" usually means the gift product or its variant no longer exists; the history row falls back to "Free gift" with no price. Restore the product in Shopify and redeem again.
+    - If the product is gone for good, pick a new gift for the tier under **Settings > Rewards** and make this subscriber whole.
 
     <Check>
-    **Checkpoint:** the gift redeems clean, or you know exactly which refusal you're holding.
+    **Checkpoint:** the gift redeems clean, or the refusal is identified.
     </Check>
   </Step>
 </Steps>

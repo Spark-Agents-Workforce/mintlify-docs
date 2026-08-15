@@ -23,43 +23,52 @@ Same moves you made on the dev store, sized to your real catalog. The Home check
     </Check>
 
     <Frame>
-      <img src="/images/deploy/go-live-verification/04-selling-plans.png" alt="Selling plans: real plan groups with product counts." />
+      <img src="/images/deploy/go-live-verification/04-selling-plans.png" width="640" alt="Selling plans: real plan groups with product counts." />
     </Frame>
   </Step>
   <Step title="Connect email and SMS">
-    - In **Settings > Integrations**, connect this store's providers: SendGrid or Klaviyo for email, Twilio or Klaviyo for SMS (SMS is optional). Integrations are per-store, so paste your keys again.
-    - Under **Notification routing**, set the **Email notifications** and **SMS notifications** routes, then **Save**. Pick one email sender: a live Klaviyo flow sends even when SendGrid holds the route, and your subscriber gets two emails.
-    - In **Settings > Notifications > Email**, click **Set up templates & flows** (Klaviyo) or **Set up email templates** (SendGrid): one click builds the defaults in your own account. Branding bakes in at import; if you rebrand in the next step, hit **Re-import**.
-    - Then do what the Home checklist warns: "Klaviyo flows import as drafts. **Turn them live** in Klaviyo or login codes won't send." The same **Email** page shows each event's live-or-draft status.
+    - In **Settings > Integrations**, connect this store's email and SMS providers. Integrations are per-store: paste your keys again.
+    - Under **Notification routing**, set the **Email notifications** and **SMS notifications** routes, then **Save**: one sender per event, or your subscriber gets two emails.
+    - In **Settings > Notifications > Email**, click **Set up templates & flows** (Klaviyo) or **Set up email templates** (SendGrid). Branding bakes in at import; if you rebrand in the next step, hit **Re-import**.
+    - Then do what the Integrations page warns: Klaviyo flows import as drafts, so turn them live in Klaviyo or login codes won't send. The same **Email** page shows each event's live-or-draft status.
+    - In **Settings > Notifications**, turn on the events you need: a new install starts with every event off. On Twilio, also paste its two webhook URLs. [Set up email and SMS](/platform-v2/run/set-up-email-and-sms) is the full recipe.
+
+    <Note>
+    The same **Integrations** screen also connects analytics, helpdesk, and monitoring tools. Set them up now, or later via [Set up analytics and monitoring](/platform-v2/run/set-up-analytics-and-monitoring) and [Set up Gorgias](/platform-v2/run/set-up-gorgias).
+    </Note>
 
     <Check>
     **Checkpoint:** providers connected; routing saved; flows live, not drafts.
     </Check>
 
     <Frame>
-      <img src="/images/deploy/go-live-verification/05-email-flows.png" alt="Notifications > Email: each event's templates and flows, with live-or-draft status." />
+      <img src="/images/deploy/go-live-verification/05-email-flows.png" width="640" alt="Notifications > Email: each event's templates and flows, with live-or-draft status." />
     </Frame>
   </Step>
   <Step title="Brand the portal">
-    - In **Settings > Branding**, give the portal your real face: logo and colors start at defaults on a new store.
+    - In **Settings > Branding**, give the portal your real face: logo and colors start at defaults on a new store. [Brand the portal](/platform-v2/run/brand-the-portal) is the full recipe.
     - Add translations too, if you sell in more than one language.
     - Already imported email templates in the last step? Hit **Re-import** there so your emails wear the new look too.
-    - Branding isn't alone: every OpenSubs setting on this store starts at defaults. Skim the Settings page and re-set anything you tuned on the dev store, like payment recovery or rewards.
+    - Branding isn't alone: every OpenSubs setting on this store starts at defaults. Skim the Settings page and re-set anything you tuned on the dev store, like [payment recovery](/platform-v2/run/set-up-payment-recovery) or [rewards](/platform-v2/run/set-up-rewards).
 
     <Check>
     **Checkpoint:** portal preview wears your brand.
     </Check>
 
     <Frame>
-      <img src="/images/deploy/go-live-verification/06-portal-branding.png" alt="Branding: the portal preview wearing your logo and colors." />
+      <img src="/images/deploy/go-live-verification/06-portal-branding.png" width="640" alt="Branding: the portal preview wearing your logo and colors." />
     </Frame>
   </Step>
   <Step title="Build a cancellation flow">
-    - In **Settings > Cancellation flows**, build what a subscriber sees when they try to cancel: save offers first (a discount, a free gift, or a pause), cancel as the last resort.
+    - In **Settings > Cancellation flows**, build what a subscriber sees when they try to cancel: save offers first (a discount, a free gift, or a pause), cancel as the last resort. [Set up your cancellation flow](/platform-v2/run/set-up-your-cancellation-flow) is the full recipe.
     - The Home checklist ticks **Build a cancellation flow**, and your team test-drives the flow in [Prove it with real money](/platform-v2/live-for-new-orders/prove-it-with-real-money).
 
     <Check>
     **Checkpoint:** a cancellation flow built, with at least one save offer.
     </Check>
+
+    <Frame>
+      <img src="/images/platform-v2/run/30-flow-builder.png" alt="The cancellation flow builder: the flow's reasons with their offers, stage by stage." width="560" />
+    </Frame>
   </Step>
 </Steps>

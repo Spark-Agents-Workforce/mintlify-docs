@@ -16,7 +16,7 @@ import { PlatformTag } from "/snippets/PlatformTag.jsx";
     - Coming from Loop or another provider? The same screen carries template files and mapping instructions. Upload the mapped files and choose **Already in the app's format**.
 
     <Frame>
-      <img src="/images/platform-v2/migrate/04-upload.png" alt="Three files uploaded; the tool reads the columns itself." />
+      <img src="/images/platform-v2/migrate/04-upload.png" alt="Three files uploaded; the tool reads the columns itself." width="640" />
     </Frame>
   </Step>
   <Step title="Preview the migration">
@@ -28,7 +28,7 @@ import { PlatformTag } from "/snippets/PlatformTag.jsx";
     </Check>
 
     <Frame>
-      <img src="/images/platform-v2/migrate/05-preview-tiles.png" alt="The preview tiles: five contracts, all ready to migrate, zero blocked, zero warnings." />
+      <img src="/images/platform-v2/migrate/05-preview-tiles.png" alt="The preview tiles: five contracts, all ready to migrate, zero blocked, zero warnings." width="640" />
     </Frame>
   </Step>
   <Step title="Fix and preview again">
@@ -43,14 +43,14 @@ import { PlatformTag } from "/snippets/PlatformTag.jsx";
   <Step title="Run the connected checks">
     - Click **Run connected checks**.
     - The tool reads your live store, read-only, and verifies every row against reality: the customer exists, the products exist, the saved card is real and belongs to that customer.
-    - A subscriber with no usable card isn't failed. They're held as **needs card**, and the portal takes a fresh card from them after the move.
+    - A subscriber with no usable card isn't failed. They're held as **needs card**, not migrated yet; once they add a card in the portal, a later pass from a fresh export moves them ([Prove it, then finish](/platform-v2/migrate/prove-it-then-finish)).
 
     <Check>
     **Checkpoint:** the verified count matches what you expect to move today. Still zero writes.
     </Check>
 
     <Frame>
-      <img src="/images/platform-v2/migrate/07-connected-checks.png" alt="Connected checks passed: five verified, zero blocked, every card auto-resolved." />
+      <img src="/images/platform-v2/migrate/07-connected-checks.png" alt="Connected checks passed: five verified, zero blocked, every card auto-resolved." width="640" />
     </Frame>
 
     <Note>
@@ -70,14 +70,15 @@ import { PlatformTag } from "/snippets/PlatformTag.jsx";
   <Step title="Confirm and migrate">
     - Every verified row comes pre-selected; untick anything you're holding back. Press **Migrate N of M contract(s)**.
     - Read the confirm. It states exactly how many real contracts it will create, against each subscriber's saved card, billing from their existing next charge date, and it counts whatever stays behind. Then click **Yes, create N contract(s)**.
-    - Keep the tab open and watch the run move, one contract at a time. A crash, a dropped connection, or a double-click can't create anything twice; reopen an interrupted run and it resumes, skipping everything already done. A single run tops out at 1,000 contracts, so bigger lists go in passes.
+    - Keep the tab open and watch the run move, one contract at a time.
+    - A crash, a dropped connection, or a double-click can't create anything twice; reopen an interrupted run and it resumes, skipping everything already done. A single run tops out at 1,000 contracts, so bigger lists go in passes.
 
     <Check>
     **Checkpoint:** the receipt's counts reconcile against your preview.
     </Check>
 
     <Frame>
-      <img src="/images/platform-v2/migrate/09-start-migration.png" alt="Start migration: every verified contract selected, ready for the confirm." />
+      <img src="/images/platform-v2/migrate/09-start-migration.png" alt="Start migration: every verified contract selected, ready for the confirm." width="640" />
     </Frame>
 
     {/* shot:10 ui-migration "The receipt: created, already done, needs card, failed, reconciling against the preview." */}

@@ -15,12 +15,14 @@ It creates no contracts and changes no billing. It only connects records that al
 
 <Steps>
   <Step title="Export orders from the old app">
-    - The same dashboard that exported your subscriptions exports orders too: Skio, Stay AI, and Recharge each have one, and the upload screen shows the exact path for each provider.
+    - The same dashboard that exported your subscriptions exports orders too: Skio, Recharge, and Loop each have one, and the upload screen shows the exact path for each provider.
+    - Loop's export is two report files, uploaded together, and it connects only if the migration kept Loop's Subscription ID as the external subscription id.
     - Grab it in the same sitting as your subscriptions export, before the old app is uninstalled.
   </Step>
   <Step title="Upload it">
     - On **Settings > Migration**, choose the orders import and upload the file. It runs any time after your subscriptions have migrated.
     - Each order matches to a migrated subscription through the same provider IDs the migration already recorded. Orders that match nothing are listed, not guessed at.
+    - Unmatched orders can also mean the initial store import hasn't finished; connect again after it finishes. A failed import raises the **Store import failed** alert: [When an alert opens](/platform-v2/run/when-an-alert-opens).
 
     <Check>
     **Checkpoint:** pick one migrated subscription. Its old orders are listed under it in the admin and in the portal, and its billing cycle matches reality.

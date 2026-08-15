@@ -19,11 +19,11 @@ import { PlatformTag } from "/snippets/PlatformTag.jsx";
   </Step>
   <Step title="Turn on frequency editing">
     - Migrated subscriptions keep billing on their own cadence no matter what. But the frequencies a subscriber can switch to come from your selling plans, and you matched those to the old platform's in [The day before](/platform-v2/migrate/the-day-before).
-    - Under **Migration results**, open the **Enable frequency editing** card. With your plans already matched, it confirms it: "Nothing needed attaching."
-    - See **Attach N product(s)** instead? Some migrated cadences have no matching plan yet. One click builds a "Migrated subscriptions" plan group that covers them, at a 0% discount, editable later under **Selling plans**.
+    - Under **Migration results**, find the frequency editing panel. With your plans already matched, it reads "All migrated products already belong to a selling plan group, so frequency editing works". Nothing to do.
+    - See **Attach N product(s)** instead? Some migrated cadences have no matching plan yet. One click builds a "Migrated subscriptions" plan group that covers them, at a 0% discount, editable later under **Selling plans**. Attaching also adds a subscription purchase option to those product pages.
 
     <Check>
-    **Checkpoint:** the card confirms every migrated cadence is covered by a plan.
+    **Checkpoint:** the panel confirms every migrated cadence is covered by a plan.
     </Check>
 
     {/* shot:12 ui-migration "The Enable frequency editing card under Migration results." */}
@@ -37,7 +37,7 @@ import { PlatformTag } from "/snippets/PlatformTag.jsx";
     </Check>
   </Step>
   <Step title="Repoint your links">
-    - Update every "manage your subscription" link to your portal: email templates, Klaviyo flows, and the theme's account menu (point it at `/a/account`).
+    - Update every "manage your subscription" link to your portal: email templates, Klaviyo flows (see [Set up email and SMS](/platform-v2/run/set-up-email-and-sms)), and the theme's account menu (point it at `/a/account`).
     - Using Shopify's customer accounts? Enable the OpenSubs customer accounts extension there, so subscribers signed into the main account area can jump straight to the subscription portal to manage their subscription.
 
     <Check>
@@ -56,7 +56,8 @@ import { PlatformTag } from "/snippets/PlatformTag.jsx";
     {/* shot:13 ui-migration "The old app uninstalled, after the spot-check." */}
   </Step>
   <Step title="Watch the first migrated renewal">
-    - The first morning a migrated charge date comes due, the daily billing run charges a subscription you moved. The order lands in Shopify. Revenue, at a 0% fee.
+    - The first day a migrated charge date comes due, the hourly billing run picks it up once your store's clock passes your **Daily billing time**. The order lands in Shopify. Revenue, at a 0% fee.
+    - [The morning check](/platform-v2/run/the-morning-check) is the ritual for watching the first wave.
 
     <Check>
     **Checkpoint:** the first migrated renewal is in your orders list. Done.
@@ -68,7 +69,7 @@ import { PlatformTag } from "/snippets/PlatformTag.jsx";
 
 ## The scary part is behind you
 
-The cards never moved; there was nothing to move. Your subscribers never heard a thing. What changed is one quiet fact at the center of your business: when Shopify fires a charge tomorrow, it's because your machine said so. Every subscriber, billing at a 0% fee, and the scariest word in commerce turned out to be a spreadsheet and an afternoon.
+The cards never moved, your subscribers never heard a thing, and every renewal now bills through OpenSubs at a 0% fee.
 
 ---
 
@@ -76,8 +77,8 @@ The cards never moved; there was nothing to move. Your subscribers never heard a
 
 <div className="os-where-next">
 <Columns cols={1}>
-  <Card icon="arrow-up-right" title="A day in the life" href="/operate/a-day-in-the-life">
-    Billing, retries, messages: the machine runs it from here.
+  <Card icon="arrow-up-right" title="What runs without you" href="/platform-v2/run/what-runs-without-you">
+    Billing, retries, and messages run on schedule from here.
   </Card>
 </Columns>
 </div>

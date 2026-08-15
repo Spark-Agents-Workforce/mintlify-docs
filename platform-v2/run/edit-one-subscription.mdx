@@ -9,51 +9,53 @@ import { PlatformTag } from "/snippets/PlatformTag.jsx";
 
 <span className="os-chip">5 min</span>
 
-Find it once; everything after happens on one screen. Schedule and quantity edits collect in the save bar; everything else takes effect the moment you confirm. The map, then the steps:
+Everything happens on one screen. Schedule and quantity edits collect in the save bar; everything else takes effect the moment you confirm.
 
 | To change | Go to |
 | --- | --- |
 | Next billing date, frequency | the **Schedule** card |
 | Products, quantities, swaps | the **Items** card |
 | Delivery address | the pencil on the **Customer** card |
-| Shipping price, discount codes | the **Payment summary** card |
+| Discount codes | the **Payment summary** card |
+| Shipping price | the pencil on the **Shipping method** card |
 | Pause, cancel, ship now, merge | the title bar |
+| A stuck payment (mid-campaign only) | the **Payment recovery** card ([When a payment fails](/platform-v2/run/when-a-payment-fails)) |
 
 <Steps>
   <Step title="Find it">
-    - In the OpenSubs admin, open **Subscriptions**. Search by subscriber name or email, or paste the subscription number for an exact match.
+    - In the OpenSubs admin, open **Subscriptions**; search by subscriber name, email, or subscription number.
     - Narrow with the status filter (**All**, **Active**, **Paused**, **Cancelled**, **Failed**, **Billing issues**), or by **Product**, **Frequency**, or **Next charge date**.
-    - Starting from a conversation instead? **Subscribers** works too: search the person, open their page, and every subscription they own is listed on it.
+    - Or open the person's page under **Subscribers**; every subscription they own is listed there.
     - Click the row to open it.
 
     <Check>
-    **Checkpoint:** the subscription is open, status badge in the title bar.
+    **Checkpoint:** the subscription is open.
     </Check>
 
     <Frame>
-      <img src="/images/platform-v2/run/04-subscriptions-list.png" alt="The subscriptions list: search, the status filter, and every subscription one click away." />
+      <img src="/images/platform-v2/run/04-subscriptions-list.png" alt="The subscriptions list: search, the status filter, and every subscription one click away." width="640" />
     </Frame>
   </Step>
   <Step title="Change the schedule">
     - In the **Schedule** card, pick a new **Next billing date**, a new **Frequency**, or both.
-    - Edits collect in the save bar; nothing changes until you hit **Save**.
+    - Nothing changes until you hit **Save**.
 
     <Frame>
       <img src="/images/platform-v2/run/05-subscription-detail.png" alt="Subscription detail: schedule, items, and payment summary on one screen." width="560" />
     </Frame>
 
     <Note>
-    **There is no skip button, on purpose.** Pushing the next billing date one interval forward *is* the skip. Subscribers can skip on their own too, by delaying the next order in their portal or texting SKIP: both covered in [When a subscriber asks for help](/platform-v2/run/when-a-subscriber-asks).
+    **There is no skip button, on purpose.** Pushing the next billing date one interval forward *is* the skip. Subscribers can skip themselves in their portal or by texting SKIP ([When a subscriber asks for help](/platform-v2/run/when-a-subscriber-asks)).
     </Note>
   </Step>
   <Step title="Change the items">
-    - In **Items**, edit a line's quantity: quantity edits ride the same save bar as the schedule, so they land in one save.
-    - **Add product** opens your catalog: pick the product, set the quantity, and choose whether the line bills as **Subscription** or **One-time**.
-    - **Swap** replaces a line with a different product in one move; the remove icon takes a line off after you confirm.
-    - Two guards: the last recurring line can't become one-time, and the only line can't be removed. A subscription with nothing recurring on it isn't a subscription.
+    - In **Items**, edit a line's quantity; it rides the same save bar.
+    - **Add product** opens your catalog: pick the product, set the quantity, and choose **Subscription** or **One-time** billing.
+    - **Swap** replaces a line's product in one move; the remove icon deletes a line after you confirm.
+    - You can't turn the last recurring line into a one-time item or remove the only line.
 
     <Check>
-    **Checkpoint:** you've hit **Save**, and the lines read the way the next order should ship.
+    **Checkpoint:** the saved lines match the next order.
     </Check>
 
     <Frame>
@@ -61,25 +63,25 @@ Find it once; everything after happens on one screen. Schedule and quantity edit
     </Frame>
   </Step>
   <Step title="Change address, shipping, discounts">
-    - The pencil on the **Customer** card opens **Edit shipping address**: pick one of the subscriber's saved addresses with **Use this address**, add one with **Add new address**, or edit a saved one in place.
-    - Editing a saved address that other subscriptions ship to warns you at save (**Update N subscriptions?**): saving updates the delivery address on all of them and re-rates their shipping. **Save & update** means all of them.
-    - The pencil on the shipping line handles the price: **Set custom price** pins a manual rate; **Use automatic rate** or **Refresh rate** hands it back to your live rates.
-    - Discounts live on the **Payment summary** card: type a code into **Discount code**, click **Apply**. Codes stack; remove any one from its chip, or **Remove all** to clear the slate.
+    - The pencil on the **Customer** card opens **Edit shipping address**: pick a saved address with **Use this address**, add one with **Add new address**, or edit a saved one in place.
+    - Editing a saved address warns **Update N subscriptions?**: **Save & update** re-applies it to every subscription shipping to that address and re-rates their shipping, so read the count.
+    - The pencil on the **Shipping method** card: **Set custom price** pins a manual rate, and the button below returns it to your live rates (**Use automatic rate** while pinned, **Refresh rate** once automatic).
+    - On the **Payment summary** card, enter a code in **Discount code** and click **Apply**. Codes stack; each has a **Remove** button, and **Remove all** clears them all.
 
     <Note>
-    **Custom shipping prices exist only here.** Pinning a price is a merchant move: the portal normally recalculates shipping when a subscriber edits, but a pinned price stays put until you switch back to automatic.
+    **Custom shipping prices exist only here.** The portal normally recalculates shipping when a subscriber edits; a pinned price stays put until you switch back to automatic.
     </Note>
   </Step>
   <Step title="Ship an order now">
-    - Click **Ship now** in the title bar. The **Ship an order now** modal lists every line with a checkbox and a quantity; totals update live as you tick.
+    - Click **Ship now** in the title bar. The **Ship an order now** modal lists every line with a checkbox and a quantity; totals update as you tick.
     - Click **Charge & ship now**. The saved card is charged immediately, the order is created, and the next billing date advances one interval.
 
     <Warning>
-    **No undo.** Once you confirm, the card is charged. And the admin trusts you: unlike the portal, it will run **Ship now** a second time on the same day and bill again.
+    **No undo.** Once you confirm, the card is charged. The portal blocks a second same-day **Ship now**; the admin doesn't, so clicking twice charges twice.
     </Warning>
 
     <Check>
-    **Checkpoint:** the new order sits in the subscription's orders list, and the next billing date moved one interval out.
+    **Checkpoint:** the new order is in the orders list.
     </Check>
 
     <Frame>
@@ -88,33 +90,33 @@ Find it once; everything after happens on one screen. Schedule and quantity edit
   </Step>
   <Step title="Change the status">
     - In the title bar: **Pause** stops billing instantly; **Resume** asks for the next billing date before anything restarts.
-    - **Cancel subscription** asks for a cancellation reason (when you've configured them); the cancellation stands in your records even if you later bring the subscription back.
-    - Cancelled isn't gone: **Reactivate** starts a cancelled subscription again, next billing date of your choosing.
+    - **Cancel subscription** asks for a cancellation reason (when configured); the cancellation stays in your records even if you later reactivate.
+    - **Reactivate** starts a cancelled subscription again, next billing date of your choosing.
 
     <Note>
-    **Paused cycles are skipped, never made up.** Nobody gets charged for the paused months: **Resume** asks for the next billing date (it suggests tomorrow) and billing restarts from the date you pick, with nothing owed for the gap. An admin pause is indefinite; only you resume it. (Timed pauses that resume themselves come from the portal and your cancellation flow's pause offer, and those restart on the next date the original rhythm would have hit. While paused, the subscriber's portal shows no next order date at all, even though the admin still does.)
+    **Paused cycles are skipped, never made up.** Billing restarts on the date you pick at **Resume** (it suggests tomorrow); nothing is owed for the gap. An admin pause runs until you resume it; portal and cancellation-flow pauses end on their own, onto the date the original schedule would bill next. A paused subscriber's portal shows no next order date, though your admin still shows one.
     </Note>
 
     <Check>
-    **Checkpoint:** the status badge in the title bar says what you meant it to.
+    **Checkpoint:** the status badge says what you meant.
     </Check>
   </Step>
   <Step title="Merge and split">
-    - **Merge subscriptions** appears in the title bar only on an active subscription whose subscriber has other active ones. It opens a picker: the subscriptions you select merge into this one, their recurring items move over, and they stop billing. One-time and gift items stay behind.
-    - Merged-away subscriptions end as expired, not cancelled, so they never count as churn. Expired subscriptions are hidden from the list, so don't go hunting for the retired one afterward: the surviving subscription is the record.
-    - Going the other way: on an active subscription with two or more recurring lines, **Move to new subscription** on a line splits it onto its own schedule. Same card, same address, same pricing.
+    - **Merge subscriptions** appears only on an active subscription whose subscriber has other active ones. The ones you pick merge in: recurring items move over, they stop billing, and one-time and gift items stay behind.
+    - Merged-away subscriptions end as expired, not cancelled, so they never count as churn; expired subscriptions are hidden from the list.
+    - To split: with two or more recurring lines, **Move to new subscription** on a line opens **Move items to a new subscription**: tick the lines to move, set the next order date, keep or change the frequency. Same card, address, and pricing; one-time and gift lines can't move.
   </Step>
   <Step title="Read the history">
-    - The **History** card is the subscription's diary: every change, day by day, each row expandable, order rows linking to their orders.
-    - Every entry names its actor: the subscriber, you, or a quick action link; a change made over SMS is recorded as the subscriber. When someone disputes a change, this is where you settle it.
+    - The **History** card lists every change, day by day; rows expand, and order rows link to their orders.
+    - Every entry names its actor: **Customer** (including SMS actions), **Merchant**, **Quick action**, **Gorgias** ([Set up Gorgias](/platform-v2/run/set-up-gorgias)), plus automated **Billing**, **Recovery**, **Flow**, and **System**.
     - The store-wide version lives at **Analytics > Activity**, with source filters and a CSV export.
 
     <Check>
-    **Checkpoint:** the change in question has a row, and the row says who.
+    **Checkpoint:** the change has a row naming who.
     </Check>
   </Step>
 </Steps>
 
 <Note>
-**What isn't here, on purpose.** No card entry: the payment-update email handles it, and you never see card numbers ([When a subscriber asks for help](/platform-v2/run/when-a-subscriber-asks)). No manual payment retry: the recovery schedule owns retries ([When a payment fails](/platform-v2/run/when-a-payment-fails)). No delete: cancel is as far as it goes, and the history stays.
+**What isn't here, on purpose.** No card entry (the payment-update email handles it: [When a subscriber asks for help](/platform-v2/run/when-a-subscriber-asks)), no manual payment retry (the recovery schedule owns it: [When a payment fails](/platform-v2/run/when-a-payment-fails)), and no delete: cancel is as far as it goes.
 </Note>

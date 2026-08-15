@@ -243,6 +243,12 @@
                 ]
               },
               {
+                "group": "Analytics and monitoring",
+                "pages": [
+                  "platform-v2/run/set-up-analytics-and-monitoring"
+                ]
+              },
+              {
                 "group": "Rewards",
                 "pages": [
                   "platform-v2/run/set-up-rewards",

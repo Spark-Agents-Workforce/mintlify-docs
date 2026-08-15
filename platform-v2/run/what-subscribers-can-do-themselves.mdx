@@ -9,27 +9,27 @@ import { PlatformTag } from "/snippets/PlatformTag.jsx";
 
 <span className="os-chip">5 min</span>
 
-The portal-versus-admin table on [When a subscriber asks for help](/platform-v2/run/when-a-subscriber-asks) obeys one set of switches: **Customer portal features**, on **Settings > Branding**. This page is those switches. Every one you leave on is a request that answers itself.
+These switches, **Customer portal features** on **Settings > Branding**, drive the portal-versus-admin table on [When a subscriber asks for help](/platform-v2/run/when-a-subscriber-asks). Every switch left on is a request that answers itself.
 
 <Steps>
   <Step title="Know the switches">
-    - The section explains its own stakes: "Choose which subscription actions customers can take in the account area. Turning one off hides it everywhere in the portal." Eight start on, two start off:
+    - Turning a switch off hides that action everywhere in the portal. Eight start on, two start off:
 
     | Switch | What subscribers can do when it's on |
     | --- | --- |
-    | **Ship Now** | Trigger their next order to bill and ship immediately |
-    | **Merge subscriptions** | Combine two or more of their active subscriptions into one |
-    | **Delay next order** | Push back their next order date by a preset you offer |
+    | **Ship Now** | Bill and ship their next order immediately |
+    | **Merge subscriptions** | Combine two or more active subscriptions into one |
+    | **Delay next order** | Push back the next order date by a preset you offer |
     | **Change delivery frequency** | Switch to a different delivery schedule |
     | **Change order date** | Pick a different next order date from the calendar |
-    | **Pause subscription** | Accept a pause instead of cancelling when the cancellation flow offers one (there is no separate pause button in the portal; this switch's only surface is the flow) |
+    | **Pause subscription** | Accept a pause when the cancellation flow offers one (the flow is its only surface; there is no separate pause button) |
     | **Reactivate subscription** | Restart a cancelled subscription from the account area |
     | **Discount codes** | Apply a discount code from the order summary |
-    | **Discount code stacking** *(off by default)* | Apply more than one code to the same subscription |
-    | **Dashboard FAQ block** *(off by default)* | See a short FAQ block on their dashboard |
+    | **Discount code stacking** *(off by default; appears only while Discount codes is on)* | Apply more than one code to the same subscription |
+    | **Dashboard FAQ block** *(off by default)* | See a short FAQ block on their dashboard (once you add content) |
 
     <Check>
-    **Checkpoint:** the on/off pattern matches how much self-service you actually want.
+    **Checkpoint:** the on/off pattern matches the self-service you want.
     </Check>
 
     <Frame>
@@ -37,24 +37,24 @@ The portal-versus-admin table on [When a subscriber asks for help](/platform-v2/
     </Frame>
   </Step>
   <Step title="Set the limits under them">
-    - The limits live inline, under their switches: **Delay options** (defaults of 7, 14, 21, and 28 days, **Add another option** for up to eight, each 1 to 365), **Maximum days in advance** under the order-date switch, and **Maximum quantity per item** (default 30) at the bottom.
-    - The delay options pull double duty; the page says so itself: "Also used by delay offers in the cancellation flow."
-    - The quantity cap is enforced on the server, and a line already over a lowered cap stays as it is; the cap stops raises, it doesn't cut orders. The other limits shape what the portal offers (the calendar's range, the code entry) rather than adding server locks.
+    - The limits live inline under their switches: **Delay options** (defaults 7, 14, 21, 28 days; **Add another option** for up to eight, each 1 to 365), **Maximum days in advance** under the order-date switch, **Maximum stacked discounts** (1 to 20, blank for no limit) under the stacking switch, and **Maximum quantity per item** (default 30).
+    - The delay options are also used by delay offers in the cancellation flow.
+    - The quantity cap is enforced on the server and stops raises only; a line already over a lowered cap stays as it is. The other limits shape what the portal offers, not server locks.
 
     <Check>
-    **Checkpoint:** the presets and caps read like offers you'd make out loud.
+    **Checkpoint:** each preset and cap is a number you're happy to let subscribers pick.
     </Check>
   </Step>
   <Step title="Know the two side effects">
-    - Your cancellation flow's save offers pass through these same switches: a pause offer with pausing switched off silently never shows ([When a save offer doesn't show](/platform-v2/run/when-a-save-offer-doesnt-show)).
-    - However you set the pause switch, already-paused subscribers can always resume from their portal: resuming has no switch and is never taken away.
+    - Save offers pass through these same switches: a pause offer never shows while pausing is off ([When a save offer doesn't show](/platform-v2/run/when-a-save-offer-doesnt-show)).
+    - Already-paused subscribers can always resume from their portal; resuming has no switch.
 
     <Check>
-    **Checkpoint:** nothing you switched off is something your cancellation flow still promises.
+    **Checkpoint:** nothing switched off is still promised by your cancellation flow.
     </Check>
   </Step>
 </Steps>
 
 <Note>
-**These are preference gates, not locks.** They shape what the portal offers; they aren't a security boundary. What a subscriber asks you to do for them instead is [When a subscriber asks for help](/platform-v2/run/when-a-subscriber-asks).
+**These are preference gates, not locks.** They shape what the portal offers, not a security boundary. Doing it for a subscriber: [When a subscriber asks for help](/platform-v2/run/when-a-subscriber-asks).
 </Note>

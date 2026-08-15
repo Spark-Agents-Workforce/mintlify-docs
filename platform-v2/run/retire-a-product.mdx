@@ -9,79 +9,79 @@ import { PlatformTag } from "/snippets/PlatformTag.jsx";
 
 <span className="os-chip">one sitting</span>
 
-Discontinuing a product that live subscriptions still contain is safe in exactly one order: move the subscribers, verify zero, then delete. This page is that order.
+Discontinuing a product that live subscriptions still contain is safe in one order: move the subscribers, verify zero, then delete.
 
 <Warning>
-**Delete nothing until the count reads zero.** The admin won't stop you, won't show you the damage afterward, and the delete confirm only warns about *new* subscribers. Existing ones are yours to move first.
+**Delete nothing until the count reads zero.** The admin won't stop you; the delete confirm only warns about *new* subscribers.
 </Warning>
 
 | If you delete | What breaks, quietly |
 | --- | --- |
-| The product or its variants | Renewals can start failing at the charge, and the failures are treated like card problems: recovery campaigns open and dunning emails go to subscribers about something they can't fix ([When a payment fails](/platform-v2/run/when-a-payment-fails)). |
-| Just its selling plan group | Billing continues, but subscribers see "Currently unavailable" on the line, reminder emails drop it from the order total, and their frequency and variant editing disappears. The product also vanishes from the admin's own product filter and pickers. |
+| The product or its variants | Renewals can fail at the charge and get treated like card problems: recovery campaigns open and dunning emails go out ([When a payment fails](/platform-v2/run/when-a-payment-fails)). |
+| Just its selling plan group | Billing continues, but the line reads "Currently unavailable", reminder emails drop it from the order total, and frequency and variant editing disappears. |
 
 <Steps>
   <Step title="Count who's still on it">
-    - Open **Bulk operations** > **New bulk operation**. A new run starts with one condition already in place, **Subscription status** is **Active**: keep it, it's what lets the count reach zero later.
-    - **Add condition**, switch the new row's field to **Contains products**, and pick the retiring product. The estimate is your number, and **Download CSV** is the name-by-name list.
-    - The **Product** filter on **Subscriptions** shows a wider version of the same list: it also counts one-time lines and past statuses, so expect it to read higher.
-    - Do this while the selling plan group still exists: both the filter and the pickers list a product only while it's attached to a group.
-    - One-time add-on lines of the product don't count in the estimate; they consume themselves after one order.
+    - Open **Bulk operations** > **New bulk operation** and keep the preset condition: **Subscription status** is **Active**.
+    - **Add condition**, set the field to **Contains products**, and pick the retiring product. The estimate is your number; **Download CSV** lists the names.
+    - The **Product** filter on **Subscriptions** reads higher: it also counts one-time lines and past statuses.
+    - Do this while the selling plan group still exists: the filter and pickers only list attached products.
+    - One-time add-on lines don't count in the estimate.
 
     <Check>
-    **Checkpoint:** you know the number, and the CSV names everyone behind it.
+    **Checkpoint:** you have the number and the CSV of names.
     </Check>
 
     <Frame>
       <img src="/images/platform-v2/run/25-contains-products.png" alt="The audience: a Contains products condition on the retiring product, the estimate counting who's still on it." width="560" />
     </Frame>
   </Step>
-  <Step title="Give the substitute a home first">
-    - Swapping to a replacement product? Attach the replacement to a live selling plan group under **Settings > Selling plans** before you run anything.
-    - The swap prices the new line from the substitute's selling plan group. Swap onto a variant its group doesn't cover and the line lands at full catalog price, subscription discount gone, flagged unavailable to the subscriber: the same damage you're here to avoid.
-    - Removing the product outright instead of substituting? Skip this step.
+  <Step title="Attach the substitute to a selling plan group">
+    - Swapping to a replacement product? Attach it to a live selling plan group under **Settings > Selling plans** first.
+    - The swap prices the new line from that group, so check it covers the swap-target variant; uncovered means full catalog price, no subscription discount, and an unavailable line.
+    - Removing the product outright? Skip this step.
 
     <Check>
-    **Checkpoint:** the substitute appears in the **Products** view of **Settings > Selling plans** with a plan attached, the swap-target variant covered.
+    **Checkpoint:** the substitute has a plan attached, swap-target variant covered.
     </Check>
   </Step>
   <Step title="Swap or remove, in one run">
     - In the same bulk operation, add the action. **Swap product variant** takes two picks: **Replace** the retiring variant, **with** the substitute. **Remove product** takes one: the retiring variant.
-    - Both are variant-scoped, so a product with several variants needs one action per variant. Up to four stack in one run; more variants than that means another run.
-    - Both act on active subscriptions only, and both are quiet: neither sends the subscriber any notification. If the change deserves a heads-up, send it yourself.
-    - **Remove product** refuses to empty a subscription: anyone whose only recurring line is the retiring product lands in the run's **Skipped** tab with that reason, untouched.
-    - Run it and read the result: succeeded, failed, skipped ([Change many at once](/platform-v2/run/change-many-at-once) covers the builder end to end).
+    - Both are variant-scoped: one action per variant, up to four per run.
+    - Both act on active subscriptions only and send no notification; send any heads-up yourself.
+    - **Remove product** refuses to empty a subscription: anyone whose only recurring line is the retiring product lands in the **Skipped** tab.
+    - Run it; [Change many at once](/platform-v2/run/change-many-at-once) covers the builder.
 
     <Check>
-    **Checkpoint:** the run finished, and every skipped row has a reason you've read.
+    **Checkpoint:** the run finished, every skipped row read.
     </Check>
 
     <Frame>
       <img src="/images/platform-v2/run/26-swap-action.png" alt="The Swap product variant action: Replace the retiring variant, with the substitute." width="560" />
     </Frame>
   </Step>
-  <Step title="Sweep the residue">
-    - Single-line subscriptions that Remove skipped: swap them to the substitute instead, edit them [one at a time](/platform-v2/run/edit-one-subscription), or, with no substitute to offer, a bulk **Cancel subscription** run is the honest last resort. Its confirm says outright that it cancels.
-    - Paused and failed subscriptions are outside both product actions' reach. Handle them by hand when they resume, or before, from their subscription pages.
+  <Step title="Handle the subscriptions the run skipped">
+    - Single-line subscriptions that Remove skipped: swap them to the substitute, edit them [one at a time](/platform-v2/run/edit-one-subscription), or run a bulk **Cancel subscription**.
+    - Paused and failed subscriptions are outside both actions' reach; handle them from their subscription pages.
 
     <Check>
-    **Checkpoint:** the skipped list is empty, or every name on it has a decision.
+    **Checkpoint:** the skipped list is empty, or every name has a decision.
     </Check>
   </Step>
   <Step title="Verify zero, then retire it">
-    - Re-read the audience estimate: **0 subscriptions match**. (The **Product** filter counts wider, so it may still show old cancelled subscriptions; the estimate is the test.)
-    - Now, and only now, retire it: set the product's status to draft or archived (or delete it) in the Shopify admin, and delete its group under **Settings > Selling plans**.
+    - Build the same audience in a new bulk operation and confirm **0 subscriptions match**.
+    - Then set the product to draft or archived (or delete it) in the Shopify admin, and delete its group under **Settings > Selling plans**.
 
     <Check>
-    **Checkpoint:** zero first, Shopify second. In that order, nothing breaks.
+    **Checkpoint:** zero first, Shopify second.
     </Check>
   </Step>
 </Steps>
 
 <Note>
-**Just stopping new subscribers is gentler than retirement.** Remove the product from your Online Store sales channel in Shopify, leaving its status active: new shoppers can't find it, and existing subscriptions keep billing, editing, and shipping exactly as before. The **One-time only** purchase type in the **Products** view of **Settings > Selling plans** closes the other door, stopping portal visitors from adding it as a new subscription line.
+**Just stopping new subscribers is gentler than retirement.** Remove the product from your Online Store sales channel in Shopify, leaving its status active: existing subscriptions keep billing, editing, and shipping. The **One-time only** purchase type under **Settings > Selling plans** stops portal visitors adding it as a new subscription line.
 </Note>
 
 <Note>
-**Same screen, different problem: stale product data.** If the portal shows an old price, a dead variant, or a missing image, the local copy of your catalog has drifted. On the **Products** view of **Settings > Selling plans**, select the affected products and click **Refresh selected** (or **Refresh all from Shopify**): it re-pulls products, variants, and plans from the source of truth.
+**Same screen, different problem: stale product data.** If the portal shows an old price, a dead variant, or a missing image, select the products in the **Products** view of **Settings > Selling plans** and click **Refresh selected** (or **Refresh all from Shopify**).
 </Note>

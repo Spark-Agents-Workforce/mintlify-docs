@@ -17,7 +17,7 @@ import { PlatformTag } from "/snippets/PlatformTag.jsx";
     - Come back to the run: it detects the connection, and **Verify scopes** passes by itself. (App never opened? Open it once from **Apps > OpenSubs**; it connects on open.)
 
     <Frame>
-      <img src="/images/deploy/dev-store-fast-path/16-install-connected.png" alt="Go live: installed and connected; Verify scopes passes on its own." />
+      <img src="/images/deploy/dev-store-fast-path/16-install-connected.png" width="560" alt="Go live: installed and connected; Verify scopes passes on its own." />
     </Frame>
 
     <Check>
@@ -25,18 +25,24 @@ import { PlatformTag } from "/snippets/PlatformTag.jsx";
     </Check>
   </Step>
   <Step title="Configure integrations, or skip">
-    - In the dev store's admin, under **Apps > OpenSubs > Integrations**, add your SendGrid, Klaviyo, or Twilio keys (each lives in the provider's settings, under API keys) and send a test.
-    - Under **Notification routing**, select the active email and SMS routes and save; a connected provider that isn't selected stays silent.
+    - In the dev store's admin, under **Apps > OpenSubs > Settings > Integrations**, add your SendGrid, Klaviyo, or Twilio keys (each lives in the provider's settings, under API keys) and send a test.
+    - The same page also connects analytics, monitoring, and helpdesk tools; those can wait until [Set up analytics and monitoring](/platform-v2/run/set-up-analytics-and-monitoring) and [Set up Gorgias](/platform-v2/run/set-up-gorgias).
+    - Under **Notification routing**, select the active email and SMS routes and save. SendGrid and Twilio send only when routed; Klaviyo receives events whenever connected, so its live flows send regardless of routing.
+
+    <Frame>
+      <img src="/images/platform-v2/run/16-integrations.png" alt="Settings > Integrations: the three providers connected, with the Notification routing card below." width="560" />
+    </Frame>
+
     - Back in the run, click **Integrations configured**.
 
     <Frame>
-      <img src="/images/deploy/dev-store-fast-path/17-integrations.png" alt="Go live: the Integrations configured step." />
+      <img src="/images/deploy/dev-store-fast-path/17-integrations.png" alt="Go live: the Integrations configured step." width="560" />
     </Frame>
 
     First connect provisions the provider for you: SendGrid gets every branded template created, Klaviyo a template and a draft flow per notification. (Klaviyo can carry SMS as well as email.)
 
     <Warning>
-    Skipping is allowed, eyes open: with no provider configured, notifications are **discarded**, not queued for later. And if you use Klaviyo: imported flows start as **drafts**. Turn each flow live in Klaviyo or nothing sends, *including subscriber login codes*.
+    Skipping is allowed, eyes open: with no provider configured, notifications are **discarded**, not queued for later. And if you use Klaviyo: imported flows start as **drafts**. Turn each flow live in Klaviyo or nothing sends, *including subscriber login codes*. [Set up email and SMS](/platform-v2/run/set-up-email-and-sms) shows each flow's status and the later **Update to latest** offer.
     </Warning>
 
     <Check>
@@ -44,7 +50,11 @@ import { PlatformTag } from "/snippets/PlatformTag.jsx";
     </Check>
   </Step>
   <Step title="The finish">
-    The last step, **Verify the live stack**, checks the whole build end to end. Then the run completes and purges every secret it held. The screen says **Everything's installed.** Shoppers still see nothing: the storefront widgets stay off until you enable them. (When we ran it, provisioning took under ten minutes.)
+    The last step, **Verify the live stack**, checks the whole build end to end. Then the run completes and purges every secret it held. The screen says **Everything's installed.** Shoppers still see nothing: the storefront widgets stay off until you enable them.
+
+    <Note>
+    The run's one-time database password is purged with the rest: copy it before finishing, or reset it later in the Supabase dashboard.
+    </Note>
 
     - Open the app from your Shopify admin (**Apps > OpenSubs**).
     - Go to **Settings > Extensions** and enable the **theme app embed**: it opens the theme editor with the embed ready; click **Save**. The widget can't render without it. Placing the widget itself is [Make something to sell](/platform-v2/setup/make-something-to-sell), on the same Extensions page.

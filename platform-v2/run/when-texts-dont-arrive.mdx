@@ -7,27 +7,27 @@ import { PlatformTag } from "/snippets/PlatformTag.jsx";
 
 <PlatformTag platform="opensubs" />
 
-A text has more ways to go quiet than an email: the same provider and routing rules, plus consent, the phone number itself, and webhook wiring on the Twilio side. Work the checks in order. If email is silent too, start at [When emails don't arrive](/platform-v2/run/when-emails-dont-arrive) instead: that's the shared machinery.
+Work the checks in order. If email is silent too, start at [When emails don't arrive](/platform-v2/run/when-emails-dont-arrive): that's the shared machinery.
 
 <Steps>
   <Step title="Twilio isn't connected, or isn't the route">
-    - In **Settings > Integrations**, connect Twilio: the **Connect Twilio** modal takes your **Auth token** and **Account SID**, then lets you pick a **Messaging Service** or a **From number** from your account. One of those two is required; the save refuses without it.
-    - Back on the same screen, under **Notification routing**, set **SMS notifications** to Twilio and **Save**. Connected but not routed sends nothing, and the SMS settings page says so in a banner rather than letting you guess.
-    - Prove it: in the Twilio modal, enter your own number under **Send a test SMS to (phone)** and click **Test connection**.
-    - The whole wiring, walked from zero: [Set up email and SMS](/platform-v2/run/set-up-email-and-sms).
+    - In **Settings > Integrations**, connect Twilio: the **Connect Twilio** modal takes your **Auth token**, **Account SID**, and a **Messaging Service** or **From number** (one of the two is required).
+    - Under **Notification routing**, set **SMS notifications** to Twilio and **Save**; connected but not routed sends nothing, and the SMS settings page shows a banner.
+    - Prove it: enter your own number under **Send a test SMS to (phone)** and click **Test connection**.
+    - Full wiring: [Set up email and SMS](/platform-v2/run/set-up-email-and-sms).
 
     <Check>
     **Checkpoint:** the test lands on your phone.
     </Check>
 
     <Note>
-    **Klaviyo can hold the SMS route instead.** Then whether a text goes out is decided by your Klaviyo flows, and the admin logs those sends under the Klaviyo channel rather than SMS. Consent still applies on the platform side, though: the subscriber's phone only reaches Klaviyo for opted-in subscribers (login texts excepted), so check 3 below matters either way. The rest of this page assumes Twilio.
+    **Klaviyo can hold the SMS route instead.** Then Klaviyo flows decide what sends, logged under the Klaviyo channel; flows import as drafts that send nothing until set live (**Settings > Notifications > Email > View created flows & templates** lists each one's status). The phone only reaches Klaviyo for opted-in subscribers (login texts excepted), so check 3 still matters; the rest of this page assumes Twilio.
     </Note>
   </Step>
   <Step title="The text's event is switched off">
-    - Open **Settings > Notifications > SMS texts**. Every lifecycle text is a row with a switch and a preview; switch one on, then click the row to edit its message.
-    - A new install starts with every lifecycle text off. Only two rows read **Always on** and can't be switched: **Portal login code** and **Login link**.
-    - Flip on the events you want, edit the copy if you like (**Insert tag** for merge tags; the counter shows characters and how many SMS segments you're paying for), and **Save**.
+    - Open **Settings > Notifications > SMS texts**: every lifecycle text is a row with a switch and a preview; click a row to edit its message.
+    - A new install starts with every lifecycle text off; only **Portal login code** and **Login link** read **Always on** and can't be switched.
+    - Flip on the events you want, edit the copy (**Insert tag** for merge tags; the counter shows characters and SMS segments), and **Save**.
 
     <Check>
     **Checkpoint:** the event's switch is on.
@@ -38,16 +38,16 @@ A text has more ways to go quiet than an email: the same provider and routing ru
     </Frame>
   </Step>
   <Step title="The subscriber never opted in, or has no phone">
-    - A lifecycle text only goes to a subscriber who has opted in, and opting in happens one way: they text START to your number. STOP opts them out again.
-    - Login codes and login links are the exception: they send regardless of consent. So a subscriber can receive a login text and still get no lifecycle texts. That's consent working, not a bug.
-    - No phone on file means no text. The phone comes in from Shopify with the customer, and subscribers can add or change it on their portal profile.
+    - Lifecycle texts go only to subscribers who opted in by texting START to your number; STOP opts them out.
+    - Login codes and login links send regardless of consent, so a login text can arrive while lifecycle texts don't.
+    - No phone on file means no text; the phone comes from Shopify, and subscribers can change it on their portal profile.
 
     <Note>
-    **Consent is invisible in the admin.** There's no opt-in column anywhere, and a lifecycle text blocked on consent or a missing phone leaves no record; silence is the designed behavior. The portal's SMS preference checkbox doesn't grant consent either: only texting START does. So when one subscriber gets no texts and everyone else does, ask them to text START. One catch: START only counts from the phone number on their record. Texting it from a different number gets a friendly reply and stores nothing.
+    **Consent is invisible in the admin.** There's no opt-in column, a blocked lifecycle text leaves no record, and the portal's SMS preference checkbox doesn't grant consent: only texting START does, so ask a silent subscriber to text START. It only counts from the phone number on their record; texting from another number stores nothing.
     </Note>
 
     <Check>
-    **Checkpoint:** the subscriber has a phone on their portal profile and has texted START.
+    **Checkpoint:** the subscriber has a phone on file and has texted START.
     </Check>
   </Step>
   <Step title="Sent, but stuck at queued or never delivered">
@@ -58,21 +58,24 @@ A text has more ways to go quiet than an email: the same provider and routing ru
     | **Queued** | Twilio accepted the text; the delivery receipt isn't back yet. |
     | **Sent** | Twilio confirmed delivery. |
     | **Failed** | Rejected, with Twilio's reason and numeric error code in the row. |
+    | **Skipped** | The platform never handed it to Twilio: no SMS route, no phone, or no consent. Only login texts record this; a blocked lifecycle text leaves no row at all (check 3). |
 
-    - Everything stuck at **Queued** forever means delivery receipts aren't making it back. The merchant-fixable cause: the **Messaging Service** or **From number** saved in the Twilio modal isn't the one that actually sends, so receipts can't be matched to your store. Make them match; if receipts still don't land after that, hand it to whoever runs your code.
-    - For the descriptive story behind any failure, read Twilio's own log: in the Twilio Console, open **Monitor > Logs > Messaging**, find the message, and read its status and error code. The code is the answer: 21610, for example, means the recipient texted STOP and Twilio is blocking sends to them.
+    - Still **Queued** an hour later: check the message in Twilio's log. **Delivered** there means receipts aren't reaching your store (hand to whoever runs your code); **Sent** means the carrier never confirmed delivery, nothing to fix.
+    - On **Settings > Operational health**, the **Integration connections** panel counts Twilio's failed deliveries over the last day and quotes the latest errors with codes; **View logs in Twilio** opens the full log.
+    - In the Twilio Console, open **Monitor > Logs > Messaging** and read the message's status and error code: 21610, for example, means the recipient texted STOP.
 
     <Check>
     **Checkpoint:** new texts move from queued to sent, and failures name their code.
     </Check>
   </Step>
   <Step title="Replies do nothing">
-    - SKIP, PAUSE, STOP and the rest only reach the platform if the **Incoming messages** URL is set on your Twilio Messaging Service (or on the phone number itself, if you connected with just a number). The Twilio modal shows it under **Webhooks: paste into your Twilio Messaging Service**, next to the delivery-status URL; paste both while you're there.
-    - The Messaging Service or From number saved in the modal must be the same one whose webhooks point at your app. A mismatch drops every inbound text silently, and it's the same mismatch that parks outbound texts at queued.
-    - Which commands are on, and their reply wording, live under **Settings > Notifications > SMS replies**; what subscribers can do with them is on [When a subscriber asks for help](/platform-v2/run/when-a-subscriber-asks).
+    - SKIP, PAUSE, STOP and the rest need the **Incoming messages** URL set on your Twilio Messaging Service (or on the phone number, if you connected with just a number). The modal lists it, with the delivery-status URL, under **Webhooks: paste into your Twilio Messaging Service**; paste both.
+    - The Messaging Service or From number in the modal must be the one whose webhooks point at your app; a mismatch drops every inbound text silently.
+    - **Settings > Operational health** shows replies that arrived but failed as failed requests under **Integration connections**; no failed requests and no replies means the calls never arrive (the URL is missing or wrong).
+    - Commands and their reply wording live under **Settings > Notifications > SMS replies**; what subscribers can do with them is on [When a subscriber asks for help](/platform-v2/run/when-a-subscriber-asks).
 
     <Check>
-    **Checkpoint:** text MANAGE to your own number. Any reply at all proves the inbound wiring; no reply means the URL or the service doesn't match.
+    **Checkpoint:** text HELP to your Twilio number; any reply, even "don't recognize this number", proves the inbound wiring.
     </Check>
 
     <Frame>
@@ -82,5 +85,5 @@ A text has more ways to go quiet than an email: the same provider and routing ru
 </Steps>
 
 <Note>
-**Confirm the fix the same way as email.** The subscriber's page in admin lists every send under **Notifications** with its channel and status; the row's error text is the first read, and [When an alert opens](/platform-v2/run/when-an-alert-opens) covers the alert that watches the whole sending pipeline.
+**Confirm the fix the same way as email.** The subscriber's page in admin lists every send under **Notifications** with channel and status; [When an alert opens](/platform-v2/run/when-an-alert-opens) covers the alert watching the sending pipeline.
 </Note>

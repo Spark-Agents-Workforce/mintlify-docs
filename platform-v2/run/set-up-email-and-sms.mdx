@@ -9,17 +9,16 @@ import { PlatformTag } from "/snippets/PlatformTag.jsx";
 
 <span className="os-chip">15 min</span>
 
-The platform never sends from its own servers: your providers do, from accounts you own. Setup is three screens: connect, route, then switch on what sends. (This also runs as part of going live, in [Configure your store](/platform-v2/live-for-new-orders/configure-your-store).)
+The platform never sends from its own servers: your providers do, from accounts you own. Connect and route them under **Settings > Integrations**, then turn on events under **Settings > Notifications** (also part of [Configure your store](/platform-v2/live-for-new-orders/configure-your-store)).
 
 <Steps>
   <Step title="Connect your providers">
-    - Open **Settings > Integrations**. Three notification providers can connect: **Klaviyo** (event-driven flows for email and SMS), **SendGrid** (direct transactional email), **Twilio** (direct SMS with two-way replies).
-    - Click **Connect** on each one you use. Credentials, settings, and the test all live in that provider's modal (**Manage**, once connected): send yourself a test with **Test connection**.
-    - A connected provider shows a green badge with the last digits of its key.
-    - Worth the extra click on SendGrid: **Set up via API** under its event webhook wires opens, clicks, and delivery events back into your admin's notification history.
+    - Open **Settings > Integrations**. Under **Notification providers**, three can connect: **Klaviyo** (flows for email and SMS), **SendGrid** (email), **Twilio** (SMS). Helpdesk and analytics are covered in [Set up Gorgias](/platform-v2/run/set-up-gorgias) and [Set up analytics and monitoring](/platform-v2/run/set-up-analytics-and-monitoring).
+    - Click **Connect** on each one you use; credentials, settings, and the test live in its modal (**Manage**, once connected). Fill SendGrid's **From email** and **From name** before testing; enter your own number on Twilio. Klaviyo's **Test connection** sends a test *event*, not a message.
+    - On SendGrid, also click **Set up via API** under its event webhook to record opens, clicks, bounces, and blocks on the subscriber's **Notifications** table (greyed out until SendGrid is connected).
 
     <Check>
-    **Checkpoint:** every provider you plan to use reads Connected, and its test arrived.
+    **Checkpoint:** every provider shows its green Connected badge, and each test arrived.
     </Check>
 
     <Frame>
@@ -27,12 +26,12 @@ The platform never sends from its own servers: your providers do, from accounts 
     </Frame>
   </Step>
   <Step title="Route the two channels">
-    - Under **Notification routing**, pick the **Email notifications** route and the **SMS notifications** route, then **Save**.
-    - The routes govern the direct senders: SendGrid and Twilio send only once connected *and* selected.
-    - Klaviyo is the exception: once connected it always receives events, and any Klaviyo flow you turn live sends regardless of the routes. A live flow plus an active SendGrid route means two emails for one event, so hold each event in one place.
+    - Under **Notification routing**, pick the **Email notifications** and **SMS notifications** routes, then click **Save** in the bar at the top.
+    - SendGrid and Twilio send only once connected *and* selected.
+    - Klaviyo always receives events once connected, and live flows send regardless of the routes; a live flow plus an active SendGrid route means two emails for one event, so hold each event in one place.
 
     <Check>
-    **Checkpoint:** one route per channel, saved, with no event living in two senders.
+    **Checkpoint:** one route per channel, saved, no event in two senders.
     </Check>
 
     <Frame>
@@ -40,12 +39,12 @@ The platform never sends from its own servers: your providers do, from accounts 
     </Frame>
   </Step>
   <Step title="Wire Twilio's webhooks">
-    - Using Twilio? Its modal needs a **Messaging Service** or a **From number** picked from your account, and it shows two URLs under **Webhooks: paste into your Twilio Messaging Service**.
-    - Paste both into Twilio: **Incoming messages** is what makes the reply commands work (SKIP, PAUSE, RESUME, CANCEL, STOP/START); **Delivery status callback** is what turns Queued into Sent in your admin.
-    - The wording of those automatic replies is editable too, on the **SMS replies** page of the Notifications hub.
+    - Using Twilio? Pick a **Messaging Service** or **From number** in its modal; two URLs show under **Webhooks: paste into your Twilio Messaging Service**.
+    - Paste both into Twilio. **Incoming messages** makes the reply commands work (SKIP, PAUSE, RESUME, CANCEL, STOP/START); **Delivery status callback** is a backup, but paste it anyway.
+    - Edit the automatic replies on the **SMS replies** page of the Notifications hub.
 
     <Check>
-    **Checkpoint:** both URLs pasted into the same Messaging Service or number that the modal has saved.
+    **Checkpoint:** both URLs pasted into the Messaging Service or number the modal saved.
     </Check>
 
     <Frame>
@@ -54,17 +53,25 @@ The platform never sends from its own servers: your providers do, from accounts 
   </Step>
   <Step title="Turn on the events">
     - Open **Settings > Notifications**. A new install starts with every lifecycle event off.
-    - With SendGrid connected, the **Email** page lists each event with a switch and a template picker. The **SMS texts** page lists each text with a switch and an editable message.
-    - Routing email through Klaviyo instead? The Email page has no switches to flip: whether an event sends is decided in Klaviyo, by its flow being live or draft.
-    - First time on Klaviyo, click **Set up templates & flows** to create the flows; they arrive as drafts. Then **View created flows & templates** shows each one's status: set the flows you rely on live, in Klaviyo itself.
-    - The portal's sign-in sends stay on regardless of any switch, so subscribers can always log in.
+    - The **Email** page lists each event with a switch and a template picker; the **SMS texts** page lists each text with a switch and an editable message.
+    - The switches appear only while SendGrid is connected and govern only SendGrid; a Klaviyo event sends when its flow is live in Klaviyo.
+    - First time on Klaviyo, click **Set up templates & flows**; flows arrive as drafts. Set the ones you rely on live in Klaviyo (**View created flows & templates** shows each status).
+    - **Portal login code** and **Login link** have no working off switch; on Klaviyo, though, a draft flow sends nothing, login codes included.
 
     <Check>
-    **Checkpoint:** the events you care about are on where they live: switches here, live flows in Klaviyo.
+    **Checkpoint:** the events you need are on: switches here, live flows in Klaviyo.
     </Check>
   </Step>
 </Steps>
 
 <Note>
-**When something goes quiet later**, the symptom pages carry the fixes: [When emails don't arrive](/platform-v2/run/when-emails-dont-arrive) and [When texts don't arrive](/platform-v2/run/when-texts-dont-arrive).
+**When something goes quiet later**, the fixes live in [When emails don't arrive](/platform-v2/run/when-emails-dont-arrive) and [When texts don't arrive](/platform-v2/run/when-texts-dont-arrive).
 </Note>
+
+<Note>
+**The templates and flows update with one click.** When newer versions ship, click **Update to latest** on the provider's card (an **Update available** badge appears): SendGrid templates get a new active version (the old stays in version history) and Klaviyo flows keep their live-or-draft status. Customized content gets replaced: re-apply your edits after.
+</Note>
+
+<Frame>
+  <img src="/images/platform-v2/run/39-update-to-latest.png" alt="A provider card with an update waiting: the Update available badge and the Update to latest button." width="640" />
+</Frame>
