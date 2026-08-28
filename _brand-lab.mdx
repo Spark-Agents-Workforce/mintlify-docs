@@ -45,6 +45,20 @@ Same recipe as page eyebrows and site `.nh2-chip`: Google Sans Flex, ALL CAPS, 1
 
 Frontmatter `eyebrow:` on any page should match this visual — not Mintlify's clipped `h-5 text-xs` pill.
 
+## Dark stage (os-dark-stage)
+
+The authored ceremony surface (/threshold). Warm charcoal `--nh2-dark` #211C11 at band or page scale — an authored surface, never a theme toggle; `appearance.strict` stays light. On-dark pair: headings `--nh2-dark-heading` #FFF8E8, body `--nh2-dark-body` #D9D2C3. Ledger rules use the dark-side hairline token `--nh2-dark-hairline` rgba(255,248,232,0.12) — token-level, never inline. Chip stays the one caps surface; #000 hard shadows on charcoal read as a quiet deboss — that is the decided dark-stage artifact look, never "fixed" with a glow. Yellow scarcity is stage law: on a full dark page, one chip and one pill, nothing else saturated.
+
+<div className="os-dark-stage" style={{ width: "auto", marginLeft: 0, borderRadius: "20px", padding: "32px 28px" }}>
+  <span className="os-chip os-sticker-alt">CHIP ON DARK</span>
+  <h3 className="os-ink mt-5 m-0">Heading cream #FFF8E8</h3>
+  <p className="os-muted mt-3 m-0">Body cream #D9D2C3 on warm charcoal. Never pure black ground, never cool grays.</p>
+  <p className="os-muted m-0 mt-5 pt-5 border-t os-dark-hairline">A ledger line above the dark hairline token. <span className="os-own">Yours.</span></p>
+  <p className="os-muted m-0 mt-5"><a href="/" className="os-quiet-link">A quiet cream link →</a> — lifts to heading cream on hover, never yellow.</p>
+  <div className="mt-6"><a href="/" className="os-pill os-pill--yellow">Yellow pill at rest</a></div>
+</div>
+
+
 ## Icons
 
 <Icon icon="rocket" size={24} /> <Icon icon="zap" size={24} color="#FFDE01" />

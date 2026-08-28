@@ -30,6 +30,7 @@
   --nh2-body-muted: rgba(26, 21, 12, 0.76);
   --nh2-gray-band: #f0eeec;
   --nh2-hairline: rgba(26, 21, 12, 0.1);
+  --nh2-dark-hairline: rgba(255, 248, 232, 0.12); /* ledger rules on the dark stage */
   --nh2-menu-hover: #f6f3ed;
   --nh2-well-pie: #fef8ce;
   --nh2-well-engineer: #d6feec;
@@ -1172,7 +1173,7 @@ mdx-content .os-pull p,
   font-weight: 500 !important;
   letter-spacing: -0.005em;
   line-height: 1;
-  text-decoration: none;
+  text-decoration: none !important;
   white-space: nowrap;
   box-shadow: 3px 3px 0 0 transparent;
   transition:
@@ -1220,6 +1221,34 @@ mdx-content .os-pull p,
 .os-pill--on-yellow:active {
   background: #fff;
   color: var(--nh2-ink) !important;
+}
+
+/* Yellow-at-rest pill — the sanctioned sticker state held as a rest state.
+   For the dark stage, where one pill is the page's single saturated action
+   (threshold Beat 3). Caret stays visible: the arrow is part of the copy. */
+.os-pill--yellow {
+  background: var(--nh2-yellow);
+  color: var(--nh2-ink) !important;
+  border-color: #000;
+  box-shadow: var(--nh2-shadow-sticker);
+  gap: 8px;
+}
+.os-pill--yellow::after {
+  opacity: 1;
+  transform: translateX(0);
+}
+.os-pill--yellow:hover {
+  background: var(--nh2-yellow);
+  color: var(--nh2-ink) !important;
+  border-color: #000;
+  box-shadow: 4px 4px 0 0 #000;
+  transform: translate(-1.5px, -1.5px);
+}
+.os-pill--yellow:active {
+  background: var(--nh2-yellow);
+  transform: translate(2.5px, 2.5px);
+  box-shadow: 0 0 0 0 #000;
+  transition-duration: 90ms;
 }
 
 /* Steps — quiet mega radius, warm wash */
@@ -1278,3 +1307,117 @@ kbd {
   padding-top: 0 !important;
   padding-bottom: 0 !important;
 }
+
+/* ================= DARK STAGE — authored ceremony surface =========== */
+/* /threshold. A full-bleed warm-charcoal band at page scale. Scoped
+   utilities ONLY — appearance stays strict light; the stage is an
+   authored surface, never a theme toggle. Ground --nh2-dark; text pair
+   --nh2-dark-heading / --nh2-dark-body; ledger rules --nh2-dark-hairline.
+   #000 hard shadows on charcoal read as a quiet deboss — the decided
+   dark-stage artifact look; never "fix" it with a glow. Yellow scarcity
+   is stage law: one chip + one pill, nothing else saturated. */
+
+.os-dark-stage {
+  --os-line: var(--nh2-dark-hairline);
+  --os-text: var(--nh2-dark-body);
+  --os-heading: var(--nh2-dark-heading);
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  background: var(--nh2-dark);
+  color: var(--nh2-dark-body);
+}
+
+/* os2 text helpers resolve to the on-dark pair inside the stage */
+.os-dark-stage .os-ink { color: var(--nh2-dark-heading) !important; }
+.os-dark-stage .os-muted,
+.os-dark-stage .os-body { color: var(--nh2-dark-body) !important; }
+
+/* possession emphasis — ledger nouns and the terminal "Yours." */
+.os-dark-stage .os-own {
+  color: var(--nh2-dark-heading);
+  font-weight: 550;
+}
+
+/* dark-side hairline — pair with a border-width utility (border-t) */
+.os-dark-hairline { border-color: var(--nh2-dark-hairline) !important; }
+
+/* quiet cream link — lifts to heading cream on hover; never yellow.
+   !important: the global content-link hover paints a yellow highlighter;
+   on the dark stage that would break the yellow-scarcity law. */
+.os-dark-stage .os-quiet-link {
+  color: var(--nh2-dark-body) !important;
+  font-weight: 500;
+  background: transparent !important;
+  text-decoration: underline;
+  text-decoration-thickness: 1px !important;
+  text-decoration-color: rgba(255, 248, 232, 0.35) !important;
+  text-underline-offset: 3px;
+  transition: color 180ms var(--nh2-ease), text-decoration-color 180ms var(--nh2-ease);
+}
+.os-dark-stage .os-quiet-link:hover {
+  color: var(--nh2-dark-heading) !important;
+  background: transparent !important;
+  text-decoration-color: var(--nh2-dark-heading) !important;
+}
+
+/* serif landing line — display voice inside the stage
+   (escapes the 17px body ramp, which targets p elements) */
+.os-dark-stage .os-serif-line {
+  font-family: var(--nh2-f-display);
+  font-weight: 500;
+  font-size: 23px;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--nh2-dark-heading);
+  -webkit-font-smoothing: auto;
+  text-wrap: balance;
+}
+
+/* focus ring flips to yellow on charcoal (html.dark precedent) */
+.os-dark-stage a:focus-visible,
+.os-dark-stage button:focus-visible { outline-color: var(--nh2-yellow); }
+
+/* full-viewport beat — the seal stands alone */
+.os-stage-viewport {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* subtle entry, brand ease only */
+@keyframes os-stage-enter {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: none; }
+}
+.os-stage-enter { animation: os-stage-enter 700ms var(--nh2-ease) both; }
+.os-stage-enter--2 { animation-delay: 120ms; }
+.os-stage-enter--3 { animation-delay: 240ms; }
+@media (prefers-reduced-motion: reduce) {
+  .os-stage-enter,
+  .os-stage-enter--2,
+  .os-stage-enter--3 { animation: none; }
+}
+
+/* the threshold page is chrome-free: the ceremony owns the whole canvas.
+   Keyed on both the path attr and the page-scoped stage class (brand-lab's
+   band specimen uses plain .os-dark-stage and keeps its chrome). */
+html[data-current-path="/threshold"],
+html:has(.os-dark-stage--page) { overflow-x: clip; }
+html[data-current-path="/threshold"] body,
+html:has(.os-dark-stage--page) body { background: var(--nh2-dark) !important; }
+html[data-current-path="/threshold"] #navbar,
+html[data-current-path="/threshold"] #footer,
+html:has(.os-dark-stage--page) #navbar,
+html:has(.os-dark-stage--page) #footer { display: none !important; }
+
+/* Mintlify paints a fixed light backdrop span and pads content-area for the
+   mobile nav bar — both fight the stage. Charcoal the backdrop; with the
+   navbar hidden the mobile padding is a dead band, zero it. */
+html[data-current-path="/threshold"] #background-color,
+html:has(.os-dark-stage--page) #background-color { background: var(--nh2-dark) !important; }
+html[data-current-path="/threshold"] #content-area,
+html:has(.os-dark-stage--page) #content-area { padding-top: 0 !important; }
