@@ -551,6 +551,31 @@
             ]
           }
         ]
+      },
+      {
+        "tab": "Growth Program v3",
+        "icon": "map",
+        "groups": [
+          {
+            "group": "The map",
+            "icon": "map",
+            "pages": [
+              "growth-program-v3/index"
+            ]
+          },
+          {
+            "group": "The six buckets",
+            "icon": "target",
+            "pages": [
+              "growth-program-v3/get-in",
+              "growth-program-v3/first-weeks",
+              "growth-program-v3/jumped-out",
+              "growth-program-v3/the-crack",
+              "growth-program-v3/come-back",
+              "growth-program-v3/get-bigger"
+            ]
+          }
+        ]
       }
     ]
   },
