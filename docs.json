@@ -27,55 +27,6 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Start here",
-        "icon": "hand",
-        "groups": [
-          {
-            "group": "Start here",
-            "icon": "hand",
-            "pages": [
-              "index",
-              "start/welcome"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Scripts",
-        "icon": "banknote",
-        "groups": [
-          {
-            "group": "The story",
-            "icon": "book-open",
-            "pages": [
-              "instant-win/why-you-have-leverage",
-              "instant-win/the-history",
-              "instant-win/what-your-platform-does",
-              "instant-win/the-reveal"
-            ]
-          },
-          {
-            "group": "The kit",
-            "icon": "briefcase",
-            "pages": [
-              "instant-win/know-your-number",
-              "instant-win/the-scripts",
-              "instant-win/what-theyll-say-back",
-              "instant-win/if-they-say-no",
-              "instant-win/the-cfo-memo",
-              "instant-win/log-your-win"
-            ]
-          },
-          {
-            "group": "The close",
-            "icon": "flag",
-            "pages": [
-              "instant-win/go-collect"
-            ]
-          }
-        ]
-      },
-      {
         "tab": "Platform v2",
         "icon": "server-cog",
         "groups": [
@@ -240,6 +191,55 @@
         "tab": "Archive",
         "icon": "archive",
         "dropdowns": [
+          {
+            "dropdown": "Start here",
+            "icon": "hand",
+            "groups": [
+              {
+                "group": "Start here",
+                "icon": "hand",
+                "pages": [
+                  "start/home",
+                  "start/welcome"
+                ]
+              }
+            ]
+          },
+          {
+            "dropdown": "Scripts",
+            "icon": "banknote",
+            "groups": [
+              {
+                "group": "The story",
+                "icon": "book-open",
+                "pages": [
+                  "instant-win/why-you-have-leverage",
+                  "instant-win/the-history",
+                  "instant-win/what-your-platform-does",
+                  "instant-win/the-reveal"
+                ]
+              },
+              {
+                "group": "The kit",
+                "icon": "briefcase",
+                "pages": [
+                  "instant-win/know-your-number",
+                  "instant-win/the-scripts",
+                  "instant-win/what-theyll-say-back",
+                  "instant-win/if-they-say-no",
+                  "instant-win/the-cfo-memo",
+                  "instant-win/log-your-win"
+                ]
+              },
+              {
+                "group": "The close",
+                "icon": "flag",
+                "pages": [
+                  "instant-win/go-collect"
+                ]
+              }
+            ]
+          },
           {
             "dropdown": "Platform",
             "icon": "server",
@@ -635,7 +635,7 @@
     },
     {
       "source": "/hr-people/:slug*",
-      "destination": "/"
+      "destination": "/start/home"
     },
     {
       "source": "/it-security/:slug*",
