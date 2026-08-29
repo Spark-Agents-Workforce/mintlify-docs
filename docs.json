@@ -174,10 +174,11 @@
             ]
           },
           {
-            "group": "The six buckets",
+            "group": "The seven buckets",
             "icon": "target",
             "pages": [
               "growth-program-v3/get-in",
+              "growth-program-v3/first-order",
               "growth-program-v3/first-weeks",
               "growth-program-v3/jumped-out",
               "growth-program-v3/the-crack",
