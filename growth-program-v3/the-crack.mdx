@@ -5,4 +5,62 @@ description: "Involuntary churn. Nobody chose anything — the card broke. Fix i
 icon: "triangle-alert"
 ---
 
-Grown-ups call it involuntar...[truncated]
+Grown-ups call it involuntary churn. On the track it is the crack in the rail: the subscriber was rolling along happily and simply fell through, because a renewal charged a card that had expired, been reissued, or hit its limit that morning. Nobody decided anything. That is what makes this the strangest bucket — and the best one: it is the only churn you can fix without persuading a single human being.
+
+## The figure
+
+The pricing playbook's benchmark: recurring payments lose 1.2% to 1.7% of subscribers *per month* to card-information changes alone — and at 5% total monthly churn, that is 24% to 34% of everything you lose. The map rounded the same reality: of every 7 subscribers who leave in a month, 3 never chose to.
+
+Two more numbers frame the opportunity. Stripe's benchmark: businesses on modern recovery tooling get back 55% of failed payments on average — more than half of the crack is patchable. And the recovered money is not small: one company's dunning automation recovered \$600K in failed payments.
+
+Read your own split first: your platform's cancellation reporting separates payment-failure cancellations from chosen ones. If the involuntary share is anywhere near the 24-34% benchmark, this bucket outranks everything in [Jumped out](/growth-program-v3/jumped-out) — machines are cheaper than persuasion, per subscriber saved.
+
+## Turn the recovery machines on
+
+<Steps>
+  <Step title="The figure">
+    The three-tool stack the billing corpus converges on: smart retries, a card account updater, and cancellation surveys — retries for transient declines, the updater for expired and reissued cards, the survey to keep voluntary intent out of this bucket's numbers. The 55% recovery benchmark assumes the stack is on.
+  </Step>
+  <Step title="The fix">
+    Every serious subscription platform — OpenSubs, Recharge, Skio — ships retry logic and dunning email sequences; the play is configuration, not construction. Three settings to check today: retries are actually enabled and spaced days apart (a common default: three attempts, roughly a week apart, then cancel); the card-updater service is on wherever your payment processor offers it; and failed-payment emails go out on failure one, with a one-tap link to update the card, no login wall in front of it.
+  </Step>
+  <Step title="The why">
+    Declines are heavily transient — limits reset, banks reverse false fraud flags, reissued cards propagate through updater networks. A retry days later is hitting a different card-state than the one that failed. That is why spaced retries recover what an immediate re-run cannot, and why the updater recovers what no retry schedule can.
+  </Step>
+</Steps>
+
+## Do not punish the subscriber for the bank's problem
+
+<Steps>
+  <Step title="The figure">
+    The billing literature's grace-period law: recovery inside the grace window causes zero interruption — no tenure loss, no revenue gap, and from the subscriber's side, nothing happened at all.
+  </Step>
+  <Step title="The fix">
+    Keep the subscription alive and the box shipping while the retry sequence runs, for subscribers with any tenure. The email says "your card needs a minute," never "your subscription has been cancelled." Cancel-on-first-failure is the one configuration this bucket forbids.
+  </Step>
+  <Step title="The why">
+    A subscriber who loved the product, missed one charge through no act of their own, and got cut off — then re-subscribed through the full signup — has been converted from a keeper into a coin-flip. The failure was never theirs; the punishment should not be either. Grace costs you one box at risk; the alternative costs the subscriber.
+  </Step>
+</Steps>
+
+## The backup card
+
+<Steps>
+  <Step title="The figure">
+    The pricing playbook's math on a second payment method: on a \$100-a-month service at 5% churn, recovering the 1.2-1.7 points of card-change churn is worth +31% to +51% LTV. Its rule for using it: re-run failed transactions the next day on the backup card.
+  </Step>
+  <Step title="The fix">
+    Collect a second payment method where the relationship supports it — highest-tier subscribers, prepaid plans, memberships — at signup or in the portal as "never miss a box." Where the platform supports account-level wallets, the failed charge falls through to card two automatically; the dunning sequence only starts if both fail.
+  </Step>
+  <Step title="The why">
+    All the retry logic in the world is betting on one card healing. A second card makes the failure event itself survivable — the LTV math above is what a one-day recovery on a different instrument is worth against the compounding churn baseline.
+  </Step>
+</Steps>
+
+## The hands in this bucket
+
+This is the machine bucket, and the hands' first job is to stay out of the machine's way — nobody wants a phone call about a \$34 retry. The hands take the residue: the subscriber whose card failed twice and who wrote in confused, the high-LTV account on its last retry. Patch what broke — fix the card together, on the spot. Then the second job, more than they asked for: the failure the subscriber never noticed, because grace plus retry plus updater ate it silently, is the best support ticket of all — the one that never existed.
+
+---
+
+The border of this bucket is the machine's reach: when the last retry dies, the crack has won and the subscriber is off the track. What remains is not recovery — it is a return trip: [Come back](/growth-program-v3/come-back).
