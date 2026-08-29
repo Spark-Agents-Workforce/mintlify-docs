@@ -177,8 +177,28 @@
             "group": "The seven buckets",
             "icon": "target",
             "pages": [
-              "growth-program-v3/get-in",
-              "growth-program-v3/first-order",
+              {
+                "group": "Get in",
+                "icon": "door-open",
+                "pages": [
+                  "growth-program-v3/get-in",
+                  "growth-program-v3/get-in/build-the-offer",
+                  "growth-program-v3/get-in/sell-the-offer",
+                  "growth-program-v3/get-in/whole-store"
+                ]
+              },
+              {
+                "group": "First order",
+                "icon": "package",
+                "pages": [
+                  "growth-program-v3/first-order",
+                  "growth-program-v3/first-order/first-five-minutes",
+                  "growth-program-v3/first-order/charge-to-doorbell",
+                  "growth-program-v3/first-order/delivery-day",
+                  "growth-program-v3/first-order/first-use",
+                  "growth-program-v3/first-order/flows-underneath"
+                ]
+              },
               "growth-program-v3/first-weeks",
               "growth-program-v3/jumped-out",
               "growth-program-v3/the-crack",
