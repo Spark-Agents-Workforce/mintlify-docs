@@ -15,15 +15,6 @@
   "metadata": {
     "timestamp": true
   },
-  "contextual": {
-    "options": [
-      "copy",
-      "view",
-      "assistant",
-      "mcp",
-      "add-mcp"
-    ]
-  },
   "navigation": {
     "tabs": [
       {
